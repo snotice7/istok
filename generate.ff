@@ -1,0 +1,79 @@
+#!/usr/bin/env fontforge
+/* Copyright (C) 2008 Andrey V. Panov
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+fontname=$1
+SetPref("InstructDiagonalStems",1)
+SetPref("InstructSerifs",0)
+SetPref("InstructBallTerminals",0)
+SetPref("InterpolateStrongPoints",1)
+SetPref("CounterControl",1)
+Open(fontname+".sfd")
+if (fontname == "Istok-Italic")
+# kern_table = "LGC kerning subtable"
+# kern_look = "LGC kerning"
+# AddLookup(kern_look, "gpos_pair", 0, [["kern",[["latn",["dflt"]],["grek",["dflt"]],["cyrl",["dflt"]]]]])
+# AddLookupSubtable(kern_look, kern_table)
+ alt_sub.ff()
+endif
+cursive = $italicangle != 0
+Reencode("unicode")
+SelectSingletons("nine")
+UnlinkReference()
+if ($italicangle != 0)
+ AddLookup("Italic substitutions", "gsub_single", 0, [["locl",[["cyrl",["MKD ","SRB "]]]]])
+ AddLookupSubtable("Italic substitutions", "Italic substitutions cyr")
+ Select("afii10068") # Cyrillic g
+ AddPosSub("Italic substitutions cyr","ghe.ital") # afii10063
+ Select("afii10069") # Cyrillic g
+ AddPosSub("Italic substitutions cyr","de.ital") # afii10063
+ Select("afii10081") # Cyrillic p
+ AddPosSub("Italic substitutions cyr","pe.ital") # afii10831
+ Select("afii10084") # Cyrillic t
+ AddPosSub("Italic substitutions cyr","te.ital") # afii10832
+endif
+if (cursive)
+ h_offset = -240
+else
+ h_offset = 0
+endif
+add_ipa.ff(h_offset,cursive)
+same_cyrext.ff()
+combining.ff()
+anchors.ff()
+spaces_dashes.ff()
+case_sub.ff()
+tab_sub.ff()
+#if (fontname != "Istok-Italic")
+ same_kern.ff(cursive)
+ make_kern.ff(cursive)
+#endif
+if (fontname == "Istok-Regular")
+ sc_sub.ff()
+endif
+add_accented.ff()
+liga_sub.ff()
+#Generate(fontname+".otf","ttf",0x200A00,-1)
+SelectWorthOutputting()
+#RemoveOverlap()
+RoundToInt()
+CorrectDirection()
+#CanonicalContours()
+#CanonicalStart()
+AutoInstr()
+Save(fontname+"_.sfd")
+Generate(fontname+".gen.ttf","ttf",0xA00,-1)

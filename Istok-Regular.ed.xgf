@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xgridfit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="xgridfit.xsd">
+ 
+ <!--
+     Copyright (C) 2009  Andrey V. Panov
+     
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+     
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
+     -->
+ 
+ <outfile fmflags="2560">Istok-Regular.ttf</outfile>
+ 
+ <constant name="diag-min-thick" value="0.5p"/>
+ <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
+ <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
+ <constant name="left-bearing" value="last + 1"/>
+ <constant name="right-bearing" value="last + 2"/>
+ <constant name="vertical" value="0"/>
+ <constant name="horizontal" value="1"/>
+ <constant name="true" value="1"/>
+ <constant name="false" value="0"/>
+ <constant name="total" value="last + 1"/>
+ <constant name="regular" value="1"/>
+ <constant name="bold" value="0"/>
+ <constant name="slanted" value="0"/>
+ <constant name="smooth" value="1"/>
+ <constant name="first-point" value="1"/>
+ <constant name="last-count" value="1"/>
+ <constant name="hstem-vcount" value="3"/>
+ <constant name="hstem-hcount" value="3"/>
+ <constant name="vstem-vcount" value="3"/>
+ <constant name="vstem-hcount" value="3"/>
+ <constant name="smooth-count" value="2"/>
+ <constant name="notch-count" value="3"/>
+ <constant name="open-end-count" value="5"/>
+ <constant name="diag--halfnotch-count" value="5"/>
+ <constant name="diag-halfnotch-count" value="6"/>
+ <!-- <constant name="hgrayshift" value="0.1p"/>
+ <constant name="hgrayshift-" value="-0.1p"/>
+ <constant name="vgrayshift" value="0.1p"/>
+ <constant name="vgrayshift-" value="-0.1p"/>
+ <constant name="double-hgrayshift" value="0.2p"/>
+ <constant name="double-vgrayshift" value="0.2p"/>
+ <constant name="half-vgrayshift" value="0.05p"/>
+ <constant name="half-vgrayshift-" value="-0.05p"/>-->
+ <constant name="hgrayshift" value="0"/>
+ <constant name="hgrayshift-" value="0"/>
+ <constant name="vgrayshift" value="0"/>
+ <constant name="vgrayshift-" value="0"/>
+ <constant name="double-hgrayshift" value="0"/>
+ <constant name="double-vgrayshift" value="0"/>
+ <constant name="half-vgrayshift" value="0"/>
+ <constant name="half-vgrayshift-" value="0"/>
+ <variable name="temp"/>
+ <variable name="width"/>
+ <variable name="height"/>
+ <variable name="rbearing"/>
+ <variable name="any-smoothing" value="0"/>
+ <variable name="horizontal-smoothing" value="0"/>
+ <variable name="vertical-smoothing" value="0"/>
+ <variable name="only-horizontal-smoothing" value="0"/>
+ <variable name="only-vertical-smoothing" value="0"/>
+ 
+ <alias name="small-desc" target="cv-0"/>
+ <alias name="cap-tse-desc" target="cv-1"/>
+ <alias name="small-tse-desc" target="cv-2"/>
+ <alias name="zero" target="cv-3"/>
+ <alias name="small-x-height" target="cv-4"/>
+ <alias name="cap-x-height" target="cv-7"/>
+ <alias name="small-asc-height" target="cv-8"/>
+ <alias name="cap-curve-hstem" target="cv-12"/> <!--O-->
+ <alias name="cap-horiz-stem" target="cv-13"/> <!--Ц-->
+ <alias name="cap-vert-thinstem" target="cv-18"/>  <!--Ц-->
+ <alias name="cap-vert-stem" target="cv-21"/> <!--I-->
+ <alias name="cap-o-curve-stem" target="cv-22"/> <!--O-->
+ <alias name="small-curve-hstem" target="cv-9"/> <!--o-->
+ <alias name="small-horiz-stem" target="cv-11"/> <!--ц-->
+ <alias name="small-vert-stem" target="cv-15"/> <!--i-->
+ <alias name="small-vert-thinstem" target="cv-17"/> <!--ц-->
+ <alias name="small-o-curve-stem" target="cv-20"/> <!--o-->
+ <alias name="minus-thickness" target="cv-10"/>
+ <alias name="small-x-baseline" target="zero"/>
+ <alias name="cap-x-baseline" target="zero"/>
+ <alias name="cap--diag" target="cap-diag"/>
+ <alias name="cap--thindiag" target="cap-thindiag"/>
+ <alias name="small--diag" target="small-diag"/>
+ <alias name="small--thindiag" target="small-thindiag"/>
+ 
+ <control-value name="cap-h-space" value="1082"/>
+ <control-value name="cap-h-lbearing" value="170"/>
+ <control-value name="cap-x-lbearing" value="12"/>
+ <control-value name="cap-h-intersect-height" value="664"/>
+ <control-value name="cap-o-height" value="1464"/>
+ <control-value name="cap-tse-desc" value="-370"/>
+ <control-value name="cap-a-hstem-height" value="380"/>
+ <control-value name="cap-o-baseline" value="-30"/>
+ <control-value name="cap-o-space" value="1340"/>
+ <control-value name="cap-o-lbearing" value="92"/>
+ <control-value name="cap-p-curve-stem" value="195"/>
+ <control-value name="cap-diag" value="188"/>
+ <control-value name="cap-thindiag" value="176"/>
+ <control-value name="cap-tse-desc-horiz-shift" value="182"/>
+ <control-value name="cap-cyrz-lbearing" value="102"/>
+ <control-value name="cap-cyri-space" value="1112"/>
+ <control-value name="cap-cyrl-space" value="870"/>
+ <control-value name="cap-cyrch-space" value="996"/>
+ <control-value name="cap-b-low-space" value="1068"/>
+ <control-value name="cap-sh-inner-space" value="562"/>
+ <control-value name="small-cyrn-space" value="836"/>
+ <control-value name="small-cyrn-lbearing" value="142"/>
+ <control-value name="small-cyrn-intersect-height" value="482"/>
+ <control-value name="small-o-height" value="1067"/>
+ <control-value name="small-tse-desc" value="-310"/>
+ <control-value name="small-curve-desc" value="-417"/>
+ <control-value name="small-o-baseline" value="-17"/>
+ <control-value name="small-o-space" value="978"/>
+ <control-value name="small-o-lbearing" value="85"/>
+ <control-value name="small-x-lbearing" value="9"/>
+ <control-value name="small-tse-desc-horiz-shift" value="166"/>
+ <control-value name="small-vert-thinstem" value="154"/>
+ <control-value name="small-p-space" value="892"/>
+ <control-value name="small-cyrz-lbearing" value="69"/>
+ <control-value name="small-a-space" value="840"/>
+ <control-value name="small-n-space" value="846"/>
+ <control-value name="small-u-space" value="838"/>
+ <control-value name="small-cyri-space" value="886"/>
+ <control-value name="small-cyrl-space" value="673"/>
+ <control-value name="small-cyrv-low-space" value="800"/>
+ <control-value name="small-m-inner-space" value="434"/>
+ <control-value name="small-diag" value="164"/>
+ <control-value name="small-thindiag" value="146"/>
+ <control-value name="sc-x-height" value="1120"/>
+ <control-value name="sc-o-height" value="1137"/>
+ <control-value name="sc-a-hstem-height" value="296"/>
+ <control-value name="sc-h-intersect-height" value="517"/>
+ <control-value name="sc-o-space" value="998"/>
+ <control-value name="sc-cyri-space" value="906"/>
+ <control-value name="sc-cyrl-space" value="691"/>
+ <control-value name="cap-end-width" value="136"/>
+ <control-value name="small-end-width" value="125"/>
+ <control-value name="small-curve-vstem" value="176"/>
+ <control-value name="digit-vert-stem" value="176"/>
+ <control-value name="digit-over-height" value="1452"/>
+ <control-value name="digit-height" value="1422"/>
+ <control-value name="digit-mid-horiz-stem" value="164"/>
+ <control-value name="digit-thinner-curve-stem" value="188"/>
+ <control-value name="digit-thicker-curve-stem" value="196"/>
+ <control-value name="digit-thin-horiz-stem" value="150"/>
+
+ <xi:include href="upr_functions.xgf#xpointer(//function)"/>
+ <xi:include href="upr_functions.xgf#xpointer(//macro)"/>
+ <pre-program>
+  
+  <set-dropout-type value="5"/>
+  
+  <if test="pixels-per-em &gt; 11"> <!-- corrections for antialiasing -->
+   <if test="is-glyph-grayscale or (is-cleartype-enabled and not(is-BGR-order))">
+    <set-equal target="horizontal-smoothing" source="1"/>
+    <set-equal target="any-smoothing" source="1"/>
+    <if test="not(is-glyph-grayscale)">
+     <set-equal target="only-horizontal-smoothing" source="1"/>
+    </if>
+   </if>
+   <if test="is-glyph-grayscale or (is-cleartype-enabled and is-BGR-order)">
+    <set-equal target="vertical-smoothing" source="1"/>
+    <if test="not(is-glyph-grayscale)">
+     <set-equal target="only-vertical-smoothing" source="1"/>
+     <set-equal target="any-smoothing" source="1"/>
+    </if>
+   </if>
+  </if>
+  
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="cap-o-space"/>
+   <with-param name="margin" value="cap-o-lbearing"/>
+  </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="small-o-space"/>
+   <with-param name="margin" value="small-o-lbearing"/>
+  </call-macro>
+  
+  <round value="cap-x-height"/>
+  <round value="cap-a-hstem-height"/>
+  <round value="cap-h-intersect-height"/>
+  <round value="cap-o-baseline"/>
+  <round value="cap-h-lbearing" color="white"/>
+  <round value="cap-o-lbearing" color="white"/>
+<!--   <round value="cap-o-space" color="black"/> -->
+  <round value="cap-cyrz-lbearing" color="white"/>
+  <round value="cap-cyri-space" color="black"/>
+  <round value="cap-cyrl-space" color="black"/>
+  <round value="cap-p-curve-stem" color="black"/>
+  <round value="small-x-height"/>
+  <round value="small-o-baseline"/>
+  <round value="small-curve-desc"/>
+  <round value="small-cyrn-intersect-height"/>
+  <round value="small-cyrn-lbearing" color="white"/>
+  <round value="small-o-lbearing" color="white"/>
+  <round value="small-cyrz-lbearing" color="white"/>
+<!--   <round value="small-o-space" color="black"/> -->
+  <round value="small-cyri-space" color="black"/>
+  <round value="small-cyrl-space" color="black"/>
+  <round value="small-curve-vstem" color="black"/>
+  <round value="sc-x-height"/>
+  <round value="sc-a-hstem-height"/>
+  <round value="sc-h-intersect-height"/>
+  <round value="sc-o-space" color="black"/>
+  <round value="sc-cyri-space" color="black"/>
+  <round value="sc-cyrl-space" color="black"/>
+  <round value="digit-height"/>
+  <round value="digit-over-height"/>
+
+  <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
+  <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
+  <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
+  
+  <if test="is-glyph-grayscale">
+   <set-control-value-cut-in value="1.06p"/>
+   <if test="pixels-per-em &lt; 21 and pixels-per-em &gt; 11">
+    
+    <round value="cap-curve-hstem" color="black"/>
+    <round value="cap-horiz-stem" color="black"/>
+    <round value="cap-vert-thinstem" color="black"/>
+    <round value="cap-vert-stem" color="black"/>
+    <round value="cap-o-curve-stem" color="black"/>
+    <round value="small-curve-hstem" color="black"/>
+    <round value="small-horiz-stem" color="black"/>
+    <round value="small-vert-thinstem" color="black"/>
+    <round value="small-vert-stem" color="black"/>
+    <round value="small-o-curve-stem" color="black"/>
+    <round value="minus-thickness" color="black"/>
+    <round value="digit-mid-horiz-stem" color="black"/>
+    
+    <control-value-delta>
+     <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/>
+     <delta-set cv="cap-vert-stem" size="7" distance="-8"/>
+     <delta-set cv="cap-o-curve-stem" size="7" distance="-8"/>
+     <delta-set cv="small-o-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="cap-vert-stem" size="8" distance="-8"/>
+     <delta-set cv="cap-o-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="cap-horiz-stem" size="10" distance="-8"/>
+     <delta-set cv="cap-horiz-stem" size="11" distance="-8"/>
+     <delta-set cv="cap-curve-hstem" size="11" distance="-8"/>
+    </control-value-delta>
+    
+   </if>
+  </if>
+
+    <control-value-delta>
+     <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
+     <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="15" distance="-8"/>
+    </control-value-delta>
+  
+  <set-equal target="temp" source="round-black(control-value(index(cap-vert-stem))) * 0.89p"/>
+  <if test="control-value(index(cap-diag)) &gt; temp">
+   <set-equal target="cap-diag" source="temp"/>
+  </if>
+  <set-equal target="temp" source="round-black(control-value(index(cap-vert-thinstem))) * 0.7p"/>
+  <if test="control-value(index(cap-thindiag)) &gt; temp">
+   <set-equal target="cap-thindiag" source="temp"/>
+  </if>
+  <set-equal target="temp" source="round-black(control-value(index(small-vert-stem))) * 0.89p"/>
+  <if test="control-value(index(small-diag)) &gt; temp">
+   <set-equal target="small-diag" source="temp"/>
+  </if>
+  <set-equal target="temp" source="round-black(control-value(index(small-vert-thinstem))) * 0.7p"/>
+  <if test="control-value(index(small-thindiag)) &gt; temp">
+   <set-equal target="small-thindiag" source="temp"/>
+  </if>
+  <set-equal target="temp" source="round-black(control-value(index(cap-vert-stem))) * 0.7p"/>
+  <if test="control-value(index(cap-end-width)) &gt; temp">
+   <set-equal target="cap-end-width" source="temp"/>
+  </if>
+  <set-equal target="temp" source="round-black(control-value(index(small-vert-stem))) * 0.7p"/>
+  <if test="control-value(index(small-end-width)) &gt; temp">
+   <set-equal target="small-end-width" source="temp"/>
+  </if>
+  
+ </pre-program>
+ 
+ <xi:include href="upr_3.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_4.xgf#xpointer(//glyph)"/>
+ 
+ <xi:include href="upr_A.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_C.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_K.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_M.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_N.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_O.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_R.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_T.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_V.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_W.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_X.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Y.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Z.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_e.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrD.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrI.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrJ.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrK.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrL.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrZh.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrZ.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrU.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrEh.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrYu.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrIzhica.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_a.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_y.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrb.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrd.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyri.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrl.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrt.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrustraight.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_cyrBreve.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_numero.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_uni0274.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_uni0280.xgf#xpointer(//glyph)"/>
+ 
+ <xi:include href="upr_Asc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Csc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Ksc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Msc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Nsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Osc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Rsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Vsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Wsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Xsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Ysc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Zsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrDsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrZsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrIsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrKsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrLsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrUsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrEhsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrYusc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrYasc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrZhsc.xgf#xpointer(//glyph)"/>
+
+
+</xgridfit>

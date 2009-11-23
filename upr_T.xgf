@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<xgridfit>
+ <!--T, Cyr T-->
+ <glyph ps-name="T" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="height" value="cap-x-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  
+  <constant name="left-hstem-bottom" value="first-point"/>
+  <constant name="left-top" value="left-hstem-bottom + hstem-vcount"/>
+  <constant name="right-top" value="left-top + hstem-hcount"/>
+  <constant name="right-hstem-bottom" value="right-top + hstem-vcount"/>
+  <constant name="r-intersect" value="right-hstem-bottom + smooth-count"/>
+  <constant name="right-bottom" value="r-intersect + smooth-count"/>
+  <constant name="left-bottom" value="right-bottom + vstem-hcount"/>
+  <constant name="l-intersect" value="left-bottom + smooth-count"/>
+  <constant name="last" value="l-intersect"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+  </move>
+  <move distance="height">
+   <point num="left-top"/>
+   <align>
+    <point num="right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="left-hstem-bottom"/>
+    <align>
+     <point num="l-intersect"/>
+     <point num="r-intersect"/>
+     <point num="right-hstem-bottom"/>
+    </align>
+   </move>
+  </move>
+  
+  <!--  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>-->
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+    <!-- </else>
+  </compile-if>-->
+  
+  <move min-distance="no" color="white" compile-if="slanted = 0">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-hstem-bottom"/>
+   <align>
+    <point num="left-top"/>
+   </align>
+   <move color="black">
+    <point num="left-bottom"/>
+    <align>
+     <point num="l-intersect"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="r-intersect"/>
+     <align>
+      <point num="right-bottom"/>
+     </align>
+     <move pixel-distance="left-hstem-bottom -- l-intersect" color="black">
+      <point num="right-top"/>
+      <align>
+       <point num="right-hstem-bottom"/>
+      </align>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-equal target="width" source="round(left-bottom --- l-intersect) * cos-it-ang"/>
+   <set-equal target="temp" source="round-white(left-bearing --- left-hstem-bottom) + floor((y-coord(left-hstem-bottom) * tg-it-ang))"/> <!--+ tg-y-delta-->
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+   <move min-distance="no" pixel-distance="temp" color="white">
+    <reference>
+     <point num="left-bearing"/>
+    </reference>
+    <point num="left-hstem-bottom"/>
+    <align>
+     <point num="left-top"/>
+    </align>
+    <move pixel-distance="width" color="black">
+     <point num="l-intersect"/>
+     <align>
+      <point num="left-bottom"/>
+     </align>
+     <move distance="vert-stem" color="black">
+      <point num="r-intersect"/>
+      <align>
+       <point num="right-bottom"/>
+      </align>
+      <move pixel-distance="width" color="black">
+       <point num="right-top"/>
+       <align>
+        <point num="right-hstem-bottom"/>
+       </align>
+      </move>
+     </move>
+    </move>
+   </move>
+  </compile-if>
+  <set-equal target="width" source="(right-top -- right-bearing)"/> <!--- rbearing-->
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <round value="width"/>
+  </compile-if>
+  <if test="width &lt; 0.0p or width &gt;= 2.0p">
+   <if test="odd((left-hstem-bottom -- l-intersect) + (r-intersect -- right-hstem-bottom) + width)">
+    <set-equal target="width" source="width - 1.0p"/>
+   </if>
+   <shift-absolute pixel-distance="width">
+    <point num="right-top"/>
+    <point num="right-hstem-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="width / 2.0">
+    <point num="left-bottom"/>
+    <point num="l-intersect"/>
+    <point num="r-intersect"/>
+    <point num="right-bottom"/>
+   </shift-absolute>
+  </if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-top"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="left-hstem-bottom"/>
+     <point num="left-top"/>
+     <point num="left-bottom"/>
+     <point num="l-intersect"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="r-intersect"/>
+     <point num="right-bottom"/>
+     <point num="right-top"/>
+     <point num="right-hstem-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph><!--Cyr T-->
+</xgridfit>
+

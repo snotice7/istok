@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<xgridfit>
+ <!--Ѵ-->
+ <glyph ps-name="afii10148" init-graphics="yes">
+  
+  <!--
+      
+      Andrey V. Panov (C) 2008, 2009
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="thin-diag" value="cap-diag"/>
+  <param name="thick-diag" value="cap--diag"/>
+  <param name="o-height" value="cap-o-height"/>
+  <param name="horiz-stem" value="cap-curve-hstem"/>
+  
+  <constant name="ldiag-left-top" value="first-point"/>
+  <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
+  <constant name="ldiag-right-bottom" value="ldiag-right-top + smooth-count"/>
+  <constant name="diag-intersect" value="ldiag-right-top + diag--halfnotch-count"/>
+  <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count - 1"/>
+  <constant name="rdiag-left-bottom" value="rdiag-left-top - smooth-count"/>
+  <constant name="curl-left-top" value="rdiag-left-top + 3"/>
+  <constant name="curl-right-top" value="curl-left-top + 2"/>
+  <constant name="curl-right-bottom" value="curl-right-top + open-end-count"/>
+  <constant name="curl-left-bottom" value="curl-right-bottom + 2"/>
+  <constant name="rdiag-right-top" value="curl-left-bottom + 3"/>
+  <constant name="rdiag-right-bottom" value="rdiag-right-top + vstem-vcount"/>
+  <constant name="ldiag-left-bottom" value="rdiag-right-bottom + smooth-count"/>
+  <constant name="last" value="ldiag-left-bottom + last-count"/>
+  <line name="ldiag-left">
+   <point num="ldiag-left-top"/>
+   <point num="ldiag-left-bottom"/>
+  </line>
+  <line name="ldiag-right">
+   <point num="ldiag-right-top"/>
+   <point num="ldiag-right-bottom"/>
+  </line>
+  <line name="rdiag-left">
+   <point num="rdiag-left-bottom"/>
+   <point num="rdiag-left-top"/>
+  </line>
+  <line name="rdiag-right">
+   <point num="rdiag-right-bottom"/>
+   <point num="rdiag-right-top"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="ldiag-left-bottom"/>
+   <align>
+    <point num="rdiag-right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="ldiag-left-top"/>
+   <align>
+    <point num="ldiag-right-top"/>
+   </align>
+  </move>
+  <move distance="o-height">
+   <point num="curl-left-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="curl-left-bottom"/>
+   </move>
+   <move min-distance="no">
+    <point num="curl-right-top"/>
+    <move distance="horiz-stem" color="black">
+     <point num="curl-right-bottom"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="curl-left-bottom"/>
+    <point num="rdiag-right-bottom"/>
+   </reference>
+   <point num="rdiag-right-top"/>
+  </interpolate>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="only-vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="ldiag-left-top"/>
+   <move round="no" color="black">
+    <point num="rdiag-right-top"/>
+   </move>
+   <move>
+    <point num="curl-right-top"/>
+    <interpolate>
+     <point num="curl-right-bottom"/>
+    </interpolate>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <interpolate round="down-to-grid">
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="ldiag-left-bottom"/>
+  </interpolate>
+  <move color="black">
+   <reference>
+    <point num="ldiag-left-bottom"/>
+   </reference>
+   <point num="rdiag-right-bottom"/>
+  </move>
+  
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="ldiag-left-top"/>
+   <with-param name="first-diag-second-point" value="ldiag-left-bottom"/>
+   <with-param name="second-diag-first-point" value="ldiag-right-top"/>
+   <with-param name="second-diag-second-point" value="ldiag-right-bottom"/>
+   <with-param name="diag-width" value="thick-diag"/>
+   <with-param name="interpolation-point" value="ldiag-left-bottom"/>
+  </call-macro>
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <!--<diagonal-stem distance="cap- -diag" save-vectors="yes" color="black">
+     <line ref="ldiag-left"/>
+     <line ref="ldiag-right"/>
+    </diagonal-stem>-->
+    <diagonal-stem distance="thick-diag" save-vectors="yes" color="black">
+     <line ref="rdiag-right"/>
+     <line ref="rdiag-left"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  
+  <set-equal target="width" source="(ldiag-right-bottom -- rdiag-left-bottom) - 1.0p"/>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width / 2.0p">
+    <point num="ldiag-right-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="width / -2.0p">
+    <point num="rdiag-left-bottom"/>
+   </shift-absolute>
+  </if>
+  
+  <set-vectors axis="y"/>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-bottom"/>
+    <point num="ldiag-right-bottom"/>
+   </reference>
+   <point num="diag-intersect"/>
+  </interpolate>
+  <if test="(ldiag-left-bottom -- diag-intersect) &gt;= 1.0p">
+   <mdap round="down-to-grid">
+    <point num="diag-intersect"/>
+   </mdap>
+  </if>
+  
+  <interpolate-untouched-points/>
+  
+  <!--  <with-projection-vector axis="y">
+   <with-freedom-vector to-line="parallel">
+    <line ref="ldiag-left"/>
+    <align>
+     <reference>
+      <point num="ldiag-left-top"/>
+     </reference>
+     <point num="ldiag-right-top"/>
+    </align>
+   </with-freedom-vector>
+   <with-freedom-vector to-line="parallel">
+    <line ref="rdiag-right"/>
+    <align>
+     <reference>
+      <point num="rdiag-right-top"/>
+     </reference>
+     <point num="rdiag-left-top"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  
+  <with-projection-vector to-line="orthogonal">
+   <line ref="ldiag-left"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="rdiag-left"/>
+    <align>
+     <reference>
+      <point num="ldiag-right-top"/>
+     </reference>
+     <point num="diag-intersect"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>-->
+  
+ </glyph>
+ 
+ <glyph ps-name="afii10196" init-graphics="yes">
+  <call-glyph ps-name="afii10148">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="thin-diag" value="small-diag"/>
+   <with-param name="thick-diag" value="small--diag"/>
+   <with-param name="o-height" value="small-o-height"/>
+   <with-param name="horiz-stem" value="small-curve-hstem"/>
+  </call-glyph>
+ </glyph>
+ 
+</xgridfit>

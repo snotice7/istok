@@ -1,0 +1,30 @@
+ lc_lang_c2sc = "LC caps to smallcaps subtable"
+ AddLookup("LC caps to smallcaps", "gsub_single", 0, [["c2sc",[["latn",["dflt"]],["cyrl",["dflt"]]]]])
+ AddLookupSubtable("LC caps to smallcaps", lc_lang_c2sc)
+ lc_lang_smcp = "LC small to smallcaps subtable"
+ AddLookup("LC small to smallcaps", "gsub_single", 0, [["smcp",[["latn",["dflt"]],["cyrl",["dflt"]]]]])
+ AddLookupSubtable("LC small to smallcaps", lc_lang_smcp)
+ 
+ SelectWorthOutputting() 
+ selection=$selection
+ j=SizeOf(selection)
+ SelectNone()
+ i=0
+ #foreach
+ while(i<j)
+  if ( selection[i] && SelectIf(i) == 1)
+   name = GlyphInfo ("Name")
+   cap_end=Strstr(name, ".sc")
+   if (cap_end > 0)
+    cap_name=Strsub(name, 0, cap_end)
+    if (SelectIf(cap_name) == 1)
+     AddPosSub(lc_lang_c2sc, name);
+    endif
+    low = UCodePoint(ToLower(UnicodeFromName(cap_name)))
+    Select(low)
+    AddPosSub(lc_lang_smcp, name);
+   endif
+  endif
+ i++ 
+ endloop
+ SelectNone()

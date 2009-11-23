@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!-- Functions and macros for font -->
+<xgridfit>
+ 
+ <!--
+     Copyright (C) 2008  Andrey V. Panov
+     
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+     
+     You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+
+     -->
+
+ <!--  <function name="make-diagonal"> -->
+  <macro name="make-diagonal">
+   <param name="first-diag-first-point"/>
+   <param name="first-diag-second-point"/>
+   <param name="second-diag-first-point"/>
+   <param name="second-diag-second-point"/>
+   <param name="interpolation-point" value="-1"/>
+   <param name="diag-width" value="-1"/>
+   <!--   <param name="diag-min"/> -->
+   <line name="first-diag">
+    <point num="first-diag-first-point"/>
+    <point num="first-diag-second-point"/>
+   </line>
+   <line name="second-diag">
+    <point num="second-diag-first-point"/>
+    <point num="second-diag-second-point"/>
+   </line>
+   <with-projection-vector to-line="orthogonal">
+    <!--    <line ref="first-diag"/> -->
+    <line>
+     <point num="first-diag-first-point"/>
+     <point num="first-diag-second-point"/>
+    </line>
+    <!--    <move distance="absolute(diag-width)" round="no" cut-in="no" min-distance="diag-min-thick" color="black"> -->
+     <compile-if test="diag-width &gt;= 0">
+      <move distance="diag-width" round="no" cut-in="no" min-distance="diag-min-thick" color="black">
+       <reference>
+        <point num="first-diag-first-point"/>
+       </reference>
+       <point num="second-diag-first-point"/>
+      </move>
+      <else>
+       <move round="no" min-distance="diag-min-thick" color="black">
+        <reference>
+         <point num="first-diag-first-point"/>
+        </reference>
+        <point num="second-diag-first-point"/>
+       </move>
+      </else>
+     </compile-if>
+    </with-projection-vector>
+    <!--  <with-freedom-vector to-line="parallel">
+     <line ref="first-diag"/>
+     <with-projection-vector axis="y">
+      <align>
+       <reference>
+        <point num="first-diag-first-point"/>
+       </reference>
+       <point num="second-diag-first-point"/>
+      </align>
+     </with-projection-vector>
+    </with-freedom-vector>-->
+    <mdap round="yes">
+     <point num="second-diag-first-point"/>
+    </mdap>
+    <with-vectors to-line="orthogonal">
+     <!--    <line ref="first-diag"/> -->
+     <line>
+      <point num="first-diag-first-point"/>
+      <point num="first-diag-second-point"/>
+     </line>
+     <align>
+      <reference>
+       <point num="second-diag-first-point"/>
+      </reference>
+      <point num="second-diag-second-point"/>
+     </align>
+    </with-vectors>
+    <compile-if test="interpolation-point &gt;= 0">
+     <with-freedom-vector to-line="parallel">
+      <!--    <line ref="first-diag"/> -->
+      <line>
+       <point num="first-diag-first-point"/>
+       <point num="first-diag-second-point"/>
+      </line>
+      <with-projection-vector axis="y">
+       <interpolate>
+        <reference>
+         <point num="first-diag-first-point"/>
+         <point num="interpolation-point"/>
+        </reference>
+        <point num="second-diag-second-point"/>
+       </interpolate>
+      </with-projection-vector>
+     </with-freedom-vector>
+    </compile-if>
+   </macro>
+   <!--  </function> -->
+  
+ <function  name="center-accent-with-anchor-and-two-reper-points">
+  <!--the same as previous (center-point-with-two-reper-points) but with an additional contour-->
+  
+  <param name="point-left"/>   <!-- reper-point -->
+  <param name="point-center"/> <!-- central point of the accent to be adjusted -->
+  <param name="point-right"/>  <!-- reper-point -->
+  <param name="contour"/>      <!-- the whole accent -->
+  
+  <variable name="displacement-width"/>
+  
+  <with-round-state round="to-double-grid">
+   <set-equal target="displacement-width"
+              source="(round-black((point-left -- point-right) / 2.0) +
+              coord(point-left)) -
+              coord(point-center)"/>
+   <if test="displacement-width != 0.0">
+    <shift-absolute pixel-distance="displacement-width">
+     <point num="point-center"/>
+    </shift-absolute>
+    <shift>
+     <reference>
+      <point num="point-center"/>
+     </reference>
+     <contour num="contour"/>
+    </shift>
+   </if>
+  </with-round-state>
+ </function> <!-- center-accent-with-anchor-and-two-reper-points -->
+ 
+ <macro name="regularize-control-value-width">
+  
+  <param name="cv-width"/> <!-- regularized control value, should not be rounded -->
+  <param name="margin"/> <!-- width of margin, should not be rounded -->
+  
+  <set-equal target="width" source="round-white(control-value(index(margin)))"/>
+  <if test="width = 0">
+   <set-equal target="temp" source="1.0p"/>
+   <else>
+    <set-equal target="temp" source="width"/>
+   </else>
+  </if>
+  <set-equal target="cv-width" source="(round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width"/>
+ 
+ </macro>
+ 
+ </xgridfit>
