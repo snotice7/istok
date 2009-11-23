@@ -1,0 +1,16 @@
+AddLookup("Case substitutions", "gsub_single", 0, [["case",[["cyrl",["dflt"]],["grek",["dflt"]],["latn",["dflt"]]]]])
+AddLookupSubtable("Case substitutions", "Case substitutions subtable")
+Select(0u300,0u331)
+foreach
+ if ( WorthOutputting() )
+  glyph_name = GlyphInfo("Name")
+  glyph_name_cap = "uni" + Strsub(ToString(UCodePoint(UnicodeFromName(glyph_name))), 2) + ".cap"
+  # glyph_name_cap = glyph_name + ".cap"
+  if (InFont(glyph_name_cap))
+   if (DrawsSomething(glyph_name_cap))
+    AddPosSub("Case substitutions subtable", glyph_name_cap) 
+   endif
+  endif
+ endif
+endloop 
+

@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<xgridfit>
+ <!--V-->
+ <glyph ps-name="V" init-graphics="yes">
+  
+  <!--
+      
+      Andrey V. Panov (C) 2007, 2008, 2009
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="thin-diag" value="cap-diag"/>
+  <param name="thick-diag" value="cap--diag"/>
+  
+  <constant name="ldiag-left-top" value="first-point"/>
+  <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
+  <constant name="ldiag-right-bottom" value="ldiag-right-top + smooth-count"/>
+  <constant name="diag-intersect" value="ldiag-right-top + diag--halfnotch-count"/>
+  <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count"/>
+  <constant name="rdiag-left-bottom" value="rdiag-left-top - smooth-count"/>
+  <constant name="rdiag-right-top" value="rdiag-left-top + vstem-hcount"/>
+  <constant name="rdiag-right-bottom" value="rdiag-right-top + vstem-vcount"/>
+  <constant name="ldiag-left-bottom" value="rdiag-right-bottom + vstem-hcount"/>
+  <constant name="last" value="ldiag-left-bottom + last-count"/>
+  <line name="ldiag-left">
+   <point num="ldiag-left-top"/>
+   <point num="ldiag-left-bottom"/>
+  </line>
+  <line name="ldiag-right">
+   <point num="ldiag-right-top"/>
+   <point num="ldiag-right-bottom"/>
+  </line>
+  <line name="rdiag-left">
+   <point num="rdiag-left-bottom"/>
+   <point num="rdiag-left-top"/>
+  </line>
+  <line name="rdiag-right">
+   <point num="rdiag-right-bottom"/>
+   <point num="rdiag-right-top"/>
+  </line>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <set-round-state round="to-grid"/>
+   <else>
+    <set-vectors axis="y"/>
+    <if test="vertical-smoothing">
+     <set-round-state round="no"/>
+    </if>
+   </else>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="ldiag-left-bottom"/>
+   <align>
+    <point num="rdiag-right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="ldiag-left-top"/>
+   <align>
+    <point num="ldiag-right-top"/>
+    <point num="rdiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </align>
+  </move>
+  
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <set-vectors axis="x"/>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="ldiag-left-top"/>
+   <move color="black">
+    <point num="rdiag-right-top"/>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  </compile-if>
+  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/> <!-- - rbearing-->
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="rdiag-right-top"/>
+   </shift-absolute>
+  </if>
+  <!--   <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="ldiag-left-bottom"/>
+   <point num="rdiag-right-bottom"/>
+  </interpolate>-->
+  <interpolate round="down-to-grid">
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="ldiag-left-bottom"/>
+  </interpolate>
+  <move color="black">
+   <reference>
+    <point num="ldiag-left-bottom"/>
+   </reference>
+   <point num="rdiag-right-bottom"/>
+  </move>
+  <!--   <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
+   <with-round-state round="to-double-grid">
+    <set-equal target="width" source="round-black((coord(ldiag-left-top) + coord(rdiag-right-top)) / 2.0) -
+               ((coord(ldiag-left-bottom) + coord(rdiag-right-bottom)) / 2.0)"/>
+   </with-round-state>
+   <compile-if test="slanted">
+    <set-projection-vector axis="x"/>
+   </compile-if>
+   <if test="width != 0.0p">
+    <compile-if test="slanted">
+     <multiply value1="width" value2="cos-it-ang"/>
+    </compile-if>
+    <shift-absolute pixel-distance="width">
+     <point num="ldiag-left-bottom"/>
+     <point num="rdiag-right-bottom"/>
+    </shift-absolute>
+   </if>
+   <!--   <shift-absolute pixel-distance="0.05p">
+    <point num="rdiag-right-bottom"/>
+   </shift-absolute>-->
+   <!--   </if> -->
+  
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="ldiag-left-top"/>
+   <with-param name="first-diag-second-point" value="ldiag-left-bottom"/>
+   <with-param name="second-diag-first-point" value="ldiag-right-top"/>
+   <with-param name="second-diag-second-point" value="ldiag-right-bottom"/>
+   <with-param name="diag-width" value="thick-diag"/>
+   <with-param name="interpolation-point" value="ldiag-left-bottom"/>
+  </call-macro>
+  
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="rdiag-right-top"/>
+   <with-param name="first-diag-second-point" value="rdiag-right-bottom"/>
+   <with-param name="second-diag-first-point" value="rdiag-left-top"/>
+   <with-param name="second-diag-second-point" value="rdiag-left-bottom"/>
+   <with-param name="diag-width" value="thin-diag"/>
+   <with-param name="interpolation-point" value="rdiag-right-bottom"/>
+  </call-macro>
+  
+  <set-equal target="width" source="(ldiag-right-bottom -- rdiag-left-bottom) - 1.0p"/>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width / 2.0p">
+    <point num="ldiag-right-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="width / -2.0p">
+    <point num="rdiag-left-bottom"/>
+   </shift-absolute>
+  </if>
+  
+  <set-vectors axis="y"/>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-bottom"/>
+    <point num="ldiag-right-bottom"/>
+   </reference>
+   <point num="diag-intersect"/>
+  </interpolate>
+  <if test="(ldiag-left-bottom -- diag-intersect) &gt;= 1.0p">
+   <mdap round="down-to-grid">
+    <point num="diag-intersect"/>
+   </mdap>
+  </if>
+  
+  <interpolate-untouched-points/>
+  
+  <!-- <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="cap- -65deg-thickdiag" save-vectors="yes" color="black">
+     <line ref="ldiag-left"/>
+     <line ref="ldiag-right"/>
+    </diagonal-stem>
+    <diagonal-stem distance="cap-65deg-thindiag" save-vectors="yes" color="black">
+     <line ref="rdiag-right"/>
+     <line ref="rdiag-left"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  
+  <with-projection-vector axis="y">
+   <with-freedom-vector to-line="parallel">
+    <line ref="ldiag-left"/>
+    <align>
+     <reference>
+      <point num="ldiag-left-top"/>
+     </reference>
+     <point num="ldiag-right-top"/>
+    </align>
+   </with-freedom-vector>
+   <with-freedom-vector to-line="parallel">
+    <line ref="rdiag-right"/>
+    <align>
+     <reference>
+      <point num="rdiag-right-top"/>
+     </reference>
+     <point num="rdiag-left-top"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  
+  <with-projection-vector to-line="orthogonal">
+   <line ref="ldiag-left"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="rdiag-left"/>
+    <align>
+     <reference>
+      <point num="ldiag-right-top"/>
+     </reference>
+     <point num="diag-intersect"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>-->
+  
+ </glyph>
+ 
+ <glyph ps-name="v" init-graphics="yes">
+  <call-glyph ps-name="V">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="thin-diag" value="small-diag"/>
+   <with-param name="thick-diag" value="small--diag"/>
+  </call-glyph>
+ </glyph>
+ 
+</xgridfit>

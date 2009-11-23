@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<xgridfit>
+ <!--C, С-->
+ <glyph ps-name="C" init-graphics="yes">
+  
+  <!--
+      Copyright (C) 2007, 2008, 2009  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="horiz-stem" value="cap-curve-hstem"/>
+  <param name="vert-stem" value="cap-o-curve-stem"/>
+  <param name="lbearing" value="cap-o-lbearing"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  <param name="end-width" value="cap-end-width"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="upper-end-top" value="outer-top + 3"/>
+  <constant name="upper-end-bottom" value="upper-end-top + open-end-count"/>
+  <constant name="inner-top" value="upper-end-bottom + 3"/>
+  <constant name="inner-left" value="inner-top + 3"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="lower-end-top" value="inner-bottom + 3"/>
+  <constant name="lower-end-bottom" value="lower-end-top + open-end-count"/>
+  <constant name="outer-bottom" value="lower-end-bottom + 3"/>
+  <constant name="last" value="outer-bottom + 2"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+   <!--   <move>
+    <point num="lower-end-bottom"/>
+    <move distance="end-width" round="no" color="black">
+     <point num="lower-end-top"/>
+    </move>
+   </move>-->
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lower-end-bottom"/>
+   <move distance="end-width" min-distance="no" round="no" color="black">
+    <point num="lower-end-top"/>
+   </move>
+  </move>
+  <!-- - rbearing-->
+  <!--  <set-equal target="width" source="(lower-end-bottom - - right-bearing)"/> 
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="lower-end-bottom"/>
+   </shift-absolute>
+  </if>-->
+  <interpolate round="yes"> <!---->
+   <reference>
+    <point num="outer-left"/>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="upper-end-top"/>
+  </interpolate>
+  <move distance="end-width" min-distance="no" round="no" color="black">
+   <reference>
+    <point num="upper-end-top"/>
+   </reference>
+   <point num="upper-end-bottom"/>
+  </move>
+  <!--  <move min-distance="no" color="white">
+   <reference>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <mdap round="to-grid">
+     <point num="right-bearing"/>
+    </mdap>
+   </if>
+  </compile-if>-->
+  <!-- <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>-->
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="only-horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <interpolate-untouched-points/>
+  
+ </glyph>
+ 
+ <glyph ps-name="c" init-graphics="yes">
+  
+  <call-glyph ps-name="C">
+   <with-param name="baseline" value="small-o-baseline"/>
+   <with-param name="height" value="small-o-height"/>
+   <with-param name="horiz-stem" value="small-curve-hstem"/>
+   <with-param name="vert-stem" value="small-o-curve-stem"/>
+   <with-param name="lbearing" value="small-o-lbearing"/>
+   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="end-width" value="small-end-width"/>
+  </call-glyph>
+ </glyph>
+ 
+</xgridfit>
