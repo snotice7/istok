@@ -92,12 +92,12 @@
  <alias name="minus-thickness" target="cv-10"/>
  <alias name="small-x-baseline" target="zero"/>
  <alias name="cap-x-baseline" target="zero"/>
+ <alias name="cap-i-lbearing" target="cap-h-lbearing"/>
  <alias name="cap--diag" target="cap-diag"/>
  <alias name="cap--thindiag" target="cap-thindiag"/>
  <alias name="small--diag" target="small-diag"/>
  <alias name="small--thindiag" target="small-thindiag"/>
  
- <control-value name="cap-h-space" value="1082"/>
  <control-value name="cap-h-lbearing" value="170"/>
  <control-value name="cap-x-lbearing" value="12"/>
  <control-value name="cap-h-intersect-height" value="664"/>
@@ -112,6 +112,7 @@
  <control-value name="cap-thindiag" value="176"/>
  <control-value name="cap-tse-desc-horiz-shift" value="182"/>
  <control-value name="cap-cyrz-lbearing" value="102"/>
+ <control-value name="cap-h-space" value="1082"/>
  <control-value name="cap-cyri-space" value="1112"/>
  <control-value name="cap-cyrl-space" value="870"/>
  <control-value name="cap-cyrch-space" value="996"/>
@@ -145,6 +146,7 @@
  <control-value name="sc-a-hstem-height" value="296"/>
  <control-value name="sc-h-intersect-height" value="517"/>
  <control-value name="sc-o-space" value="998"/>
+ <control-value name="sc-h-space" value="856"/>
  <control-value name="sc-cyri-space" value="906"/>
  <control-value name="sc-cyrl-space" value="691"/>
  <control-value name="cap-end-width" value="136"/>
@@ -157,7 +159,7 @@
  <control-value name="digit-thinner-curve-stem" value="188"/>
  <control-value name="digit-thicker-curve-stem" value="196"/>
  <control-value name="digit-thin-horiz-stem" value="150"/>
-
+ 
  <xi:include href="upr_functions.xgf#xpointer(//function)"/>
  <xi:include href="upr_functions.xgf#xpointer(//macro)"/>
  <pre-program>
@@ -189,6 +191,22 @@
    <with-param name="cv-width" value="small-o-space"/>
    <with-param name="margin" value="small-o-lbearing"/>
   </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="cap-h-space"/>
+   <with-param name="margin" value="cap-h-lbearing"/>
+  </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="small-cyrn-space"/>
+   <with-param name="margin" value="small-cyrn-lbearing"/>
+  </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="cap-cyri-space"/>
+   <with-param name="margin" value="cap-h-lbearing"/>
+  </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="small-cyri-space"/>
+   <with-param name="margin" value="small-cyrn-lbearing"/>
+  </call-macro>
   
   <round value="cap-x-height"/>
   <round value="cap-a-hstem-height"/>
@@ -196,9 +214,8 @@
   <round value="cap-o-baseline"/>
   <round value="cap-h-lbearing" color="white"/>
   <round value="cap-o-lbearing" color="white"/>
-<!--   <round value="cap-o-space" color="black"/> -->
+  <!--   <round value="cap-o-space" color="black"/> -->
   <round value="cap-cyrz-lbearing" color="white"/>
-  <round value="cap-cyri-space" color="black"/>
   <round value="cap-cyrl-space" color="black"/>
   <round value="cap-p-curve-stem" color="black"/>
   <round value="small-x-height"/>
@@ -208,22 +225,38 @@
   <round value="small-cyrn-lbearing" color="white"/>
   <round value="small-o-lbearing" color="white"/>
   <round value="small-cyrz-lbearing" color="white"/>
-<!--   <round value="small-o-space" color="black"/> -->
-  <round value="small-cyri-space" color="black"/>
+  <!--   <round value="small-o-space" color="black"/> -->
   <round value="small-cyrl-space" color="black"/>
   <round value="small-curve-vstem" color="black"/>
   <round value="sc-x-height"/>
   <round value="sc-a-hstem-height"/>
   <round value="sc-h-intersect-height"/>
+  <round value="sc-h-space" color="black"/>
   <round value="sc-o-space" color="black"/>
   <round value="sc-cyri-space" color="black"/>
   <round value="sc-cyrl-space" color="black"/>
   <round value="digit-height"/>
   <round value="digit-over-height"/>
-
+  
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
+  
+  <call-macro name="regularize-midstem">
+   <with-param name="midstem-height" value="cap-h-intersect-height"/>
+   <with-param name="stem-width" value="cap-horiz-stem"/>
+   <with-param name="full-height" value="cap-x-height"/>
+  </call-macro>
+  <call-macro name="regularize-midstem">
+   <with-param name="midstem-height" value="sc-h-intersect-height"/>
+   <with-param name="stem-width" value="small-horiz-stem"/>
+   <with-param name="full-height" value="sc-x-height"/>
+  </call-macro>
+  <call-macro name="regularize-midstem">
+   <with-param name="midstem-height" value="small-cyrn-intersect-height"/>
+   <with-param name="stem-width" value="small-horiz-stem"/>
+   <with-param name="full-height" value="small-x-height"/>
+  </call-macro>
   
   <if test="is-glyph-grayscale">
    <set-control-value-cut-in value="1.06p"/>
@@ -256,18 +289,22 @@
     
    </if>
   </if>
-
-    <control-value-delta>
-     <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
-     <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
-     <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="15" distance="-8"/>
-    </control-value-delta>
+  
+  <control-value-delta>
+   <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
+   <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
+   <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
+   <delta-set cv="digit-mid-horiz-stem" size="15" distance="-8"/>
+  </control-value-delta>
+  
+  <if test="control-value(small-o-lbearing) = 0">
+   <set-equal target="small-o-lbearing" source="1.0p"/>
+  </if>
   
   <set-equal target="temp" source="round-black(control-value(index(cap-vert-stem))) * 0.89p"/>
   <if test="control-value(index(cap-diag)) &gt; temp">
@@ -301,6 +338,8 @@
  
  <xi:include href="upr_A.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_C.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_H.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_I.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_K.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_M.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_N.xgf#xpointer(//glyph)"/>
@@ -320,18 +359,22 @@
  <xi:include href="upr_CyrL.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrZh.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrZ.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrP.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrU.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrEh.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYu.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrIzhica.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_a.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_dotlessi.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_y.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrb.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrd.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrn.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyri.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrl.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrt.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrf.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrustraight.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_cyrBreve.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_numero.xgf#xpointer(//glyph)"/>
@@ -340,6 +383,8 @@
  
  <xi:include href="upr_Asc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Csc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Hsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Isc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Ksc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Msc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Nsc.xgf#xpointer(//glyph)"/>
@@ -355,11 +400,11 @@
  <xi:include href="upr_CyrIsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrKsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrLsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrPsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrUsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrEhsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYusc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYasc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrZhsc.xgf#xpointer(//glyph)"/>
-
 
 </xgridfit>
