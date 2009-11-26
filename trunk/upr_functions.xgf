@@ -154,4 +154,16 @@
  
  </macro>
  
+ <macro name="regularize-midstem">
+  
+  <param name="midstem-height"/> <!-- regularized control value, should be rounded -->
+  <param name="stem-width"/>
+  <param name="full-height"/> <!-- regularized control value, should be rounded -->
+  
+  <set-equal target="width" source="(control-value(index(full-height)) - round(control-value(index(stem-width)))) - (2.0p * control-value(index(midstem-height)))"/>
+  <if test="width &gt; 0">
+   <set-equal target="midstem-height" source="control-value(index(midstem-height)) + 1.0p"/>
+  </if>
+ 
+ </macro>
  </xgridfit>
