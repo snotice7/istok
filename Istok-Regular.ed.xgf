@@ -209,6 +209,7 @@
   </call-macro>
   
   <round value="cap-x-height"/>
+  <round value="cap-tse-desc"/>
   <round value="cap-a-hstem-height"/>
   <round value="cap-h-intersect-height"/>
   <round value="cap-o-baseline"/>
@@ -218,9 +219,11 @@
   <round value="cap-cyrz-lbearing" color="white"/>
   <round value="cap-cyrl-space" color="black"/>
   <round value="cap-p-curve-stem" color="black"/>
+  <round value="cap-tse-desc-horiz-shift"/>
   <round value="small-x-height"/>
   <round value="small-o-baseline"/>
   <round value="small-curve-desc"/>
+  <round value="small-tse-desc"/>
   <round value="small-cyrn-intersect-height"/>
   <round value="small-cyrn-lbearing" color="white"/>
   <round value="small-o-lbearing" color="white"/>
@@ -228,6 +231,7 @@
   <!--   <round value="small-o-space" color="black"/> -->
   <round value="small-cyrl-space" color="black"/>
   <round value="small-curve-vstem" color="black"/>
+  <round value="small-tse-desc-horiz-shift"/>
   <round value="sc-x-height"/>
   <round value="sc-a-hstem-height"/>
   <round value="sc-h-intersect-height"/>
@@ -361,6 +365,8 @@
  <xi:include href="upr_CyrZ.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrP.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrU.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrF.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrC.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrEh.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYu.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
@@ -375,6 +381,7 @@
  <xi:include href="upr_Cyrl.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrt.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrf.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Cyrc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrustraight.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_cyrBreve.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_numero.xgf#xpointer(//glyph)"/>
@@ -402,6 +409,8 @@
  <xi:include href="upr_CyrLsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrPsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrUsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrFsc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_CyrCsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrEhsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYusc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrYasc.xgf#xpointer(//glyph)"/>

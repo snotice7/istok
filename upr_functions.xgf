@@ -150,7 +150,7 @@
     <set-equal target="temp" source="width"/>
    </else>
   </if>
-  <set-equal target="cv-width" source="(round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width"/>
+  <set-equal target="cv-width" source="round((round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width)"/>
  
  </macro>
  

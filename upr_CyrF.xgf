@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<!--"Cyr F" -->
+<glyph ps-name="afii10038" init-graphics="yes">
+ 
+ <!--
+     
+     Andrey V. Panov (C) 2007, 2008, 2009
+     
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+     
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
+     -->
+ 
+ <param name="baseline" value="cap-x-baseline"/>
+ <param name="height" value="cap-x-height"/>
+ <param name="horiz-stem" value="cap-horiz-stem"/>
+ <param name="vert-curve-stem" value="cap-o-curve-stem"/>
+ <param name="vert-stem" value="cap-vert-stem"/>
+ <param name="lbearing" value="cap-o-lbearing"/>
+ 
+ <constant name="larc-outer-left" value="0"/>
+ <constant name="larc-outer-top" value="larc-outer-left + 3 + 1"/>
+ <constant name="vstem-left-top" value="larc-outer-top + smooth-count"/>
+ <constant name="vstem-right-top" value="vstem-left-top +  vstem-hcount"/>
+ <constant name="rarc-outer-top" value="vstem-right-top + smooth-count"/>
+ <constant name="rarc-outer-right" value="rarc-outer-top + 3 + 1"/>
+ <constant name="rarc-outer-bottom" value="rarc-outer-right + 3 + 1"/>
+ <constant name="vstem-right-bottom" value="rarc-outer-bottom + smooth-count"/>
+ <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+ <constant name="larc-outer-bottom" value="vstem-left-bottom + smooth-count"/>
+ <constant name="larc-inner-left" value="larc-outer-bottom + 3 + 1"/>
+ <constant name="larc-inner-bottom" value="larc-inner-left + 3 + 1"/>
+ <constant name="larc-inner-top" value="larc-inner-bottom + 1"/>
+ <constant name="rarc-inner-bottom" value="larc-inner-top + 3 + 1"/>
+ <constant name="rarc-inner-right" value="rarc-inner-bottom + 3 + 1"/>
+ <constant name="rarc-inner-top" value="rarc-inner-right + 3 + 1"/>
+ <constant name="last" value="rarc-inner-top"/>
+ 
+ <compile-if test="slanted">
+  <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+  <set-projection-vector axis="y"/>
+  <set-round-state round="to-grid"/>
+  <else>
+   <set-vectors axis="y"/>
+<!--   <compile-if test="smooth">
+    <if test="vertical-smoothing">
+     <set-round-state round="no"/>
+    </if>
+   </compile-if>-->
+  </else>
+ </compile-if>
+ 
+ <move distance="baseline">
+  <point num="vstem-left-bottom"/>
+  <align>
+   <point num="vstem-right-bottom"/>
+  </align>
+  <move>
+   <point num="larc-outer-bottom"/>
+   <align>
+    <point num="rarc-outer-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="larc-inner-bottom"/>
+    <align>
+     <point num="rarc-inner-bottom"/>
+    </align>
+   </move>
+  </move>
+ </move>
+ <move distance="height">
+  <point num="vstem-left-top"/>
+  <align>
+   <point num="vstem-right-top"/>
+  </align>
+  <move>
+   <point num="larc-outer-top"/>
+   <align>
+    <point num="rarc-outer-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="larc-inner-top"/>
+    <align>
+     <point num="rarc-inner-top"/>
+    </align>
+   </move>
+  </move>
+ </move>
+ <if test="(vstem-left-bottom -- larc-outer-bottom) &lt; (larc-outer-top -- vstem-left-top)">
+  <shift-absolute pixel-distance="1.0p">
+   <!--   <point num="larc-outer-left"/>
+   <point num="larc-outer-top"/>
+   <point num="rarc-outer-top"/>
+   <point num="rarc-outer-right"/>-->
+   <point num="rarc-outer-bottom"/>
+   <point num="larc-outer-bottom"/>
+   <!--    <point num="larc-inner-left"/> -->
+   <point num="larc-inner-bottom"/>
+   <!--    <point num="larc-inner-top"/> -->
+   <point num="rarc-inner-bottom"/>
+   <!--   <point num="rarc-inner-right"/>
+   <point num="rarc-inner-top"/>-->
+  </shift-absolute>
+ </if>
+ <compile-if test="smooth">
+  <if test="vertical-smoothing">
+   <shift-absolute pixel-distance="vgrayshift-">
+    <point num="vstem-left-bottom"/>
+    <point num="vstem-right-bottom"/>
+    <point num="larc-outer-bottom"/>
+    <point num="rarc-outer-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="vgrayshift">
+    <point num="vstem-left-top"/>
+    <point num="vstem-right-top"/>
+    <point num="larc-outer-top"/>
+    <point num="rarc-outer-top"/>
+   </shift-absolute>
+  </if>
+ </compile-if>
+ 
+ <compile-if test="slanted">
+  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  <set-freedom-vector axis="x"/>
+  <set-round-state round="no"/>
+  <else>
+   <set-vectors axis="x"/>
+<!--   <compile-if test="smooth">
+    <if test="vertical-smoothing">
+     <set-round-state round="to-grid"/>
+    </if>
+   </compile-if>-->
+  </else>
+ </compile-if>
+ 
+ <move distance="lbearing" color="white">
+  <reference>
+   <point num="left-bearing"/>
+  </reference>
+  <point num="larc-outer-left"/>
+  <move distance="vert-curve-stem" color="black">
+   <point num="larc-inner-left"/>
+   <move color="white">
+    <point num="vstem-left-top"/>
+    <align>
+     <point num="larc-outer-top"/>
+     <point num="larc-inner-top"/>
+     <point num="larc-inner-bottom"/>
+     <point num="larc-outer-bottom"/>
+     <point num="vstem-left-bottom"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="vstem-right-top"/>
+     <align>
+      <point num="rarc-outer-top"/>
+      <point num="rarc-inner-top"/>
+      <point num="rarc-inner-bottom"/>
+      <point num="rarc-outer-bottom"/>
+      <point num="vstem-right-bottom"/>
+     </align>
+     <move pixel-distance="larc-inner-left -- vstem-left-top" color="white">
+      <point num="rarc-inner-right"/>
+      <move distance="vert-curve-stem" color="black">
+       <point num="rarc-outer-right"/>
+      </move>
+     </move>
+    </move>
+   </move>
+  </move>
+ </move>
+ <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/><!-- - rbearing-->
+ <if test="width &lt; 0.0p">
+  <if test="odd((larc-outer-left -- larc-inner-bottom) + (rarc-inner-bottom -- rarc-outer-right) + width)">
+   <set-equal target="width" source="width - 1.0p"/>
+  </if>
+  <shift-absolute pixel-distance="width">
+   <point num="rarc-inner-right"/>
+   <point num="rarc-outer-right"/>
+  </shift-absolute>
+  <shift-absolute pixel-distance="width / 2.0">
+   <point num="vstem-left-top"/>
+   <point num="larc-outer-top"/>
+   <point num="larc-inner-top"/>
+   <point num="larc-inner-bottom"/>
+   <point num="larc-outer-bottom"/>
+   <point num="vstem-left-bottom"/>
+   <point num="vstem-right-top"/>
+   <point num="rarc-outer-top"/>
+   <point num="rarc-inner-top"/>
+   <point num="rarc-inner-bottom"/>
+   <point num="rarc-outer-bottom"/>
+   <point num="vstem-right-bottom"/>
+  </shift-absolute>
+ </if>
+ <compile-if test="smooth">
+  <if test="horizontal-smoothing">
+   <shift-absolute pixel-distance="hgrayshift-">
+    <point num="vstem-left-bottom"/>
+    <point num="larc-outer-top"/>
+    <point num="larc-inner-top"/>
+    <point num="larc-inner-bottom"/>
+    <point num="larc-outer-bottom"/>
+    <point num="vstem-left-top"/>
+    <point num="larc-outer-left"/>
+    <point num="rarc-inner-right"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="hgrayshift">
+    <point num="vstem-right-top"/>
+    <point num="rarc-outer-top"/>
+    <point num="rarc-inner-top"/>
+    <point num="rarc-inner-bottom"/>
+    <point num="rarc-outer-bottom"/>
+    <point num="vstem-right-bottom"/>
+    <point num="rarc-outer-right"/>
+    <point num="larc-inner-left"/>
+   </shift-absolute>
+  </if>
+ </compile-if>
+ <move round="to-grid" min-distance="no" color="white">
+  <reference>
+   <point num="rarc-outer-right"/>
+  </reference>
+  <point num="right-bearing"/>
+ </move>
+ 
+ <interpolate-untouched-points/>
+ 
+</glyph>

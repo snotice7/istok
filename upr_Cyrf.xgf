@@ -140,9 +140,6 @@
       <point num="rarc-inner-right"/>
       <move distance="small-o-curve-stem" color="black">
        <point num="rarc-outer-right"/>
-       <move min-distance="no" color="white">
-        <point num="right-bearing"/>
-       </move>
       </move>
      </move>
     </move>
@@ -197,6 +194,12 @@
    </shift-absolute>
   </if>
  </compile-if>
+ <move round="to-grid" min-distance="no" color="white">
+  <reference>
+   <point num="rarc-outer-right"/>
+  </reference>
+  <point num="right-bearing"/>
+ </move>
  
  <interpolate-untouched-points/>
  
