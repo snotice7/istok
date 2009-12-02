@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!--Cyr C-->
+<glyph ps-name="afii10040" init-graphics="yes">
+ 
+ <!--
+     
+     Andrey V. Panov (C) 2007, 2008, 2009
+     
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+     
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
+     -->
+ 
+ <param name="baseline" value="cap-x-baseline"/>
+ <param name="x-height" value="cap-x-height"/>
+ <param name="vert-stem" value="cap-vert-stem"/>
+ <param name="horiz-stem" value="cap-horiz-stem"/>
+ <param name="lbearing" value="cap-h-lbearing"/>
+ <param name="space" value="cap-h-space"/>
+ <param name="tse-desc" value="cap-tse-desc"/>
+ <param name="tse-desc-horiz-shift" value="cap-tse-desc-horiz-shift"/>
+ <param name="vert-thinstem" value="cap-vert-thinstem"/>
+ 
+ <constant name="lstem-left-bottom" value="first-point"/>
+ <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+ <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
+ <constant name="lstem-right-bottom" value="lstem-right-top + smooth-count"/>
+ <constant name="rstem-left-bottom" value="lstem-right-bottom + 1"/>
+ <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
+ <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
+ <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
+ <constant name="rdesc-right-top" value="rstem-right-bottom + smooth-count"/>
+ <constant name="rdesc-right-bottom" value="rdesc-right-top + vstem-vcount"/>
+ <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
+ <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
+ <constant name="last" value="rdesc-left-top"/>
+ 
+ <compile-if test="slanted">
+  <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+  <set-projection-vector axis="y"/>
+  <!--   <set-round-state round="to-grid"/> -->
+  <else>
+   <set-vectors axis="y"/>
+   <compile-if test="smooth">
+    <if test="vertical-smoothing">
+     <set-round-state round="no"/>
+    </if>
+   </compile-if>
+  </else>
+ </compile-if>
+ 
+ <move distance="baseline">
+  <point num="lstem-left-bottom"/>
+  <align>
+   <point num="rdesc-left-top"/>
+  </align>
+  <move distance="horiz-stem" color="black">
+   <point num="lstem-right-bottom"/>
+   <align>
+    <point num="rstem-left-bottom"/>
+    <point num="rstem-right-bottom"/>
+    <point num="rdesc-right-top"/>
+   </align>
+  </move>
+ </move>
+ <move distance="x-height">
+  <point num="lstem-left-top"/>
+  <align>
+   <point num="lstem-right-top"/>
+   <point num="rstem-left-top"/>
+   <point num="rstem-right-top"/>
+  </align>
+ </move>
+ <move distance="tse-desc">
+<!--  <reference>
+   <point num="rdesc-left-top"/>
+  </reference>-->
+  <point num="rdesc-left-bottom"/>
+  <align>
+   <point num="rdesc-right-bottom"/>
+  </align>
+ </move>
+ 
+ <compile-if test="slanted">
+  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  <set-freedom-vector axis="x"/>
+  <set-round-state round="no"/>
+  <else>
+   <set-vectors axis="x"/>
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </else>
+ </compile-if>
+ 
+ <move distance="lbearing" color="white">
+  <reference>
+   <point num="left-bearing"/>
+  </reference>
+  <point num="lstem-left-bottom"/>
+  <align>
+   <point num="lstem-left-top"/>
+  </align>
+  <move distance="vert-stem" color="black">
+   <point num="lstem-right-top"/>
+   <align>
+    <point num="lstem-right-bottom"/>
+   </align>
+  </move>
+  <move distance="space" color="black">
+   <point num="rstem-right-top"/>
+   <align>
+    <point num="rstem-right-bottom"/>
+   </align>
+   <move distance="tse-desc-horiz-shift">
+    <point num="rdesc-right-bottom"/>
+    <align>
+     <point num="rdesc-right-top"/>
+    </align>
+    <move distance="vert-thinstem" color="black">
+     <point num="rdesc-left-top"/>
+     <align>
+      <point num="rdesc-left-bottom"/>
+     </align>
+    </move>
+   </move>
+   <move distance="vert-stem" color="black">
+    <point num="rstem-left-bottom"/>
+    <align>
+     <point num="rstem-left-top"/>
+    </align>
+   </move>
+   <move min-distance="no" color="white">
+    <point num="right-bearing"/>
+   </move>
+  </move>
+ </move>
+ <compile-if test="smooth or slanted">
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+  </compile-if>
+  <move round="to-grid">
+   <point num="right-bearing"/>
+  </move>
+ </compile-if>
+ 
+ <interpolate-untouched-points/>
+</glyph><!--Cyr C-->
