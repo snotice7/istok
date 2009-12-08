@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!--H, Cyr N-->
-<glyph ps-name="H" init-graphics="yes">
+<!--P, Cyr R-->
+<glyph ps-name="P" init-graphics="yes">
  
  <!--
      
@@ -25,23 +25,24 @@
  <param name="x-height" value="cap-x-height"/>
  <param name="intersect-height" value="cap-h-intersect-height"/>
  <param name="vert-stem" value="cap-vert-stem"/>
+ <param name="curve-stem" value="cap-p-curve-stem"/>
  <param name="horiz-stem" value="cap-horiz-stem"/>
  <param name="lbearing" value="cap-h-lbearing"/>
- <param name="space" value="cap-h-space"/>
+ <param name="space" value="cap-p-space"/>
  
  <constant name="lstem-left-bottom" value="first-point"/>
  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
- <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
- <constant name="intersect-left-top" value="lstem-right-top + smooth-count"/>
- <constant name="intersect-right-top" value="intersect-left-top + 1"/>
- <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
- <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
- <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
- <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
- <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
- <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
- <constant name="lstem-right-bottom" value="intersect-left-bottom + smooth-count"/>
- <constant name="last" value="lstem-right-bottom + last-count"/>
+ <constant name="upper-hstem-right-top" value="lstem-left-top + smooth-count"/>
+ <constant name="up-outer-right" value="upper-hstem-right-top + 3"/>
+ <constant name="lower-hstem-right-bottom" value="up-outer-right + 3"/>
+ <constant name="lower-hstem-left-bottom" value="lower-hstem-right-bottom + 1"/>
+ <constant name="lstem-right-bottom" value="lower-hstem-left-bottom + smooth-count"/>
+ <constant name="up-inner-left-bottom" value="lstem-right-bottom + 2"/>
+ <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+ <constant name="up-inner-right" value="up-inner-right-bottom + 3"/>
+ <constant name="up-inner-right-top" value="up-inner-right + 3"/>
+ <constant name="up-inner-left-top" value="up-inner-right-top + 1"/>
+ <constant name="last" value="up-inner-left-top"/>
  
  <compile-if test="slanted">
   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -61,29 +62,31 @@
   <point num="lstem-left-bottom"/>
   <align>
    <point num="lstem-right-bottom"/>
-   <point num="rstem-left-bottom"/>
-   <point num="rstem-right-bottom"/>
   </align>
- </move>
- <move distance="intersect-height">
-  <point num="intersect-left-bottom"/>
-  <align>
-   <point num="intersect-right-bottom"/>
-  </align>
-  <move distance="horiz-stem">
-   <point num="intersect-left-top"/>
-   <align>
-    <point num="intersect-right-top"/>
-   </align>
-  </move>
  </move>
  <move distance="x-height">
   <point num="lstem-left-top"/>
   <align>
-   <point num="lstem-right-top"/>
-   <point num="rstem-left-top"/>
-   <point num="rstem-right-top"/>
+   <point num="upper-hstem-right-top"/>
   </align>
+  <move distance="cap-horiz-stem" color="black">
+   <point num="up-inner-left-top"/>
+   <align>
+    <point num="up-inner-right-top"/>
+   </align>
+  </move>
+  <move distance="intersect-height">
+   <point num="up-inner-left-bottom"/>
+   <align>
+    <point num="up-inner-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="lower-hstem-left-bottom"/>
+    <align>
+     <point num="lower-hstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
  </move>
  
  <compile-if test="slanted">
@@ -109,27 +112,19 @@
    <point num="lstem-left-top"/>
   </align>
   <move distance="vert-stem" color="black">
-   <point num="lstem-right-bottom"/>
+   <point num="up-inner-left-top"/>
    <align>
-    <point num="intersect-left-top"/>
-    <point num="intersect-left-bottom"/>
-    <point num="lstem-right-top"/>
+    <point num="up-inner-left-bottom"/>
+    <point num="lower-hstem-left-bottom"/>
+    <point num="lstem-right-bottom"/>
    </align>
   </move>
   <move distance="space" color="black">
-   <point num="rstem-right-bottom"/>
-   <align>
-    <point num="rstem-right-top"/>
-   </align>
+   <point num="up-outer-right"/>
    <move distance="vert-stem" color="black">
-    <point num="rstem-left-bottom"/>
-    <align>
-     <point num="intersect-right-top"/>
-     <point num="intersect-right-bottom"/>
-     <point num="rstem-left-top"/>
-    </align>
+    <point num="up-inner-right"/>
    </move>
-   <move min-distance="no">
+   <move min-distance="no" color="white">
     <point num="right-bearing"/>
    </move>
   </move>
@@ -144,4 +139,5 @@
  </compile-if>
  
  <interpolate-untouched-points/>
-</glyph><!--Cyr N-->
+ 
+</glyph><!--Cyr R-->

@@ -148,7 +148,7 @@
  </move>
  <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/> <!-- - rbearing-->
  <if test="width &lt; 0.0p">
-  <if test="odd((larc-outer-left -- larc-inner-bottom) + (rarc-inner-bottom -- rarc-outer-right) + width)">
+  <if test="odd((larc-outer-left -- larc-lower-joint-bottom) + (rarc-lower-joint-bottom -- rarc-outer-right) + width)">
    <set-equal target="width" source="width - 1.0p"/>
   </if>
   <shift-absolute pixel-distance="width">

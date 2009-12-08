@@ -151,7 +151,7 @@
    </else>
   </if>
   <set-equal target="cv-width" source="round((round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width)"/>
- 
+
  </macro>
  
  <macro name="regularize-midstem">
@@ -166,4 +166,26 @@
   </if>
  
  </macro>
+ 
+ <!--Used for m, Ш-->
+ <macro name="regularize-control-value-double-width">
+  
+  <param name="cv-width"/> 
+  <param name="margin"/> 
+  <param name="stem-width"/>
+  <param name="full-width"/>
+  
+  <if test="control-value(index(margin)) = 0">
+   <set-equal target="temp" source="1.0p"/>
+   <else>
+    <set-equal target="temp" source="control-value(index(margin))"/>
+   </else>
+  </if>
+  <set-equal target="temp" source="round(full-width) - ((((2.0p * control-value(index(cv-width))) + control-value(index(margin))) + (control-value(stem-width))) + temp)"/>
+  <with-round-state round="down-to-grid">
+   <set-equal target="cv-width" source="control-value(index(cv-width)) + round(temp / 2.0p)"/>
+  </with-round-state>
+
+ </macro>
+ 
  </xgridfit>
