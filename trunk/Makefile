@@ -46,8 +46,8 @@ $(FAMILY)-Bold.ttf: $(FAMILY)-Bold.gen.ttf
 $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 	cp -p $(FAMILY)-BoldItalic.gen.ttf $(FAMILY)-BoldItalic.ttf
 
-%.ttf: %.pe %.gen.ttf
-	fontforge -lang=ff -script $*.pe
+%.ttf: %.py %.gen.ttf
+	fontforge -lang=py -script $*.py
 
 %.gen.ttx: %.gen.ttf 
 	-rm $*.gen.ttx
@@ -64,13 +64,13 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 %.xml: %.gen.xgf %.tmp.xgf
 	xgfmerge -o $@ $^
 
-%.pe: %.xml
+%.py: %.xml
 	xgridfit -p 25 -G no -i $*.gen.ttf -o $*.ttf $<
 
 %.pe-dist:
-	$(XGRIDFIT) -p 25 -G no -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
+	$(XGRIDFIT) -p 25 -G no -i -l ff $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 
-.SECONDARY : *.pe *.xml *.xgf *.ttx
+.SECONDARY : *.py *.xml *.xgf *.ttx
 
 
 dist-src:

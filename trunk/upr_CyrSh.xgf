@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!--H, Cyr N-->
-<glyph ps-name="H" init-graphics="yes">
+<!--Cyr Sh-->
+<glyph ps-name="afii10042" init-graphics="yes">
  
  <!--
      
@@ -23,25 +23,24 @@
  
  <param name="baseline" value="cap-x-baseline"/>
  <param name="x-height" value="cap-x-height"/>
- <param name="intersect-height" value="cap-h-intersect-height"/>
  <param name="vert-stem" value="cap-vert-stem"/>
  <param name="horiz-stem" value="cap-horiz-stem"/>
  <param name="lbearing" value="cap-h-lbearing"/>
- <param name="space" value="cap-h-space"/>
+ <param name="sh-inner-space" value="cap-sh-inner-space"/>
  
  <constant name="lstem-left-bottom" value="first-point"/>
  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
  <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
- <constant name="intersect-left-top" value="lstem-right-top + smooth-count"/>
- <constant name="intersect-right-top" value="intersect-left-top + 1"/>
- <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
+ <constant name="lstem-right-bottom" value="lstem-right-top + smooth-count"/>
+ <constant name="mstem-left-bottom" value="lstem-right-bottom + 1"/>
+ <constant name="mstem-left-top" value="mstem-left-bottom + smooth-count"/>
+ <constant name="mstem-right-top" value="mstem-left-top + vstem-hcount"/>
+ <constant name="mstem-right-bottom" value="mstem-right-top + smooth-count"/>
+ <constant name="rstem-left-bottom" value="mstem-right-bottom + 1"/>
+ <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
  <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
- <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
- <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
- <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
- <constant name="lstem-right-bottom" value="intersect-left-bottom + smooth-count"/>
- <constant name="last" value="lstem-right-bottom + last-count"/>
+ <constant name="last" value="rstem-right-bottom + last-count"/>
  
  <compile-if test="slanted">
   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -60,20 +59,14 @@
  <move distance="baseline">
   <point num="lstem-left-bottom"/>
   <align>
-   <point num="lstem-right-bottom"/>
-   <point num="rstem-left-bottom"/>
    <point num="rstem-right-bottom"/>
   </align>
- </move>
- <move distance="intersect-height">
-  <point num="intersect-left-bottom"/>
-  <align>
-   <point num="intersect-right-bottom"/>
-  </align>
-  <move distance="horiz-stem">
-   <point num="intersect-left-top"/>
+  <move distance="horiz-stem" color="black">
+   <point num="lstem-right-bottom"/>
    <align>
-    <point num="intersect-right-top"/>
+    <point num="mstem-left-bottom"/>
+    <point num="mstem-right-bottom"/>
+    <point num="rstem-left-bottom"/>
    </align>
   </move>
  </move>
@@ -81,6 +74,8 @@
   <point num="lstem-left-top"/>
   <align>
    <point num="lstem-right-top"/>
+   <point num="mstem-left-top"/>
+   <point num="mstem-right-top"/>
    <point num="rstem-left-top"/>
    <point num="rstem-right-top"/>
   </align>
@@ -92,11 +87,9 @@
   <set-round-state round="no"/>
   <else>
    <set-vectors axis="x"/>
-   <compile-if test="smooth">
-    <if test="only-vertical-smoothing">
-     <set-round-state round="to-grid"/>
-    </if>
-   </compile-if>
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </else>
  </compile-if>
  
@@ -109,28 +102,36 @@
    <point num="lstem-left-top"/>
   </align>
   <move distance="vert-stem" color="black">
-   <point num="lstem-right-bottom"/>
+   <point num="lstem-right-top"/>
    <align>
-    <point num="intersect-left-top"/>
-    <point num="intersect-left-bottom"/>
-    <point num="lstem-right-top"/>
+    <point num="lstem-right-bottom"/>
    </align>
   </move>
-  <move distance="space" color="black">
-   <point num="rstem-right-bottom"/>
+  <move distance="sh-inner-space" round="no" cut-in="no">
+   <point num="mstem-left-bottom"/>
    <align>
-    <point num="rstem-right-top"/>
+    <point num="mstem-left-top"/>
    </align>
    <move distance="vert-stem" color="black">
-    <point num="rstem-left-bottom"/>
+    <point num="mstem-right-top"/>
     <align>
-     <point num="intersect-right-top"/>
-     <point num="intersect-right-bottom"/>
-     <point num="rstem-left-top"/>
+     <point num="mstem-right-bottom"/>
     </align>
    </move>
-   <move min-distance="no">
-    <point num="right-bearing"/>
+   <move distance="sh-inner-space" round="no" cut-in="no">
+    <point num="rstem-left-bottom"/>
+    <align>
+     <point num="rstem-left-top"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="rstem-right-top"/>
+     <align>
+      <point num="rstem-right-bottom"/>
+     </align>
+     <move min-distance="no" color="white">
+      <point num="right-bearing"/>
+     </move>
+    </move>
    </move>
   </move>
  </move>
@@ -144,4 +145,4 @@
  </compile-if>
  
  <interpolate-untouched-points/>
-</glyph><!--Cyr N-->
+</glyph><!--Cyr Sh-->
