@@ -69,13 +69,33 @@
     <point num="rstem-left-top"/>
     <point num="rstem-right-top"/>
    </align>
-   <move>
+   <move compile-if="smooth = 0">
     <point num="intersect-mid-top"/>
     <move color="black">
      <point num="intersect-mid-bottom"/>
     </move>
    </move>
   </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+    <move>
+     <reference>
+      <point num="lstem-left-top"/>
+     </reference>
+     <point num="intersect-mid-top"/>
+     <move color="black">
+      <point num="intersect-mid-bottom"/>
+     </move>
+    </move>
+    <shift-absolute pixel-distance="vgrayshift-">
+     <point num="intersect-mid-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="vgrayshift">
+     <point num="intersect-mid-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>

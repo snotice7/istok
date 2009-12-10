@@ -19,7 +19,7 @@
      
      -->
  
- <outfile fmflags="2560" pyflags="old-kern">Istok-Regular.ttf</outfile>
+ <outfile fmflags="2560" pyflags="old-kern opentype">Istok-Regular.ttf</outfile>
  
  <constant name="diag-min-thick" value="0.5p"/>
  <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
@@ -391,6 +391,7 @@
  <xi:include href="upr_A.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_B.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_C.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_E.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_H.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_I.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_K.xgf#xpointer(//glyph)"/>
@@ -454,6 +455,7 @@
  <xi:include href="upr_Asc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Bsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Csc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Esc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Hsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Isc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Ksc.xgf#xpointer(//glyph)"/>
