@@ -68,7 +68,7 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 	xgridfit -p 25 -G no -i $*.gen.ttf -o $*.ttf $<
 
 %.pe-dist:
-	$(XGRIDFIT) -p 25 -G no -i -l ff $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
+	$(XGRIDFIT) -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
@@ -87,3 +87,6 @@ dist: dist-src dist-ttf
 update-version:
 	sed -e "s/^Version: .*$$/Version: $(VERSION)/" -i $(SFDFILES) \
 	-e 's/"Version [0-9\.]*"/"Version $(VERSION)"/' -i $(SFDFILES)
+
+clean :
+	rm *.gen.ttx *.gen.xgf *.tmp.xgf *.gen.ttf 
