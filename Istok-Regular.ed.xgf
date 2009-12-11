@@ -43,6 +43,7 @@
  <constant name="vstem-hcount" value="3"/>
  <constant name="smooth-count" value="2"/>
  <constant name="notch-count" value="3"/>
+ <constant name="cog-count" value="1"/>
  <constant name="open-end-count" value="5"/>
  <constant name="diag--halfnotch-count" value="5"/>
  <constant name="diag-halfnotch-count" value="6"/>
@@ -430,7 +431,9 @@
  <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrIzhica.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_a.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_h.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_dotlessi.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_n.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_y.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrb.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrv.xgf#xpointer(//glyph)"/>
