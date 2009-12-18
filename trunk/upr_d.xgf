@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit>
- <glyph ps-name="h" init-graphics="yes">
+ <glyph ps-name="d" init-graphics="yes">
   
   <!--
       
@@ -21,15 +21,18 @@
       
       -->
   
-  <call-glyph ps-name="n">
+  <call-glyph ps-name="q">
    <with-param name="baseline" value="small-x-baseline"/>
    <with-param name="lstem-height" value="small-asc-height"/>
+   <with-param name="o-baseline" value="small-o-baseline"/>
    <with-param name="o-height" value="small-o-height"/>
    <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="curve-vstem" value="small-o-curve-stem"/>
    <with-param name="curve-hstem" value="small-curve-hstem"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-   <with-param name="space" value="small-cyrn-space"/>
-   <with-param name="notch" value="notch-count"/>
+   <with-param name="lbearing" value="small-o-lbearing"/>
+   <with-param name="space" value="small-p-space"/>
+   <with-param name="upper-notch" value="notch-count"/>
+   <with-param name="lower-notch" value="cog-count"/>
   </call-glyph>
  </glyph>
 </xgridfit>
