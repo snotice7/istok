@@ -217,6 +217,11 @@
    <with-param name="cv-width" value="small-cyri-space"/>
    <with-param name="margin" value="small-cyrn-lbearing"/>
   </call-macro>
+  <call-macro name="regularize-control-value-width-two-margin">
+   <with-param name="cv-width" value="small-p-space"/>
+   <with-param name="left-margin" value="small-cyrn-lbearing"/>
+   <with-param name="right-margin" value="small-o-lbearing"/>
+  </call-macro>
   
   <round value="cap-x-height"/>
   <round value="cap-tse-desc"/>
@@ -395,6 +400,7 @@
  <xi:include href="upr_E.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_H.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_I.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_J.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_K.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_M.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_N.xgf#xpointer(//glyph)"/>
@@ -431,9 +437,14 @@
  <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_CyrIzhica.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_a.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_b.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_d.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_h.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_dotlessi.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_dotlessj.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_n.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_p.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_q.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_y.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrb.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Cyrv.xgf#xpointer(//glyph)"/>
@@ -461,6 +472,7 @@
  <xi:include href="upr_Esc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Hsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Isc.xgf#xpointer(//glyph)"/>
+ <xi:include href="upr_Jsc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Ksc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Msc.xgf#xpointer(//glyph)"/>
  <xi:include href="upr_Nsc.xgf#xpointer(//glyph)"/>
