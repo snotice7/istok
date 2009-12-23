@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xgridfit>
-  
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
   <!--
       Copyright (C) 2007, 2008, 2009  Andrey V. Panov
       
@@ -18,18 +18,17 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
- <glyph ps-name="C.sc" init-graphics="yes">
-  
-  <call-glyph ps-name="C">
-   <with-param name="baseline" value="small-o-baseline"/>
-   <with-param name="height" value="sc-o-height"/>
-   <with-param name="horiz-stem" value="small-curve-hstem"/>
-   <with-param name="vert-stem" value="small-o-curve-stem"/>
-   <with-param name="lbearing" value="small-o-lbearing"/>
-   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
-   <with-param name="end-width" value="small-end-width"/>
-  </call-glyph>
- </glyph>
- 
+
+  <glyph ps-name="C.sc" init-graphics="yes">
+    <call-glyph ps-name="C">
+      <with-param name="baseline" value="small-o-baseline"/>
+      <with-param name="height" value="sc-o-height"/>
+      <with-param name="horiz-stem" value="small-curve-hstem"/>
+      <with-param name="vert-stem" value="small-o-curve-stem"/>
+      <with-param name="lbearing" value="small-o-lbearing"/>
+      <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+      <with-param name="end-width" value="small-end-width"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

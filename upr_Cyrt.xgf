@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<xgridfit>
-<!--т-->
-<glyph ps-name="afii10084" init-graphics="yes">
- 
- <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--т-->
+
+  <glyph ps-name="afii10084" init-graphics="yes">
+    <!--
      
       Copyright (C) 2009  Andrey V. Panov
      
@@ -21,12 +22,12 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
- 
-  <call-glyph ps-name="T">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-  </call-glyph>
- </glyph>
+    <call-glyph ps-name="T">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="height" value="small-x-height"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="horiz-stem" value="small-horiz-stem"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

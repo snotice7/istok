@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<xgridfit>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ 
  <!--П-->
+ 
  <glyph ps-name="afii10033" init-graphics="yes">
-  
   <!--
       
       Andrey V. Panov (C) 2007, 2008, 2009
@@ -21,7 +22,6 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
@@ -52,7 +52,6 @@
     </compile-if>
    </else>
   </compile-if>
-  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -85,7 +84,6 @@
     </if>
    </else>
   </compile-if>
-  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -126,7 +124,8 @@
   </compile-if>
   
   <interpolate-untouched-points/>
- </glyph><!--Cyr P-->
+ </glyph>
+ <!--Cyr P-->
  
  <glyph ps-name="afii10081">
   <call-glyph ps-name="afii10033" init-graphics="yes">

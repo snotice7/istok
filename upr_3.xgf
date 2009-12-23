@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xgridfit>
-  
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
   <!--
       Copyright (C) 2009  Andrey V. Panov
       
@@ -18,21 +18,20 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
- <glyph ps-name="three" init-graphics="yes">
-  
-  <call-glyph ps-name="afii10025">
-   <with-param name="baseline" value="cap-o-baseline"/>
-   <with-param name="height" value="digit-over-height"/>
-   <with-param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
-   <with-param name="vert-stem" value="small-o-curve-stem"/>
-   <with-param name="high-vert-stem" value="small-curve-vstem"/>
-   <with-param name="lbearing" value="small-cyrz-lbearing"/>
-   <with-param name="c-flat-ends" value="cap-c-flat-ends"/>
-   <with-param name="end-width" value="cap-end-width"/>
-   <with-param name="intersect-height" value="0"/>
-   <with-param name="horiz-stem" value="digit-thin-horiz-stem"/>
-  </call-glyph>
- </glyph>
- 
+
+  <glyph ps-name="three" init-graphics="yes">
+    <call-glyph ps-name="afii10025">
+      <with-param name="baseline" value="cap-o-baseline"/>
+      <with-param name="height" value="digit-over-height"/>
+      <with-param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
+      <with-param name="vert-stem" value="small-o-curve-stem"/>
+      <with-param name="high-vert-stem" value="small-curve-vstem"/>
+      <with-param name="lbearing" value="small-cyrz-lbearing"/>
+      <with-param name="c-flat-ends" value="cap-c-flat-ends"/>
+      <with-param name="end-width" value="cap-end-width"/>
+      <with-param name="intersect-height" value="0"/>
+      <with-param name="horiz-stem" value="digit-thin-horiz-stem"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

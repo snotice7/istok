@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<xgridfit>
- <!--Cyr Ya (Я)-->
- <glyph ps-name="afii10049" init-graphics="yes">
-  
-  <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--Cyr Ya (Я)-->
+
+  <glyph ps-name="afii10049" init-graphics="yes">
+    <!--
       Copyright (C) 2008, 2009  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
@@ -20,216 +21,209 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="curve-stem" value="cap-o-curve-stem"/>
-  <param name="diag" value="cap-diag"/>
-  <param name="horiz-stem" value="cap-horiz-stem"/>
-  
-  <constant name="diag-l-bottom" value="first-point"/>
-  <constant name="diag-l-top" value="diag-l-bottom + smooth-count"/>
-  <constant name="intersect-left" value="diag-l-top + 4"/>
-  <constant name="outer-left" value="intersect-left + 3"/>
-  <constant name="left-top" value="outer-left + 3"/>
-  <constant name="vstem-right-top" value="left-top + smooth-count"/>
-  <constant name="vstem-right-bottom" value="vstem-right-top + vstem-vcount"/>
-  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
-  <constant name="outer-right-bottom" value="vstem-left-bottom + smooth-count"/>
-  <constant name="intersect-right" value="outer-right-bottom + 1"/>
-  <constant name="diag-r-top" value="intersect-right + 3"/>
-  <constant name="diag-r-bottom" value="diag-r-top + smooth-count"/>
-  <constant name="inner-left" value="31"/>
-  <constant name="inner-left-bottom" value="inner-left + 3"/>
-  <constant name="inner-right-bottom" value="inner-left-bottom + 1"/>
-  <constant name="inner-right-top" value="inner-right-bottom + 1"/>
-  <constant name="inner-left-top" value="inner-right-top + 1"/>
-  <constant name="last" value="inner-left-top + 2"/>
-  <line name="diag-l">
-   <point num="diag-l-top"/>
-   <point num="diag-l-bottom"/>
-  </line>
-  <line name="diag-r">
-   <point num="diag-r-top"/>
-   <point num="diag-r-bottom"/>
-  </line>
-  
-  <set-vectors axis="y"/>
-  <move distance="baseline">
-   <point num="vstem-left-bottom"/>
-   <align>
-    <point num="vstem-right-bottom"/>
-    <point num="diag-r-bottom"/>
-    <point num="diag-l-bottom"/>
-   </align>
-  </move>
-  <move distance="x-height">
-   <point num="left-top"/>
-   <align>
-    <point num="vstem-right-top"/>
-   </align>
-   <move distance="horiz-stem" color="black">
-    <point num="inner-left-top"/>
-    <align>
-     <point num="inner-right-top"/>
-    </align>
-   </move>
-   <move>
-    <point num="inner-left-bottom"/>
-    <align>
-     <point num="inner-right-bottom"/>
-    </align>
-    <move distance="horiz-stem" color="black">
-     <point num="outer-right-bottom"/>
-     <align>
-      <point num="intersect-right"/>
-     </align>
-     <interpolate>
-      <point num="intersect-left"/>
-     </interpolate>
+    <param name="baseline" value="cap-x-baseline"/>
+    <param name="x-height" value="cap-x-height"/>
+    <param name="vert-stem" value="cap-vert-stem"/>
+    <param name="curve-stem" value="cap-o-curve-stem"/>
+    <param name="diag" value="cap-diag"/>
+    <param name="horiz-stem" value="cap-horiz-stem"/>
+    <constant name="diag-l-bottom" value="first-point"/>
+    <constant name="diag-l-top" value="diag-l-bottom + smooth-count"/>
+    <constant name="intersect-left" value="diag-l-top + 4"/>
+    <constant name="outer-left" value="intersect-left + 3"/>
+    <constant name="left-top" value="outer-left + 3"/>
+    <constant name="vstem-right-top" value="left-top + smooth-count"/>
+    <constant name="vstem-right-bottom" value="vstem-right-top + vstem-vcount"/>
+    <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+    <constant name="outer-right-bottom" value="vstem-left-bottom + smooth-count"/>
+    <constant name="intersect-right" value="outer-right-bottom + 1"/>
+    <constant name="diag-r-top" value="intersect-right + 3"/>
+    <constant name="diag-r-bottom" value="diag-r-top + smooth-count"/>
+    <constant name="inner-left" value="31"/>
+    <constant name="inner-left-bottom" value="inner-left + 3"/>
+    <constant name="inner-right-bottom" value="inner-left-bottom + 1"/>
+    <constant name="inner-right-top" value="inner-right-bottom + 1"/>
+    <constant name="inner-left-top" value="inner-right-top + 1"/>
+    <constant name="last" value="inner-left-top + 2"/>
+    <line name="diag-l">
+      <point num="diag-l-top"/>
+      <point num="diag-l-bottom"/>
+    </line>
+    <line name="diag-r">
+      <point num="diag-r-top"/>
+      <point num="diag-r-bottom"/>
+    </line>
+    <set-vectors axis="y"/>
+    <move distance="baseline">
+      <point num="vstem-left-bottom"/>
+      <align>
+        <point num="vstem-right-bottom"/>
+        <point num="diag-r-bottom"/>
+        <point num="diag-l-bottom"/>
+      </align>
     </move>
-   </move>
-  </move>
-  <interpolate>
-   <reference>
-    <point num="outer-right-bottom"/>
-    <point num="vstem-left-bottom"/>
-   </reference>
-   <point num="diag-l-top"/>
-  </interpolate>
-  <compile-if test="slanted = 0">
-   <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="vgrayshift-">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
-     <point num="diag-r-bottom"/>
-     <point num="diag-l-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="vgrayshift">
-     <point num="left-top"/>
-     <point num="vstem-right-top"/>
-    </shift-absolute>
-   </if>
-  </compile-if>
-  
-  <set-vectors axis="x"/>
-  <move>
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="vstem-right-bottom"/>
-   <align compile-if="slanted = 0">
-    <point num="vstem-right-top"/>
-   </align>
-   <move distance="vert-stem" color="black">
-    <point num="vstem-left-bottom"/>
-    <align compile-if="slanted = 0">
-     <point num="outer-right-bottom"/>
-     <point num="inner-right-bottom"/>
-     <point num="inner-right-top"/>
-    </align>
-   </move>
-  </move>
-  <set-equal target="width" source="(vstem-right-bottom -- right-bearing) - rbearing"/>
-  <if test="width &lt; 0.0p">
-   <compile-if test="slanted">
-    <shift-absolute pixel-distance="width">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
-    <else>
-     <shift-absolute pixel-distance="width">
-      <point num="vstem-left-bottom"/>
-      <point num="outer-right-bottom"/>
-      <point num="inner-right-bottom"/>
-      <point num="inner-right-top"/>
-      <point num="vstem-right-top"/>
+    <move distance="x-height">
+      <point num="left-top"/>
+      <align>
+        <point num="vstem-right-top"/>
+      </align>
+      <move distance="horiz-stem" color="black">
+        <point num="inner-left-top"/>
+        <align>
+          <point num="inner-right-top"/>
+        </align>
+      </move>
+      <move>
+        <point num="inner-left-bottom"/>
+        <align>
+          <point num="inner-right-bottom"/>
+        </align>
+        <move distance="horiz-stem" color="black">
+          <point num="outer-right-bottom"/>
+          <align>
+            <point num="intersect-right"/>
+          </align>
+          <interpolate>
+            <point num="intersect-left"/>
+          </interpolate>
+        </move>
+      </move>
+    </move>
+    <interpolate>
+      <reference>
+        <point num="outer-right-bottom"/>
+        <point num="vstem-left-bottom"/>
+      </reference>
+      <point num="diag-l-top"/>
+    </interpolate>
+    <compile-if test="slanted = 0">
+      <if test="vertical-smoothing">
+        <shift-absolute pixel-distance="vgrayshift-">
+          <point num="vstem-left-bottom"/>
+          <point num="vstem-right-bottom"/>
+          <point num="diag-r-bottom"/>
+          <point num="diag-l-bottom"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="vgrayshift">
+          <point num="left-top"/>
+          <point num="vstem-right-top"/>
+        </shift-absolute>
+      </if>
+    </compile-if>
+    <set-vectors axis="x"/>
+    <move>
+      <reference>
+        <point num="left-bearing"/>
+      </reference>
       <point num="vstem-right-bottom"/>
-     </shift-absolute>
-    </else>
-   </compile-if>
-  </if>
-  <interpolate>
-   <reference>
-    <point num="left-bearing"/>
-    <point num="vstem-left-bottom"/>
-   </reference>
-   <point num="outer-left"/>
-   <point num="diag-l-bottom"/>
-   <point num="diag-l-top"/>
-  </interpolate>
-  <mdap round="yes">
-   <point num="outer-left"/>
-  </mdap>
-  <mdap round="yes">
-   <point num="diag-l-bottom"/>
-  </mdap>
-  <move distance="curve-stem" color="black">
-   <reference>
-    <point num="outer-left"/>
-   </reference>
-   <point num="inner-left"/>
-  </move>
-  <compile-if test="slanted">
-   <with-projection-vector x-component="x-skew1" y-component="y-skew1">
-    <align>
-     <reference>
-      <point num="vstem-right-bottom"/>
-     </reference>
-     <point num="vstem-right-top"/>
-    </align>
-    <align>
-     <reference>
-      <point num="vstem-left-bottom"/>
-     </reference>
-     <point num="outer-right-bottom"/>
-     <point num="inner-right-bottom"/>
-     <point num="inner-right-top"/>
-    </align>
-   </with-projection-vector>
-  </compile-if>
-  <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="vstem-left-bottom"/>
-     <point num="outer-right-bottom"/>
-     <!--   <point num="inner-right-bottom"/>
+      <align compile-if="slanted = 0">
+        <point num="vstem-right-top"/>
+      </align>
+      <move distance="vert-stem" color="black">
+        <point num="vstem-left-bottom"/>
+        <align compile-if="slanted = 0">
+          <point num="outer-right-bottom"/>
+          <point num="inner-right-bottom"/>
+          <point num="inner-right-top"/>
+        </align>
+      </move>
+    </move>
+    <set-equal target="width" source="(vstem-right-bottom -- right-bearing) - rbearing"/>
+    <if test="width &lt; 0.0p">
+      <compile-if test="slanted">
+        <shift-absolute pixel-distance="width">
+          <point num="vstem-left-bottom"/>
+          <point num="vstem-right-bottom"/>
+        </shift-absolute>
+        <else>
+          <shift-absolute pixel-distance="width">
+            <point num="vstem-left-bottom"/>
+            <point num="outer-right-bottom"/>
+            <point num="inner-right-bottom"/>
+            <point num="inner-right-top"/>
+            <point num="vstem-right-top"/>
+            <point num="vstem-right-bottom"/>
+          </shift-absolute>
+        </else>
+      </compile-if>
+    </if>
+    <interpolate>
+      <reference>
+        <point num="left-bearing"/>
+        <point num="vstem-left-bottom"/>
+      </reference>
+      <point num="outer-left"/>
+      <point num="diag-l-bottom"/>
+      <point num="diag-l-top"/>
+    </interpolate>
+    <mdap round="yes">
+      <point num="outer-left"/>
+    </mdap>
+    <mdap round="yes">
+      <point num="diag-l-bottom"/>
+    </mdap>
+    <move distance="curve-stem" color="black">
+      <reference>
+        <point num="outer-left"/>
+      </reference>
+      <point num="inner-left"/>
+    </move>
+    <compile-if test="slanted">
+      <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+        <align>
+          <reference>
+            <point num="vstem-right-bottom"/>
+          </reference>
+          <point num="vstem-right-top"/>
+        </align>
+        <align>
+          <reference>
+            <point num="vstem-left-bottom"/>
+          </reference>
+          <point num="outer-right-bottom"/>
+          <point num="inner-right-bottom"/>
+          <point num="inner-right-top"/>
+        </align>
+      </with-projection-vector>
+    </compile-if>
+    <compile-if test="smooth">
+      <if test="horizontal-smoothing">
+        <shift-absolute pixel-distance="hgrayshift-">
+          <point num="vstem-left-bottom"/>
+          <point num="outer-right-bottom"/>
+          <!--   <point num="inner-right-bottom"/>
      <point num="inner-right-top"/>-->
-     <point num="outer-left"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="vstem-right-top"/>
-     <point num="vstem-right-bottom"/>
-     <point num="inner-left"/>
-    </shift-absolute>
-   </if>
-  </compile-if>
-  
-  <call-macro name="make-diagonal">
-   <with-param name="first-diag-first-point" value="diag-l-bottom"/>
-   <with-param name="first-diag-second-point" value="diag-l-top"/>
-   <with-param name="second-diag-first-point" value="diag-r-bottom"/>
-   <with-param name="second-diag-second-point" value="diag-r-top"/>
-   <with-param name="diag-width" value="diag"/>
-   <with-param name="interpolation-point" value="intersect-left"/>
-  </call-macro>
-  
-  <interpolate-untouched-points/>
-  
- </glyph><!--Cyr ya-->
- 
- <!--я-->
- <glyph ps-name="afii10097" init-graphics="yes">
-  
-  <call-glyph ps-name="afii10049">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="curve-stem" value="small-o-curve-stem"/>
-   <with-param name="diag" value="small-diag"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-  </call-glyph>
- </glyph>
- 
+          <point num="outer-left"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="hgrayshift">
+          <point num="vstem-right-top"/>
+          <point num="vstem-right-bottom"/>
+          <point num="inner-left"/>
+        </shift-absolute>
+      </if>
+    </compile-if>
+    <call-macro name="make-diagonal">
+      <with-param name="first-diag-first-point" value="diag-l-bottom"/>
+      <with-param name="first-diag-second-point" value="diag-l-top"/>
+      <with-param name="second-diag-first-point" value="diag-r-bottom"/>
+      <with-param name="second-diag-second-point" value="diag-r-top"/>
+      <with-param name="diag-width" value="diag"/>
+      <with-param name="interpolation-point" value="intersect-left"/>
+    </call-macro>
+    <interpolate-untouched-points/>
+  </glyph>
+  <!--Cyr ya-->
+  <!--я-->
+
+  <glyph ps-name="afii10097" init-graphics="yes">
+    <call-glyph ps-name="afii10049">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="small-x-height"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="curve-stem" value="small-o-curve-stem"/>
+      <with-param name="diag" value="small-diag"/>
+      <with-param name="horiz-stem" value="small-horiz-stem"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

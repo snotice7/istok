@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xgridfit>
-  
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
   <!--
       Copyright (C) 2009  Andrey V. Panov
       
@@ -18,16 +18,15 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
- <glyph ps-name="Z.sc" init-graphics="yes">
-  
-  <call-glyph ps-name="Z">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="height" value="sc-x-height"/>
-   <with-param name="thick-diag" value="small-diag"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-  </call-glyph>
- </glyph>
- 
+
+  <glyph ps-name="Z.sc" init-graphics="yes">
+    <call-glyph ps-name="Z">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="height" value="sc-x-height"/>
+      <with-param name="thick-diag" value="small-diag"/>
+      <with-param name="horiz-stem" value="small-horiz-stem"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

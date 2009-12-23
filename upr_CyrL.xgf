@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<!--Cyr L-->
-<glyph ps-name="afii10029" init-graphics="yes">
- 
- <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--Cyr L-->
+
+  <glyph ps-name="afii10029" init-graphics="yes">
+    <!--
      
      Andrey V. Panov (C) 2007, 2008, 2009
      
@@ -20,148 +22,144 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
- 
- <param name="x-baseline" value="cap-x-baseline"/>
- <param name="o-baseline" value="cap-o-baseline"/>
- <param name="x-height" value="cap-x-height"/>
- <param name="curve-hstem" value="cap-curve-hstem"/>
- <param name="horiz-stem" value="cap-horiz-stem"/>
- <param name="vert-stem" value="cap-vert-stem"/>
- <param name="vert-thinstem" value="cap-vert-thinstem"/>
- <param name="cyrl-space" value="cap-cyrl-space"/>
- 
- <constant name="curl-left-bottom" value="first-point"/>
- <constant name="curl-left-top" value="curl-left-bottom + hstem-vcount"/>
- <constant name="curl-right-top" value="curl-left-top + 1 + smooth-count"/>
- <constant name="lstem-left-bottom" value="curl-right-top + 3"/>
- <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
- <constant name="rstem-right-top" value="lstem-left-top + hstem-vcount"/>
- <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
- <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
- <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
- <constant name="lstem-right-top" value="rstem-left-top + 1"/>
- <constant name="lstem-right-bottom" value="lstem-right-top + 1"/>
- <constant name="curl-right-bottom" value="lstem-right-bottom + 3"/>
- <constant name="last" value="curl-right-bottom + last-count"/>
- 
- <compile-if test="slanted">
-  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  <set-freedom-vector axis="x"/>
-  <set-round-state round="no"/>
-  <else>
-   <set-vectors axis="x"/>
-  </else>
- </compile-if>
- 
- <move color="white">
-  <reference>
-   <point num="left-bearing"/>
-  </reference>
-  <point num="lstem-left-bottom"/>
-  <align>
-   <point num="lstem-left-top"/>
-  </align>
-  <move distance="vert-thinstem" color="black">
-   <point num="lstem-right-top"/>
-   <align>
-    <point num="lstem-right-bottom"/>
-   </align>
-  </move>
-  <move distance="cyrl-space" color="black">
-   <point num="rstem-right-top"/>
-   <align>
-    <point num="rstem-right-bottom"/>
-   </align>
-   <move distance="vert-stem" color="black">
-    <point num="rstem-left-bottom"/>
-    <align>
-     <point num="rstem-left-top"/>
-    </align>
-   </move>
-  </move>
- </move>
- <compile-if test="slanted">
-  <set-equal target="temp" source="left-bearing -- lstem-left-bottom"/>
-  <with-round-state round="to-grid">
-   <round value="temp" result-to="h-shift"/>
-  </with-round-state>
-  <multiply value1="h-shift" value2="cos-it-ang"/>
-  <set-projection-vector axis="x"/>
-  <shift-absolute pixel-distance="h-shift - temp">
-   <point num="lstem-left-bottom"/>
-   <point num="lstem-left-top"/>
-   <point num="lstem-right-top"/>
-   <point num="lstem-right-bottom"/>
-   <point num="rstem-left-bottom"/>
-   <point num="rstem-left-top"/>
-   <point num="rstem-right-top"/>
-   <point num="rstem-right-bottom"/>
-  </shift-absolute>
-  <set-round-state round="to-grid"/>
- </compile-if>
- <move color="white" min-distance="no">
-  <reference>
-   <point num="rstem-right-bottom"/>
-  </reference>
-  <point num="right-bearing"/>
- </move>
- <compile-if test="smooth">
-  <if test="horizontal-smoothing">
-   <shift-absolute pixel-distance="hgrayshift-">
-    <point num="lstem-left-bottom"/>
-    <point num="lstem-left-top"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-left-top"/>
-   </shift-absolute>
-   <shift-absolute pixel-distance="hgrayshift">
-    <point num="lstem-right-top"/>
-    <point num="lstem-right-bottom"/>
-    <point num="rstem-right-top"/>
-    <point num="rstem-right-bottom"/>
-   </shift-absolute>
-  </if>
- </compile-if>
- 
- <compile-if test="slanted">
-  <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-  <set-projection-vector axis="y"/>
-  <set-round-state round="to-grid"/>
-  <else>
-   <set-vectors axis="y"/>
-   <if test="vertical-smoothing">
-    <set-round-state round="no"/>
-   </if>
-  </else>
- </compile-if>
- 
- <move distance="o-baseline">
-  <point num="curl-right-bottom"/>
-  <move distance="curve-hstem" color="black">
-   <point num="curl-right-top"/>
-  </move>
- </move>
- <move distance="x-baseline">
-  <point num="curl-left-bottom"/>
-  <align>
-   <point num="rstem-left-bottom"/>
-   <point num="rstem-right-bottom"/>
-  </align>
-  <move distance="horiz-stem" color="black">
-   <point num="curl-left-top"/>
-  </move>
- </move>
- <move distance="x-height">
-  <point num="lstem-left-top"/>
-  <align>
-   <point num="rstem-right-top"/>
-  </align>
-  <move distance="horiz-stem" color="black">
-   <point num="lstem-right-top"/>
-   <align>
-    <point num="rstem-left-top"/>
-   </align>
-  </move>
- </move>
- <interpolate-untouched-points/>
- 
-</glyph><!--Cyr L-->
+    <param name="x-baseline" value="cap-x-baseline"/>
+    <param name="o-baseline" value="cap-o-baseline"/>
+    <param name="x-height" value="cap-x-height"/>
+    <param name="curve-hstem" value="cap-curve-hstem"/>
+    <param name="horiz-stem" value="cap-horiz-stem"/>
+    <param name="vert-stem" value="cap-vert-stem"/>
+    <param name="vert-thinstem" value="cap-vert-thinstem"/>
+    <param name="cyrl-space" value="cap-cyrl-space"/>
+    <constant name="curl-left-bottom" value="first-point"/>
+    <constant name="curl-left-top" value="curl-left-bottom + hstem-vcount"/>
+    <constant name="curl-right-top" value="curl-left-top + 1 + smooth-count"/>
+    <constant name="lstem-left-bottom" value="curl-right-top + 3"/>
+    <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
+    <constant name="rstem-right-top" value="lstem-left-top + hstem-vcount"/>
+    <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
+    <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
+    <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
+    <constant name="lstem-right-top" value="rstem-left-top + 1"/>
+    <constant name="lstem-right-bottom" value="lstem-right-top + 1"/>
+    <constant name="curl-right-bottom" value="lstem-right-bottom + 3"/>
+    <constant name="last" value="curl-right-bottom + last-count"/>
+    <compile-if test="slanted">
+      <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+      <set-freedom-vector axis="x"/>
+      <set-round-state round="no"/>
+      <else>
+        <set-vectors axis="x"/>
+      </else>
+    </compile-if>
+    <move color="white">
+      <reference>
+        <point num="left-bearing"/>
+      </reference>
+      <point num="lstem-left-bottom"/>
+      <align>
+        <point num="lstem-left-top"/>
+      </align>
+      <move distance="vert-thinstem" color="black">
+        <point num="lstem-right-top"/>
+        <align>
+          <point num="lstem-right-bottom"/>
+        </align>
+      </move>
+      <move distance="cyrl-space" color="black">
+        <point num="rstem-right-top"/>
+        <align>
+          <point num="rstem-right-bottom"/>
+        </align>
+        <move distance="vert-stem" color="black">
+          <point num="rstem-left-bottom"/>
+          <align>
+            <point num="rstem-left-top"/>
+          </align>
+        </move>
+      </move>
+    </move>
+    <compile-if test="slanted">
+      <set-equal target="temp" source="left-bearing -- lstem-left-bottom"/>
+      <with-round-state round="to-grid">
+        <round value="temp" result-to="h-shift"/>
+      </with-round-state>
+      <multiply value1="h-shift" value2="cos-it-ang"/>
+      <set-projection-vector axis="x"/>
+      <shift-absolute pixel-distance="h-shift - temp">
+        <point num="lstem-left-bottom"/>
+        <point num="lstem-left-top"/>
+        <point num="lstem-right-top"/>
+        <point num="lstem-right-bottom"/>
+        <point num="rstem-left-bottom"/>
+        <point num="rstem-left-top"/>
+        <point num="rstem-right-top"/>
+        <point num="rstem-right-bottom"/>
+      </shift-absolute>
+      <set-round-state round="to-grid"/>
+    </compile-if>
+    <move color="white" min-distance="no">
+      <reference>
+        <point num="rstem-right-bottom"/>
+      </reference>
+      <point num="right-bearing"/>
+    </move>
+    <compile-if test="smooth">
+      <if test="horizontal-smoothing">
+        <shift-absolute pixel-distance="hgrayshift-">
+          <point num="lstem-left-bottom"/>
+          <point num="lstem-left-top"/>
+          <point num="rstem-left-bottom"/>
+          <point num="rstem-left-top"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="hgrayshift">
+          <point num="lstem-right-top"/>
+          <point num="lstem-right-bottom"/>
+          <point num="rstem-right-top"/>
+          <point num="rstem-right-bottom"/>
+        </shift-absolute>
+      </if>
+    </compile-if>
+    <compile-if test="slanted">
+      <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+      <set-projection-vector axis="y"/>
+      <set-round-state round="to-grid"/>
+      <else>
+        <set-vectors axis="y"/>
+        <if test="vertical-smoothing">
+          <set-round-state round="no"/>
+        </if>
+      </else>
+    </compile-if>
+    <move distance="o-baseline">
+      <point num="curl-right-bottom"/>
+      <move distance="curve-hstem" color="black">
+        <point num="curl-right-top"/>
+      </move>
+    </move>
+    <move distance="x-baseline">
+      <point num="curl-left-bottom"/>
+      <align>
+        <point num="rstem-left-bottom"/>
+        <point num="rstem-right-bottom"/>
+      </align>
+      <move distance="horiz-stem" color="black">
+        <point num="curl-left-top"/>
+      </move>
+    </move>
+    <move distance="x-height">
+      <point num="lstem-left-top"/>
+      <align>
+        <point num="rstem-right-top"/>
+      </align>
+      <move distance="horiz-stem" color="black">
+        <point num="lstem-right-top"/>
+        <align>
+          <point num="rstem-left-top"/>
+        </align>
+      </move>
+    </move>
+    <interpolate-untouched-points/>
+  </glyph>
+  <!--Cyr L-->
+
+</xgridfit>

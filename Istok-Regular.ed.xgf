@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xgridfit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="xgridfit.xsd">
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2" xmlns:xi="http://www.w3.org/2001/XInclude">
  
  <!--
      Copyright (C) 2009  Andrey V. Panov
@@ -18,12 +18,12 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
- 
  <outfile fmflags="2560" pyflags="old-kern opentype">Istok-Regular.ttf</outfile>
- 
  <constant name="diag-min-thick" value="0.5p"/>
- <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
- <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
+ <constant name="small-c-flat-ends" value="12"/>
+ <!-- below it lowercase c, cyr z, etc. have flat ends -->
+ <constant name="cap-c-flat-ends" value="10"/>
+ <!-- below it capital c, cyr z, etc. have flat ends -->
  <constant name="left-bearing" value="last + 1"/>
  <constant name="right-bearing" value="last + 2"/>
  <constant name="vertical" value="0"/>
@@ -72,7 +72,6 @@
  <variable name="vertical-smoothing" value="0"/>
  <variable name="only-horizontal-smoothing" value="0"/>
  <variable name="only-vertical-smoothing" value="0"/>
- 
  <alias name="small-desc" target="cv-0"/>
  <alias name="cap-tse-desc" target="cv-1"/>
  <alias name="small-tse-desc" target="cv-2"/>
@@ -80,16 +79,26 @@
  <alias name="small-x-height" target="cv-4"/>
  <alias name="cap-x-height" target="cv-7"/>
  <alias name="small-asc-height" target="cv-8"/>
- <alias name="cap-curve-hstem" target="cv-12"/> <!--O-->
- <alias name="cap-horiz-stem" target="cv-13"/> <!--Ц-->
- <alias name="cap-vert-thinstem" target="cv-18"/>  <!--Ц-->
- <alias name="cap-vert-stem" target="cv-21"/> <!--I-->
- <alias name="cap-o-curve-stem" target="cv-22"/> <!--O-->
- <alias name="small-curve-hstem" target="cv-9"/> <!--o-->
- <alias name="small-horiz-stem" target="cv-11"/> <!--ц-->
- <alias name="small-vert-stem" target="cv-15"/> <!--i-->
- <alias name="small-vert-thinstem" target="cv-17"/> <!--ц-->
- <alias name="small-o-curve-stem" target="cv-20"/> <!--o-->
+ <alias name="cap-curve-hstem" target="cv-12"/>
+ <!--O-->
+ <alias name="cap-horiz-stem" target="cv-13"/>
+ <!--Ц-->
+ <alias name="cap-vert-thinstem" target="cv-18"/>
+ <!--Ц-->
+ <alias name="cap-vert-stem" target="cv-21"/>
+ <!--I-->
+ <alias name="cap-o-curve-stem" target="cv-22"/>
+ <!--O-->
+ <alias name="small-curve-hstem" target="cv-9"/>
+ <!--o-->
+ <alias name="small-horiz-stem" target="cv-11"/>
+ <!--ц-->
+ <alias name="small-vert-stem" target="cv-15"/>
+ <!--i-->
+ <alias name="small-vert-thinstem" target="cv-17"/>
+ <!--ц-->
+ <alias name="small-o-curve-stem" target="cv-20"/>
+ <!--o-->
  <alias name="minus-thickness" target="cv-10"/>
  <alias name="small-x-baseline" target="zero"/>
  <alias name="small-sh-inner-space" target="small-m-inner-space"/>
@@ -99,7 +108,6 @@
  <alias name="cap--thindiag" target="cap-thindiag"/>
  <alias name="small--diag" target="small-diag"/>
  <alias name="small--thindiag" target="small-thindiag"/>
-
  <control-value name="cap-h-lbearing" value="170"/>
  <control-value name="cap-x-lbearing" value="12"/>
  <control-value name="cap-h-intersect-height" value="664"/>
@@ -120,7 +128,8 @@
  <control-value name="cap-cyrl-space" value="870"/>
  <control-value name="cap-cyrch-space" value="996"/>
  <control-value name="cap-b-low-space" value="1068"/>
- <control-value name="cap-sh-inner-space" value="754"/><!--562-->
+ <control-value name="cap-sh-inner-space" value="754"/>
+ <!--562-->
  <control-value name="small-cyrn-space" value="836"/>
  <control-value name="small-cyrn-lbearing" value="142"/>
  <control-value name="small-cyrn-intersect-height" value="482"/>
@@ -142,7 +151,8 @@
  <control-value name="small-cyrl-space" value="673"/>
  <control-value name="small-cyrv-low-space" value="800"/>
  <control-value name="small-cyrch-space" value="814"/>
- <control-value name="small-m-inner-space" value="610"/> <!--434-->
+ <control-value name="small-m-inner-space" value="610"/>
+ <!--434-->
  <control-value name="small-diag" value="164"/>
  <control-value name="small-thindiag" value="146"/>
  <control-value name="sc-x-height" value="1120"/>
@@ -167,16 +177,14 @@
  <control-value name="digit-thinner-curve-stem" value="188"/>
  <control-value name="digit-thicker-curve-stem" value="196"/>
  <control-value name="digit-thin-horiz-stem" value="150"/>
- 
  <control-value name="emspace" value="1024"/>
+ <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
+ <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
  
- <xi:include href="upr_functions.xgf#xpointer(//function)"/>
- <xi:include href="upr_functions.xgf#xpointer(//macro)"/>
  <pre-program>
-  
   <set-dropout-type value="5"/>
-  
-  <if test="pixels-per-em &gt; 11"> <!-- corrections for antialiasing -->
+  <if test="pixels-per-em &gt; 11">
+   <!-- corrections for antialiasing -->
    <if test="is-glyph-grayscale or (is-cleartype-enabled and not(is-BGR-order))">
     <set-equal target="horizontal-smoothing" source="1"/>
     <set-equal target="any-smoothing" source="1"/>
@@ -192,7 +200,6 @@
     </if>
    </if>
   </if>
-  
   <call-macro name="regularize-control-value-width">
    <with-param name="cv-width" value="cap-o-space"/>
    <with-param name="margin" value="cap-o-lbearing"/>
@@ -222,7 +229,6 @@
    <with-param name="left-margin" value="small-cyrn-lbearing"/>
    <with-param name="right-margin" value="small-o-lbearing"/>
   </call-macro>
-  
   <round value="cap-x-height"/>
   <round value="cap-tse-desc"/>
   <round value="cap-a-hstem-height"/>
@@ -267,15 +273,12 @@
   <round value="sc-sh-inner-space"/>
   <round value="digit-height"/>
   <round value="digit-over-height"/>
-  
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
-  
   <if test="is-glyph-grayscale">
    <set-control-value-cut-in value="1.06p"/>
    <if test="pixels-per-em &lt; 21 and pixels-per-em &gt; 11">
-    
     <round value="cap-curve-hstem" color="black"/>
     <round value="cap-horiz-stem" color="black"/>
     <round value="cap-vert-thinstem" color="black"/>
@@ -288,7 +291,6 @@
     <round value="small-o-curve-stem" color="black"/>
     <round value="minus-thickness" color="black"/>
     <round value="digit-mid-horiz-stem" color="black"/>
-    
     <control-value-delta>
      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/>
      <delta-set cv="cap-vert-stem" size="7" distance="-8"/>
@@ -300,10 +302,8 @@
      <delta-set cv="cap-horiz-stem" size="11" distance="-8"/>
      <delta-set cv="cap-curve-hstem" size="11" distance="-8"/>
     </control-value-delta>
-    
    </if>
   </if>
-  
   <control-value-delta>
    <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
    <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
@@ -315,7 +315,6 @@
    <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
    <delta-set cv="digit-mid-horiz-stem" size="15" distance="-8"/>
   </control-value-delta>
-  
   <if test="control-value(small-o-lbearing) = 0">
    <set-equal target="small-o-lbearing" source="1.0p"/>
   </if>
@@ -328,7 +327,6 @@
   <if test="control-value(sc-h-space) &lt; control-value(sc-cyrch-space)">
    <set-equal target="sc-cyrch-space" source="control-value(sc-h-space)"/>
   </if>
-  
   <set-equal target="temp" source="round-black(control-value(index(cap-vert-stem))) * 0.89p"/>
   <if test="control-value(index(cap-diag)) &gt; temp">
    <set-equal target="cap-diag" source="temp"/>
@@ -353,7 +351,6 @@
   <if test="control-value(index(small-end-width)) &gt; temp">
    <set-equal target="small-end-width" source="temp"/>
   </if>
-  
   <call-macro name="regularize-midstem">
    <with-param name="midstem-height" value="cap-h-intersect-height"/>
    <with-param name="stem-width" value="cap-horiz-stem"/>
@@ -369,7 +366,6 @@
    <with-param name="stem-width" value="small-horiz-stem"/>
    <with-param name="full-height" value="small-x-height"/>
   </call-macro>
-  
   <call-macro name="regularize-control-value-double-width">
    <with-param name="cv-width" value="cap-sh-inner-space"/>
    <with-param name="stem-width" value="cap-vert-stem"/>
@@ -388,122 +384,122 @@
    <with-param name="margin" value="small-cyrn-lbearing"/>
    <with-param name="full-width" value="control-value(emspace) * 1.65p"/>
   </call-macro>
- 
  </pre-program>
+ <xi:include href="upr_3.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_4.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_A.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_B.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_C.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_E.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_H.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_I.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_J.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_K.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_M.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_N.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_O.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_P.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_R.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_T.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_V.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_W.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_X.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Y.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Z.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_e.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrB.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrG.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrD.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrI.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrJ.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrK.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrL.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrZh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrZ.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrP.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrU.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrF.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrC.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrCh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrSh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrShch.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrHard.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrSoft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrEh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrYu.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrYa.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrIzhica.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_a.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_b.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_d.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_g.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_h.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_i.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_j.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_dotlessi.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_dotlessj.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_n.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_p.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_q.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_y.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrb.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrv.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrg.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrd.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrn.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyri.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrl.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrt.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrf.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrsh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrshch.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrhard.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrsoft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_uni0274.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_uni0280.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Asc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Bsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Csc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Esc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Hsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Isc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Jsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Ksc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Msc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Nsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Osc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Psc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Rsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Tsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Vsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Wsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Xsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Ysc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_Zsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrBsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrGsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrDsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrZsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrIsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrKsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrLsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrPsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrUsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrFsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrCsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrChsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrShsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrShchsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrHardsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrSoftsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrEhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrYusc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+ <xi:include href="upr_dotaccent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
  
- <xi:include href="upr_3.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_4.xgf#xpointer(//glyph)"/>
- 
- <xi:include href="upr_A.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_B.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_C.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_E.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_H.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_I.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_J.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_K.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_M.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_N.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_O.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_P.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_R.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_T.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_V.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_W.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_X.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Y.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Z.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_e.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrB.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrG.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrD.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrI.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrJ.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrK.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrL.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrZh.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrZ.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrP.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrU.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrF.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrC.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrCh.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrSh.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrShch.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrHard.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrSoft.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrEh.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrYu.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrYa.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrIzhica.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_a.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_b.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_d.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_h.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_dotlessi.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_dotlessj.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_n.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_p.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_q.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_y.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrb.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrv.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrg.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrd.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrn.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyri.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrl.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrt.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrf.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrsh.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrshch.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrhard.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrsoft.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Cyrustraight.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_cyrBreve.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_numero.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_uni0274.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_uni0280.xgf#xpointer(//glyph)"/>
- 
- <xi:include href="upr_Asc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Bsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Csc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Esc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Hsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Isc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Jsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Ksc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Msc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Nsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Osc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Psc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Rsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Tsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Vsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Wsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Xsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Ysc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_Zsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrBsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrGsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrDsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrZsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrIsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrKsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrLsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrPsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrUsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrFsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrCsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrChsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrShsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrShchsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrHardsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrSoftsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrEhsc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrYusc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrYasc.xgf#xpointer(//glyph)"/>
- <xi:include href="upr_CyrZhsc.xgf#xpointer(//glyph)"/>
-
 </xgridfit>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xgridfit>
-  
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
   <!--
       Copyright (C) 2007, 2008, 2009  Andrey V. Panov
       
@@ -18,22 +18,21 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
- <glyph ps-name="afii10048.sc" init-graphics="yes">
-  
-  <call-glyph ps-name="afii10048">
-   <with-param name="x-baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="sc-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-   <with-param name="intersect-height" value="sc-h-intersect-height"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="o-baseline" value="small-o-baseline"/>
-   <with-param name="o-height" value="sc-o-height"/>
-   <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
-   <with-param name="curve-vert-stem" value="small-o-curve-stem"/>
-   <with-param name="space" value="sc-o-space"/>
-  </call-glyph>
- </glyph>
-</xgridfit>
 
+  <glyph ps-name="afii10048.sc" init-graphics="yes">
+    <call-glyph ps-name="afii10048">
+      <with-param name="x-baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="sc-x-height"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="lbearing" value="small-cyrn-lbearing"/>
+      <with-param name="intersect-height" value="sc-h-intersect-height"/>
+      <with-param name="horiz-stem" value="small-horiz-stem"/>
+      <with-param name="o-baseline" value="small-o-baseline"/>
+      <with-param name="o-height" value="sc-o-height"/>
+      <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
+      <with-param name="curve-vert-stem" value="small-o-curve-stem"/>
+      <with-param name="space" value="sc-o-space"/>
+    </call-glyph>
+  </glyph>
+
+</xgridfit>

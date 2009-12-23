@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!-- Functions and macros for font -->
-<xgridfit>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  
  <!--
-     Copyright (C) 2008  Andrey V. Panov
+     Copyright (C) 2008, 2009  Andrey V. Panov
      
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
-      the Free Software Foundation, either version 3 of the License, or
+     the Free Software Foundation, either version 3 of the License, or
      (at your option) any later version.
      
      This program is distributed in the hope that it will be useful,
@@ -16,11 +16,38 @@
      GNU General Public License for more details.
      
      You should have received a copy of the GNU General Public License
-      along with this program.  If not, see "http://www.gnu.org/licenses/".
-
+     along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
      -->
-
+ 
+ <macro name="center-dotaccent">
+  <param name="point-left"/>
+  <!-- reper-point -->
+  <param name="point-right"/>
+  <!-- reper-point -->
+  <param name="accent-left"/>
+  <param name="accent-right"/>
+  <param name="contour"/>
+<!--   <variable name="displacement-width"/> -->
+  <with-round-state round="to-double-grid">
+   <set-equal target="width" source="round((((coord(point-right) + coord(point-left)) - coord(accent-left))  - coord(accent-right)) / 2.0)"/>
+   <if test="width != 0.0">
+    <shift-absolute pixel-distance="width">
+     <point num="accent-left"/>
+    </shift-absolute>
+    <shift>
+     <reference>
+      <point num="accent-left"/>
+     </reference>
+     <contour num="contour"/>
+    </shift>
+   </if>
+  </with-round-state>
+ </macro>
+ <!-- center-accent-with-anchor-and-two-reper-points -->
+ 
  <!--  <function name="make-diagonal"> -->
+  
   <macro name="make-diagonal">
    <param name="first-diag-first-point"/>
    <param name="first-diag-second-point"/>
@@ -109,100 +136,94 @@
    </macro>
    <!--  </function> -->
   
- <function  name="center-accent-with-anchor-and-two-reper-points">
-  <!--the same as previous (center-point-with-two-reper-points) but with an additional contour-->
-  
-  <param name="point-left"/>   <!-- reper-point -->
-  <param name="point-center"/> <!-- central point of the accent to be adjusted -->
-  <param name="point-right"/>  <!-- reper-point -->
-  <param name="contour"/>      <!-- the whole accent -->
-  
-  <variable name="displacement-width"/>
-  
-  <with-round-state round="to-double-grid">
-   <set-equal target="displacement-width"
-              source="(round-black((point-left -- point-right) / 2.0) +
-              coord(point-left)) -
-              coord(point-center)"/>
-   <if test="displacement-width != 0.0">
-    <shift-absolute pixel-distance="displacement-width">
-     <point num="point-center"/>
-    </shift-absolute>
-    <shift>
-     <reference>
+  <function name="center-accent-with-anchor-and-two-reper-points">
+   <!--the same as previous (center-point-with-two-reper-points) but with an additional contour-->
+   <param name="point-left"/>
+   <!-- reper-point -->
+   <param name="point-center"/>
+   <!-- central point of the accent to be adjusted -->
+   <param name="point-right"/>
+   <!-- reper-point -->
+   <param name="contour"/>
+   <!-- the whole accent -->
+   <variable name="displacement-width"/>
+   <with-round-state round="to-double-grid">
+    <set-equal target="displacement-width" source="(round-black((point-left -- point-right) / 2.0) +               coord(point-left)) -               coord(point-center)"/>
+    <if test="displacement-width != 0.0">
+     <shift-absolute pixel-distance="displacement-width">
       <point num="point-center"/>
-     </reference>
-     <contour num="contour"/>
-    </shift>
+     </shift-absolute>
+     <shift>
+      <reference>
+       <point num="point-center"/>
+      </reference>
+      <contour num="contour"/>
+     </shift>
+    </if>
+   </with-round-state>
+  </function>
+  <!-- center-accent-with-anchor-and-two-reper-points -->
+  
+  <macro name="regularize-control-value-width">
+   <param name="cv-width"/>
+   <!-- regularized control value, should not be rounded -->
+   <param name="margin"/>
+   <!-- width of margin, should not be rounded -->
+   <set-equal target="width" source="round-white(control-value(index(margin)))"/>
+   <if test="width = 0">
+    <set-equal target="temp" source="1.0p"/>
+    <else>
+     <set-equal target="temp" source="width"/>
+    </else>
    </if>
-  </with-round-state>
- </function> <!-- center-accent-with-anchor-and-two-reper-points -->
- 
- <macro name="regularize-control-value-width">
+   <set-equal target="cv-width" source="round((round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width)"/>
+  </macro>
   
-  <param name="cv-width"/> <!-- regularized control value, should not be rounded -->
-  <param name="margin"/> <!-- width of margin, should not be rounded -->
+  <macro name="regularize-control-value-width-two-margin">
+   <param name="cv-width"/>
+   <!-- regularized control value, should not be rounded -->
+   <param name="left-margin"/>
+   <!-- width of margin, should not be rounded -->
+   <param name="right-margin"/>
+   <!-- width of margin, should not be rounded -->
+   <set-equal target="width" source="round-white(control-value(index(left-margin)))"/>
+   <if test="width = 0">
+    <set-equal target="temp" source="1.0p"/>
+    <else>
+     <set-equal target="temp" source="width"/>
+    </else>
+   </if>
+   <set-equal target="cv-width" source="round(round((control-value(index(cv-width)) + control-value(index(left-margin))  + control-value(index(right-margin))) - temp) - round-white(control-value(index(right-margin))))"/>
+  </macro>
   
-  <set-equal target="width" source="round-white(control-value(index(margin)))"/>
-  <if test="width = 0">
-   <set-equal target="temp" source="1.0p"/>
-   <else>
-    <set-equal target="temp" source="width"/>
-   </else>
-  </if>
-  <set-equal target="cv-width" source="round((round(control-value(index(cv-width)) + (2.0p * control-value(index(margin)))) - temp) - width)"/>
-
- </macro>
- 
- <macro name="regularize-control-value-width-two-margin">
+  <macro name="regularize-midstem">
+   <param name="midstem-height"/>
+   <!-- regularized control value, should be rounded -->
+   <param name="stem-width"/>
+   <param name="full-height"/>
+   <!-- regularized control value, should be rounded -->
+   <set-equal target="width" source="(control-value(index(full-height)) - round(control-value(index(stem-width)))) - (2.0p * control-value(index(midstem-height)))"/>
+   <if test="width &gt; 0">
+    <set-equal target="midstem-height" source="control-value(index(midstem-height)) + 1.0p"/>
+   </if>
+  </macro>
+  <!--Used for m, Ш-->
   
-  <param name="cv-width"/> <!-- regularized control value, should not be rounded -->
-  <param name="left-margin"/> <!-- width of margin, should not be rounded -->
-  <param name="right-margin"/> <!-- width of margin, should not be rounded -->
+  <macro name="regularize-control-value-double-width">
+   <param name="cv-width"/>
+   <param name="margin"/>
+   <param name="stem-width"/>
+   <param name="full-width"/>
+   <if test="control-value(index(margin)) = 0">
+    <set-equal target="temp" source="1.0p"/>
+    <else>
+     <set-equal target="temp" source="control-value(index(margin))"/>
+    </else>
+   </if>
+   <set-equal target="temp" source="round(full-width) - ((((2.0p * control-value(index(cv-width))) + control-value(index(margin))) + (control-value(stem-width))) + temp)"/>
+   <with-round-state round="down-to-grid">
+    <set-equal target="cv-width" source="control-value(index(cv-width)) + round(temp / 2.0p)"/>
+   </with-round-state>
+  </macro>
   
-  <set-equal target="width" source="round-white(control-value(index(left-margin)))"/>
-  <if test="width = 0">
-   <set-equal target="temp" source="1.0p"/>
-   <else>
-    <set-equal target="temp" source="width"/>
-   </else>
-  </if>
-  <set-equal target="cv-width" source="round(round((control-value(index(cv-width)) + control-value(index(left-margin))  + control-value(index(right-margin))) - temp) - round-white(control-value(index(right-margin))))"/>
-
- </macro>
- 
- <macro name="regularize-midstem">
-  
-  <param name="midstem-height"/> <!-- regularized control value, should be rounded -->
-  <param name="stem-width"/>
-  <param name="full-height"/> <!-- regularized control value, should be rounded -->
-  
-  <set-equal target="width" source="(control-value(index(full-height)) - round(control-value(index(stem-width)))) - (2.0p * control-value(index(midstem-height)))"/>
-  <if test="width &gt; 0">
-   <set-equal target="midstem-height" source="control-value(index(midstem-height)) + 1.0p"/>
-  </if>
- 
- </macro>
- 
- <!--Used for m, Ш-->
- <macro name="regularize-control-value-double-width">
-  
-  <param name="cv-width"/> 
-  <param name="margin"/> 
-  <param name="stem-width"/>
-  <param name="full-width"/>
-  
-  <if test="control-value(index(margin)) = 0">
-   <set-equal target="temp" source="1.0p"/>
-   <else>
-    <set-equal target="temp" source="control-value(index(margin))"/>
-   </else>
-  </if>
-  <set-equal target="temp" source="round(full-width) - ((((2.0p * control-value(index(cv-width))) + control-value(index(margin))) + (control-value(stem-width))) + temp)"/>
-  <with-round-state round="down-to-grid">
-   <set-equal target="cv-width" source="control-value(index(cv-width)) + round(temp / 2.0p)"/>
-  </with-round-state>
-
- </macro>
- 
  </xgridfit>

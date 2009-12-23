@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<xgridfit>
- <!--д-->
- <glyph ps-name="afii10069" init-graphics="yes">
-  
-  <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--д-->
+
+  <glyph ps-name="afii10069" init-graphics="yes">
+    <!--
       
       Copyright (C) 2009  Andrey V. Panov
       
@@ -21,15 +22,15 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
-  <call-glyph ps-name="afii10021">
-   <with-param name="x-baseline" value="small-x-baseline"/>
-   <with-param name="tse-desc" value="small-tse-desc"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="vert-thinstem" value="small-vert-thinstem"/>
-   <with-param name="cyrl-space" value="small-cyrl-space"/>
-  </call-glyph>
- </glyph>
+    <call-glyph ps-name="afii10021">
+      <with-param name="x-baseline" value="small-x-baseline"/>
+      <with-param name="tse-desc" value="small-tse-desc"/>
+      <with-param name="x-height" value="small-x-height"/>
+      <with-param name="horiz-stem" value="small-horiz-stem"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="vert-thinstem" value="small-vert-thinstem"/>
+      <with-param name="cyrl-space" value="small-cyrl-space"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

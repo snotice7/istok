@@ -1,167 +1,167 @@
 <?xml version="1.0"?>
-<!--p, Cyr r-->
-<glyph ps-name="p" init-graphics="yes">
- 
- <!--
-     
-     Andrey V. Panov (C) 2008, 2009
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
- 
- <param name="baseline" value="small-desc"/>
- <param name="o-baseline" value="small-o-baseline"/>
- <param name="lstem-height" value="small-x-height"/>
- <param name="o-height" value="small-o-height"/>
- <param name="vert-stem" value="small-vert-stem"/>
- <param name="curve-vstem" value="small-o-curve-stem"/>
- <param name="curve-hstem" value="small-curve-hstem"/>
- <param name="lbearing" value="small-cyrn-lbearing"/>
- <param name="space" value="small-p-space"/>
- <param name="upper-notch" value="cog-count"/>
- <param name="lower-notch" value="notch-count"/>
- 
- <constant name="lstem-left-bottom" value="first-point"/>
- <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
- <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
- <constant name="upper-joint-top" value="lstem-right-top + smooth-count + upper-notch"/>
- <constant name="outer-top" value="upper-joint-top + 3"/>
- <constant name="outer-right" value="outer-top + 3"/>
- <constant name="outer-bottom" value="outer-right + 3"/>
- <constant name="lower-joint-bottom" value="outer-bottom + 3"/>
- <constant name="lstem-right-bottom" value="lower-joint-bottom + smooth-count + lower-notch"/>
- <constant name="lower-joint-top" value="lstem-right-bottom + smooth-count"/>
- <constant name="inner-bottom" value="lower-joint-top + 3"/>
- <constant name="inner-right" value="inner-bottom + 3"/>
- <constant name="inner-top" value="inner-right + 3"/>
- <constant name="upper-joint-bottom" value="inner-top + 3"/>
- <constant name="last" value="upper-joint-bottom"/>
- 
- <compile-if test="slanted">
-  <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-  <set-projection-vector axis="y"/>
-  <!--   <set-round-state round="to-grid"/> -->
-  <else>
-   <set-vectors axis="y"/>
-   <compile-if test="smooth">
-    <if test="vertical-smoothing">
-     <set-round-state round="no"/>
-    </if>
-   </compile-if>
-  </else>
- </compile-if>
- 
- <move distance="baseline">
-  <point num="lstem-left-bottom"/>
-  <align>
-   <point num="lstem-right-bottom"/>
-  </align>
- </move>
- <move distance="lstem-height">
-  <point num="lstem-left-top"/>
-  <align>
-   <point num="lstem-right-top"/>
-  </align>
- </move>
- <move distance="o-baseline">
-  <point num="outer-bottom"/>
-  <move distance="curve-hstem" color="black">
-   <point num="inner-bottom"/>
-  </move>
-  <move min-distance="no">
-   <point num="lower-joint-bottom"/>
-   <move>
-    <point num="lower-joint-top"/>
-   </move>
-  </move>
- </move>
- <move distance="o-height">
-  <point num="outer-top"/>
-  <move distance="curve-hstem" color="black">
-   <point num="inner-top"/>
-  </move>
-  <move min-distance="no">
-   <point num="upper-joint-top"/>
-   <move color="black">
-    <point num="upper-joint-bottom"/>
-   </move>
-  </move>
- </move>
- 
- <compile-if test="slanted">
-  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  <set-freedom-vector axis="x"/>
-  <set-round-state round="no"/>
-  <else>
-   <set-vectors axis="x"/>
-   <compile-if test="smooth">
-    <if test="horizontal-smoothing">
-     <set-round-state round="no"/>
-    </if>
-   </compile-if>
-  </else>
- </compile-if>
- 
- <move distance="lbearing" color="white">
-  <reference>
-   <point num="left-bearing"/>
-  </reference>
-  <point num="lstem-left-bottom"/>
-  <align>
-   <point num="lstem-left-top"/>
-  </align>
-  <move distance="vert-stem" color="black">
-   <point num="lstem-right-top"/>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--p, Cyr r-->
+ <glyph ps-name="p" init-graphics="yes">
+  <!--
+      
+      Andrey V. Panov (C) 2008, 2009
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  <param name="baseline" value="small-desc"/>
+  <param name="o-baseline" value="small-o-baseline"/>
+  <param name="lstem-height" value="small-x-height"/>
+  <param name="o-height" value="small-o-height"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="curve-vstem" value="small-o-curve-stem"/>
+  <param name="curve-hstem" value="small-curve-hstem"/>
+  <param name="lbearing" value="small-cyrn-lbearing"/>
+  <param name="space" value="small-p-space"/>
+  <param name="upper-notch" value="cog-count"/>
+  <param name="lower-notch" value="notch-count"/>
+  
+  <constant name="lstem-left-bottom" value="first-point"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+  <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
+  <constant name="upper-joint-top" value="lstem-right-top + smooth-count + upper-notch"/>
+  <constant name="outer-top" value="upper-joint-top + 3"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="lower-joint-bottom" value="outer-bottom + 3"/>
+  <constant name="lstem-right-bottom" value="lower-joint-bottom + smooth-count + lower-notch"/>
+  <constant name="lower-joint-top" value="lstem-right-bottom + smooth-count"/>
+  <constant name="inner-bottom" value="lower-joint-top + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="upper-joint-bottom" value="inner-top + 3"/>
+  <constant name="last" value="upper-joint-bottom"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  <move distance="baseline">
+   <point num="lstem-left-bottom"/>
    <align>
-    <point num="upper-joint-top"/>
-    <point num="upper-joint-bottom"/>
-    <point num="lower-joint-top"/>
-    <point num="lower-joint-bottom"/>
     <point num="lstem-right-bottom"/>
    </align>
   </move>
-  <move distance="space" color="black">
-   <point num="outer-right"/>
-   <move distance="curve-vstem" color="black" compile-if="slanted = 0">
-    <point num="inner-right"/>
+  <move distance="lstem-height">
+   <point num="lstem-left-top"/>
+   <align>
+    <point num="lstem-right-top"/>
+   </align>
+  </move>
+  <move distance="o-baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-hstem" color="black">
+    <point num="inner-bottom"/>
    </move>
-   <move min-distance="no" color="white" compile-if="slanted = 0">
-    <point num="right-bearing"/>
+   <move min-distance="no">
+    <point num="lower-joint-bottom"/>
+    <move>
+     <point num="lower-joint-top"/>
+    </move>
    </move>
   </move>
- </move>
- <compile-if test="slanted">
-  <set-projection-vector axis="x"/>
-  <set-round-state round="to-grid"/>
-  <move>
-   <point num="outer-right"/>
-   <move distance="curve-vstem" color="black">
-    <point num="inner-right"/>
+  <move distance="o-height">
+   <point num="outer-top"/>
+   <move distance="curve-hstem" color="black">
+    <point num="inner-top"/>
    </move>
-   <move min-distance="no" color="white">
-    <point num="right-bearing"/>
+   <move min-distance="no">
+    <point num="upper-joint-top"/>
+    <move color="black">
+     <point num="upper-joint-bottom"/>
+    </move>
    </move>
   </move>
- </compile-if>
- <compile-if test="smooth">
-  <if test="horizontal-smoothing">
-   <mdap round="to-grid">
-    <point num="right-bearing"/>
-   </mdap>
-  </if>
- </compile-if>
- <interpolate-untouched-points/>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="horizontal-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="lstem-right-top"/>
+    <align>
+     <point num="upper-joint-top"/>
+     <point num="upper-joint-bottom"/>
+     <point num="lower-joint-top"/>
+     <point num="lower-joint-bottom"/>
+     <point num="lstem-right-bottom"/>
+    </align>
+   </move>
+   <move distance="space" color="black">
+    <point num="outer-right"/>
+    <move distance="curve-vstem" color="black" compile-if="slanted = 0">
+     <point num="inner-right"/>
+    </move>
+    <move min-distance="no" color="white" compile-if="slanted = 0">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <move>
+    <point num="outer-right"/>
+    <move distance="curve-vstem" color="black">
+     <point num="inner-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <mdap round="to-grid">
+     <point num="right-bearing"/>
+    </mdap>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ <!--Cyr r-->
  
-</glyph><!--Cyr r-->
+</xgridfit>
