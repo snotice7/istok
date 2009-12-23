@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xgridfit>
-  
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
   <!--
       
       Andrey V. Panov (C) 2009
@@ -19,14 +19,14 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
- <glyph ps-name="V.sc" init-graphics="yes">
-  <call-glyph ps-name="V">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="sc-x-height"/>
-   <with-param name="thin-diag" value="small-diag"/>
-   <with-param name="thick-diag" value="small--diag"/>
-  </call-glyph>
- </glyph>
- 
+
+  <glyph ps-name="V.sc" init-graphics="yes">
+    <call-glyph ps-name="V">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="sc-x-height"/>
+      <with-param name="thin-diag" value="small-diag"/>
+      <with-param name="thick-diag" value="small--diag"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

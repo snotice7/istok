@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
-<xgridfit>
- <glyph ps-name="W">
-  
-  <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+
+  <glyph ps-name="W">
+    <!--
       
       Andrey V. Panov (C) 2008, 2009
       
@@ -20,97 +21,93 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="thin-diag" value="cap-diag"/>
-  <param name="thick-diag" value="cap--diag"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  
-  <constant name="left-v-ldiag-left-top" value="first-point"/>
-  <constant name="left-v-ldiag-right-top" value="left-v-ldiag-left-top + vstem-hcount"/>
-  <constant name="left-v-ldiag-right-bottom" value="left-v-ldiag-right-top + smooth-count"/>
-  <constant name="left-v-diag-intersect" value="left-v-ldiag-right-top + diag--halfnotch-count"/>
-  <constant name="left-v-rdiag-left-top" value="left-v-diag-intersect + diag-halfnotch-count"/>
-  <constant name="left-v-rdiag-left-bottom" value="left-v-rdiag-left-top - smooth-count"/>
-  <constant name="right-v-ldiag-right-top" value="left-v-rdiag-left-top + vstem-hcount"/>
-  <constant name="right-v-ldiag-right-bottom" value="right-v-ldiag-right-top + smooth-count"/>
-  <constant name="right-v-diag-intersect" value="right-v-ldiag-right-top + diag--halfnotch-count"/>
-  <constant name="right-v-rdiag-left-top" value="right-v-diag-intersect + diag-halfnotch-count"/>
-  <constant name="right-v-rdiag-left-bottom" value="right-v-rdiag-left-top - smooth-count"/>
-  <constant name="right-v-rdiag-right-top" value="right-v-rdiag-left-top + vstem-hcount"/>
-  <constant name="right-v-rdiag-right-bottom" value="right-v-rdiag-right-top + vstem-vcount"/>
-  <constant name="right-v-ldiag-left-bottom" value="right-v-rdiag-right-bottom + vstem-hcount"/>
-  <constant name="right-v-ldiag-left-top" value="right-v-ldiag-left-bottom + smooth-count"/>
-  <constant name="middle-diag-intersect" value="right-v-ldiag-left-bottom + diag--halfnotch-count"/>
-  <constant name="left-v-rdiag-right-bottom" value="middle-diag-intersect + diag-halfnotch-count"/>
-  <constant name="left-v-rdiag-right-top" value="left-v-rdiag-right-bottom - smooth-count"/>
-  <constant name="left-v-ldiag-left-bottom" value="left-v-rdiag-right-bottom + vstem-hcount"/>
-  <constant name="last" value="left-v-ldiag-left-bottom + last-count"/>
-  <line name="left-v-ldiag-left">
-   <point num="left-v-ldiag-left-top"/>
-   <point num="left-v-ldiag-left-bottom"/>
-  </line>
-  <line name="left-v-ldiag-right">
-   <point num="left-v-ldiag-right-top"/>
-   <point num="left-v-ldiag-right-bottom"/>
-  </line>
-  <line name="left-v-rdiag-left">
-   <point num="left-v-rdiag-left-bottom"/>
-   <point num="left-v-rdiag-left-top"/>
-  </line>
-  <line name="left-v-rdiag-right">
-   <point num="left-v-rdiag-right-bottom"/>
-   <point num="left-v-rdiag-right-top"/>
-  </line>
-  <line name="right-v-ldiag-left">
-   <point num="right-v-ldiag-left-top"/>
-   <point num="right-v-ldiag-left-bottom"/>
-  </line>
-  <line name="right-v-ldiag-right">
-   <point num="right-v-ldiag-right-top"/>
-   <point num="right-v-ldiag-right-bottom"/>
-  </line>
-  <line name="right-v-rdiag-left">
-   <point num="right-v-rdiag-left-bottom"/>
-   <point num="right-v-rdiag-left-top"/>
-  </line>
-  <line name="right-v-rdiag-right">
-   <point num="right-v-rdiag-right-bottom"/>
-   <point num="right-v-rdiag-right-top"/>
-  </line>
-  
-  <compile-if test="slanted">
-   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-   <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
-   <else>
-    <set-vectors axis="y"/>
-    <if test="vertical-smoothing">
-     <set-round-state round="no"/>
-    </if>
-   </else>
-  </compile-if>
-  
-  <move distance="baseline">
-   <point num="left-v-ldiag-left-bottom"/>
-   <align>
-    <point num="right-v-ldiag-left-bottom"/>
-    <point num="left-v-rdiag-right-bottom"/>
-    <point num="right-v-rdiag-right-bottom"/>
-   </align>
-  </move>
-  <move distance="x-height">
-   <point num="left-v-ldiag-left-top"/>
-   <align>
-    <point num="left-v-ldiag-right-top"/>
-    <point num="left-v-rdiag-left-top"/>
-    <point num="right-v-ldiag-right-top"/>
-    <point num="right-v-rdiag-left-top"/>
-    <point num="right-v-rdiag-right-top"/>
-   </align>
-  </move>
-  <!--  <interpolate>
+    <param name="baseline" value="cap-x-baseline"/>
+    <param name="x-height" value="cap-x-height"/>
+    <param name="thin-diag" value="cap-diag"/>
+    <param name="thick-diag" value="cap--diag"/>
+    <param name="vert-stem" value="cap-vert-stem"/>
+    <constant name="left-v-ldiag-left-top" value="first-point"/>
+    <constant name="left-v-ldiag-right-top" value="left-v-ldiag-left-top + vstem-hcount"/>
+    <constant name="left-v-ldiag-right-bottom" value="left-v-ldiag-right-top + smooth-count"/>
+    <constant name="left-v-diag-intersect" value="left-v-ldiag-right-top + diag--halfnotch-count"/>
+    <constant name="left-v-rdiag-left-top" value="left-v-diag-intersect + diag-halfnotch-count"/>
+    <constant name="left-v-rdiag-left-bottom" value="left-v-rdiag-left-top - smooth-count"/>
+    <constant name="right-v-ldiag-right-top" value="left-v-rdiag-left-top + vstem-hcount"/>
+    <constant name="right-v-ldiag-right-bottom" value="right-v-ldiag-right-top + smooth-count"/>
+    <constant name="right-v-diag-intersect" value="right-v-ldiag-right-top + diag--halfnotch-count"/>
+    <constant name="right-v-rdiag-left-top" value="right-v-diag-intersect + diag-halfnotch-count"/>
+    <constant name="right-v-rdiag-left-bottom" value="right-v-rdiag-left-top - smooth-count"/>
+    <constant name="right-v-rdiag-right-top" value="right-v-rdiag-left-top + vstem-hcount"/>
+    <constant name="right-v-rdiag-right-bottom" value="right-v-rdiag-right-top + vstem-vcount"/>
+    <constant name="right-v-ldiag-left-bottom" value="right-v-rdiag-right-bottom + vstem-hcount"/>
+    <constant name="right-v-ldiag-left-top" value="right-v-ldiag-left-bottom + smooth-count"/>
+    <constant name="middle-diag-intersect" value="right-v-ldiag-left-bottom + diag--halfnotch-count"/>
+    <constant name="left-v-rdiag-right-bottom" value="middle-diag-intersect + diag-halfnotch-count"/>
+    <constant name="left-v-rdiag-right-top" value="left-v-rdiag-right-bottom - smooth-count"/>
+    <constant name="left-v-ldiag-left-bottom" value="left-v-rdiag-right-bottom + vstem-hcount"/>
+    <constant name="last" value="left-v-ldiag-left-bottom + last-count"/>
+    <line name="left-v-ldiag-left">
+      <point num="left-v-ldiag-left-top"/>
+      <point num="left-v-ldiag-left-bottom"/>
+    </line>
+    <line name="left-v-ldiag-right">
+      <point num="left-v-ldiag-right-top"/>
+      <point num="left-v-ldiag-right-bottom"/>
+    </line>
+    <line name="left-v-rdiag-left">
+      <point num="left-v-rdiag-left-bottom"/>
+      <point num="left-v-rdiag-left-top"/>
+    </line>
+    <line name="left-v-rdiag-right">
+      <point num="left-v-rdiag-right-bottom"/>
+      <point num="left-v-rdiag-right-top"/>
+    </line>
+    <line name="right-v-ldiag-left">
+      <point num="right-v-ldiag-left-top"/>
+      <point num="right-v-ldiag-left-bottom"/>
+    </line>
+    <line name="right-v-ldiag-right">
+      <point num="right-v-ldiag-right-top"/>
+      <point num="right-v-ldiag-right-bottom"/>
+    </line>
+    <line name="right-v-rdiag-left">
+      <point num="right-v-rdiag-left-bottom"/>
+      <point num="right-v-rdiag-left-top"/>
+    </line>
+    <line name="right-v-rdiag-right">
+      <point num="right-v-rdiag-right-bottom"/>
+      <point num="right-v-rdiag-right-top"/>
+    </line>
+    <compile-if test="slanted">
+      <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+      <set-projection-vector axis="y"/>
+      <set-round-state round="to-grid"/>
+      <else>
+        <set-vectors axis="y"/>
+        <if test="vertical-smoothing">
+          <set-round-state round="no"/>
+        </if>
+      </else>
+    </compile-if>
+    <move distance="baseline">
+      <point num="left-v-ldiag-left-bottom"/>
+      <align>
+        <point num="right-v-ldiag-left-bottom"/>
+        <point num="left-v-rdiag-right-bottom"/>
+        <point num="right-v-rdiag-right-bottom"/>
+      </align>
+    </move>
+    <move distance="x-height">
+      <point num="left-v-ldiag-left-top"/>
+      <align>
+        <point num="left-v-ldiag-right-top"/>
+        <point num="left-v-rdiag-left-top"/>
+        <point num="right-v-ldiag-right-top"/>
+        <point num="right-v-rdiag-left-top"/>
+        <point num="right-v-rdiag-right-top"/>
+      </align>
+    </move>
+    <!--  <interpolate>
    <reference>
     <point num="left-v-ldiag-left-bottom"/>
     <point num="left-v-ldiag-left-top"/>
@@ -118,190 +115,188 @@
    <point num="left-v-rdiag-right-top"/>
    <point num="right-v-ldiag-left-top"/>
   </interpolate>-->
-  <interpolate>
-   <reference>
-    <point num="left-v-ldiag-left-bottom"/>
-    <point num="left-v-ldiag-left-top"/>
-   </reference>
-   <point num="left-v-ldiag-right-bottom"/>
-   <point num="left-v-rdiag-right-top"/>
-   <point num="right-v-ldiag-left-top"/>
-  </interpolate>
-  
-  <!--   <set-vectors axis="y"/> -->
-  <interpolate>
-   <reference>
-    <point num="left-v-ldiag-left-bottom"/>
-    <point num="left-v-ldiag-right-bottom"/>
-   </reference>
-   <point num="left-v-diag-intersect"/>
-   <point num="right-v-diag-intersect"/>
-  </interpolate>
-  <if test="(left-v-ldiag-left-bottom -- left-v-diag-intersect) &gt;= 1.0p">
-   <mdap round="down-to-grid">
-    <point num="left-v-diag-intersect"/>
-   </mdap>
-   <align>
-    <reference>
-     <point num="left-v-diag-intersect"/>
-    </reference>
-    <point num="right-v-diag-intersect"/>
-   </align>
-  </if>
-  <interpolate>
-   <reference>
-    <point num="left-v-rdiag-right-top"/>
-    <point num="left-v-ldiag-left-top"/>
-   </reference>
-   <point num="middle-diag-intersect"/>
-  </interpolate>
-  <if test="(middle-diag-intersect -- left-v-ldiag-left-top) &gt;= 1.0p">
-   <mdap round="up-to-grid">
-    <point num="middle-diag-intersect"/>
-   </mdap>
-  </if>
-  
-  
-  <compile-if test="smooth">
-   <if test="vertical-smoothing">
-    <set-round-state round="to-grid"/>
-   </if>
-  </compile-if>
-  <set-vectors axis="x"/>
-  
-  <move color="white">
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="left-v-ldiag-left-top"/>
-   <move>
-    <point num="left-v-rdiag-left-top"/>
-    <move color="black">
-     <point num="right-v-ldiag-right-top"/>
-     <move pixel-distance="left-v-ldiag-left-top -- left-v-rdiag-left-top">
-      <point num="right-v-rdiag-right-top"/>
-     </move>
+    <interpolate>
+      <reference>
+        <point num="left-v-ldiag-left-bottom"/>
+        <point num="left-v-ldiag-left-top"/>
+      </reference>
+      <point num="left-v-ldiag-right-bottom"/>
+      <point num="left-v-rdiag-right-top"/>
+      <point num="right-v-ldiag-left-top"/>
+    </interpolate>
+    <!--   <set-vectors axis="y"/> -->
+    <interpolate>
+      <reference>
+        <point num="left-v-ldiag-left-bottom"/>
+        <point num="left-v-ldiag-right-bottom"/>
+      </reference>
+      <point num="left-v-diag-intersect"/>
+      <point num="right-v-diag-intersect"/>
+    </interpolate>
+    <if test="(left-v-ldiag-left-bottom -- left-v-diag-intersect) &gt;= 1.0p">
+      <mdap round="down-to-grid">
+        <point num="left-v-diag-intersect"/>
+      </mdap>
+      <align>
+        <reference>
+          <point num="left-v-diag-intersect"/>
+        </reference>
+        <point num="right-v-diag-intersect"/>
+      </align>
+    </if>
+    <interpolate>
+      <reference>
+        <point num="left-v-rdiag-right-top"/>
+        <point num="left-v-ldiag-left-top"/>
+      </reference>
+      <point num="middle-diag-intersect"/>
+    </interpolate>
+    <if test="(middle-diag-intersect -- left-v-ldiag-left-top) &gt;= 1.0p">
+      <mdap round="up-to-grid">
+        <point num="middle-diag-intersect"/>
+      </mdap>
+    </if>
+    <compile-if test="smooth">
+      <if test="vertical-smoothing">
+        <set-round-state round="to-grid"/>
+      </if>
+    </compile-if>
+    <set-vectors axis="x"/>
+    <move color="white">
+      <reference>
+        <point num="left-bearing"/>
+      </reference>
+      <point num="left-v-ldiag-left-top"/>
+      <move>
+        <point num="left-v-rdiag-left-top"/>
+        <move color="black">
+          <point num="right-v-ldiag-right-top"/>
+          <move pixel-distance="left-v-ldiag-left-top -- left-v-rdiag-left-top">
+            <point num="right-v-rdiag-right-top"/>
+          </move>
+        </move>
+      </move>
     </move>
-   </move>
-  </move>
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  </compile-if>
-  <set-equal target="width" source="(right-v-rdiag-right-top -- right-bearing)"/><!-- - rbearing-->
-  <compile-if test="slanted">
-   <set-projection-vector axis="x"/>
-   <round value="width"/>
-  </compile-if>
-  <if test="width &lt; 0.0p or width &gt;= 2.0p">
-   <if test="odd((left-v-ldiag-left-top -- left-v-rdiag-left-top) + (right-v-ldiag-right-top -- right-v-rdiag-right-top) + width)">
-    <set-equal target="width" source="width - 1.0p"/>
-   </if>
-   <shift-absolute pixel-distance="width">
-    <point num="right-v-rdiag-right-top"/>
-   </shift-absolute>
-   <shift-absolute pixel-distance="width / 2.0">
-    <point num="left-v-rdiag-left-top"/>
-    <point num="right-v-ldiag-right-top"/>
-   </shift-absolute>
-  </if>
-  <move distance="vert-stem" color="black">
-   <reference>
-    <point num="left-v-ldiag-left-top"/>
-   </reference>
-   <point num="left-v-ldiag-right-top"/>
-  </move>
-  <move distance="vert-stem" color="black">
-   <reference>
-    <point num="right-v-rdiag-right-top"/>
-   </reference>
-   <point num="right-v-rdiag-left-top"/>
-  </move>
-  <compile-if test="slanted = 0">
-   <interpolate round="yes"> <!--down-to-grid-->
-    <reference>
-     <point num="left-v-ldiag-left-top"/>
-     <point num="left-v-rdiag-right-top"/>
-    </reference>
-    <point num="left-v-ldiag-left-bottom"/>
-   </interpolate>
-   <move color="black">
-    <reference>
-     <point num="left-v-ldiag-left-bottom"/>
-    </reference>
-    <point num="left-v-rdiag-right-bottom"/>
-   </move>
-   <if test="(left-v-rdiag-right-bottom -- left-v-rdiag-left-top) = 0 and (left-v-ldiag-left-top -- left-v-ldiag-left-bottom) &gt;= 2.0p">
-    <shift-absolute pixel-distance="-1.0p">
-     <point num="left-v-ldiag-left-bottom"/>
-     <point num="left-v-rdiag-right-bottom"/>
-    </shift-absolute>
-   </if>
-   <!--  regularize bottom of the right v -->
-   <!--  <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
-    <!--    <with-round-state round="to-double-grid">
+    <compile-if test="slanted">
+      <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+    </compile-if>
+    <set-equal target="width" source="(right-v-rdiag-right-top -- right-bearing)"/>
+    <!-- - rbearing-->
+    <compile-if test="slanted">
+      <set-projection-vector axis="x"/>
+      <round value="width"/>
+    </compile-if>
+    <if test="width &lt; 0.0p or width &gt;= 2.0p">
+      <if test="odd((left-v-ldiag-left-top -- left-v-rdiag-left-top) + (right-v-ldiag-right-top -- right-v-rdiag-right-top) + width)">
+        <set-equal target="width" source="width - 1.0p"/>
+      </if>
+      <shift-absolute pixel-distance="width">
+        <point num="right-v-rdiag-right-top"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="width / 2.0">
+        <point num="left-v-rdiag-left-top"/>
+        <point num="right-v-ldiag-right-top"/>
+      </shift-absolute>
+    </if>
+    <move distance="vert-stem" color="black">
+      <reference>
+        <point num="left-v-ldiag-left-top"/>
+      </reference>
+      <point num="left-v-ldiag-right-top"/>
+    </move>
+    <move distance="vert-stem" color="black">
+      <reference>
+        <point num="right-v-rdiag-right-top"/>
+      </reference>
+      <point num="right-v-rdiag-left-top"/>
+    </move>
+    <compile-if test="slanted = 0">
+      <interpolate round="yes">
+        <!--down-to-grid-->
+        <reference>
+          <point num="left-v-ldiag-left-top"/>
+          <point num="left-v-rdiag-right-top"/>
+        </reference>
+        <point num="left-v-ldiag-left-bottom"/>
+      </interpolate>
+      <move color="black">
+        <reference>
+          <point num="left-v-ldiag-left-bottom"/>
+        </reference>
+        <point num="left-v-rdiag-right-bottom"/>
+      </move>
+      <if test="(left-v-rdiag-right-bottom -- left-v-rdiag-left-top) = 0 and (left-v-ldiag-left-top -- left-v-ldiag-left-bottom) &gt;= 2.0p">
+        <shift-absolute pixel-distance="-1.0p">
+          <point num="left-v-ldiag-left-bottom"/>
+          <point num="left-v-rdiag-right-bottom"/>
+        </shift-absolute>
+      </if>
+      <!--  regularize bottom of the right v -->
+      <!--  <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
+      <!--    <with-round-state round="to-double-grid">
      <set-equal target="width" source="round-black((coord(left-v-ldiag-left-top) + coord(left-v-rdiag-right-top)) / 2.0) -
                 ((coord(left-v-ldiag-left-bottom) + coord(left-v-rdiag-right-bottom)) / 2.0)"/>
     </with-round-state>-->
-    <!--    <if test="width != 0.0p">
+      <!--    <if test="width != 0.0p">
      <shift-absolute pixel-distance="width">
       <point num="left-v-ldiag-left-bottom"/>
       <point num="left-v-rdiag-right-bottom"/>
      </shift-absolute>
     </if>-->
-<!--    <shift-absolute pixel-distance="0.05p">
+      <!--    <shift-absolute pixel-distance="0.05p">
      <point num="left-v-rdiag-right-bottom"/>
     </shift-absolute>-->
-    <!--  </if> -->
-   <!--  make the left v similar to the right -->
-   <with-round-state round="no">
-    <move pixel-distance="(left-v-ldiag-left-bottom -- left-v-ldiag-left-top)">
-     <reference>
-      <point num="right-v-rdiag-right-top"/>
-     </reference>
-     <point num="right-v-rdiag-right-bottom"/>
-     <move pixel-distance="(left-v-rdiag-right-bottom -- left-v-ldiag-left-bottom)" color="black">
-      <point num="right-v-ldiag-left-bottom"/>
-     </move>
-    </move>
-   </with-round-state>
-   <else>
+      <!--  </if> -->
+      <!--  make the left v similar to the right -->
+      <with-round-state round="no">
+        <move pixel-distance="(left-v-ldiag-left-bottom -- left-v-ldiag-left-top)">
+          <reference>
+            <point num="right-v-rdiag-right-top"/>
+          </reference>
+          <point num="right-v-rdiag-right-bottom"/>
+          <move pixel-distance="(left-v-rdiag-right-bottom -- left-v-ldiag-left-bottom)" color="black">
+            <point num="right-v-ldiag-left-bottom"/>
+          </move>
+        </move>
+      </with-round-state>
+      <else>
+        <interpolate>
+          <reference>
+            <point num="left-v-ldiag-left-top"/>
+            <point num="right-v-rdiag-right-top"/>
+          </reference>
+          <point num="left-v-ldiag-left-bottom"/>
+          <point num="left-v-rdiag-right-bottom"/>
+          <point num="right-v-ldiag-left-bottom"/>
+          <point num="right-v-rdiag-right-bottom"/>
+        </interpolate>
+      </else>
+    </compile-if>
     <interpolate>
-     <reference>
-      <point num="left-v-ldiag-left-top"/>
-      <point num="right-v-rdiag-right-top"/>
-     </reference>
-     <point num="left-v-ldiag-left-bottom"/>
-     <point num="left-v-rdiag-right-bottom"/>
-     <point num="right-v-ldiag-left-bottom"/>
-     <point num="right-v-rdiag-right-bottom"/>
+      <reference>
+        <point num="left-v-ldiag-left-bottom"/>
+        <point num="left-v-rdiag-right-bottom"/>
+      </reference>
+      <point num="left-v-rdiag-left-bottom"/>
+      <point num="left-v-ldiag-right-bottom"/>
     </interpolate>
-   </else>
-  </compile-if>
-  <interpolate>
-   <reference>
-    <point num="left-v-ldiag-left-bottom"/>
-    <point num="left-v-rdiag-right-bottom"/>
-   </reference>
-   <point num="left-v-rdiag-left-bottom"/>
-   <point num="left-v-ldiag-right-bottom"/>
-  </interpolate>
-  <interpolate>
-   <reference>
-    <point num="right-v-ldiag-left-bottom"/>
-    <point num="right-v-rdiag-right-bottom"/>
-   </reference>
-   <point num="right-v-ldiag-right-bottom"/>
-   <point num="right-v-rdiag-left-bottom"/>
-  </interpolate>
-  <interpolate>
-   <reference>
-    <point num="left-v-rdiag-left-top"/>
-    <point num="right-v-ldiag-right-top"/>
-   </reference>
-   <point num="left-v-rdiag-right-top"/>
-   <point num="right-v-ldiag-left-top"/>
-  </interpolate>
-  <!--  <set-equal target="width" source="(left-v-rdiag-right-top - - right-v-ldiag-left-top) - 1.0p"/>
+    <interpolate>
+      <reference>
+        <point num="right-v-ldiag-left-bottom"/>
+        <point num="right-v-rdiag-right-bottom"/>
+      </reference>
+      <point num="right-v-ldiag-right-bottom"/>
+      <point num="right-v-rdiag-left-bottom"/>
+    </interpolate>
+    <interpolate>
+      <reference>
+        <point num="left-v-rdiag-left-top"/>
+        <point num="right-v-ldiag-right-top"/>
+      </reference>
+      <point num="left-v-rdiag-right-top"/>
+      <point num="right-v-ldiag-left-top"/>
+    </interpolate>
+    <!--  <set-equal target="width" source="(left-v-rdiag-right-top - - right-v-ldiag-left-top) - 1.0p"/>
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width / 2.0p">
     <point num="left-v-rdiag-right-top"/>
@@ -310,9 +305,7 @@
     <point num="right-v-ldiag-left-top"/>
    </shift-absolute>
   </if>-->
-  
-  
-  <!--  <call-macro name="make-diagonal">
+    <!--  <call-macro name="make-diagonal">
    <with-param name="first-diag-first-point" value="left-v-ldiag-left-top"/>
    <with-param name="first-diag-second-point" value="left-v-ldiag-left-bottom"/>
    <with-param name="second-diag-first-point" value="left-v-ldiag-right-top"/>
@@ -386,8 +379,7 @@
     <point num="right-v-ldiag-left-top"/>
    </interpolate>
   </with-freedom-vector>-->
-  
-  <!--  <with-projection-vector axis="y">
+    <!--  <with-projection-vector axis="y">
    <with-freedom-vector to-line="parallel">
     <line ref="right-v-ldiag-right"/>
     <align>
@@ -422,41 +414,40 @@
    </with-freedom-vector>
   </with-projection-vector>
   -->
-  
-  <if test="(not(is-glyph-grayscale) and pixels-per-em &gt; 9) or (is-glyph-grayscale and pixels-per-em &gt; 13)">
-   <!--    <set-vectors axis="x"/> -->
-   <set-equal target="width" source="(left-v-rdiag-right-top -- right-v-ldiag-left-top) - 0.8p"/>
-   <if test="width &lt; 0.0p">
-    <shift-absolute pixel-distance="width / 2.0p">
-     <point num="left-v-rdiag-right-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="width / -2.0p">
-     <point num="right-v-ldiag-left-top"/>
-    </shift-absolute>
-   </if>
-   <set-equal target="width" source="(left-v-ldiag-right-bottom -- left-v-rdiag-left-bottom) - 0.8p"/>
-   <if test="width &lt; 0.0p">
-    <shift-absolute pixel-distance="width / 2.0p">
-     <point num="left-v-ldiag-right-bottom"/>
-     <point num="right-v-ldiag-right-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="width / -2.0p">
-     <point num="left-v-rdiag-left-bottom"/>
-     <point num="right-v-rdiag-left-bottom"/>
-    </shift-absolute>
-   </if>
-  </if>
-  
-  <interpolate-untouched-points/>
- </glyph>
- 
- <glyph ps-name="w" init-graphics="yes">
-  <call-glyph ps-name="W">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="thin-diag" value="small-diag"/>
-   <with-param name="thick-diag" value="small--diag"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-  </call-glyph>
- </glyph>
+    <if test="(not(is-glyph-grayscale) and pixels-per-em &gt; 9) or (is-glyph-grayscale and pixels-per-em &gt; 13)">
+      <!--    <set-vectors axis="x"/> -->
+      <set-equal target="width" source="(left-v-rdiag-right-top -- right-v-ldiag-left-top) - 0.8p"/>
+      <if test="width &lt; 0.0p">
+        <shift-absolute pixel-distance="width / 2.0p">
+          <point num="left-v-rdiag-right-top"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="width / -2.0p">
+          <point num="right-v-ldiag-left-top"/>
+        </shift-absolute>
+      </if>
+      <set-equal target="width" source="(left-v-ldiag-right-bottom -- left-v-rdiag-left-bottom) - 0.8p"/>
+      <if test="width &lt; 0.0p">
+        <shift-absolute pixel-distance="width / 2.0p">
+          <point num="left-v-ldiag-right-bottom"/>
+          <point num="right-v-ldiag-right-bottom"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="width / -2.0p">
+          <point num="left-v-rdiag-left-bottom"/>
+          <point num="right-v-rdiag-left-bottom"/>
+        </shift-absolute>
+      </if>
+    </if>
+    <interpolate-untouched-points/>
+  </glyph>
+
+  <glyph ps-name="w" init-graphics="yes">
+    <call-glyph ps-name="W">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="small-x-height"/>
+      <with-param name="thin-diag" value="small-diag"/>
+      <with-param name="thick-diag" value="small--diag"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

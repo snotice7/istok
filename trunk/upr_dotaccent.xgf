@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="I" init-graphics="yes">
+ <glyph ps-name="dotaccent" init-graphics="yes">
   
   <!--
       
@@ -21,10 +21,7 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="lbearing" value="cap-i-lbearing"/>
+  <param name="vert-stem" value="small-vert-stem"/>
   
   <constant name="left-bottom" value="first-point"/>
   <constant name="left-top" value="left-bottom + vstem-vcount"/>
@@ -38,25 +35,32 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
   </compile-if>
-  <move distance="baseline">
+  <move>
    <point num="left-bottom"/>
    <align>
     <point num="right-bottom"/>
    </align>
+   <move distance="vert-stem" color="black">
+    <point num="left-top"/>
+    <align>
+     <point num="right-top"/>
+    </align>
+   </move>
   </move>
-  <move distance="x-height">
-   <point num="left-top"/>
-   <align>
-    <point num="right-top"/>
-   </align>
-  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="vgrayshift-">
+     <point num="left-bottom"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="vgrayshift">
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -64,14 +68,9 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="horizontal-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
   </compile-if>
-  <move distance="lbearing" color="white">
+  <move color="white">
    <reference>
     <point num="left-bearing"/>
    </reference>
@@ -89,16 +88,32 @@
     </move>
    </move>
   </move>
-  <compile-if test="smooth or slanted">
-   <compile-if test="slanted">
-    <set-projection-vector axis="x"/>
-   </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
    <move round="to-grid">
     <point num="right-bearing"/>
    </move>
   </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="left-bottom"/>
+     <point num="left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="right-top"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <interpolate-untouched-points/>
+ </glyph>
+ 
+ <glyph ps-name="dotaccent.cap" init-graphics="yes">
+  <call-glyph ps-name="dotaccent">
+   <with-param name="vert-stem" value="cap-vert-stem"/>
+  </call-glyph>
  </glyph>
  
 </xgridfit>

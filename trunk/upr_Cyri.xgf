@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<xgridfit>
-<!--Cyr i-->
-<glyph ps-name="afii10074" init-graphics="yes">
- 
- <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--Cyr i-->
+
+  <glyph ps-name="afii10074" init-graphics="yes">
+    <!--
      
       Copyright (C) 2009  Andrey V. Panov
      
@@ -21,14 +22,14 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
- 
-  <call-glyph ps-name="afii10026">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="diag" value="small-thindiag"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-   <with-param name="cyri-space" value="small-cyri-space"/>
-  </call-glyph>
- </glyph>
+    <call-glyph ps-name="afii10026">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="small-x-height"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="diag" value="small-thindiag"/>
+      <with-param name="lbearing" value="small-cyrn-lbearing"/>
+      <with-param name="cyri-space" value="small-cyri-space"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>

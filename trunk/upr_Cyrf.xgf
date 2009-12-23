@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<!--"Cyr f" -->
-<glyph ps-name="afii10086" init-graphics="yes">
- 
- <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--"Cyr f" -->
+
+  <glyph ps-name="afii10086" init-graphics="yes">
+    <!--
      
      Andrey V. Panov (C) 2008, 2009
      
@@ -20,187 +22,182 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
- 
- <constant name="larc-outer-left" value="0"/>
- <constant name="larc-outer-top" value="larc-outer-left + 3"/>
- <constant name="larc-upper-joint-top" value="larc-outer-top + 3"/>
- <constant name="vstem-left-top" value="larc-upper-joint-top + smooth-count + notch-count"/>
- <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
- <constant name="rarc-upper-joint-top" value="vstem-right-top + smooth-count + notch-count"/>
- <constant name="rarc-outer-top" value="rarc-upper-joint-top + 3"/>
- <constant name="rarc-outer-right" value="rarc-outer-top + 3"/>
- <constant name="rarc-outer-bottom" value="rarc-outer-right + 3"/>
- <constant name="rarc-lower-joint-bottom" value="rarc-outer-bottom + 3"/>
- <constant name="vstem-right-bottom" value="rarc-lower-joint-bottom + smooth-count + notch-count"/>
- <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
- <constant name="larc-lower-joint-bottom" value="vstem-left-bottom + smooth-count + notch-count"/>
- <constant name="larc-outer-bottom" value="larc-lower-joint-bottom + 3"/>
- <constant name="larc-inner-left" value="larc-outer-bottom + 3"/>
- <constant name="larc-inner-bottom" value="larc-inner-left + 3"/>
- <constant name="larc-lower-joint-top" value="larc-inner-bottom + 3"/>
- <constant name="larc-upper-joint-bottom" value="larc-lower-joint-top + 1"/>
- <constant name="larc-inner-top" value="larc-upper-joint-bottom + 3"/>
- <constant name="rarc-lower-joint-top" value="larc-inner-top + 3"/>
- <constant name="rarc-inner-bottom" value="rarc-lower-joint-top + 3"/>
- <constant name="rarc-inner-right" value="rarc-inner-bottom + 3"/>
- <constant name="rarc-inner-top" value="rarc-inner-right + 3"/>
- <constant name="rarc-upper-joint-bottom" value="rarc-inner-top + 3"/>
- <constant name="last" value="rarc-upper-joint-bottom"/>
- 
- <set-vectors axis="y"/>
- <compile-if test="smooth">
-  <if test="vertical-smoothing">
-   <set-round-state round="no"/>
-  </if>
- </compile-if>
- 
- <move distance="small-desc">
-  <point num="vstem-left-bottom"/>
-  <align>
-   <point num="vstem-right-bottom"/>
-  </align>
- </move>
- <move distance="small-o-baseline">
-  <point num="larc-outer-bottom"/>
-  <align>
-   <point num="rarc-outer-bottom"/>
-  </align>
-  <move distance="small-curve-hstem" color="black">
-   <point num="larc-inner-bottom"/>
-   <align>
-    <point num="rarc-inner-bottom"/>
-   </align>
-  </move>
- </move>
- <move>
-  <point num="larc-lower-joint-bottom"/>
-  <align>
-   <point num="rarc-lower-joint-bottom"/>
-  </align>
- </move>
- <move distance="small-o-height">
-  <point num="larc-outer-top"/>
-  <align>
-   <point num="rarc-outer-top"/>
-  </align>
-  <move distance="small-curve-hstem" color="black">
-   <point num="larc-inner-top"/>
-   <align>
-    <point num="rarc-inner-top"/>
-   </align>
-  </move>
-  <move>
-   <point num="larc-upper-joint-top"/>
-   <align>
-    <point num="rarc-upper-joint-top"/>
-   </align>
-  </move>
- </move>
- <move>
-  <point num="vstem-left-top"/>
-  <align>
-   <point num="vstem-right-top"/>
-  </align>
- </move>
- 
- 
- <set-vectors axis="x"/>
- <compile-if test="smooth">
-  <if test="vertical-smoothing">
-   <set-round-state round="to-grid"/>
-  </if>
- </compile-if>
- 
- <move min-distance="no" distance="small-o-lbearing" color="white">
-  <reference>
-   <point num="left-bearing"/>
-  </reference>
-  <point num="larc-outer-left"/>
-  <move distance="small-o-curve-stem" color="black">
-   <point num="larc-inner-left"/>
-   <move color="white">
-    <point num="vstem-left-top"/>
-    <align>
-     <point num="larc-upper-joint-top"/>
-     <point num="larc-upper-joint-bottom"/>
-     <point num="larc-lower-joint-top"/>
-     <point num="larc-lower-joint-bottom"/>
-     <point num="vstem-left-bottom"/>
-    </align>
-    <move distance="small-vert-stem" color="black">
-     <point num="vstem-right-top"/>
-     <align>
-      <point num="rarc-upper-joint-top"/>
-      <point num="rarc-upper-joint-bottom"/>
-      <point num="rarc-lower-joint-top"/>
-      <point num="rarc-lower-joint-bottom"/>
-      <point num="vstem-right-bottom"/>
-     </align>
-     <move pixel-distance="larc-inner-left -- vstem-left-top" color="white">
-      <point num="rarc-inner-right"/>
-      <move distance="small-o-curve-stem" color="black">
-       <point num="rarc-outer-right"/>
-      </move>
-     </move>
+    <constant name="larc-outer-left" value="0"/>
+    <constant name="larc-outer-top" value="larc-outer-left + 3"/>
+    <constant name="larc-upper-joint-top" value="larc-outer-top + 3"/>
+    <constant name="vstem-left-top" value="larc-upper-joint-top + smooth-count + notch-count"/>
+    <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
+    <constant name="rarc-upper-joint-top" value="vstem-right-top + smooth-count + notch-count"/>
+    <constant name="rarc-outer-top" value="rarc-upper-joint-top + 3"/>
+    <constant name="rarc-outer-right" value="rarc-outer-top + 3"/>
+    <constant name="rarc-outer-bottom" value="rarc-outer-right + 3"/>
+    <constant name="rarc-lower-joint-bottom" value="rarc-outer-bottom + 3"/>
+    <constant name="vstem-right-bottom" value="rarc-lower-joint-bottom + smooth-count + notch-count"/>
+    <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+    <constant name="larc-lower-joint-bottom" value="vstem-left-bottom + smooth-count + notch-count"/>
+    <constant name="larc-outer-bottom" value="larc-lower-joint-bottom + 3"/>
+    <constant name="larc-inner-left" value="larc-outer-bottom + 3"/>
+    <constant name="larc-inner-bottom" value="larc-inner-left + 3"/>
+    <constant name="larc-lower-joint-top" value="larc-inner-bottom + 3"/>
+    <constant name="larc-upper-joint-bottom" value="larc-lower-joint-top + 1"/>
+    <constant name="larc-inner-top" value="larc-upper-joint-bottom + 3"/>
+    <constant name="rarc-lower-joint-top" value="larc-inner-top + 3"/>
+    <constant name="rarc-inner-bottom" value="rarc-lower-joint-top + 3"/>
+    <constant name="rarc-inner-right" value="rarc-inner-bottom + 3"/>
+    <constant name="rarc-inner-top" value="rarc-inner-right + 3"/>
+    <constant name="rarc-upper-joint-bottom" value="rarc-inner-top + 3"/>
+    <constant name="last" value="rarc-upper-joint-bottom"/>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+      <if test="vertical-smoothing">
+        <set-round-state round="no"/>
+      </if>
+    </compile-if>
+    <move distance="small-desc">
+      <point num="vstem-left-bottom"/>
+      <align>
+        <point num="vstem-right-bottom"/>
+      </align>
     </move>
-   </move>
-  </move>
- </move>
- <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/> <!-- - rbearing-->
- <if test="width &lt; 0.0p">
-  <if test="odd((larc-outer-left -- larc-lower-joint-bottom) + (rarc-lower-joint-bottom -- rarc-outer-right) + width)">
-   <set-equal target="width" source="width - 1.0p"/>
-  </if>
-  <shift-absolute pixel-distance="width">
-   <point num="rarc-inner-right"/>
-   <point num="rarc-outer-right"/>
-  </shift-absolute>
-  <shift-absolute pixel-distance="width / 2.0">
-   <point num="vstem-left-top"/>
-   <point num="larc-upper-joint-top"/>
-   <point num="larc-upper-joint-bottom"/>
-   <point num="larc-lower-joint-top"/>
-   <point num="larc-lower-joint-bottom"/>
-   <point num="vstem-left-bottom"/>
-   <point num="vstem-right-top"/>
-   <point num="rarc-upper-joint-top"/>
-   <point num="rarc-upper-joint-bottom"/>
-   <point num="rarc-lower-joint-top"/>
-   <point num="rarc-lower-joint-bottom"/>
-   <point num="vstem-right-bottom"/>
-  </shift-absolute>
- </if>
- <compile-if test="smooth">
-  <if test="horizontal-smoothing">
-   <shift-absolute pixel-distance="hgrayshift-">
-    <point num="vstem-left-bottom"/>
-    <point num="larc-upper-joint-top"/>
-    <point num="larc-upper-joint-bottom"/>
-    <point num="larc-lower-joint-top"/>
-    <point num="larc-lower-joint-bottom"/>
-    <point num="vstem-left-top"/>
-    <point num="larc-outer-left"/>
-    <point num="rarc-inner-right"/>
-   </shift-absolute>
-   <shift-absolute pixel-distance="hgrayshift">
-    <point num="vstem-right-top"/>
-    <point num="rarc-upper-joint-top"/>
-    <point num="rarc-upper-joint-bottom"/>
-    <point num="rarc-lower-joint-top"/>
-    <point num="rarc-lower-joint-bottom"/>
-    <point num="vstem-right-bottom"/>
-    <point num="rarc-outer-right"/>
-    <point num="larc-inner-left"/>
-   </shift-absolute>
-  </if>
- </compile-if>
- <move round="to-grid" min-distance="no" color="white">
-  <reference>
-   <point num="rarc-outer-right"/>
-  </reference>
-  <point num="right-bearing"/>
- </move>
- 
- <interpolate-untouched-points/>
- 
-</glyph>
+    <move distance="small-o-baseline">
+      <point num="larc-outer-bottom"/>
+      <align>
+        <point num="rarc-outer-bottom"/>
+      </align>
+      <move distance="small-curve-hstem" color="black">
+        <point num="larc-inner-bottom"/>
+        <align>
+          <point num="rarc-inner-bottom"/>
+        </align>
+      </move>
+    </move>
+    <move>
+      <point num="larc-lower-joint-bottom"/>
+      <align>
+        <point num="rarc-lower-joint-bottom"/>
+      </align>
+    </move>
+    <move distance="small-o-height">
+      <point num="larc-outer-top"/>
+      <align>
+        <point num="rarc-outer-top"/>
+      </align>
+      <move distance="small-curve-hstem" color="black">
+        <point num="larc-inner-top"/>
+        <align>
+          <point num="rarc-inner-top"/>
+        </align>
+      </move>
+      <move>
+        <point num="larc-upper-joint-top"/>
+        <align>
+          <point num="rarc-upper-joint-top"/>
+        </align>
+      </move>
+    </move>
+    <move>
+      <point num="vstem-left-top"/>
+      <align>
+        <point num="vstem-right-top"/>
+      </align>
+    </move>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+      <if test="vertical-smoothing">
+        <set-round-state round="to-grid"/>
+      </if>
+    </compile-if>
+    <move min-distance="no" distance="small-o-lbearing" color="white">
+      <reference>
+        <point num="left-bearing"/>
+      </reference>
+      <point num="larc-outer-left"/>
+      <move distance="small-o-curve-stem" color="black">
+        <point num="larc-inner-left"/>
+        <move color="white">
+          <point num="vstem-left-top"/>
+          <align>
+            <point num="larc-upper-joint-top"/>
+            <point num="larc-upper-joint-bottom"/>
+            <point num="larc-lower-joint-top"/>
+            <point num="larc-lower-joint-bottom"/>
+            <point num="vstem-left-bottom"/>
+          </align>
+          <move distance="small-vert-stem" color="black">
+            <point num="vstem-right-top"/>
+            <align>
+              <point num="rarc-upper-joint-top"/>
+              <point num="rarc-upper-joint-bottom"/>
+              <point num="rarc-lower-joint-top"/>
+              <point num="rarc-lower-joint-bottom"/>
+              <point num="vstem-right-bottom"/>
+            </align>
+            <move pixel-distance="larc-inner-left -- vstem-left-top" color="white">
+              <point num="rarc-inner-right"/>
+              <move distance="small-o-curve-stem" color="black">
+                <point num="rarc-outer-right"/>
+              </move>
+            </move>
+          </move>
+        </move>
+      </move>
+    </move>
+    <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/>
+    <!-- - rbearing-->
+    <if test="width &lt; 0.0p">
+      <if test="odd((larc-outer-left -- larc-lower-joint-bottom) + (rarc-lower-joint-bottom -- rarc-outer-right) + width)">
+        <set-equal target="width" source="width - 1.0p"/>
+      </if>
+      <shift-absolute pixel-distance="width">
+        <point num="rarc-inner-right"/>
+        <point num="rarc-outer-right"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="width / 2.0">
+        <point num="vstem-left-top"/>
+        <point num="larc-upper-joint-top"/>
+        <point num="larc-upper-joint-bottom"/>
+        <point num="larc-lower-joint-top"/>
+        <point num="larc-lower-joint-bottom"/>
+        <point num="vstem-left-bottom"/>
+        <point num="vstem-right-top"/>
+        <point num="rarc-upper-joint-top"/>
+        <point num="rarc-upper-joint-bottom"/>
+        <point num="rarc-lower-joint-top"/>
+        <point num="rarc-lower-joint-bottom"/>
+        <point num="vstem-right-bottom"/>
+      </shift-absolute>
+    </if>
+    <compile-if test="smooth">
+      <if test="horizontal-smoothing">
+        <shift-absolute pixel-distance="hgrayshift-">
+          <point num="vstem-left-bottom"/>
+          <point num="larc-upper-joint-top"/>
+          <point num="larc-upper-joint-bottom"/>
+          <point num="larc-lower-joint-top"/>
+          <point num="larc-lower-joint-bottom"/>
+          <point num="vstem-left-top"/>
+          <point num="larc-outer-left"/>
+          <point num="rarc-inner-right"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="hgrayshift">
+          <point num="vstem-right-top"/>
+          <point num="rarc-upper-joint-top"/>
+          <point num="rarc-upper-joint-bottom"/>
+          <point num="rarc-lower-joint-top"/>
+          <point num="rarc-lower-joint-bottom"/>
+          <point num="vstem-right-bottom"/>
+          <point num="rarc-outer-right"/>
+          <point num="larc-inner-left"/>
+        </shift-absolute>
+      </if>
+    </compile-if>
+    <move round="to-grid" min-distance="no" color="white">
+      <reference>
+        <point num="rarc-outer-right"/>
+      </reference>
+      <point num="right-bearing"/>
+    </move>
+    <interpolate-untouched-points/>
+  </glyph>
+
+</xgridfit>

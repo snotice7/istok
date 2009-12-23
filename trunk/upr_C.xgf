@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
-<xgridfit>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--C, С-->
  <glyph ps-name="C" init-graphics="yes">
-  
   <!--
       Copyright (C) 2007, 2008, 2009  Andrey V. Panov
       
@@ -20,7 +19,6 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
   <param name="baseline" value="cap-o-baseline"/>
   <param name="height" value="cap-o-height"/>
   <param name="horiz-stem" value="cap-curve-hstem"/>
@@ -47,7 +45,6 @@
     <set-round-state round="no"/>
    </if>
   </compile-if>
-  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -73,13 +70,14 @@
    </move>
   </move>
   <!-- - rbearing-->
-  <!--  <set-equal target="width" source="(lower-end-bottom - - right-bearing)"/> 
+  <!--  <set-equal target="width" source="(lower-end-bottom - - right-bearing)"/>
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="lower-end-bottom"/>
    </shift-absolute>
   </if>-->
-  <interpolate round="yes"> <!---->
+  <interpolate round="yes">
+   <!---->
    <reference>
     <point num="outer-left"/>
     <point num="lower-end-bottom"/>
@@ -122,7 +120,6 @@
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>
-  
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="horiz-stem" color="black">
@@ -173,12 +170,11 @@
     </interpolate>
    </else>
   </if>
-  <interpolate-untouched-points/>
   
+  <interpolate-untouched-points/>
  </glyph>
  
  <glyph ps-name="c" init-graphics="yes">
-  
   <call-glyph ps-name="C">
    <with-param name="baseline" value="small-o-baseline"/>
    <with-param name="height" value="small-o-height"/>

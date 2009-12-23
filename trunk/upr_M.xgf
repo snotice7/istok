@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<xgridfit>
- <!--M, Cyr M-->
- <glyph ps-name="M" init-graphics="yes">
-  
-  <!--
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+
+  <!--M, Cyr M-->
+
+  <glyph ps-name="M" init-graphics="yes">
+    <!--
       
       Andrey V. Panov (C) 2007, 2008, 2009
       
@@ -21,167 +22,166 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-  
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="thin-diag" value="cap--thindiag"/>
-  <param name="thick-diag" value="cap-thindiag"/>
-  <param name="lbearing" value="cap-h-lbearing"/>
-  <constant name="lstem-left-bottom" value="first-point"/>
-  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
-  <constant name="ldiag-right-top" value="lstem-left-top + vstem-hcount"/>
-  <constant name="diag-intersect" value="ldiag-right-top + diag--halfnotch-count"/>
-  <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count"/>
-  <constant name="rstem-right-top" value="rdiag-left-top + vstem-hcount"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
-  <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
-  <constant name="rstem-left-top" value="rstem-left-bottom + notch-count"/>
-  <constant name="rdiag-right-top" value="rstem-left-bottom + smooth-count + notch-count"/>
-  <constant name="rdiag-right-bottom" value="rdiag-right-top + smooth-count"/>
-  <constant name="ldiag-left-bottom" value="rdiag-right-bottom + vstem-hcount"/>
-  <constant name="ldiag-left-top" value="ldiag-left-bottom + smooth-count"/>
-  <constant name="lstem-right-top" value="ldiag-left-top + notch-count"/>
-  <constant name="lstem-right-bottom" value="ldiag-left-top + smooth-count + notch-count"/>
-  <constant name="last" value="lstem-right-bottom + last-count"/>
-  <line name="ldiag-left">
-   <point num="ldiag-left-top"/>
-   <point num="ldiag-left-bottom"/>
-  </line>
-  <line name="ldiag-right">
-   <point num="ldiag-right-top"/>
-   <point num="diag-intersect"/>
-  </line>
-  <line name="rdiag-left">
-   <point num="diag-intersect + 1"/>
-   <point num="rdiag-left-top"/>
-  </line>
-  <line name="rdiag-right">
-   <point num="rdiag-right-bottom"/>
-   <point num="rdiag-right-top"/>
-  </line>
-  
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="horizontal-smoothing">
+    <param name="baseline" value="cap-x-baseline"/>
+    <param name="x-height" value="cap-x-height"/>
+    <param name="vert-stem" value="cap-vert-stem"/>
+    <param name="thin-diag" value="cap--thindiag"/>
+    <param name="thick-diag" value="cap-thindiag"/>
+    <param name="lbearing" value="cap-h-lbearing"/>
+    <constant name="lstem-left-bottom" value="first-point"/>
+    <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+    <constant name="ldiag-right-top" value="lstem-left-top + vstem-hcount"/>
+    <constant name="diag-intersect" value="ldiag-right-top + diag--halfnotch-count"/>
+    <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count"/>
+    <constant name="rstem-right-top" value="rdiag-left-top + vstem-hcount"/>
+    <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
+    <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
+    <constant name="rstem-left-top" value="rstem-left-bottom + notch-count"/>
+    <constant name="rdiag-right-top" value="rstem-left-bottom + smooth-count + notch-count"/>
+    <constant name="rdiag-right-bottom" value="rdiag-right-top + smooth-count"/>
+    <constant name="ldiag-left-bottom" value="rdiag-right-bottom + vstem-hcount"/>
+    <constant name="ldiag-left-top" value="ldiag-left-bottom + smooth-count"/>
+    <constant name="lstem-right-top" value="ldiag-left-top + notch-count"/>
+    <constant name="lstem-right-bottom" value="ldiag-left-top + smooth-count + notch-count"/>
+    <constant name="last" value="lstem-right-bottom + last-count"/>
+    <line name="ldiag-left">
+      <point num="ldiag-left-top"/>
+      <point num="ldiag-left-bottom"/>
+    </line>
+    <line name="ldiag-right">
+      <point num="ldiag-right-top"/>
+      <point num="diag-intersect"/>
+    </line>
+    <line name="rdiag-left">
+      <point num="diag-intersect + 1"/>
+      <point num="rdiag-left-top"/>
+    </line>
+    <line name="rdiag-right">
+      <point num="rdiag-right-bottom"/>
+      <point num="rdiag-right-top"/>
+    </line>
+    <compile-if test="slanted">
+      <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+      <set-freedom-vector axis="x"/>
       <set-round-state round="no"/>
-     </if>
+      <else>
+        <set-vectors axis="x"/>
+        <compile-if test="smooth">
+          <if test="horizontal-smoothing">
+            <set-round-state round="no"/>
+          </if>
+        </compile-if>
+      </else>
     </compile-if>
-   </else>
-  </compile-if>
-  
-  <move distance="lbearing" color="white">
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="lstem-left-top"/>
-   </align>
-   <move distance="vert-stem" color="black">
-    <point num="lstem-right-bottom"/>
-    <align>
-     <point num="lstem-right-top"/>
-    </align>
-   </move>
-   <move color="black" compile-if="(smooth = 0) and (slanted = 0)">
-    <point num="rstem-right-bottom"/>
-    <align>
-     <point num="rstem-right-top"/>
-    </align>
-    <move distance="vert-stem" color="black">
-     <point num="rstem-left-bottom"/>
-     <align>
-      <point num="rstem-left-top"/>
-     </align>
+    <move distance="lbearing" color="white">
+      <reference>
+        <point num="left-bearing"/>
+      </reference>
+      <point num="lstem-left-bottom"/>
+      <align>
+        <point num="lstem-left-top"/>
+      </align>
+      <move distance="vert-stem" color="black">
+        <point num="lstem-right-bottom"/>
+        <align>
+          <point num="lstem-right-top"/>
+        </align>
+      </move>
+      <move color="black" compile-if="(smooth = 0) and (slanted = 0)">
+        <point num="rstem-right-bottom"/>
+        <align>
+          <point num="rstem-right-top"/>
+        </align>
+        <move distance="vert-stem" color="black">
+          <point num="rstem-left-bottom"/>
+          <align>
+            <point num="rstem-left-top"/>
+          </align>
+        </move>
+        <move min-distance="no">
+          <point num="right-bearing"/>
+        </move>
+      </move>
+      <move color="black" compile-if="smooth or slanted">
+        <point num="rstem-right-bottom"/>
+        <move color="white" min-distance="no">
+          <point num="right-bearing"/>
+        </move>
+      </move>
     </move>
-    <move min-distance="no">
-     <point num="right-bearing"/>
-    </move>
-   </move>
-   <move color="black" compile-if="smooth or slanted">
-    <point num="rstem-right-bottom"/>
-    <move color="white" min-distance="no">
-     <point num="right-bearing"/>
-    </move>
-   </move>
-  </move>
-  <compile-if test="smooth or slanted">
-   <compile-if test="slanted">
-    <with-projection-vector axis="x">
-     <move round="to-grid">
-      <point num="rstem-right-bottom"/>
-     </move>
-    </with-projection-vector>
-   </compile-if>
-   <compile-if test="smooth">
-    <if test="horizontal-smoothing">
-     <move round="to-grid">
-      <point num="rstem-right-bottom"/>
-     </move>
-     <shift-absolute pixel-distance="hgrayshift">
-      <point num="rstem-right-bottom"/>
-     </shift-absolute>
-    </if>
-   </compile-if>
-   <align>
-    <reference>
-     <point num="rstem-right-bottom"/>
-    </reference>
-    <point num="rstem-right-top"/>
-   </align>
-   <move distance="vert-stem" color="black">
-    <reference>
-     <point num="rstem-right-bottom"/>
-    </reference>
-    <point num="rstem-left-bottom"/>
-    <align>
-     <point num="rstem-left-top"/>
-    </align>
-   </move>
-  </compile-if>
-  <!-- <compile-if test="smooth">
+    <compile-if test="smooth or slanted">
+      <compile-if test="slanted">
+        <with-projection-vector axis="x">
+          <move round="to-grid">
+            <point num="rstem-right-bottom"/>
+          </move>
+        </with-projection-vector>
+      </compile-if>
+      <compile-if test="smooth">
+        <if test="horizontal-smoothing">
+          <move round="to-grid">
+            <point num="rstem-right-bottom"/>
+          </move>
+          <shift-absolute pixel-distance="hgrayshift">
+            <point num="rstem-right-bottom"/>
+          </shift-absolute>
+        </if>
+      </compile-if>
+      <align>
+        <reference>
+          <point num="rstem-right-bottom"/>
+        </reference>
+        <point num="rstem-right-top"/>
+      </align>
+      <move distance="vert-stem" color="black">
+        <reference>
+          <point num="rstem-right-bottom"/>
+        </reference>
+        <point num="rstem-left-bottom"/>
+        <align>
+          <point num="rstem-left-top"/>
+        </align>
+      </move>
+    </compile-if>
+    <!-- <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>-->
-  <interpolate> <!--round="yes"-->
-   <reference>
-    <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-   </reference>
-   <point num="diag-intersect"/>
-   <point num="diag-intersect + 1"/> <!--for two points at diagonal intersction-->
-   <point num="ldiag-right-top"/>
-   <point num="rdiag-left-top"/>
-  </interpolate>
-  <compile-if test="slanted = 0">
-   <if test="pixels-per-em &lt; 21">
-    <shift-absolute pixel-distance="-0.1p">
-     <point num="diag-intersect"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="0.1p">
-     <point num="diag-intersect + 1"/>
-    </shift-absolute>
-   </if>
-   <else>
-    <set-projection-vector axis="x"/>
-    <mdap round="to-grid">
-     <point num="right-bearing"/>
-    </mdap>
-   </else>
-  </compile-if>
-  <!-- <compile-if test="slanted = 0">
+    <interpolate>
+      <!--round="yes"-->
+      <reference>
+        <point num="lstem-right-bottom"/>
+        <point num="rstem-left-bottom"/>
+      </reference>
+      <point num="diag-intersect"/>
+      <point num="diag-intersect + 1"/>
+      <!--for two points at diagonal intersction-->
+      <point num="ldiag-right-top"/>
+      <point num="rdiag-left-top"/>
+    </interpolate>
+    <compile-if test="slanted = 0">
+      <if test="pixels-per-em &lt; 21">
+        <shift-absolute pixel-distance="-0.1p">
+          <point num="diag-intersect"/>
+        </shift-absolute>
+        <shift-absolute pixel-distance="0.1p">
+          <point num="diag-intersect + 1"/>
+        </shift-absolute>
+      </if>
+      <else>
+        <set-projection-vector axis="x"/>
+        <mdap round="to-grid">
+          <point num="right-bearing"/>
+        </mdap>
+      </else>
+    </compile-if>
+    <!-- <compile-if test="slanted = 0">
    <mdap round="to-double-grid">
     <point num="diag-intersect"/>
    </mdap>
   </compile-if>-->
-  <!-- <if test="pixels-per-em &lt; cap-thick-eq-thin">
+    <!-- <if test="pixels-per-em &lt; cap-thick-eq-thin">
    <align>
     <reference>
      <point num="lstem-right-bottom"/>
@@ -217,131 +217,125 @@
     </compile-if>
    </else>
   </if>-->
-  
-  <compile-if test="slanted">
-   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-   <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
-   <else>
-    <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
+    <compile-if test="slanted">
+      <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+      <set-projection-vector axis="y"/>
+      <set-round-state round="to-grid"/>
+      <else>
+        <set-vectors axis="y"/>
+        <compile-if test="smooth">
+          <if test="vertical-smoothing">
+            <set-round-state round="no"/>
+          </if>
+        </compile-if>
+      </else>
     </compile-if>
-   </else>
-  </compile-if>
-  
-  <move distance="zero">
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-right-bottom"/>
-    <point num="ldiag-left-bottom"/>
-    <point num="rdiag-right-bottom"/>
-   </align>
-  </move>
-  <move distance="x-height">
-   <point num="lstem-left-top"/>
-   <align>
-    <point num="ldiag-right-top"/>
-    <point num="rdiag-left-top"/>
-    <point num="rstem-right-top"/>
-   </align>
-  </move>
-  <interpolate round="yes">
-   <reference>
-    <point num="lstem-left-bottom"/>
-    <point num="lstem-left-top"/>
-   </reference>
-   <point num="diag-intersect"/>
-   <point num="diag-intersect + 1"/>
-  </interpolate>
-  
-  <with-round-state round="no">
-   <with-minimum-distance value="diag-min-thick">
-    <diagonal-stem distance="thin-diag" save-vectors="yes" color="black">
-     <line ref="ldiag-right"/>
-     <line ref="ldiag-left"/>
-    </diagonal-stem>
-    <diagonal-stem distance="thick-diag" save-vectors="yes" color="black">
-     <line ref="rdiag-left"/>
-     <line ref="rdiag-right"/>
-    </diagonal-stem>
-   </with-minimum-distance>
-  </with-round-state>
-  
-  <with-projection-vector axis="y">
-   <with-freedom-vector to-line="parallel">
-    <line ref="ldiag-left"/>
-    <align>
-     <reference>
+    <move distance="zero">
       <point num="lstem-left-bottom"/>
-     </reference>
-     <point num="ldiag-left-bottom"/>
-    </align>
-    <interpolate>
-     <reference>
-      <point num="lstem-left-bottom"/>
+      <align>
+        <point num="lstem-right-bottom"/>
+        <point num="rstem-left-bottom"/>
+        <point num="rstem-right-bottom"/>
+        <point num="ldiag-left-bottom"/>
+        <point num="rdiag-right-bottom"/>
+      </align>
+    </move>
+    <move distance="x-height">
       <point num="lstem-left-top"/>
-     </reference>
-     <point num="ldiag-left-top"/>
+      <align>
+        <point num="ldiag-right-top"/>
+        <point num="rdiag-left-top"/>
+        <point num="rstem-right-top"/>
+      </align>
+    </move>
+    <interpolate round="yes">
+      <reference>
+        <point num="lstem-left-bottom"/>
+        <point num="lstem-left-top"/>
+      </reference>
+      <point num="diag-intersect"/>
+      <point num="diag-intersect + 1"/>
     </interpolate>
-   </with-freedom-vector>
-   <with-freedom-vector to-line="parallel">
-    <line ref="rdiag-right"/>
-    <align>
-     <reference>
-      <point num="lstem-left-bottom"/>
-     </reference>
-     <point num="rdiag-right-bottom"/>
-    </align>
-    <interpolate>
-     <reference>
-      <point num="lstem-left-bottom"/>
-      <point num="lstem-left-top"/>
-     </reference>
-     <point num="rdiag-right-top"/>
-    </interpolate>
-   </with-freedom-vector>
-  </with-projection-vector>
-  
-  <set-projection-vector axis="x"/>
-  <if test="coord(ldiag-left-bottom) &gt; coord(rdiag-right-bottom)">
-   <move-point-to-intersection>
-    <point num="ldiag-left-bottom"/>
-    <line ref="ldiag-left"/>
-    <line ref="rdiag-right"/>
-   </move-point-to-intersection>
-   <move-point-to-intersection>
-    <point num="rdiag-right-bottom"/>
-    <line ref="ldiag-left"/>
-    <line ref="rdiag-right"/>
-   </move-point-to-intersection>
-  </if>
-  <!--for two points at diagonal intersction-->
-  <!-- <set-freedom-vector axis="x"/>
+    <with-round-state round="no">
+      <with-minimum-distance value="diag-min-thick">
+        <diagonal-stem distance="thin-diag" save-vectors="yes" color="black">
+          <line ref="ldiag-right"/>
+          <line ref="ldiag-left"/>
+        </diagonal-stem>
+        <diagonal-stem distance="thick-diag" save-vectors="yes" color="black">
+          <line ref="rdiag-left"/>
+          <line ref="rdiag-right"/>
+        </diagonal-stem>
+      </with-minimum-distance>
+    </with-round-state>
+    <with-projection-vector axis="y">
+      <with-freedom-vector to-line="parallel">
+        <line ref="ldiag-left"/>
+        <align>
+          <reference>
+            <point num="lstem-left-bottom"/>
+          </reference>
+          <point num="ldiag-left-bottom"/>
+        </align>
+        <interpolate>
+          <reference>
+            <point num="lstem-left-bottom"/>
+            <point num="lstem-left-top"/>
+          </reference>
+          <point num="ldiag-left-top"/>
+        </interpolate>
+      </with-freedom-vector>
+      <with-freedom-vector to-line="parallel">
+        <line ref="rdiag-right"/>
+        <align>
+          <reference>
+            <point num="lstem-left-bottom"/>
+          </reference>
+          <point num="rdiag-right-bottom"/>
+        </align>
+        <interpolate>
+          <reference>
+            <point num="lstem-left-bottom"/>
+            <point num="lstem-left-top"/>
+          </reference>
+          <point num="rdiag-right-top"/>
+        </interpolate>
+      </with-freedom-vector>
+    </with-projection-vector>
+    <set-projection-vector axis="x"/>
+    <if test="coord(ldiag-left-bottom) &gt; coord(rdiag-right-bottom)">
+      <move-point-to-intersection>
+        <point num="ldiag-left-bottom"/>
+        <line ref="ldiag-left"/>
+        <line ref="rdiag-right"/>
+      </move-point-to-intersection>
+      <move-point-to-intersection>
+        <point num="rdiag-right-bottom"/>
+        <line ref="ldiag-left"/>
+        <line ref="rdiag-right"/>
+      </move-point-to-intersection>
+    </if>
+    <!--for two points at diagonal intersction-->
+    <!-- <set-freedom-vector axis="x"/>
   <compile-if test="slanted = 0">
    <shift-absolute pixel-distance="((diag-intersect + 1) - - - diag-intersect) * 0.5p">
     <point num="diag-intersect"/>
    </shift-absolute>
   </compile-if>-->
-  
-  <interpolate-untouched-points/>
- </glyph><!--Cyr M-->
- 
- <!--Cyr m-->
- <glyph ps-name="afii10078" init-graphics="yes">
-  
-  <call-glyph ps-name="M">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="thin-diag" value="small-thindiag"/>
-   <with-param name="thick-diag" value="small--thindiag"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-  </call-glyph>
- </glyph>
- 
+    <interpolate-untouched-points/>
+  </glyph>
+  <!--Cyr M-->
+  <!--Cyr m-->
+
+  <glyph ps-name="afii10078" init-graphics="yes">
+    <call-glyph ps-name="M">
+      <with-param name="baseline" value="small-x-baseline"/>
+      <with-param name="x-height" value="small-x-height"/>
+      <with-param name="vert-stem" value="small-vert-stem"/>
+      <with-param name="thin-diag" value="small-thindiag"/>
+      <with-param name="thick-diag" value="small--thindiag"/>
+      <with-param name="lbearing" value="small-cyrn-lbearing"/>
+    </call-glyph>
+  </glyph>
+
 </xgridfit>
