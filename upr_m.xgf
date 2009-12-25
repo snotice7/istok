@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--n-->
- <glyph ps-name="n" init-graphics="yes">
-
+ <glyph ps-name="m" init-graphics="yes">
+  
   <!--
       
       Andrey V. Panov (C) 2008, 2009
@@ -21,28 +20,35 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-
+  
   <param name="baseline" value="small-x-baseline"/>
   <param name="lstem-height" value="small-x-height"/>
   <param name="o-height" value="small-o-height"/>
   <param name="vert-stem" value="small-vert-stem"/>
   <param name="curve-hstem" value="small-curve-hstem"/>
   <param name="lbearing" value="small-cyrn-lbearing"/>
-  <param name="space" value="small-cyrn-space"/>
+  <param name="space" value="small-m-inner-space"/>
   <param name="notch" value="cog-count"/>
   
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
   <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
-  <constant name="joint-top" value="lstem-right-top + smooth-count + notch"/>
-  <constant name="arc-top" value="joint-top + 3"/>
-  <constant name="rstem-right-top" value="arc-top + 3"/>
+  <constant name="ljoint-top" value="lstem-right-top + smooth-count + notch"/>
+  <constant name="larc-top" value="ljoint-top + 3"/>
+  <constant name="rjoint-top" value="larc-top + 3 + cog-count"/>
+  <constant name="rarc-top" value="rjoint-top + 3"/>
+  <constant name="rstem-right-top" value="rarc-top + 3"/>
   <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
   <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
   <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
-  <constant name="arc-bottom" value="rstem-left-top + 3"/>
-  <constant name="joint-bottom" value="arc-bottom + 3"/>
-  <constant name="lstem-right-bottom" value="joint-bottom + smooth-count"/>
+  <constant name="rarc-bottom" value="rstem-left-top + 3"/>
+  <constant name="rjoint-bottom" value="rarc-bottom + 3"/>
+  <constant name="mstem-right-bottom" value="rjoint-bottom + smooth-count"/>
+  <constant name="mstem-left-bottom" value="mstem-right-bottom + vstem-hcount"/>
+  <constant name="mstem-left-top" value="mstem-left-bottom + smooth-count"/>
+  <constant name="larc-bottom" value="mstem-left-top + 3"/>
+  <constant name="ljoint-bottom" value="larc-bottom + 3"/>
+  <constant name="lstem-right-bottom" value="ljoint-bottom + smooth-count"/>
   <constant name="last" value="lstem-right-bottom + last-count"/>
   
   <compile-if test="slanted">
@@ -58,11 +64,13 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
     <point num="lstem-right-bottom"/>
+    <point num="mstem-left-bottom"/>
+    <point num="mstem-right-bottom"/>
     <point num="rstem-left-bottom"/>
     <point num="rstem-right-bottom"/>
    </align>
@@ -74,14 +82,26 @@
    </align>
   </move>
   <move distance="o-height">
-   <point num="arc-top"/>
+   <point num="larc-top"/>
+   <align>
+    <point num="rarc-top"/>
+   </align>
    <move distance="curve-hstem" color="black">
-    <point num="arc-bottom"/>
+    <point num="larc-bottom"/>
+    <align>
+     <point num="rarc-bottom"/>
+    </align>
    </move>
    <move min-distance="no">
-    <point num="joint-top"/>
+    <point num="ljoint-top"/>
+    <align>
+     <point num="rjoint-top"/>
+    </align>
     <move color="black">
-     <point num="joint-bottom"/>
+     <point num="ljoint-bottom"/>
+     <align>
+      <point num="rjoint-bottom"/>
+     </align>
     </move>
    </move>
   </move>
@@ -99,6 +119,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -110,24 +131,39 @@
    <move distance="vert-stem" color="black">
     <point num="lstem-right-top"/>
     <align>
-     <point num="joint-top"/>
-     <point num="joint-bottom"/>
+     <point num="ljoint-top"/>
+     <point num="ljoint-bottom"/>
      <point num="lstem-right-bottom"/>
     </align>
    </move>
-   <move distance="space" color="black">
-    <point num="rstem-right-top"/>
+   <move distance="space">
+    <point num="mstem-left-bottom"/>
     <align>
-     <point num="rstem-right-bottom"/>
+     <point num="mstem-left-top"/>
     </align>
     <move distance="vert-stem" color="black">
+     <point num="mstem-right-bottom"/>
+     <align>
+      <point num="rjoint-bottom"/>
+     </align>
+     <interpolate>
+      <point num="rjoint-top"/>
+     </interpolate>
+    </move>
+    <move distance="space">
      <point num="rstem-left-bottom"/>
      <align>
       <point num="rstem-left-top"/>
      </align>
-    </move>
-    <move min-distance="no">
-     <point num="right-bearing"/>
+     <move distance="small-vert-stem" color="black">
+      <point num="rstem-right-top"/>
+      <align>
+       <point num="rstem-right-bottom"/>
+      </align>
+      <move min-distance="no">
+       <point num="right-bearing"/>
+      </move>
+     </move>
     </move>
    </move>
   </move>
