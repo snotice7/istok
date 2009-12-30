@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="F" init-graphics="yes">
+  
+  <!--
+      
+      Andrey V. Panov (C) 2008, 2009
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="lbearing" value="cap-h-lbearing"/>
+  
+  <constant name="left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-bottom + vstem-vcount"/>
+  <constant name="uhstem-right-top" value="left-top + hstem-hcount"/>
+  <constant name="uhstem-right-bottom" value="uhstem-right-top + hstem-vcount"/>
+  <constant name="uhstem-left-bottom" value="uhstem-right-bottom + smooth-count"/>
+  <constant name="mhstem-left-top" value="uhstem-left-bottom + 1"/>
+  <constant name="mhstem-right-top" value="mhstem-left-top + smooth-count"/>
+  <constant name="mhstem-right-bottom" value="mhstem-right-top + hstem-vcount"/>
+  <constant name="mhstem-left-bottom" value="mhstem-right-bottom + smooth-count"/>
+  <constant name="right-bottom" value="mhstem-left-bottom + smooth-count"/>
+  <constant name="last" value="right-bottom + last-count"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="left-top"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="uhstem-right-bottom"/>
+    <align>
+     <point num="uhstem-left-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <point num="mhstem-left-bottom"/>
+   <align>
+    <point num="mhstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="mhstem-left-top"/>
+    <align>
+     <point num="mhstem-right-top"/>
+    </align>
+   </move>
+  </move>
+  <if test="(mhstem-left-top -- left-top) &lt; (right-bottom -- mhstem-left-bottom)">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="mhstem-right-bottom"/>
+    <point num="mhstem-left-bottom"/>
+    <point num="mhstem-left-top"/>
+    <point num="mhstem-right-top"/>
+   </shift-absolute>
+  </if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="vgrayshift-">
+     <point num="mhstem-left-bottom"/>
+     <point num="mhstem-right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="vgrayshift">
+     <point num="mhstem-left-top"/>
+     <point num="mhstem-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+   </else>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-bottom"/>
+   <align>
+    <point num="left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="uhstem-left-bottom"/>
+    <align>
+     <point num="mhstem-left-top"/>
+     <point num="mhstem-left-bottom"/>
+     <point num="right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="uhstem-right-bottom"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="uhstem-right-bottom"/>
+     <point num="uhstem-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <move min-distance="no">
+   <reference>
+    <point num="uhstem-right-bottom"/>
+   </reference>
+   <point num="mhstem-right-bottom"/>
+   <align>
+    <point num="mhstem-right-top"/>
+   </align>
+  </move>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ <!--F-->
+ 
+</xgridfit>
