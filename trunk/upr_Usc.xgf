@@ -19,16 +19,15 @@
      
      -->
  
- <glyph ps-name="K.sc" init-graphics="yes">
-  <call-glyph ps-name="K">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="vstem-height" value="sc-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="thin-diag" value="small-diag"/>
-   <with-param name="thick-diag" value="small--diag"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-   <with-param name="upper-diag-height" value="sc-x-height"/>
+ <glyph ps-name="U.sc" init-graphics="yes">
+  <call-glyph ps-name="U">
+  <with-param name="baseline" value="small-o-baseline"/>
+  <with-param name="height" value="sc-x-height"/>
+  <with-param name="curve-hstem" value="small-curve-hstem"/>
+  <with-param name="left-vert-stem" value="small-vert-stem"/>
+  <with-param name="right-vert-stem" value="small-vert-stem"/>
+  <with-param name="lbearing" value="small-cyrn-lbearing"/>
+  <with-param name="space" value="sc-h-space"/>
   </call-glyph>
  </glyph>
- 
 </xgridfit>
