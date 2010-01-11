@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!-- 5 -->
+ <glyph ps-name="five" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="digit-height"/>
+  <param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
+  <param name="horiz-stem" value="digit-mid-horiz-stem"/>
+  <param name="curve-vert-stem" value="digit-thicker-curve-stem"/>
+  <param name="vert-stem" value="digit-vert-stem"/>
+  <param name="inner-height" value="digit-six-inner-height"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  
+  <constant name="lower-end-bottom" value="0"/>
+  <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
+  <constant name="inner-bottom" value="lower-end-top + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="vstem-right-bottom" value="inner-top + 3 + 1"/>
+  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="vstem-left-top" value="vstem-left-bottom + vstem-vcount"/>
+  <constant name="hstem-right-top" value="vstem-left-top + hstem-hcount"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="hstem-left-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="vstem-curl-intersect" value="hstem-left-bottom + 1 + notch-count"/>
+  <constant name="outer-top" value="vstem-curl-intersect + 3"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="last" value="outer-bottom + 2"/>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+   <move distance="inner-height" color="black">
+    <point num="outer-top"/>
+    <move distance="curve-horiz-stem" color="black">
+     <point num="inner-top"/>
+    </move>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="vstem-left-top"/>
+   <align>
+    <point num="hstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="hstem-right-bottom"/>
+    <align>
+     <point num="hstem-left-bottom"/>
+    </align>
+   </move>
+  </move>
+  <move min-distance="no">
+   <reference>
+    <point num="inner-top"/>
+   </reference>
+   <point num="vstem-left-bottom"/>
+   <align>
+    <point num="vstem-right-bottom"/>
+   </align>
+  </move>
+  <if test="(hstem-left-bottom -- outer-top) = 0.0p">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="inner-top"/>
+    <point num="outer-top"/>
+    <point num="vstem-left-bottom"/>
+    <point num="vstem-right-bottom"/>
+    <point num="vstem-curl-intersect"/>
+   </shift-absolute>
+  </if>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="vstem-left-bottom"/>
+   <align>
+    <point num="vstem-left-top"/>
+   </align>
+   <interpolate>
+    <point num="lower-end-bottom"/>
+    <point num="lower-end-top"/>
+   </interpolate>
+   <move distance="vert-stem" color="black">
+    <point num="vstem-curl-intersect"/>
+    <align>
+     <point num="vstem-right-bottom"/>
+     <point num="hstem-left-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move distance="curve-vert-stem" color="black">
+    <point num="inner-right"/>
+    <interpolate>
+     <point num="hstem-right-top"/>
+     <point num="hstem-right-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="vstem-left-bottom"/>
+     <point num="vstem-left-top"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="vstem-curl-intersect"/>
+     <point num="vstem-right-bottom"/>
+     <point num="hstem-left-bottom"/>
+     <point num="hstem-right-top"/>
+     <point num="hstem-right-bottom"/>
+     <point num="outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

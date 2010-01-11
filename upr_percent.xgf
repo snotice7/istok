@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="percent" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <constant name="left-o-top" value="perthousandzero/outer-top"/>
+  <constant name="left-o-bottom" value="perthousandzero/outer-bottom"/>
+  <constant name="right-o-top" value="perthousandzero/total + uni2215/total + perthousandzero/outer-top"/>
+  <constant name="right-o-bottom" value="perthousandzero/total + uni2215/total + perthousandzero/outer-bottom"/>
+  <constant name="right-o-right" value="perthousandzero/total + uni2215/total + perthousandzero/outer-right"/>
+  <constant name="slash-left-bottom" value="perthousandzero/total + uni2215/left-bottom"/>
+  <constant name="slash-left-top" value="perthousandzero/total + uni2215/left-top"/>
+  <constant name="slash-right-top" value="perthousandzero/total + uni2215/right-top"/>
+  <constant name="slash-right-bottom" value="perthousandzero/total + uni2215/right-bottom"/>
+  <constant name="last" value="perthousandzero/total + perthousandzero/last + uni2215/total"/>
+<!--   <constant name="left-bearing" value="perthousandzero/total + perthousandzero/total + uni2215/total"/> -->
+  
+  <!--    <compile-if test="(slanted != 0) and (regular != 0)">
+   <if test="pixels-per-em = 9">
+    <set-vectors axis="x"/>
+    <shift-absolute pixel-distance="-1.0p">
+     <point num="left-o-bottom"/>
+    </shift-absolute>
+    <shift>
+     <reference>
+      <point num="left-o-bottom"/>
+     </reference>
+     <contour num="0"/>
+     <contour num="1"/>
+    </shift>
+   </if>
+  </compile-if>-->
+  <set-projection-vector to-line="orthogonal">
+   <line>
+    <point num="slash-left-bottom"/>
+    <point num="slash-left-top"/>
+   </line>
+  </set-projection-vector>
+  <set-equal target="width" source="(left-o-bottom -- slash-left-bottom) - (slash-right-bottom -- right-o-top)"/>
+  <set-vectors axis="x"/>
+  <if test="width &lt; -0.5p">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="slash-left-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="slash-left-bottom"/>
+    </reference>
+    <contour num="2"/>
+   </shift>
+   <else>
+    <if test="width &gt; 1.0p">
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="slash-left-bottom"/>
+     </shift-absolute>
+     <shift>
+      <reference>
+       <point num="slash-left-bottom"/>
+      </reference>
+      <contour num="4"/>
+     </shift>
+     <else>
+      <if test="width &gt; 0.5p">
+       <compile-if test="slanted">
+        <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+       </compile-if>
+       <set-equal target="width" source="(right-o-right -- right-bearing)"/> <!-- - rbearing-->
+       <compile-if test="slanted">
+        <set-projection-vector axis="x"/>
+        <!--   <round value="width"/> -->
+       </compile-if>
+       <if test="width &gt;= 1.0p">
+        <shift-absolute pixel-distance="1.0p">
+         <point num="right-o-right"/>
+        </shift-absolute>
+        <shift>
+         <reference>
+          <point num="right-o-right"/>
+         </reference>
+         <contour num="3"/>
+         <contour num="4"/>
+        </shift>
+        <else>
+         <shift-absolute pixel-distance="-1.0p">
+          <point num="right-o-right"/>
+         </shift-absolute>
+         <shift>
+          <reference>
+           <point num="right-o-right"/>
+          </reference>
+          <contour num="2"/>
+          <contour num="3"/>
+          <contour num="4"/>
+         </shift>
+        </else>
+       </if>
+      </if>
+     </else>
+    </if>
+   </else>
+  </if>
+  <!-- <set-equal target="width" source="round((left-o-top - - slash-left-bottom) - (slash-right-top - - right-o-bottom))"/>
+  <if test="width != 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="right-o-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="right-o-bottom"/>
+    </reference>
+    <contour num="2"/>
+    <contour num="3"/>
+   </shift>
+  </if>
+  
+  <set-vectors axis="y"/>
+  <set-equal target="width" source="round((left-o-top - - slash-left-top) - (slash-right-bottom - - right-o-bottom))"/>
+  <if test="width != 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="right-o-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="right-o-bottom"/>
+    </reference>
+    <contour num="2"/>
+    <contour num="3"/>
+   </shift>
+  </if>-->
+  <move min-distance="no">
+   <reference>
+    <point num="right-o-right"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+ </glyph>
+ 
+</xgridfit>

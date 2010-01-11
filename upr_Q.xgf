@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--"O"  -->
- <glyph ps-name="O" init-graphics="yes">
-
+ <glyph ps-name="Q" init-graphics="yes">
+  
   <!--
-
-      Copyright (C) 2007, 2008, 2009  Andrey V. Panov
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -21,7 +20,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-
+  
   <param name="baseline" value="cap-o-baseline"/>
   <param name="height" value="cap-o-height"/>
   <param name="horiz-stem" value="cap-curve-hstem"/>
@@ -32,15 +31,14 @@
   <constant name="outer-left" value="0"/>
   <constant name="outer-top" value="outer-left + 3"/>
   <constant name="outer-right" value="outer-top + 3"/>
-  <constant name="outer-bottom" value="outer-right + 3"/>
-  <constant name="inner-left" value="12"/>
+  <constant name="outer-bottom-right" value="outer-right + 4"/>
+  <constant name="curl-end-top" value="15"/>
+  <constant name="curl-end-bottom" value="curl-end-top + open-end-count"/>
+  <constant name="outer-bottom-left" value="curl-end-bottom + 5"/>
+  <constant name="inner-left" value="outer-bottom-left + 4"/>
   <constant name="inner-bottom" value="inner-left + 3"/>
   <constant name="inner-right" value="inner-bottom + 3"/>
   <constant name="inner-top" value="inner-right + 3"/>
-  <constant name="outer-left-top" value="2"/>
-  <constant name="outer-right-top" value="4"/>
-  <constant name="outer-left-bottom" value="8"/>
-  <constant name="outer-right-bottom" value="10"/>
   <constant name="last" value="inner-top + 2"/>
   
   <set-vectors axis="x"/>
@@ -49,7 +47,7 @@
     <set-round-state round="no"/>
    </if>
   </compile-if>
-
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -62,19 +60,24 @@
     <point num="outer-right"/>
     <interpolate>
      <point num="outer-top"/>
-     <point num="outer-bottom"/>
+     <point num="outer-bottom-left"/>
+     <point num="outer-bottom-right"/>
      <point num="inner-bottom"/>
      <point num="inner-top"/>
     </interpolate>
     <move distance="vert-stem" color="black">
      <point num="inner-right"/>
+     <interpolate>
+      <point num="curl-end-top"/>
+      <point num="curl-end-bottom"/>
+     </interpolate>
     </move>
     <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
   </move>
-
+  
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <mdap round="to-grid">
@@ -89,8 +92,12 @@
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>
+  
   <move distance="baseline">
-   <point num="outer-bottom"/>
+   <point num="outer-bottom-left"/>
+   <align>
+    <point num="outer-bottom-right"/>
+   </align>
    <move distance="horiz-stem" color="black">
     <point num="inner-bottom"/>
    </move>
@@ -101,19 +108,29 @@
     <point num="inner-top"/>
    </move>
   </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <point num="curl-end-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="curl-end-bottom"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="half-vgrayshift-">
+     <point num="curl-end-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="half-vgrayshift">
+     <point num="curl-end-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <interpolate-untouched-points/>
- </glyph>
- 
- <glyph ps-name="o" init-graphics="yes">
-  <call-glyph ps-name="O">
-   <with-param name="baseline" value="small-o-baseline"/>
-   <with-param name="height" value="small-o-height"/>
-   <with-param name="horiz-stem" value="small-curve-hstem"/>
-   <with-param name="vert-stem" value="small-o-curve-stem"/>
-   <with-param name="space" value="small-o-space"/>
-   <with-param name="lbearing" value="small-o-lbearing"/>
-  </call-glyph>
  </glyph>
  
 </xgridfit>

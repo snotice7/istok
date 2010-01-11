@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="eight" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="digit-over-height"/>
+  <param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
+  <param name="horiz-stem" value="digit-mid-horiz-stem"/>
+  <param name="vert-stem" value="digit-thicker-curve-stem"/>
+  <param name="high-vert-stem" value="digit-thinner-curve-stem"/>
+  
+  <constant name="outer-lower-left" value="0"/>
+  <constant name="intersect-left" value="outer-lower-left + 3"/>
+  <constant name="outer-upper-left" value="intersect-left + 3 + cog-count"/>
+  <constant name="outer-top" value="outer-upper-left + 3"/>
+  <constant name="outer-upper-right" value="outer-top + 3"/>
+  <constant name="intersect-right" value="outer-upper-right + 3 + cog-count"/>
+  <constant name="outer-lower-right" value="intersect-right + 3"/>
+  <constant name="outer-bottom" value="outer-lower-right + 3"/>
+  <constant name="inner-lower-left" value="26"/>
+  <constant name="inner-lower-bottom" value="inner-lower-left + 3"/>
+  <constant name="inner-lower-right" value="inner-lower-bottom + 3"/>
+  <constant name="inner-lower-top" value="inner-lower-right + 3"/>
+  <constant name="inner-upper-left" value="38"/>
+  <constant name="inner-upper-bottom" value="inner-upper-left + 3"/>
+  <constant name="inner-upper-right" value="inner-upper-bottom + 3"/>
+  <constant name="inner-upper-top" value="inner-upper-right + 3"/>
+  <constant name="last" value="inner-upper-top + 2"/>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-lower-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-upper-top"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <interpolate round="yes">
+   <reference>
+    <point num="inner-lower-bottom"/>
+    <point num="inner-upper-top"/>
+   </reference>
+   <point num="inner-lower-top"/>
+  </interpolate>
+  <move distance="horiz-stem" color="black">
+   <reference>
+    <point num="inner-lower-top"/>
+   </reference>
+   <point num="inner-upper-bottom"/>
+   <interpolate>
+    <point num="intersect-left"/>
+    <point num="intersect-right"/>
+   </interpolate>
+  </move>
+  <if test="(inner-upper-bottom -- inner-upper-top) &gt; (inner-lower-bottom -- inner-lower-top)">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="inner-lower-top"/>
+    <point num="inner-upper-bottom"/>
+    <point num="intersect-left"/>
+    <point num="intersect-right"/>
+   </shift-absolute>
+  </if>
+  
+  <set-vectors axis="x"/>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-lower-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-lower-left"/>
+   </move>
+   <move min-distance="no">
+    <point num="outer-upper-left"/>
+    <move distance="high-vert-stem" color="black">
+     <point num="inner-upper-left"/>
+    </move>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-lower-right"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-lower-right"/>
+   </move>
+   <move min-distance="no">
+    <point num="outer-upper-right"/>
+    <move distance="high-vert-stem" color="black">
+     <point num="inner-upper-right"/>
+    </move>
+   </move>
+  </move>
+  <interpolate round="yes">
+   <reference>
+    <point num="outer-lower-left"/>
+    <point num="outer-lower-right"/>
+   </reference>
+   <point num="intersect-left"/>
+   <point num="intersect-right"/>
+  </interpolate>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-lower-left"/>
+     <point num="outer-upper-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="outer-upper-right"/>
+     <point num="outer-lower-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

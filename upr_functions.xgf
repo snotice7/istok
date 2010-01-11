@@ -165,10 +165,8 @@
   <!-- center-accent-with-anchor-and-two-reper-points -->
   
   <macro name="regularize-control-value-width">
-   <param name="cv-width"/>
-   <!-- regularized control value, should not be rounded -->
-   <param name="margin"/>
-   <!-- width of margin, should not be rounded -->
+   <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
+   <param name="margin"/>   <!-- width of margin, should not be rounded -->
    <set-equal target="width" source="round-white(control-value(index(margin)))"/>
    <if test="width = 0">
     <set-equal target="temp" source="1.0p"/>
@@ -180,12 +178,9 @@
   </macro>
   
   <macro name="regularize-control-value-width-two-margin">
-   <param name="cv-width"/>
-   <!-- regularized control value, should not be rounded -->
-   <param name="left-margin"/>
-   <!-- width of margin, should not be rounded -->
-   <param name="right-margin"/>
-   <!-- width of margin, should not be rounded -->
+   <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
+   <param name="left-margin"/>   <!-- width of margin, should not be rounded -->
+   <param name="right-margin"/>   <!-- width of margin, should not be rounded -->
    <set-equal target="width" source="round-white(control-value(index(left-margin)))"/>
    <if test="width = 0">
     <set-equal target="temp" source="1.0p"/>
@@ -196,19 +191,32 @@
    <set-equal target="cv-width" source="round(round((control-value(index(cv-width)) + control-value(index(left-margin))  + control-value(index(right-margin))) - temp) - round-white(control-value(index(right-margin))))"/>
   </macro>
   
+  <macro name="regularize-control-value-width-two-varmargin">
+  <!-- the same as previous but left-margin and right-margin are not control values -->
+   <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
+   <param name="left-margin"/>   <!-- variable, width of margin -->
+   <param name="right-margin"/>   <!-- variable, width of margin -->
+   <set-equal target="width" source="round-white(left-margin)"/>
+   <if test="width = 0">
+    <set-equal target="temp" source="1.0p"/>
+    <else>
+     <set-equal target="temp" source="width"/>
+    </else>
+   </if>
+   <set-equal target="cv-width" source="round(round((control-value(index(cv-width)) + left-margin + right-margin) - temp) - round-white(right-margin))"/>
+  </macro>
+  
   <macro name="regularize-midstem">
-   <param name="midstem-height"/>
-   <!-- regularized control value, should be rounded -->
+   <param name="midstem-height"/>   <!-- regularized control value, should be rounded -->
    <param name="stem-width"/>
-   <param name="full-height"/>
-   <!-- regularized control value, should be rounded -->
+   <param name="full-height"/>   <!-- regularized control value, should be rounded -->
    <set-equal target="width" source="(control-value(index(full-height)) - round(control-value(index(stem-width)))) - (2.0p * control-value(index(midstem-height)))"/>
    <if test="width &gt; 0">
     <set-equal target="midstem-height" source="control-value(index(midstem-height)) + 1.0p"/>
    </if>
   </macro>
-  <!--Used for m, Ш-->
   
+  <!--Used for m, Ш-->
   <macro name="regularize-control-value-double-width">
    <param name="cv-width"/>
    <param name="margin"/>
