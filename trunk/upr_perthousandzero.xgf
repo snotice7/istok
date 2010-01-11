@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="perthousandzero" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="inner-left" value="12"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="last" value="inner-top + 2"/>
+  
+  <set-vectors axis="x"/>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move color="black">
+    <point num="inner-left"/>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move pixel-distance="inner-left -- outer-left" color="black">
+    <point num="inner-right"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="outer-left"/>
+    <point num="outer-right"/>
+   </reference>
+   <point num="outer-bottom"/>
+   <point num="inner-bottom"/>
+   <point num="outer-top"/>
+   <point num="inner-top"/>
+  </interpolate>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-left"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="inner-left"/>
+     <point num="outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  
+  <move min-distance="no">
+   <point num="outer-bottom"/>
+   <move color="black">
+    <point num="inner-bottom"/>
+   </move>
+   <move color="black">
+    <point num="outer-top"/>
+    <move pixel-distance="inner-bottom -- outer-bottom" color="black">
+     <point num="inner-top"/>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="vgrayshift-">
+     <point num="outer-bottom"/>
+     <point num="inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="vgrayshift">
+     <point num="outer-top"/>
+     <point num="inner-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

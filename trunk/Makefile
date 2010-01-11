@@ -1,7 +1,7 @@
 VERSION:=$(shell date +"%Y%m%d")
 FAMILY=Istok
 PACKNAME=istok
-SFDFILES=$(FAMILY)-Regular.sfd $(FAMILY)-Italic.sfd $(FAMILY)-Bold.sfd #$(FAMILY)-BoldItalic.sfd
+SFDFILES=$(FAMILY)-Regular.sfd $(FAMILY)-Italic.sfd $(FAMILY)-Bold.sfd $(FAMILY)-BoldItalic.sfd
 DOCUMENTS=AUTHORS ChangeLog COPYING README
 #OTFFILES=$(FAMILY)-Regular.otf $(FAMILY)-Italic.otf $(FAMILY)-Bold.otf $(FAMILY)-BoldItalic.otf
 TTFFILES=$(FAMILY)-Regular.ttf $(FAMILY)-Italic.ttf $(FAMILY)-Bold.ttf #$(FAMILY)-BoldItalic.ttf

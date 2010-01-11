@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="six" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="digit-over-height"/>
+  <param name="horiz-stem" value="digit-thin-horiz-stem"/>
+  <param name="vert-stem" value="digit-thicker-curve-stem"/>
+  <param name="c-flat-ends" value="14"/>
+  <param name="inner-height" value="digit-six-inner-height"/>
+  <param name="space" value="digit-six-hspace"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="upper-end-top" value="outer-top + 3"/>
+  <constant name="upper-end-bottom" value="upper-end-top + open-end-count"/>
+  <constant name="inner-top" value="upper-end-bottom + 3"/>
+  <constant name="intersect-top" value="inner-top + 3"/>
+  <constant name="joint-top" value="intersect-top + cog-count + 3"/>
+  <constant name="outer-right" value="joint-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="inner-oval-left" value="outer-bottom + 3"/>
+  <constant name="inner-oval-bottom" value="inner-oval-left + 3"/>
+  <constant name="inner-oval-right" value="inner-oval-bottom + 3"/>
+  <constant name="inner-oval-top" value="inner-oval-right + 3"/>
+  <constant name="intersect-low" value="inner-oval-top + 2"/>
+  <constant name="inner-oval-end" value="intersect-low"/>
+  <constant name="last" value="inner-oval-end"/>
+  
+  <set-vectors axis="x"/>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="intersect-top"/>
+    <interpolate round="down-to-grid">
+     <point num="inner-oval-left"/>
+    </interpolate>
+   </move>
+   <move distance="space" color="black" compile-if="slanted = 0">
+    <point num="outer-right"/>
+    <move distance="vert-stem" color="black">
+     <point num="inner-oval-right"/>
+     <interpolate>
+      <point num="upper-end-top"/>
+      <point num="upper-end-bottom"/>
+     </interpolate>
+    </move>
+   </move>
+  </move>
+  <move min-distance="no" color="white" compile-if="slanted">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-oval-right"/>
+    <interpolate>
+     <point num="upper-end-top"/>
+     <point num="upper-end-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  <!--  <mdap round="yes">
+   <point num="upper-end-top"/>
+  </mdap>-->
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-left"/>
+     <point num="inner-oval-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-oval-bottom"/>
+   </move>
+   <move distance="inner-height">
+    <point num="joint-top"/>
+    <move distance="horiz-stem" color="black">
+     <point num="inner-oval-top"/>
+    </move>
+    <move min-distance="no">
+     <point num="intersect-top"/>
+     <move>
+      <point num="inner-oval-end"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <if test="(joint-top -- inner-top) = 0.0p">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="inner-oval-top"/>
+    <point num="intersect-top"/>
+    <point num="joint-top"/>
+    <point num="inner-oval-end"/>
+   </shift-absolute>
+  </if>
+  <if test="pixels-per-em &lt;= c-flat-ends">
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-oval-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>
