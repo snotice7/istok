@@ -35,21 +35,21 @@
   <constant name="real-lower-end-top" value="real-lower-end-bottom + hstem-hcount"/>
   <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
   <constant name="inner-bottom" value="lower-end-top + 3"/>
-  <constant name="inner-right" value="inner-bottom + 3"/>
-  <constant name="diag-left-bottom" value="inner-right + 3"/>
+  <constant name="inner-right" value="inner-bottom + 4"/>
+  <constant name="diag-left-bottom" value="inner-right + 4"/>
   <constant name="diag-left-top" value="diag-left-bottom + 3"/>
-  <constant name="outer-left" value="diag-left-top + 3"/>
-  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="outer-left" value="diag-left-top + 4"/>
+  <constant name="outer-top" value="outer-left + 4"/>
   <constant name="upper-end-top" value="outer-top + 3"/>
   <constant name="upper-end-bottom" value="upper-end-top + open-end-count"/>
   <constant name="real-upper-end-top" value="outer-top + 3 + 1"/>
   <constant name="real-upper-end-bottom" value="real-upper-end-top + hstem-hcount"/>
   <constant name="inner-top" value="upper-end-bottom + 3"/>
-  <constant name="inner-left" value="inner-top + 3"/>
-  <constant name="diag-right-top" value="inner-left + 3"/>
+  <constant name="inner-left" value="inner-top + 4"/>
+  <constant name="diag-right-top" value="inner-left + 4"/>
   <constant name="diag-right-bottom" value="diag-right-top + 3"/>
-  <constant name="outer-right" value="diag-right-bottom + 3"/>
-  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="outer-right" value="diag-right-bottom + 4"/>
+  <constant name="outer-bottom" value="outer-right + 4"/>
   <constant name="last" value="outer-bottom + 2"/>
   
   <line name="diagonal-left-side">
@@ -214,7 +214,7 @@
     </interpolate>
    </else>
   </if>
-  <if test="pixels-per-em &lt; s-flat-upper-end">
+  <if test="pixels-per-em &lt; s-flat-upper-end and not(is-glyph-grayscale)">
    <align>
     <reference>
      <point num="inner-top"/>
