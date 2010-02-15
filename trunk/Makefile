@@ -1,6 +1,6 @@
 VERSION:=$(shell date +"%Y%m%d")
 FAMILY=Istok
-PACKNAME=istok
+PKGNAME=istok
 SFDFILES=$(FAMILY)-Regular.sfd $(FAMILY)-Italic.sfd $(FAMILY)-Bold.sfd $(FAMILY)-BoldItalic.sfd
 DOCUMENTS=AUTHORS ChangeLog COPYING README
 #OTFFILES=$(FAMILY)-Regular.otf $(FAMILY)-Italic.otf $(FAMILY)-Bold.otf $(FAMILY)-BoldItalic.otf
@@ -18,6 +18,14 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
 XGFFILES=upr_*.xgf $(FAMILY)-Regular.ed.xgf # it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.ed.xgf $(FAMILY)-BoldItalic.ed.xgf
 XGRIDFIT=xgridfit
+COMPRESS=xz -9
+TEXENC=t1,t2a
+
+INSTALL=install
+DESTDIR=
+prefix=/usr
+fontdir=$(prefix)/share/fonts/TTF
+docdir=$(prefix)/doc/$(PKGNAME)
 
 all: $(TTFFILES)
 
@@ -72,15 +80,43 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
+tex-support: all
+	mkdir -p texmf
+	-rm -rf ./texmf/*
+	mkdir -p texmf/fonts/truetype/public/$(PKGNAME)
+	cp -a $(TTFFILES) texmf/fonts/truetype/public/$(PKGNAME)/
+	TEXMFVAR=`pwd`/texmf autoinst --encoding=$(TEXENC) \
+	--extra="--typeface=$(PKGNAME) --no-updmap  --vendor=public  --type42" \
+	--sanserif \
+	$(TTFFILES)
+	mkdir -p texmf/fonts/enc/dvips/$(PKGNAME)
+	mv texmf/fonts/enc/dvips/public/* texmf/fonts/enc/dvips/$(PKGNAME)/
+	-rm -r texmf/fonts/enc/dvips/public
+	mkdir -p texmf/tex/latex/$(PKGNAME)
+	mkdir -p texmf/fonts/map/dvips/$(PKGNAME)
+	mv *$(FAMILY)-TLF.fd texmf/tex/latex/$(PKGNAME)/
+	mv $(FAMILY).sty texmf/tex/latex/$(PKGNAME)/$(PKGNAME).sty
+	mv $(FAMILY).map texmf/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
+	mkdir -p texmf/dvips/$(PKGNAME)
+	echo "p +$(PKGNAME).map" > texmf/dvips/$(PKGNAME)/config.$(PKGNAME)
+	mkdir -p texmf/doc/fonts/$(PKGNAME)
+	cp -p $(DOCUMENTS) texmf/doc/fonts/$(PKGNAME)/
 
 dist-src:
-	tar -cvf $(PACKNAME)-src-$(VERSION).tar $(SFDFILES) Makefile $(FFSCRIPTS) $(DOCUMENTS)  $(XGFFILES) $(DIFFFILES)
-	xz -9 $(PACKNAME)-src-$(VERSION).tar
+	tar -cvf $(PKGNAME)-src-$(VERSION).tar $(SFDFILES) Makefile $(FFSCRIPTS) $(DOCUMENTS)  $(XGFFILES) $(DIFFFILES)
+	$(COMPRESS) $(PKGNAME)-src-$(VERSION).tar
 
 dist-ttf: all
-	tar -cvf $(PACKNAME)-ttf-$(VERSION).tar \
+	tar -cvf $(PKGNAME)-ttf-$(VERSION).tar \
 	$(TTFFILES) $(DOCUMENTS)
-	xz -9 $(PACKNAME)-ttf-$(VERSION).tar
+	$(COMPRESS) $(PKGNAME)-ttf-$(VERSION).tar
+
+
+dist-tex:
+	( cd ./texmf ;\
+	tar -cvf ../$(PKGNAME)-tex-$(VERSION).tar \
+	doc dvips fonts tex )
+	$(COMPRESS) $(PKGNAME)-tex-$(VERSION).tar
 
 dist: dist-src dist-ttf
 
@@ -90,3 +126,12 @@ update-version:
 
 clean :
 	rm *.gen.ttx *.gen.xgf *.tmp.xgf *.gen.ttf 
+
+distclean :
+	-rm $(OTFFILES) $(TTFFILES) $(PFBFILES) $(AFMFILES) $(FAMILY)-*_.sfd
+
+install:
+	mkdir -p $(DESTDIR)$(fontdir)
+	$(INSTALL) -p --mode=644 $(TTFFILES) $(DESTDIR)$(fontdir)/
+	mkdir -p $(DESTDIR)$(docdir)
+	$(INSTALL) -p --mode=644 $(DOCUMENTS) $(DESTDIR)$(docdir)/

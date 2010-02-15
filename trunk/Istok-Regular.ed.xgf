@@ -292,6 +292,7 @@
   
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
+  <set-equal target="small-curve-desc" source="control-value(index(small-desc)) + control-value(index(small-o-baseline))"/>
   <set-equal target="small-asc-over-height" source="control-value(index(small-asc-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="digit-over-height" source="control-value(index(digit-height)) - control-value(index(cap-o-baseline))"/>
