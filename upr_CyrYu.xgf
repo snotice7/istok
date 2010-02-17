@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-  <!--"Yu"-->
-
-  <glyph ps-name="afii10048" init-graphics="yes">
-    <!--
+ <!--"Yu"-->
+ <glyph ps-name="afii10048" init-graphics="yes">
+  <!--
       Copyright (C) 2007, 2008, 2009  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
@@ -21,162 +19,162 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-    <param name="x-baseline" value="cap-x-baseline"/>
-    <param name="x-height" value="cap-x-height"/>
-    <param name="vert-stem" value="cap-vert-stem"/>
-    <param name="lbearing" value="cap-h-lbearing"/>
-    <param name="intersect-height" value="cap-h-intersect-height"/>
-    <param name="horiz-stem" value="cap-horiz-stem"/>
-    <param name="o-baseline" value="cap-o-baseline"/>
-    <param name="o-height" value="cap-o-height"/>
-    <param name="curve-horiz-stem" value="cap-curve-hstem"/>
-    <param name="curve-vert-stem" value="cap-o-curve-stem"/>
-    <param name="space" value="cap-o-space"/>
-    <constant name="left-bottom" value="first-point"/>
-    <constant name="left-top" value="left-bottom + vstem-vcount"/>
-    <constant name="right-top" value="left-top + vstem-hcount"/>
-    <constant name="joiner-left-top" value="right-top + smooth-count"/>
-    <constant name="outer-left" value="joiner-left-top + 1"/>
-    <constant name="joiner-right-top" value="outer-left"/>
-    <constant name="outer-top" value="outer-left + 3"/>
-    <constant name="outer-right" value="outer-top + 3"/>
-    <constant name="outer-bottom" value="outer-right + 3"/>
-    <constant name="joiner-right-bottom" value="outer-bottom + 3"/>
-    <constant name="joiner-left-bottom" value="joiner-right-bottom + 1"/>
-    <constant name="right-bottom" value="joiner-left-bottom + smooth-count"/>
-    <constant name="inner-left" value="right-bottom + last-count + 1"/>
-    <constant name="inner-bottom" value="inner-left + 3"/>
-    <constant name="inner-right" value="inner-bottom + 3"/>
-    <constant name="inner-top" value="inner-right + 3"/>
-    <constant name="last" value="inner-top + 2"/>
-    <set-vectors axis="x"/>
-    <move distance="lbearing" color="white">
-      <reference>
-        <point num="left-bearing"/>
-      </reference>
-      <point num="left-bottom"/>
-      <align>
-        <point num="left-top"/>
-      </align>
-      <move distance="vert-stem" color="black">
-        <point num="right-top"/>
-        <align>
-          <point num="joiner-left-top"/>
-          <point num="joiner-left-bottom"/>
-          <point num="right-bottom"/>
-        </align>
-        <move color="black">
-          <!--distance="cap-yu-joiner-length"-->
-          <point num="joiner-right-top"/>
-          <align>
-            <point num="joiner-right-bottom"/>
-          </align>
-          <move distance="curve-vert-stem" color="black">
-            <point num="inner-left"/>
-          </move>
-          <move distance="space" color="white">
-            <point num="outer-right"/>
-            <move distance="curve-vert-stem" color="black">
-              <point num="inner-right"/>
-            </move>
-          </move>
-        </move>
+  <param name="x-baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="lbearing" value="cap-h-lbearing"/>
+  <param name="intersect-height" value="cap-h-intersect-height"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="o-baseline" value="cap-o-baseline"/>
+  <param name="o-height" value="cap-o-height"/>
+  <param name="curve-horiz-stem" value="cap-curve-hstem"/>
+  <param name="curve-vert-stem" value="cap-o-curve-stem"/>
+  <param name="space" value="cap-o-space"/>
+  <constant name="left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-bottom + vstem-vcount"/>
+  <constant name="right-top" value="left-top + vstem-hcount"/>
+  <constant name="joiner-left-top" value="right-top + smooth-count"/>
+  <constant name="outer-left" value="joiner-left-top + 1"/>
+  <constant name="joiner-right-top" value="outer-left"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="joiner-right-bottom" value="outer-bottom + 3"/>
+  <constant name="joiner-left-bottom" value="joiner-right-bottom + 1"/>
+  <constant name="right-bottom" value="joiner-left-bottom + smooth-count"/>
+  <constant name="inner-left" value="right-bottom + last-count + 1"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="last" value="inner-top + 2"/>
+  <set-vectors axis="x"/>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-bottom"/>
+   <align>
+    <point num="left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="right-top"/>
+    <align>
+     <point num="joiner-left-top"/>
+     <point num="joiner-left-bottom"/>
+     <point num="right-bottom"/>
+    </align>
+    <move color="black">
+     <!--distance="cap-yu-joiner-length"-->
+     <point num="joiner-right-top"/>
+     <align>
+      <point num="joiner-right-bottom"/>
+     </align>
+     <move distance="curve-vert-stem" color="black">
+      <point num="inner-left"/>
+     </move>
+     <move distance="space" color="white">
+      <point num="outer-right"/>
+      <move distance="curve-vert-stem" color="black">
+       <point num="inner-right"/>
       </move>
+     </move>
     </move>
-    <set-equal target="width" source="(outer-right -- right-bearing)"/>
-    <!--- rbearing-->
-    <if test="(joiner-left-bottom -- joiner-right-bottom) + width &lt;= 0">
-      <add value1="width" value2="1.0p"/>
-    </if>
-    <if test="width &lt; 0.0p">
-      <shift-absolute pixel-distance="width">
-        <point num="joiner-right-top"/>
-        <point num="joiner-right-bottom"/>
-        <point num="inner-left"/>
-        <point num="inner-right"/>
-        <point num="outer-right"/>
-      </shift-absolute>
-    </if>
-    <interpolate>
-      <reference>
-        <point num="joiner-right-top"/>
-        <point num="outer-right"/>
-      </reference>
-      <point num="outer-top"/>
-      <point num="outer-bottom"/>
-      <point num="inner-bottom"/>
-      <point num="inner-top"/>
-    </interpolate>
-    <move min-distance="no">
-      <reference>
-        <point num="outer-right"/>
-      </reference>
-      <point num="right-bearing"/>
-    </move>
-    <compile-if test="smooth">
-      <if test="horizontal-smoothing">
-        <shift-absolute pixel-distance="hgrayshift-">
-          <point num="left-bottom"/>
-          <point num="left-top"/>
-          <!--    <point num="joiner-right-top"/>
+   </move>
+  </move>
+  <set-equal target="width" source="(outer-right -- right-bearing)"/>
+  <!--- rbearing-->
+  <if test="(joiner-left-bottom -- joiner-right-bottom) + width &lt;= 0">
+   <add value1="width" value2="1.0p"/>
+  </if>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="joiner-right-top"/>
+    <point num="joiner-right-bottom"/>
+    <point num="inner-left"/>
+    <point num="inner-right"/>
+    <point num="outer-right"/>
+   </shift-absolute>
+  </if>
+  <interpolate>
+   <reference>
+    <point num="joiner-right-top"/>
+    <point num="outer-right"/>
+   </reference>
+   <point num="outer-top"/>
+   <point num="outer-bottom"/>
+   <point num="inner-bottom"/>
+   <point num="inner-top"/>
+  </interpolate>
+  <move min-distance="no">
+   <reference>
+    <point num="outer-right"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="left-bottom"/>
+     <point num="left-top"/>
+     <!--    <point num="joiner-right-top"/>
      <point num="joiner-right-bottom"/>-->
-          <point num="inner-right"/>
-        </shift-absolute>
-        <shift-absolute pixel-distance="hgrayshift">
-          <!--    <point num="right-top"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <!--    <point num="right-top"/>
      <point num="joiner-left-top"/>
      <point num="joiner-left-bottom"/>
      <point num="right-bottom"/>-->
-          <point num="inner-left"/>
-          <point num="outer-right"/>
-        </shift-absolute>
-      </if>
-    </compile-if>
-    <set-vectors axis="y"/>
-    <compile-if test="smooth">
-      <if test="vertical-smoothing">
-        <set-round-state round="no"/>
-      </if>
-    </compile-if>
-    <move distance="x-baseline">
-      <point num="left-bottom"/>
-      <align>
-        <point num="right-bottom"/>
-      </align>
-    </move>
-    <move distance="x-height">
-      <point num="left-top"/>
-      <align>
-        <point num="right-top"/>
-      </align>
-    </move>
-    <move distance="intersect-height">
-      <point num="joiner-left-bottom"/>
-      <align>
-        <point num="joiner-right-bottom"/>
-      </align>
-      <move distance="horiz-stem" color="black">
-        <point num="joiner-left-top"/>
-        <align>
-          <point num="joiner-right-top"/>
-        </align>
-      </move>
-    </move>
-    <move distance="o-baseline">
-      <point num="outer-bottom"/>
-      <move distance="curve-horiz-stem" color="black">
-        <point num="inner-bottom"/>
-      </move>
-    </move>
-    <move distance="o-height">
-      <point num="outer-top"/>
-      <move distance="curve-horiz-stem" color="black">
-        <point num="inner-top"/>
-      </move>
-    </move>
-    <interpolate-untouched-points/>
-    <!-- Symmetrize "O" -->
-    <!--  <compile-if test="slanted = 0">
+     <point num="inner-left"/>
+     <point num="outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  <move distance="x-baseline">
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="left-top"/>
+   <align>
+    <point num="right-top"/>
+   </align>
+  </move>
+  <move distance="intersect-height">
+   <point num="joiner-left-bottom"/>
+   <align>
+    <point num="joiner-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="joiner-left-top"/>
+    <align>
+     <point num="joiner-right-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="o-baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="o-height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <interpolate-untouched-points/>
+  <!-- Symmetrize "O" -->
+  <!--  <compile-if test="slanted = 0">
    <align>
     <reference>
      <point num="outer-right - 1"/>
@@ -190,22 +188,20 @@
     <point num="joiner-right-bottom - 1"/>
    </align>
   </compile-if>-->
-  </glyph>
-
-  <glyph ps-name="afii10096" init-graphics="yes">
-    <call-glyph ps-name="afii10048">
-      <with-param name="x-baseline" value="small-x-baseline"/>
-      <with-param name="x-height" value="small-x-height"/>
-      <with-param name="vert-stem" value="small-vert-stem"/>
-      <with-param name="lbearing" value="small-cyrn-lbearing"/>
-      <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
-      <with-param name="horiz-stem" value="small-horiz-stem"/>
-      <with-param name="o-baseline" value="small-o-baseline"/>
-      <with-param name="o-height" value="small-o-height"/>
-      <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
-      <with-param name="curve-vert-stem" value="small-o-curve-stem"/>
-      <with-param name="space" value="small-o-space"/>
-    </call-glyph>
-  </glyph>
-
+ </glyph>
+ <glyph ps-name="afii10096" init-graphics="yes">
+  <call-glyph ps-name="afii10048">
+   <with-param name="x-baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="o-baseline" value="small-o-baseline"/>
+   <with-param name="o-height" value="small-o-height"/>
+   <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
+   <with-param name="curve-vert-stem" value="small-o-curve-stem"/>
+   <with-param name="space" value="small-o-space"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

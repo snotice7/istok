@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-
-  <glyph ps-name="b" init-graphics="yes">
-    <!--
+ <glyph ps-name="b" init-graphics="yes">
+  <!--
       
       Copyright (C) 2009  Andrey V. Panov
       
@@ -21,19 +19,18 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-    <call-glyph ps-name="p">
-      <with-param name="baseline" value="small-x-baseline"/>
-      <with-param name="lstem-height" value="small-asc-height"/>
-      <with-param name="o-baseline" value="small-o-baseline"/>
-      <with-param name="o-height" value="small-o-height"/>
-      <with-param name="vert-stem" value="small-vert-stem"/>
-      <with-param name="curve-vstem" value="small-o-curve-stem"/>
-      <with-param name="curve-hstem" value="small-curve-hstem"/>
-      <with-param name="lbearing" value="small-cyrn-lbearing"/>
-      <with-param name="space" value="small-p-space"/>
-      <with-param name="upper-notch" value="notch-count"/>
-      <with-param name="lower-notch" value="cog-count"/>
-    </call-glyph>
-  </glyph>
-
+  <call-glyph ps-name="p">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="lstem-height" value="small-asc-height"/>
+   <with-param name="o-baseline" value="small-o-baseline"/>
+   <with-param name="o-height" value="small-o-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="curve-vstem" value="small-o-curve-stem"/>
+   <with-param name="curve-hstem" value="small-curve-hstem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="space" value="small-p-space"/>
+   <with-param name="upper-notch" value="notch-count"/>
+   <with-param name="lower-notch" value="cog-count"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

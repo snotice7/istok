@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-
-  <glyph ps-name="uni0237" init-graphics="yes">
-    <!--
+ <glyph ps-name="uni0237" init-graphics="yes">
+  <!--
      
       Copyright (C) 2009  Andrey V. Panov
      
@@ -21,12 +19,11 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
-    <call-glyph ps-name="J">
-      <with-param name="baseline" value="small-curve-desc"/>
-      <with-param name="x-height" value="small-x-height"/>
-      <with-param name="vert-stem" value="small-vert-stem"/>
-      <with-param name="horiz-stem" value="small-curve-hstem"/>
-    </call-glyph>
-  </glyph>
-
+  <call-glyph ps-name="J">
+   <with-param name="baseline" value="small-curve-desc"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="horiz-stem" value="small-curve-hstem"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

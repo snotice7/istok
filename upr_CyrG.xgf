@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-  <!--Cyr G-->
-
-  <glyph ps-name="afii10020" init-graphics="yes">
-    <!--
+ <!--Cyr G-->
+ <glyph ps-name="afii10020" init-graphics="yes">
+  <!--
      
      Andrey V. Panov (C) 2007, 2008, 2009
      
@@ -22,88 +20,87 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
-    <param name="baseline" value="cap-x-baseline"/>
-    <param name="x-height" value="cap-x-height"/>
-    <param name="vert-stem" value="cap-vert-stem"/>
-    <param name="horiz-stem" value="cap-horiz-stem"/>
-    <param name="lbearing" value="cap-h-lbearing"/>
-    <constant name="lstem-left-bottom" value="first-point"/>
-    <constant name="lstem-left-top" value="lstem-left-bottom +  vstem-vcount"/>
-    <constant name="hstem-right-top" value="lstem-left-top + hstem-hcount"/>
-    <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
-    <constant name="hstem-left-bottom" value="hstem-right-bottom + smooth-count"/>
-    <constant name="lstem-right-bottom" value="hstem-left-bottom + smooth-count"/>
-    <constant name="last" value="lstem-right-bottom + last-count"/>
-    <compile-if test="slanted">
-      <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-      <set-projection-vector axis="y"/>
-      <!--   <set-round-state round="to-grid"/> -->
-      <else>
-        <set-vectors axis="y"/>
-        <compile-if test="smooth">
-          <if test="vertical-smoothing">
-            <set-round-state round="no"/>
-          </if>
-        </compile-if>
-      </else>
-    </compile-if>
-    <move distance="baseline">
-      <point num="lstem-left-bottom"/>
-      <align>
-        <point num="lstem-right-bottom"/>
-      </align>
-    </move>
-    <move distance="x-height">
-      <point num="lstem-left-top"/>
-      <align>
-        <point num="hstem-right-top"/>
-      </align>
-      <move distance="horiz-stem" color="black">
-        <point num="hstem-left-bottom"/>
-        <align>
-          <point num="hstem-right-bottom"/>
-        </align>
-      </move>
-    </move>
-    <compile-if test="slanted">
-      <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-      <set-freedom-vector axis="x"/>
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="lbearing" value="cap-h-lbearing"/>
+  <constant name="lstem-left-bottom" value="first-point"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom +  vstem-vcount"/>
+  <constant name="hstem-right-top" value="lstem-left-top + hstem-hcount"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="hstem-left-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="lstem-right-bottom" value="hstem-left-bottom + smooth-count"/>
+  <constant name="last" value="lstem-right-bottom + last-count"/>
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
       <set-round-state round="no"/>
-      <else>
-        <set-vectors axis="x"/>
-        <compile-if test="smooth">
-          <if test="only-vertical-smoothing">
-            <set-round-state round="to-grid"/>
-          </if>
-        </compile-if>
-      </else>
+     </if>
     </compile-if>
-    <move distance="lbearing" color="white">
-      <reference>
-        <point num="left-bearing"/>
-      </reference>
-      <point num="lstem-left-bottom"/>
-      <align>
-        <point num="lstem-left-top"/>
-      </align>
-      <move distance="vert-stem" color="black">
-        <point num="hstem-left-bottom"/>
-        <align>
-          <point num="lstem-right-bottom"/>
-        </align>
-      </move>
-    </move>
-    <move min-distance="no" color="white">
-      <reference>
-        <point num="right-bearing"/>
-      </reference>
-      <point num="hstem-right-top"/>
-      <align>
-        <point num="hstem-right-bottom"/>
-      </align>
-    </move>
-    <interpolate-untouched-points/>
-  </glyph>
-  <!--Cyr G-->
-
+   </else>
+  </compile-if>
+  <move distance="baseline">
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="lstem-left-top"/>
+   <align>
+    <point num="hstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="hstem-left-bottom"/>
+    <align>
+     <point num="hstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="only-vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="hstem-left-bottom"/>
+    <align>
+     <point num="lstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="hstem-right-top"/>
+   <align>
+    <point num="hstem-right-bottom"/>
+   </align>
+  </move>
+  <interpolate-untouched-points/>
+ </glyph>
+ <!--Cyr G-->
 </xgridfit>

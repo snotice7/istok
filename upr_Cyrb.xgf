@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-  <!--"б"-->
-
-  <glyph ps-name="afii10066" init-graphics="yes">
-    <!--
+ <!--"б"-->
+ <glyph ps-name="afii10066" init-graphics="yes">
+  <!--
       Copyright (C) 2008, 2009  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
@@ -21,152 +19,152 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-    <param name="baseline" value="small-o-baseline"/>
-    <param name="height" value="small-o-height"/>
-    <param name="curve-horiz-stem" value="small-curve-hstem"/>
-    <param name="vert-stem" value="small-o-curve-stem"/>
-    <param name="lbearing" value="small-o-lbearing"/>
-    <param name="space" value="small-o-space"/>
-    <param name="diag" value="small-thindiag"/>
-    <constant name="outer-left" value="0"/>
-    <constant name="asc-flat-top-left" value="outer-left + 5"/>
-    <constant name="asc-flat-top" value="outer-left + 8"/>
-    <constant name="asc-end-left" value="asc-flat-top + 3"/>
-    <constant name="asc-end-right" value="asc-end-left + vstem-hcount"/>
-    <constant name="asc-flat-bottom" value="asc-end-right + 3"/>
-    <constant name="asc-flat-bottom-left" value="asc-flat-bottom + 4"/>
-    <constant name="joint-left" value="24"/>
-    <constant name="outer-top" value="28"/>
-    <constant name="outer-right" value="outer-top + 3"/>
-    <constant name="outer-bottom" value="outer-right + 3"/>
-    <constant name="inner-left" value="37"/>
-    <constant name="inner-bottom" value="inner-left + 3"/>
-    <constant name="inner-right" value="inner-bottom + 3"/>
-    <constant name="inner-top" value="inner-right + 3"/>
-    <constant name="last" value="inner-top + 2"/>
-    <line name="diag-top">
-      <point num="asc-flat-top-left"/>
-      <point num="asc-flat-top"/>
-    </line>
-    <line name="diag-bottom">
-      <point num="asc-flat-bottom-left"/>
-      <point num="asc-flat-bottom"/>
-    </line>
-    <set-vectors axis="y"/>
-    <move distance="baseline">
-      <point num="outer-bottom"/>
-      <move distance="curve-horiz-stem" color="black">
-        <point num="inner-bottom"/>
-      </move>
-    </move>
-    <move>
-      <point num="asc-end-right"/>
-      <align>
-        <point num="asc-end-left"/>
-      </align>
-    </move>
-    <!-- <move distance="small-o-height">
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="height" value="small-o-height"/>
+  <param name="curve-horiz-stem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="lbearing" value="small-o-lbearing"/>
+  <param name="space" value="small-o-space"/>
+  <param name="diag" value="small-thindiag"/>
+  <constant name="outer-left" value="0"/>
+  <constant name="asc-flat-top-left" value="outer-left + 5"/>
+  <constant name="asc-flat-top" value="outer-left + 8"/>
+  <constant name="asc-end-left" value="asc-flat-top + 3"/>
+  <constant name="asc-end-right" value="asc-end-left + vstem-hcount"/>
+  <constant name="asc-flat-bottom" value="asc-end-right + 3"/>
+  <constant name="asc-flat-bottom-left" value="asc-flat-bottom + 4"/>
+  <constant name="joint-left" value="24"/>
+  <constant name="outer-top" value="28"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="inner-left" value="37"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="last" value="inner-top + 2"/>
+  <line name="diag-top">
+   <point num="asc-flat-top-left"/>
+   <point num="asc-flat-top"/>
+  </line>
+  <line name="diag-bottom">
+   <point num="asc-flat-bottom-left"/>
+   <point num="asc-flat-bottom"/>
+  </line>
+  <set-vectors axis="y"/>
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move>
+   <point num="asc-end-right"/>
+   <align>
+    <point num="asc-end-left"/>
+   </align>
+  </move>
+  <!-- <move distance="small-o-height">
    <point num="outer-top"/>
    <move distance="small-curve-hstem" color="black">
     <point num="inner-top"/>
    </move>
   </move>-->
-    <interpolate round="yes">
-      <reference>
-        <point num="outer-bottom"/>
-        <point num="asc-end-right"/>
-      </reference>
-      <point num="asc-flat-top"/>
-    </interpolate>
-    <!-- <move color="black">
+  <interpolate round="yes">
+   <reference>
+    <point num="outer-bottom"/>
+    <point num="asc-end-right"/>
+   </reference>
+   <point num="asc-flat-top"/>
+  </interpolate>
+  <!-- <move color="black">
    <reference>
     <point num="asc-flat-top"/>
    </reference>
    <point num="asc-flat-bottom"/>
   </move>-->
-    <!-- <interpolate round="yes">
+  <!-- <interpolate round="yes">
    <reference>
     <point num="outer-bottom"/>
     <point num="asc-flat-bottom"/>
    </reference>
    <point num="outer-top"/>
   </interpolate>-->
-    <move color="white">
-      <reference>
-        <point num="asc-flat-top"/>
-      </reference>
-      <point num="outer-top"/>
-    </move>
-    <if test="coord(outer-top) &gt; control-value(index(small-o-height))">
-      <move distance="small-o-height">
-        <point num="outer-top"/>
-      </move>
-    </if>
-    <move distance="curve-horiz-stem" color="black">
-      <reference>
-        <point num="outer-top"/>
-      </reference>
-      <point num="inner-top"/>
-    </move>
+  <move color="white">
+   <reference>
+    <point num="asc-flat-top"/>
+   </reference>
+   <point num="outer-top"/>
+  </move>
+  <if test="coord(outer-top) &gt; control-value(index(small-o-height))">
+   <move distance="small-o-height">
+    <point num="outer-top"/>
+   </move>
+  </if>
+  <move distance="curve-horiz-stem" color="black">
+   <reference>
+    <point num="outer-top"/>
+   </reference>
+   <point num="inner-top"/>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="asc-flat-top"/>
+    <point num="outer-top"/>
+   </reference>
+   <point num="asc-flat-top-left"/>
+  </interpolate>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-bottom"/>
+     <point num="inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="outer-top"/>
+     <point num="inner-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <set-vectors axis="x"/>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
     <interpolate>
-      <reference>
-        <point num="asc-flat-top"/>
-        <point num="outer-top"/>
-      </reference>
-      <point num="asc-flat-top-left"/>
+     <point num="joint-left"/>
+     <point num="joint-left + 1"/>
     </interpolate>
-    <compile-if test="smooth">
-      <if test="vertical-smoothing">
-        <shift-absolute pixel-distance="hgrayshift-">
-          <point num="outer-bottom"/>
-          <point num="inner-top"/>
-        </shift-absolute>
-        <shift-absolute pixel-distance="hgrayshift">
-          <point num="outer-top"/>
-          <point num="inner-bottom"/>
-        </shift-absolute>
-      </if>
-    </compile-if>
-    <set-vectors axis="x"/>
-    <move distance="lbearing" color="white">
-      <reference>
-        <point num="left-bearing"/>
-      </reference>
-      <point num="outer-left"/>
-      <move distance="vert-stem" color="black">
-        <point num="inner-left"/>
-        <interpolate>
-          <point num="joint-left"/>
-          <point num="joint-left + 1"/>
-        </interpolate>
-      </move>
-      <move distance="space" color="black">
-        <point num="outer-right"/>
-        <interpolate>
-          <point num="asc-flat-top"/>
-          <point num="asc-flat-top-left"/>
-        </interpolate>
-        <move distance="vert-stem" color="black">
-          <point num="inner-right"/>
-          <interpolate round="yes">
-            <point num="asc-end-right"/>
-          </interpolate>
-        </move>
-        <move min-distance="no" color="white">
-          <point num="right-bearing"/>
-        </move>
-      </move>
-      <!--  <move color="black">
+   </move>
+   <move distance="space" color="black">
+    <point num="outer-right"/>
+    <interpolate>
+     <point num="asc-flat-top"/>
+     <point num="asc-flat-top-left"/>
+    </interpolate>
+    <move distance="vert-stem" color="black">
+     <point num="inner-right"/>
+     <interpolate round="yes">
+      <point num="asc-end-right"/>
+     </interpolate>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+   <!--  <move color="black">
     <point num="joint-left - 2"/>
    </move>-->
-    </move>
-    <move color="black">
-      <reference>
-        <point num="asc-end-right"/>
-      </reference>
-      <point num="asc-end-left"/>
-    </move>
-    <!-- <compile-if test="slanted">
+  </move>
+  <move color="black">
+   <reference>
+    <point num="asc-end-right"/>
+   </reference>
+   <point num="asc-end-left"/>
+  </move>
+  <!-- <compile-if test="slanted">
    <set-projection-vector x-component="variable(6)" y-component="negative(variable(7))"/>
   </compile-if>
   <set-equal target="width" source="rbearing-o - (outer-right - - right-bearing)"/>
@@ -174,43 +172,42 @@
    <set-projection-vector axis="x"/>
    <round value="width"/>
   </compile-if>-->
-    <!-- <set-equal target="width" source="round-white(rbearing-o - (outer-right - - right-bearing))"/>
+  <!-- <set-equal target="width" source="round-white(rbearing-o - (outer-right - - right-bearing))"/>
   <if test="width &gt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="right-bearing"/>
    </shift-absolute>
   </if>-->
-    <compile-if test="smooth">
-      <if test="horizontal-smoothing">
-        <shift-absolute pixel-distance="hgrayshift-">
-          <point num="outer-left"/>
-          <point num="inner-right"/>
-        </shift-absolute>
-        <shift-absolute pixel-distance="hgrayshift">
-          <point num="outer-right"/>
-          <point num="inner-left"/>
-        </shift-absolute>
-      </if>
-    </compile-if>
-    <diagonal-stem distance="diag" round="no" save-vectors="yes" min-amount="diag-min-thick" color="black">
-      <line ref="diag-top"/>
-      <line ref="diag-bottom"/>
-    </diagonal-stem>
-    <with-projection-vector to-line="parallel">
-      <line ref="diag-top"/>
-      <with-freedom-vector to-line="parallel">
-        <line ref="diag-top"/>
-        <interpolate>
-          <reference>
-            <point num="asc-flat-top-left"/>
-            <point num="asc-flat-top"/>
-          </reference>
-          <point num="asc-flat-bottom-left"/>
-          <point num="asc-flat-bottom"/>
-        </interpolate>
-      </with-freedom-vector>
-    </with-projection-vector>
-    <interpolate-untouched-points/>
-  </glyph>
-
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="outer-left"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="outer-right"/>
+     <point num="inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <diagonal-stem distance="diag" round="no" save-vectors="yes" min-amount="diag-min-thick" color="black">
+   <line ref="diag-top"/>
+   <line ref="diag-bottom"/>
+  </diagonal-stem>
+  <with-projection-vector to-line="parallel">
+   <line ref="diag-top"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="diag-top"/>
+    <interpolate>
+     <reference>
+      <point num="asc-flat-top-left"/>
+      <point num="asc-flat-top"/>
+     </reference>
+     <point num="asc-flat-bottom-left"/>
+     <point num="asc-flat-bottom"/>
+    </interpolate>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <interpolate-untouched-points/>
+ </glyph>
 </xgridfit>
