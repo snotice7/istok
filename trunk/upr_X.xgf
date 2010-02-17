@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-  <!-- X, Х -->
-
-  <glyph ps-name="X" init-graphics="yes">
-    <!--
+ <!-- X, Х -->
+ <glyph ps-name="X" init-graphics="yes">
+  <!--
       
       Copyright (C) 2007, 2008, 2009  Andrey V. Panov
       
@@ -22,192 +20,190 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
       -->
-    <param name="baseline" value="cap-x-baseline"/>
-    <param name="x-height" value="cap-x-height"/>
-    <param name="thin-diag" value="cap-diag"/>
-    <param name="thick-diag" value="cap--diag"/>
-    <param name="lbearing" value="cap-x-lbearing"/>
-    <constant name="left-left-bottom" value="first-point"/>
-    <constant name="intersect-left" value="left-left-bottom + smooth-count"/>
-    <constant name="left-left-top" value="intersect-left + smooth-count"/>
-    <constant name="left-right-top" value="left-left-top + vstem-hcount"/>
-    <constant name="intersect-top" value="left-right-top + smooth-count"/>
-    <constant name="right-left-top" value="intersect-top + smooth-count"/>
-    <constant name="right-right-top" value="right-left-top + vstem-hcount"/>
-    <constant name="intersect-right" value="right-right-top + smooth-count"/>
-    <constant name="right-right-bottom" value="intersect-right + smooth-count"/>
-    <constant name="right-left-bottom" value="right-right-bottom + vstem-hcount"/>
-    <constant name="intersect-bottom" value="right-left-bottom + smooth-count"/>
-    <constant name="left-right-bottom" value="intersect-bottom + smooth-count"/>
-    <constant name="last" value="left-right-bottom + last-count"/>
-    <line name="left-thinstem">
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="thin-diag" value="cap-diag"/>
+  <param name="thick-diag" value="cap--diag"/>
+  <param name="lbearing" value="cap-x-lbearing"/>
+  <constant name="left-left-bottom" value="first-point"/>
+  <constant name="intersect-left" value="left-left-bottom + smooth-count"/>
+  <constant name="left-left-top" value="intersect-left + smooth-count"/>
+  <constant name="left-right-top" value="left-left-top + vstem-hcount"/>
+  <constant name="intersect-top" value="left-right-top + smooth-count"/>
+  <constant name="right-left-top" value="intersect-top + smooth-count"/>
+  <constant name="right-right-top" value="right-left-top + vstem-hcount"/>
+  <constant name="intersect-right" value="right-right-top + smooth-count"/>
+  <constant name="right-right-bottom" value="intersect-right + smooth-count"/>
+  <constant name="right-left-bottom" value="right-right-bottom + vstem-hcount"/>
+  <constant name="intersect-bottom" value="right-left-bottom + smooth-count"/>
+  <constant name="left-right-bottom" value="intersect-bottom + smooth-count"/>
+  <constant name="last" value="left-right-bottom + last-count"/>
+  <line name="left-thinstem">
+   <point num="left-left-bottom"/>
+   <point num="right-left-top"/>
+  </line>
+  <line name="right-thinstem">
+   <point num="left-right-bottom"/>
+   <point num="right-right-top"/>
+  </line>
+  <line name="left-thickstem">
+   <point num="left-left-top"/>
+   <point num="right-left-bottom"/>
+  </line>
+  <line name="right-thickstem">
+   <point num="left-right-top"/>
+   <point num="right-right-bottom"/>
+  </line>
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  <move distance="baseline">
+   <point num="left-left-bottom"/>
+   <align>
+    <point num="right-right-bottom"/>
+    <point num="right-left-bottom"/>
+    <point num="left-right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="left-left-top"/>
+   <align>
+    <point num="left-right-top"/>
+    <point num="right-left-top"/>
+    <point num="right-right-top"/>
+   </align>
+  </move>
+  <set-vectors axis="x"/>
+  <move distance="lbearing" min-distance="no" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-left-bottom"/>
+   <move>
+    <point num="right-left-top"/>
+    <interpolate round="yes">
+     <point num="right-left-bottom"/>
+     <point num="left-left-top"/>
+    </interpolate>
+   </move>
+  </move>
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="thin-diag" save-vectors="yes" color="black">
+     <line ref="left-thinstem"/>
+     <line ref="right-thinstem"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+   <diagonal-stem distance="thick-diag" save-vectors="yes" color="black">
+    <line ref="left-thickstem"/>
+    <line ref="right-thickstem"/>
+   </diagonal-stem>
+  </with-round-state>
+  <compile-if test="slanted = 0">
+   <set-equal target="width" source="round(right-right-top -- right-right-bottom)"/>
+   <if test="width &lt; 0p">
+    <shift-absolute pixel-distance="width">
+     <point num="right-left-top"/>
+     <point num="right-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <mdap round="yes">
+   <point num="left-right-top"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="right-right-bottom"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="left-right-bottom"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="right-right-top"/>
+  </mdap>
+  <compile-if test="slanted">
+   <shift-absolute pixel-distance="-0.03p">
+    <point num="left-right-bottom"/>
+    <point num="right-right-top"/>
+   </shift-absolute>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-right-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <with-projection-vector axis="y">
+   <with-freedom-vector to-line="parallel">
+    <line ref="right-thinstem"/>
+    <align>
+     <reference>
       <point num="left-left-bottom"/>
+     </reference>
+     <point num="left-right-bottom"/>
+    </align>
+    <align>
+     <reference>
       <point num="right-left-top"/>
-    </line>
-    <line name="right-thinstem">
-      <point num="left-right-bottom"/>
-      <point num="right-right-top"/>
-    </line>
-    <line name="left-thickstem">
+     </reference>
+     <point num="right-right-top"/>
+    </align>
+   </with-freedom-vector>
+   <with-freedom-vector to-line="parallel">
+    <line ref="right-thickstem"/>
+    <align>
+     <reference>
       <point num="left-left-top"/>
+     </reference>
+     <point num="left-right-top"/>
+    </align>
+    <align>
+     <reference>
       <point num="right-left-bottom"/>
-    </line>
-    <line name="right-thickstem">
-      <point num="left-right-top"/>
-      <point num="right-right-bottom"/>
-    </line>
-    <set-vectors axis="y"/>
-    <compile-if test="smooth">
-      <if test="vertical-smoothing">
-        <set-round-state round="no"/>
-      </if>
-    </compile-if>
-    <move distance="baseline">
-      <point num="left-left-bottom"/>
-      <align>
-        <point num="right-right-bottom"/>
-        <point num="right-left-bottom"/>
-        <point num="left-right-bottom"/>
-      </align>
-    </move>
-    <move distance="x-height">
-      <point num="left-left-top"/>
-      <align>
-        <point num="left-right-top"/>
-        <point num="right-left-top"/>
-        <point num="right-right-top"/>
-      </align>
-    </move>
-    <set-vectors axis="x"/>
-    <move distance="lbearing" min-distance="no" color="white">
-      <reference>
-        <point num="left-bearing"/>
-      </reference>
-      <point num="left-left-bottom"/>
-      <move>
-        <point num="right-left-top"/>
-        <interpolate round="yes">
-          <point num="right-left-bottom"/>
-          <point num="left-left-top"/>
-        </interpolate>
-      </move>
-    </move>
-    <with-round-state round="no">
-      <with-minimum-distance value="diag-min-thick">
-        <diagonal-stem distance="thin-diag" save-vectors="yes" color="black">
-          <line ref="left-thinstem"/>
-          <line ref="right-thinstem"/>
-        </diagonal-stem>
-      </with-minimum-distance>
-      <diagonal-stem distance="thick-diag" save-vectors="yes" color="black">
-        <line ref="left-thickstem"/>
-        <line ref="right-thickstem"/>
-      </diagonal-stem>
-    </with-round-state>
-    <compile-if test="slanted = 0">
-      <set-equal target="width" source="round(right-right-top -- right-right-bottom)"/>
-      <if test="width &lt; 0p">
-        <shift-absolute pixel-distance="width">
-          <point num="right-left-top"/>
-          <point num="right-right-top"/>
-        </shift-absolute>
-      </if>
-    </compile-if>
-    <mdap round="yes">
-      <point num="left-right-top"/>
-    </mdap>
-    <mdap round="yes">
-      <point num="right-right-bottom"/>
-    </mdap>
-    <mdap round="yes">
-      <point num="left-right-bottom"/>
-    </mdap>
-    <mdap round="yes">
-      <point num="right-right-top"/>
-    </mdap>
-    <compile-if test="slanted">
-      <shift-absolute pixel-distance="-0.03p">
-        <point num="left-right-bottom"/>
-        <point num="right-right-top"/>
-      </shift-absolute>
-    </compile-if>
-    <move min-distance="no" color="white">
-      <reference>
-        <point num="right-right-bottom"/>
-      </reference>
-      <point num="right-bearing"/>
-    </move>
-    <with-projection-vector axis="y">
-      <with-freedom-vector to-line="parallel">
-        <line ref="right-thinstem"/>
-        <align>
-          <reference>
-            <point num="left-left-bottom"/>
-          </reference>
-          <point num="left-right-bottom"/>
-        </align>
-        <align>
-          <reference>
-            <point num="right-left-top"/>
-          </reference>
-          <point num="right-right-top"/>
-        </align>
-      </with-freedom-vector>
-      <with-freedom-vector to-line="parallel">
-        <line ref="right-thickstem"/>
-        <align>
-          <reference>
-            <point num="left-left-top"/>
-          </reference>
-          <point num="left-right-top"/>
-        </align>
-        <align>
-          <reference>
-            <point num="right-left-bottom"/>
-          </reference>
-          <point num="right-right-bottom"/>
-        </align>
-      </with-freedom-vector>
-    </with-projection-vector>
-    <move-point-to-intersection>
-      <point num="intersect-top"/>
-      <line ref="left-thinstem"/>
-      <line ref="right-thickstem"/>
-    </move-point-to-intersection>
-    <move-point-to-intersection>
-      <point num="intersect-bottom"/>
-      <line ref="right-thinstem"/>
-      <line ref="left-thickstem"/>
-    </move-point-to-intersection>
-    <move-point-to-intersection>
-      <point num="intersect-left"/>
-      <line ref="left-thinstem"/>
-      <line ref="left-thickstem"/>
-    </move-point-to-intersection>
-    <move-point-to-intersection>
-      <point num="intersect-right"/>
-      <line ref="right-thinstem"/>
-      <line ref="right-thickstem"/>
-    </move-point-to-intersection>
-    <compile-if test="(regular != 0) and (slanted = 0)">
-      <!--   <set-vectors axis="x"/> -->
-      <if test="(intersect-left -- intersect-right) = 1.0p">
-        <shift-absolute pixel-distance="0.05p">
-          <point num="intersect-right"/>
-        </shift-absolute>
-      </if>
-    </compile-if>
-    <interpolate-untouched-points/>
-  </glyph>
-
-  <glyph ps-name="x">
-    <call-glyph ps-name="X">
-      <with-param name="baseline" value="small-x-baseline"/>
-      <with-param name="x-height" value="small-x-height"/>
-      <with-param name="thin-diag" value="small-diag"/>
-      <with-param name="thick-diag" value="small--diag"/>
-      <with-param name="lbearing" value="small-x-lbearing"/>
-    </call-glyph>
-  </glyph>
-
+     </reference>
+     <point num="right-right-bottom"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <move-point-to-intersection>
+   <point num="intersect-top"/>
+   <line ref="left-thinstem"/>
+   <line ref="right-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-bottom"/>
+   <line ref="right-thinstem"/>
+   <line ref="left-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-left"/>
+   <line ref="left-thinstem"/>
+   <line ref="left-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-right"/>
+   <line ref="right-thinstem"/>
+   <line ref="right-thickstem"/>
+  </move-point-to-intersection>
+  <compile-if test="(regular != 0) and (slanted = 0)">
+   <!--   <set-vectors axis="x"/> -->
+   <if test="(intersect-left -- intersect-right) = 1.0p">
+    <shift-absolute pixel-distance="0.05p">
+     <point num="intersect-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <interpolate-untouched-points/>
+ </glyph>
+ <glyph ps-name="x">
+  <call-glyph ps-name="X">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="thin-diag" value="small-diag"/>
+   <with-param name="thick-diag" value="small--diag"/>
+   <with-param name="lbearing" value="small-x-lbearing"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

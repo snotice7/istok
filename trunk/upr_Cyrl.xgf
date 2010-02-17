@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-  <!--л-->
-
-  <glyph ps-name="afii10077" init-graphics="yes">
-    <!--
+ <!--л-->
+ <glyph ps-name="afii10077" init-graphics="yes">
+  <!--
       
       Copyright (C) 2009  Andrey V. Panov
       
@@ -22,16 +20,15 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-    <call-glyph ps-name="afii10029">
-      <with-param name="x-baseline" value="small-x-baseline"/>
-      <with-param name="x-height" value="small-x-height"/>
-      <with-param name="vert-stem" value="small-vert-stem"/>
-      <with-param name="o-baseline" value="small-o-baseline"/>
-      <with-param name="curve-hstem" value="small-curve-hstem"/>
-      <with-param name="horiz-stem" value="small-horiz-stem"/>
-      <with-param name="vert-thinstem" value="small-vert-thinstem"/>
-      <with-param name="cyrl-space" value="small-cyrl-space"/>
-    </call-glyph>
-  </glyph>
-
+  <call-glyph ps-name="afii10029">
+   <with-param name="x-baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="o-baseline" value="small-o-baseline"/>
+   <with-param name="curve-hstem" value="small-curve-hstem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="vert-thinstem" value="small-vert-thinstem"/>
+   <with-param name="cyrl-space" value="small-cyrl-space"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

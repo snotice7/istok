@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
-
-
-  <glyph ps-name="afii10037.sc" init-graphics="yes">
-    <!--
+ <glyph ps-name="afii10037.sc" init-graphics="yes">
+  <!--
      
       Copyright (C) 2009  Andrey V. Panov
      
@@ -21,13 +19,12 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
-    <call-glyph ps-name="afii10037">
-      <with-param name="baseline" value="small-o-baseline"/>
-      <with-param name="x-height" value="sc-x-height"/>
-      <with-param name="thin-diag" value="small-diag"/>
-      <with-param name="thick-diag" value="small--diag"/>
-      <with-param name="horiz-stem" value="small-curve-hstem"/>
-    </call-glyph>
-  </glyph>
-
+  <call-glyph ps-name="afii10037">
+   <with-param name="baseline" value="small-o-baseline"/>
+   <with-param name="x-height" value="sc-x-height"/>
+   <with-param name="thin-diag" value="small-diag"/>
+   <with-param name="thick-diag" value="small--diag"/>
+   <with-param name="horiz-stem" value="small-curve-hstem"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

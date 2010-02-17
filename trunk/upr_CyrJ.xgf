@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!-- Й -->
+ <glyph ps-name="afii10027" init-graphics="yes">
 
-  <!-- Й -->
-
-  <glyph ps-name="afii10027">
-    <!--
+  <!--
       
       Copyright (C) 2007, 2008, 2009 Andrey V. Panov
       
@@ -22,38 +21,40 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-    <param name="i-left" value="afii10026/lstem-left-top"/>
-    <param name="i-right" value="afii10026/rstem-right-top"/>
-    <param name="breve-center-bottom" value="afii10026/total + cyrBreve/junction-bottom"/>
-    <param name="breve-contour" value="1"/>
-    <set-vectors axis="x"/>
-    <call-function name="center-accent-with-anchor-and-two-reper-points">
-      <with-param name="point-left" value="i-left"/>
-      <with-param name="point-center" value="breve-center-bottom"/>
-      <with-param name="point-right" value="i-right"/>
-      <with-param name="contour" value="breve-contour"/>
-    </call-function>
-    <set-vectors axis="y"/>
-    <if test="(i-left -- breve-center-bottom) &lt; 1.0p">
-      <shift-absolute pixel-distance="1.0p">
-        <point num="breve-center-bottom"/>
-      </shift-absolute>
-      <shift>
-        <reference>
-          <point num="breve-center-bottom"/>
-        </reference>
-        <contour num="breve-contour"/>
-      </shift>
-    </if>
-    <!--   <interpolate-untouched-points/> -->
-  </glyph>
 
-  <glyph ps-name="afii10075">
-    <call-glyph ps-name="afii10027">
-      <!--   <with-param name="i-left" value="afii10074/lstem-left-top"/>
+  <param name="i-left" value="afii10026/lstem-left-top"/>
+  <param name="i-right" value="afii10026/rstem-right-top"/>
+  <param name="breve-center-bottom" value="afii10026/total + cyrBreve/junction-bottom"/>
+  <param name="breve-contour" value="1"/>
+
+  <set-vectors axis="x"/>
+  <call-function name="center-accent-with-anchor-and-two-reper-points">
+   <with-param name="point-left" value="i-left"/>
+   <with-param name="point-center" value="breve-center-bottom"/>
+   <with-param name="point-right" value="i-right"/>
+   <with-param name="contour" value="breve-contour"/>
+  </call-function>
+
+  <set-vectors axis="y"/>
+  <if test="(i-left -- breve-center-bottom) &lt; 1.0p">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="breve-center-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="breve-center-bottom"/>
+    </reference>
+    <contour num="breve-contour"/>
+   </shift>
+  </if>
+  <!--   <interpolate-untouched-points/> -->
+ </glyph>
+
+ <glyph ps-name="afii10075" init-graphics="yes">
+  <call-glyph ps-name="afii10027">
+   <!--   <with-param name="i-left" value="afii10074/lstem-left-top"/>
    <with-param name="i-right" value="afii10074/rstem-right-top"/>
    <with-param name="breve-center-bottom" value="afii10074/total + cyrbreve/junction-bottom"/>-->
-    </call-glyph>
-  </glyph>
-
+  </call-glyph>
+ </glyph>
 </xgridfit>
