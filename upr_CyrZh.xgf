@@ -2,6 +2,7 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Cyr Zh (Ж)-->
  <glyph ps-name="afii10024" init-graphics="yes">
+  
   <!--
       Copyright (C) 2008, 2009  Andrey V. Panov
       
@@ -19,6 +20,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
@@ -27,6 +29,7 @@
   <param name="lbearing" value="cap-x-lbearing"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
+
   <constant name="ll-diag-l-bottom" value="first-point"/>
   <!--"left lower diagonal leftside bottom"-->
   <constant name="ll-diag-l-top" value="ll-diag-l-bottom + smooth-count"/>
@@ -88,6 +91,7 @@
    <point num="rl-diag-l-top"/>
    <point num="rl-diag-l-bottom"/>
   </line>
+
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -101,6 +105,7 @@
     </compile-if>
    </else>
   </compile-if>
+
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
@@ -153,12 +158,14 @@
     <point num="ru-diag-r-top"/>
    </align>
   </move>
+  
   <compile-if test="smooth">
    <if test="vertical-smoothing">
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>
   <set-vectors axis="x"/>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -242,17 +249,18 @@
     <shift-absolute pixel-distance="hgrayshift-">
      <point num="vstem-left-bottom"/>
      <point num="vstem-left-top"/>
-     <point num="lu-diag-r-bottom"/>
-     <point num="lu-diag-l-bottom"/>
+     <point num="lhstem-right-top"/>
+     <point num="lhstem-right-bottom"/>
     </shift-absolute>
     <shift-absolute pixel-distance="hgrayshift">
-     <point num="ru-diag-l-bottom"/>
-     <point num="ru-diag-r-bottom"/>
      <point num="vstem-right-top"/>
      <point num="vstem-right-bottom"/>
+     <point num="rhstem-left-top"/>
+     <point num="rhstem-left-bottom"/>
     </shift-absolute>
    </if>
   </compile-if>
+  
   <call-macro name="make-diagonal">
    <with-param name="first-diag-first-point" value="lu-diag-l-top"/>
    <with-param name="first-diag-second-point" value="lu-diag-l-bottom"/>
@@ -269,6 +277,7 @@
    <with-param name="diag-width" value="thick-diag"/>
    <with-param name="interpolation-point" value="intersect-right"/>
   </call-macro>
+  
   <!--  Copy the left part into the right with flipping -->
   <with-round-state round="no">
    <with-vectors axis="y">
@@ -395,8 +404,8 @@
    </else>
   </compile-if>-->
   <interpolate-untouched-points/>
- </glyph>
- <!--Cyr zh-->
+ </glyph> <!--Cyr zh-->
+
  <glyph ps-name="afii10072" init-graphics="yes">
   <call-glyph ps-name="afii10024">
    <with-param name="baseline" value="small-x-baseline"/>

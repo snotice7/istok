@@ -31,7 +31,7 @@
   <constant name="rbulb-top" value="rbulb-left + smooth-count"/>
   <constant name="rbulb-right" value="rbulb-top + vstem-hcount"/>
   <constant name="junction-bottom" value="rbulb-right + 5"/>
-  <constant name="last" value="junction-bottom + 4"/>
+  <constant name="last" value="junction-bottom + 3"/>
 
   <set-vectors axis="y"/>
   <move>
