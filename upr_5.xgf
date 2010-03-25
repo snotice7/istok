@@ -175,17 +175,29 @@
   </move>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="vstem-left-bottom"/>
      <point num="vstem-left-top"/>
-     <point num="inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="vstem-curl-intersect"/>
      <point num="vstem-right-bottom"/>
      <point num="hstem-left-bottom"/>
-     <point num="hstem-right-top"/>
-     <point num="hstem-right-bottom"/>
+     <!--     <point num="hstem-right-top"/>
+     <point num="hstem-right-bottom"/>-->
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
      <point num="outer-right"/>
     </shift-absolute>
    </if>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="period" init-graphics="yes">
+ <glyph ps-name="exclam">
   
   <!--
       
-      Copyright (C) 2007, 2008, 2010 Andrey V. Panov
+      Copyright (C) 2008, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -22,14 +22,21 @@
       -->
   
   <param name="baseline" value="cap-x-baseline"/>
-  <param name="height" value="period-height"/>
+  <param name="period-height" value="period-height"/>
   <param name="vert-stem" value="period-width"/>
+  <param name="height" value="cap-o-height"/>
   
-  <constant name="left-bottom" value="first-point"/>
-  <constant name="left-top" value="left-bottom + vstem-vcount"/>
-  <constant name="right-top" value="left-top + vstem-hcount"/>
-  <constant name="right-bottom" value="right-top + vstem-vcount"/>
-  <constant name="last" value="right-bottom + last-count"/>
+  <constant name="left" value="0"/>
+  <constant name="top-left" value="left + smooth-count"/>
+  <constant name="top-right" value="top-left + 1"/>
+  <constant name="right" value="top-right + smooth-count"/>
+  <constant name="bottom-right" value="right + smooth-count"/>
+  <constant name="bottom-left" value="bottom-right + vstem-hcount"/>
+  <constant name="period-left-bottom" value="bottom-left + smooth-count + first-point"/>
+  <constant name="period-left-top" value="period-left-bottom + vstem-vcount"/>
+  <constant name="period-right-top" value="period-left-top + vstem-hcount"/>
+  <constant name="period-right-bottom" value="period-right-top + vstem-vcount"/>
+  <constant name="last" value="period-right-bottom + last-count"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -46,15 +53,27 @@
   </compile-if>
   
   <move distance="baseline">
-   <point num="left-bottom"/>
+   <point num="period-left-bottom"/>
    <align>
-    <point num="right-bottom"/>
+    <point num="period-right-bottom"/>
    </align>
   </move>
-  <move distance="height">
-   <point num="left-top"/>
+  <move distance="period-height">
+   <point num="period-left-top"/>
    <align>
-    <point num="right-top"/>
+    <point num="period-right-top"/>
+   </align>
+   <move color="white">
+    <point num="bottom-left"/>
+    <align>
+     <point num="bottom-right"/>
+    </align>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="top-left"/>
+   <align>
+    <point num="top-right"/>
    </align>
   </move>
   
@@ -76,14 +95,15 @@
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="left-bottom"/>
+   <point num="period-left-bottom"/>
    <align>
-    <point num="left-top"/>
+    <point num="left"/>
    </align>
    <move distance="vert-stem" color="black">
-    <point num="right-bottom"/>
+    <point num="period-right-bottom"/>
     <align>
-     <point num="right-top"/>
+     <point num="right"/>
+     <point num="period-right-top"/>
     </align>
     <move min-distance="no">
      <point num="right-bearing"/>
@@ -103,15 +123,27 @@
      <with-param name="cv" value="vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <point num="left-bottom"/>
-     <point num="left-top"/>
+     <point num="period-left-bottom"/>
+     <point num="period-left-top"/>
+     <point num="left"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <point num="right-top"/>
-     <point num="right-bottom"/>
+     <point num="period-right-top"/>
+     <point num="period-right-bottom"/>
+     <point num="right"/>
     </shift-absolute>
    </if>
   </compile-if>
+  <interpolate>
+   <reference>
+    <point num="left"/>
+    <point num="right"/>
+   </reference>
+   <point num="top-left"/>
+   <point num="top-right"/>
+   <point num="bottom-left"/>
+   <point num="bottom-right"/>
+  </interpolate>
   
   <interpolate-untouched-points/>
  </glyph>

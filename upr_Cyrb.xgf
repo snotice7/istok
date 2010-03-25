@@ -2,8 +2,10 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--"б"-->
  <glyph ps-name="afii10066" init-graphics="yes">
+  
   <!--
-      Copyright (C) 2008, 2009  Andrey V. Panov
+      
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -19,6 +21,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
   <param name="baseline" value="small-o-baseline"/>
   <param name="height" value="small-o-height"/>
   <param name="curve-horiz-stem" value="small-curve-hstem"/>
@@ -26,6 +29,7 @@
   <param name="lbearing" value="small-o-lbearing"/>
   <param name="space" value="small-o-space"/>
   <param name="diag" value="small-thindiag"/>
+  
   <constant name="outer-left" value="0"/>
   <constant name="asc-flat-top-left" value="outer-left + 5"/>
   <constant name="asc-flat-top" value="outer-left + 8"/>
@@ -115,16 +119,21 @@
   </interpolate>
   <compile-if test="smooth">
    <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="outer-bottom"/>
+    <call-macro name="double-shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(curve-horiz-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <!--      <point num="outer-bottom"/> -->
      <point num="inner-top"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="outer-top"/>
+    <shift-absolute pixel-distance="temp">
+     <!--      <point num="outer-top"/> -->
      <point num="inner-bottom"/>
     </shift-absolute>
    </if>
   </compile-if>
+  
   <set-vectors axis="x"/>
   <move distance="lbearing" color="white">
    <reference>
@@ -180,11 +189,15 @@
   </if>-->
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-left"/>
      <point num="inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="outer-right"/>
      <point num="inner-left"/>
     </shift-absolute>

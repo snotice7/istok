@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Cyr Ya (Я)-->
+ 
  <glyph ps-name="afii10049" init-graphics="yes">
   <!--
-      Copyright (C) 2008, 2009  Andrey V. Panov
+      
+      Copyright (C) 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -19,12 +21,14 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
   <param name="curve-stem" value="cap-o-curve-stem"/>
   <param name="diag" value="cap-diag"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
+  
   <constant name="diag-l-bottom" value="first-point"/>
   <constant name="diag-l-top" value="diag-l-bottom + smooth-count"/>
   <constant name="intersect-left" value="diag-l-top + 4"/>
@@ -51,6 +55,7 @@
    <point num="diag-r-top"/>
    <point num="diag-r-bottom"/>
   </line>
+  
   <set-vectors axis="y"/>
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
@@ -96,18 +101,27 @@
   </interpolate>
   <compile-if test="slanted = 0">
    <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="vgrayshift-">
-     <point num="vstem-left-bottom"/>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <!--      <point num="vstem-left-bottom"/>
      <point num="vstem-right-bottom"/>
      <point num="diag-r-bottom"/>
-     <point num="diag-l-bottom"/>
+     <point num="diag-l-bottom"/>-->
+     <point num="outer-right-bottom"/>
+     <point num="intersect-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="vgrayshift">
-     <point num="left-top"/>
-     <point num="vstem-right-top"/>
+    <shift-absolute pixel-distance="temp">
+     <!--     <point num="left-top"/>
+     <point num="vstem-right-top"/>-->
+     <point num="inner-left-bottom"/>
+     <point num="inner-right-bottom"/>
     </shift-absolute>
    </if>
   </compile-if>
+  
   <set-vectors axis="x"/>
   <move>
    <reference>
@@ -186,16 +200,28 @@
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="vstem-left-bottom"/>
      <point num="outer-right-bottom"/>
      <!--   <point num="inner-right-bottom"/>
      <point num="inner-right-top"/>-->
-     <point num="outer-left"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="vstem-right-top"/>
      <point num="vstem-right-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
      <point num="inner-left"/>
     </shift-absolute>
    </if>
@@ -209,8 +235,7 @@
    <with-param name="interpolation-point" value="intersect-left"/>
   </call-macro>
   <interpolate-untouched-points/>
- </glyph>
- <!--Cyr ya-->
+ </glyph> <!--Cyr ya-->
  <!--я-->
  <glyph ps-name="afii10097" init-graphics="yes">
   <call-glyph ps-name="afii10049">

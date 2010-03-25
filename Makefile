@@ -19,7 +19,9 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 XGFFILES=upr_*.xgf $(FAMILY)-Regular.ed.xgf # it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.ed.xgf $(FAMILY)-BoldItalic.ed.xgf
 XGRIDFIT=xgridfit
 COMPRESS=xz -9
-TEXENC=t1,t2a
+TEXENC=ot1,t1,t2a
+#PYTHON=python -W all
+PYTHON=fontforge -lang=py -script 
 
 INSTALL=install
 DESTDIR=
@@ -75,9 +77,14 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 %.py: %.xml
 	xgridfit -p 25 -G no -i $*.gen.ttf -o $*.ttf $<
 
-%.pe-dist:
-	$(XGRIDFIT) -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
+$(FAMILY)-Regular_acc.xgf: $(FAMILY)-Regular_.sfd
+	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-Regular_.sfd  -o $(FAMILY)-Regular_acc.xgf
 
+$(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd
+	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-Bold_.sfd  -o $(FAMILY)-Bold_acc.xgf
+
+%_acc.xgf: %_.sfd
+	$(PYTHON) inst_acc.py -s skipautoinst.txt -i $*_.sfd  -o $*_acc.xgf
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
 tex-support: all
@@ -111,7 +118,6 @@ dist-ttf: all
 	$(TTFFILES) $(DOCUMENTS)
 	$(COMPRESS) $(PKGNAME)-ttf-$(VERSION).tar
 
-
 dist-tex:
 	( cd ./texmf ;\
 	tar -cvf ../$(PKGNAME)-tex-$(VERSION).tar \
@@ -128,10 +134,14 @@ clean :
 	rm *.gen.ttx *.gen.xgf *.tmp.xgf *.gen.ttf 
 
 distclean :
-	-rm $(OTFFILES) $(TTFFILES) $(PFBFILES) $(AFMFILES) $(FAMILY)-*_.sfd
+	-rm $(OTFFILES) $(TTFFILES) $(PFBFILES) $(AFMFILES) $(FAMILY)-*_.sfd $(FAMILY)-*_acc.xgf
 
 install:
 	mkdir -p $(DESTDIR)$(fontdir)
 	$(INSTALL) -p --mode=644 $(TTFFILES) $(DESTDIR)$(fontdir)/
 	mkdir -p $(DESTDIR)$(docdir)
 	$(INSTALL) -p --mode=644 $(DOCUMENTS) $(DESTDIR)$(docdir)/
+
+%.pe-dist:
+	$(XGRIDFIT) -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
+

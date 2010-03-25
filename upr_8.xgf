@@ -138,14 +138,40 @@
   </interpolate>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-lower-left"/>
-     <point num="outer-upper-left"/>
+     <point num="inner-lower-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="outer-upper-right"/>
+    <shift-absolute pixel-distance="temp">
      <point num="outer-lower-right"/>
+     <point num="inner-lower-left"/>
     </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="high-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-upper-left"/>
+     <point num="inner-upper-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-upper-right"/>
+     <point num="inner-upper-left"/>
+    </shift-absolute>
+    <if test="(outer-lower-left -- outer-upper-left) &lt; 0">
+     <shift-absolute pixel-distance="1.0p">
+      <point num="outer-upper-left"/>
+      <point num="inner-upper-left"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="outer-upper-right"/>
+      <point num="inner-upper-right"/>
+     </shift-absolute>
+    </if>
    </if>
   </compile-if>
   

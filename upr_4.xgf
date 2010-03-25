@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <glyph ps-name="four" init-graphics="yes">
+  
   <!--
-      Copyright (C) 2008, 2009  Andrey V. Panov
+      
+      Copyright (C) 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -18,6 +20,12 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="height" value="digit-over-height"/>
+  <param name="vert-stem" value="digit-vert-stem"/>
+  <param name="horiz-stem" value="digit-mid-horiz-stem"/>
+  
   <constant name="hstem-left-bottom" value="first-point"/>
   <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
   <constant name="vstem-left-top" value="hstem-left-top + vstem-vcount"/>
@@ -42,6 +50,7 @@
    <point num="inner-left-bottom"/>
    <point num="inner-left-top"/>
   </line>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -53,7 +62,8 @@
     </if>
    </else>
   </compile-if>
-  <move distance="cap-x-baseline">
+  
+  <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
     <point num="vstem-right-bottom"/>
@@ -65,7 +75,7 @@
      <point num="hstem-intersect-left-bottom"/>
      <point num="hstem-right-bottom"/>
     </align>
-    <move distance="digit-mid-horiz-stem" color="black">
+    <move distance="horiz-stem" color="black">
      <point num="hstem-right-top"/>
      <align>
       <!--       <point num="hstem-left-top"/> -->
@@ -79,33 +89,38 @@
     </move>
    </move>
   </move>
-  <move distance="digit-over-height" color="black">
+  <move distance="height">
    <point num="vstem-right-top"/>
    <align>
     <point num="vstem-left-top"/>
    </align>
   </move>
   <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <!--     <point num="vstem-left-bottom"/>
+     <point num="vstem-right-bottom"/>-->
      <point num="hstem-left-bottom"/>
      <point num="hstem-intersect-right-bottom"/>
      <point num="hstem-intersect-left-bottom"/>
      <point num="hstem-right-bottom"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="hstem-right-top"/>
      <point num="hstem-left-top"/>
      <point num="hstem-intersect-right-top"/>
      <point num="inner-right-bottom"/>
      <point num="inner-left-bottom"/>
-     <point num="vstem-right-top"/>
-     <point num="vstem-left-top"/>
+     <!--     <point num="vstem-right-top"/>
+     <point num="vstem-left-top"/>-->
     </shift-absolute>
    </if>
   </compile-if>
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -114,6 +129,7 @@
     <set-vectors axis="x"/>
    </else>
   </compile-if>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -182,19 +198,23 @@
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="hstem-left-bottom"/>
      <point num="hstem-left-top"/>
      <point num="vstem-left-bottom"/>
      <point num="hstem-intersect-left-bottom"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="vstem-right-top"/>
      <point num="vstem-right-bottom"/>
      <point num="hstem-intersect-right-bottom"/>
      <point num="hstem-intersect-right-top"/>
-     <point num="hstem-right-top"/>
-     <point num="hstem-right-bottom"/>
+     <!--     <point num="hstem-right-top"/>
+     <point num="hstem-right-bottom"/>-->
     </shift-absolute>
    </if>
   </compile-if>
@@ -228,22 +248,22 @@
     </align>
    </with-projection-vector>
    <!--   <with-projection-vector axis="x"> -->
-   <if test="coord(inner-left-top) &gt; coord(inner-right-top)">
-    <align>
-     <reference>
+    <if test="coord(inner-left-top) &gt; coord(inner-right-top)">
+     <align>
+      <reference>
+       <point num="inner-right-top"/>
+      </reference>
+      <point num="inner-left-top"/>
+     </align>
+     <move-point-to-intersection>
       <point num="inner-right-top"/>
-     </reference>
-     <point num="inner-left-top"/>
-    </align>
-    <move-point-to-intersection>
-     <point num="inner-right-top"/>
-     <line ref="right-side"/>
-     <line>
-      <point num="inner-right-top"/>
-      <point num="inner-right-bottom"/>
-     </line>
-    </move-point-to-intersection>
-    <!--     <shift-absolute pixel-distance="0.2p">
+      <line ref="right-side"/>
+      <line>
+       <point num="inner-right-top"/>
+       <point num="inner-right-bottom"/>
+      </line>
+     </move-point-to-intersection>
+     <!--     <shift-absolute pixel-distance="0.2p">
       <point num="inner-left-top"/>
      </shift-absolute>
      <with-vectors axis="y">
@@ -251,8 +271,8 @@
        <point num="inner-right-top"/>
       </shift-absolute>
      </with-vectors>-->
-   </if>
-   <!--   </with-projection-vector> -->
+    </if>
+    <!--   </with-projection-vector> -->
   </with-freedom-vector>
   <interpolate-untouched-points/>
  </glyph>

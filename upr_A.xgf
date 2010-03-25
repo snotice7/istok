@@ -128,12 +128,12 @@
     </move>
    </move>
   </move>
-  <compile-if test="smooth">
+<!--  <compile-if test="smooth">
    <mdap round="to-grid">
     <point num="right-bearing"/>
    </mdap>
   </compile-if>
-  <!-- <move color="black">
+ --> <!-- <move color="black">
   <reference>
    <point num="left-top"/>
   </reference>

@@ -2,13 +2,14 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!-- X, Х -->
  <glyph ps-name="X" init-graphics="yes">
+  
   <!--
       
-      Copyright (C) 2007, 2008, 2009  Andrey V. Panov
+      Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software; you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
+      the Free Software Foundation, either version 3 of the License, or
       (at your option) any later version.
       
       This program is distributed in the hope that it will be useful,
@@ -17,14 +18,16 @@
       GNU General Public License for more details.
       
       You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
       -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="thin-diag" value="cap-diag"/>
   <param name="thick-diag" value="cap--diag"/>
   <param name="lbearing" value="cap-x-lbearing"/>
+  
   <constant name="left-left-bottom" value="first-point"/>
   <constant name="intersect-left" value="left-left-bottom + smooth-count"/>
   <constant name="left-left-top" value="intersect-left + smooth-count"/>
@@ -54,12 +57,14 @@
    <point num="left-right-top"/>
    <point num="right-right-bottom"/>
   </line>
+  
   <set-vectors axis="y"/>
   <compile-if test="smooth">
    <if test="vertical-smoothing">
     <set-round-state round="no"/>
    </if>
   </compile-if>
+  
   <move distance="baseline">
    <point num="left-left-bottom"/>
    <align>
@@ -76,7 +81,14 @@
     <point num="right-right-top"/>
    </align>
   </move>
+  
   <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
   <move distance="lbearing" min-distance="no" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -109,6 +121,11 @@
      <point num="right-left-top"/>
      <point num="right-right-top"/>
     </shift-absolute>
+   </if>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
    </if>
   </compile-if>
   <mdap round="yes">
@@ -197,6 +214,7 @@
   </compile-if>
   <interpolate-untouched-points/>
  </glyph>
+ 
  <glyph ps-name="x">
   <call-glyph ps-name="X">
    <with-param name="baseline" value="small-x-baseline"/>

@@ -2,8 +2,10 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Э-->
  <glyph ps-name="afii10047" init-graphics="yes">
+
   <!--
-      Copyright (C) 2007, 2008, 2009  Andrey V. Panov
+
+      Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -19,6 +21,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+
   <param name="baseline" value="cap-o-baseline"/>
   <param name="height" value="cap-o-height"/>
   <param name="curve-horiz-stem" value="cap-curve-hstem"/>
@@ -28,6 +31,7 @@
   <param name="end-width" value="cap-end-width"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
+
   <constant name="lower-end-bottom" value="0"/>
   <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
   <constant name="inner-bottom" value="lower-end-top + 3"/>
@@ -42,6 +46,7 @@
   <constant name="outer-right" value="outer-top + 3"/>
   <constant name="outer-bottom" value="outer-right + 3"/>
   <constant name="last" value="outer-bottom + 2"/>
+
   <set-vectors axis="x"/>
   <!--  <compile-if test="smooth">
    <if test="horizontal-smoothing">
@@ -105,11 +110,15 @@
   </move>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="hstem-right-top"/>
      <point num="hstem-right-bottom"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="outer-right"/>
     </shift-absolute>
     <else>
@@ -119,6 +128,7 @@
     </else>
    </if>
   </compile-if>
+
   <set-vectors axis="y"/>
   <compile-if test="smooth">
    <if test="vertical-smoothing">
@@ -128,6 +138,7 @@
     <set-round-state round="to-grid"/>
    </if>-->
   </compile-if>
+
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="curve-horiz-stem" color="black">
@@ -198,8 +209,10 @@
     </interpolate>
    </else>
   </if>
+
   <interpolate-untouched-points/>
  </glyph>
+
  <glyph ps-name="afii10095" init-graphics="yes">
   <call-glyph ps-name="afii10047">
    <with-param name="baseline" value="small-o-baseline"/>

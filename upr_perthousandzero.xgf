@@ -63,11 +63,16 @@
   </interpolate>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="outer-left"/>
+     <with-param name="point-second" value="inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-left"/>
      <point num="inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="inner-left"/>
      <point num="outer-right"/>
     </shift-absolute>
@@ -78,17 +83,17 @@
   
   <move min-distance="no">
    <point num="outer-bottom"/>
-   <move color="black">
+   <move round="no" color="black">
     <point num="inner-bottom"/>
    </move>
    <move color="black">
     <point num="outer-top"/>
-    <move pixel-distance="inner-bottom -- outer-bottom" color="black">
+    <move round="no" pixel-distance="inner-bottom -- outer-bottom" color="black">
      <point num="inner-top"/>
     </move>
    </move>
   </move>
-  <compile-if test="smooth">
+<!--  <compile-if test="smooth">
    <if test="vertical-smoothing">
     <shift-absolute pixel-distance="vgrayshift-">
      <point num="outer-bottom"/>
@@ -99,7 +104,7 @@
      <point num="inner-bottom"/>
     </shift-absolute>
    </if>
-  </compile-if>
+  </compile-if>-->
   
   <interpolate-untouched-points/>
  </glyph>
