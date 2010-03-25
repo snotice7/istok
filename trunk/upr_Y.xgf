@@ -1,29 +1,32 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <glyph ps-name="Y" init-graphics="yes">
+  
   <!--
-     
-     Andrey V. Panov (C) 2008, 2009
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
+      
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="thin-diag" value="cap-diag"/>
   <param name="thick-diag" value="cap--diag"/>
   <param name="vert-stem" value="cap-vert-stem"/>
+  
   <constant name="ldiag-left-top" value="first-point"/>
   <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
   <constant name="ldiag-right-bottom" value="ldiag-right-top + smooth-count"/>
@@ -52,6 +55,7 @@
    <point num="rdiag-right-bottom"/>
    <point num="rdiag-right-top"/>
   </line>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -65,6 +69,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
@@ -86,18 +91,20 @@
    </align>
   </move>
   <!-- <compile-if test="slanted">
-  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  <set-freedom-vector axis="x"/>
-  <set-round-state round="no"/>
-  <else>-->
-  <set-vectors axis="x"/>
-  <compile-if test="smooth">
-   <if test="vertical-smoothing">
-    <set-round-state round="to-grid"/>
-   </if>
-  </compile-if>
-  <!--  </else>
- </compile-if>-->
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>-->
+    
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+    <!--  </else>
+  </compile-if>-->
+  
   <move min-distance="no" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -123,8 +130,8 @@
       <point num="rdiag-right-top"/>
      </mdap>
      <!--    <shift-absolute pixel-distance="-0.05p">
-     <point num="rdiag-right-top"/>
-    </shift-absolute>-->
+      <point num="rdiag-right-top"/>
+     </shift-absolute>-->
     </with-projection-vector>
    </compile-if>
   </if>
@@ -151,25 +158,25 @@
    <set-equal target="width" source="(ldiag-left-top -- ldiag-left-bottom) - (rdiag-right-bottom -- rdiag-right-top)"/>
    <if test="width &gt; 0">
     <!--    <if test="(pixels-per-em &lt; cap-thick-eq-thin)"> -->
-    <shift-absolute pixel-distance="-1.0p">
-     <point num="ldiag-left-bottom"/>
-     <point num="rdiag-right-bottom"/>
-     <point num="rdiag-right-top"/>
-    </shift-absolute>
-    <!--    </if> -->
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="ldiag-left-bottom"/>
+      <point num="rdiag-right-bottom"/>
+      <point num="rdiag-right-top"/>
+     </shift-absolute>
+     <!--    </if> -->
    </if>
    <if test="width &lt; 0">
     <!--    <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
-    <shift-absolute pixel-distance="-1.0p">
-     <point num="rdiag-right-top"/>
-    </shift-absolute>
-    <!--    <else>
-     <shift-absolute pixel-distance="1.0p">
-      <point num="ldiag-left-bottom"/>
-      <point num="rdiag-right-bottom"/>
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="rdiag-right-top"/>
      </shift-absolute>
-    </else>
-   </if>-->
+     <!--    <else>
+      <shift-absolute pixel-distance="1.0p">
+       <point num="ldiag-left-bottom"/>
+       <point num="rdiag-right-bottom"/>
+      </shift-absolute>
+     </else>
+    </if>-->
    </if>
   </compile-if>
   <align>
@@ -193,7 +200,7 @@
    <shift-absolute pixel-distance="coord(vstem-left-bottom) - temp">
     <point num="vstem-right-bottom"/>
     <!--   <point num="ldiag-left-top"/>
-   <point num="rdiag-right-top"/>-->
+    <point num="rdiag-right-top"/>-->
     <point num="ldiag-left-bottom"/>
     <point num="rdiag-right-bottom"/>
    </shift-absolute>
@@ -203,13 +210,17 @@
     </shift-absolute>
     <compile-if test="smooth">
      <if test="horizontal-smoothing">
-      <shift-absolute pixel-distance="hgrayshift-">
-       <point num="ldiag-left-top"/>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <!--        <point num="ldiag-left-top"/> -->
        <point num="ldiag-left-bottom"/>
        <point num="vstem-left-bottom"/>
       </shift-absolute>
-      <shift-absolute pixel-distance="hgrayshift">
-       <point num="rdiag-right-top"/>
+      <shift-absolute pixel-distance="temp">
+       <!--        <point num="rdiag-right-top"/> -->
        <point num="rdiag-right-bottom"/>
        <point num="vstem-right-bottom"/>
       </shift-absolute>
@@ -261,6 +272,7 @@
     <point num="diag-intersect"/>
    </mdap>
   </if>
+  
   <interpolate-untouched-points/>
  </glyph>
 </xgridfit>

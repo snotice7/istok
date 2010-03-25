@@ -68,11 +68,15 @@
   </interpolate>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-left"/>
      <point num="inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="inner-left"/>
      <point num="outer-right"/>
     </shift-absolute>

@@ -141,13 +141,25 @@
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="outer-left"/>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="low-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="inner-left"/>
+    <shift-absolute pixel-distance="temp">
      <point num="outer-right"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="up-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left"/>
     </shift-absolute>
    </if>
   </compile-if>
@@ -163,6 +175,7 @@
     </if>
    </else>
   </compile-if>
+
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="horiz-stem" color="black">

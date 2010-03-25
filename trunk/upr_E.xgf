@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- 
  <!--E, Cyr E-->
  
  <glyph ps-name="E" init-graphics="yes">
+
   <!--
       
-      Andrey V. Panov (C) 2007, 2008, 2009
+      Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
@@ -56,6 +57,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="left-bottom"/>
    <align>
@@ -106,6 +108,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -139,7 +142,11 @@
   </move>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="temp">
      <point num="lhstem-right-bottom"/>
      <point num="lhstem-right-top"/>
     </shift-absolute>

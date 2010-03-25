@@ -15,14 +15,13 @@ Descent: 500
 LayerCount: 2
 Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A"  1
 Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A"  0
-NeedsXUIDChange: 1
 XUID: [1021 513 629268104 9940963]
 FSType: 8
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1269157218
+ModificationTime: 1269437079
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -44,6 +43,7 @@ HheadDOffset: 0
 OS2FamilyClass: 2048
 OS2Vendor: 'PfEd'
 Lookup: 258 0 0 "LGC kerning"  {"LGC kerning subtable"  } ['kern' ('latn' <'dflt' > 'grek' <'dflt' > 'cyrl' <'dflt' > ) ]
+MarkAttachClasses: 1
 DEI: 91125
 LangName: 1033 "" "" "" "" "" "" "" "" "" "Andrey V. Panov" "" "" "" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
 LangName: 1049 "" "+BBgEQQRCBD4EOgAA" "" "" "" "" "" "" "" "+BBAA. +BBIA. +BB8EMAQ9BD4EMgAA" 
@@ -10795,7 +10795,7 @@ EndChar
 StartChar: germandbls
 Encoding: 223 223 295
 Width: 1216
-Flags: HMW
+Flags: MW
 HStem: -17 130<566.644 850.907> 0 21G<164.5 295.5> 673 166<546 587> 1363 130<418.328 757.119>
 VStem: 142 176<4.5e-07 1272.78> 820 176<1027.38 1301.02> 930 186<197.06 557.603>
 LayerCount: 2
@@ -17933,7 +17933,7 @@ EndChar
 StartChar: uni00B9
 Encoding: 185 185 429
 Width: 480
-Flags: HMW
+Flags: MW
 HStem: 712 21 1439 21G
 VStem: 234 120<712 1325>
 LayerCount: 2
@@ -17984,7 +17984,7 @@ EndChar
 StartChar: uni00B2
 Encoding: 178 178 430
 Width: 590
-Flags: HW
+Flags: W
 HStem: 712 107<211 539> 1366 100<199 380>
 VStem: 407 124<1121 1337>
 DStem2: 66 814 211 820 0.705376 0.708834<106.532 524.526>
@@ -18145,7 +18145,7 @@ EndChar
 StartChar: uni2074
 Encoding: 8308 8308 432
 Width: 586
-Flags: HMW
+Flags: MW
 HStem: 712 21 885 107<151 340 460 553> 1439 21G
 VStem: 340 120<712 885 992 1295>
 DStem2: 45 1012 151 992 0.547932 0.836523<41.3504 398.376>
@@ -18213,7 +18213,7 @@ EndChar
 StartChar: onequarter
 Encoding: 188 188 433
 Width: 1736
-Flags: HW
+Flags: W
 LayerCount: 2
 Back
 SplineSet
@@ -18272,7 +18272,7 @@ EndChar
 StartChar: onehalf
 Encoding: 189 189 434
 Width: 1736
-Flags: HW
+Flags: W
 LayerCount: 2
 Back
 SplineSet
@@ -18331,7 +18331,7 @@ EndChar
 StartChar: threequarters
 Encoding: 190 190 435
 Width: 1736
-Flags: HW
+Flags: W
 LayerCount: 2
 Back
 SplineSet

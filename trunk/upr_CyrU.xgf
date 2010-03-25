@@ -77,7 +77,6 @@
    </align>
   </move>
   <interpolate round="yes">
-   <!---->
    <reference>
     <point num="tail-right-top"/>
     <point num="ldiag-left-top"/>

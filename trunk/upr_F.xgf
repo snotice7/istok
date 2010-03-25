@@ -4,7 +4,7 @@
   
   <!--
       
-      Andrey V. Panov (C) 2008, 2009
+      Copyright (C) 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -98,11 +98,15 @@
   </if>
   <compile-if test="smooth">
    <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="vgrayshift-">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="mhstem-left-bottom"/>
      <point num="mhstem-right-bottom"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="vgrayshift">
+    <shift-absolute pixel-distance="temp">
      <point num="mhstem-left-top"/>
      <point num="mhstem-right-top"/>
     </shift-absolute>
@@ -115,6 +119,11 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="horizontal-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
    </else>
   </compile-if>
   
@@ -135,11 +144,11 @@
     </align>
    </move>
   </move>
-  <compile-if test="smooth">
+  <!--  <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <set-round-state round="to-grid"/>
    </if>
-  </compile-if>
+  </compile-if>-->
   <move min-distance="no" color="white">
    <reference>
     <point num="right-bearing"/>
@@ -149,14 +158,18 @@
     <point num="uhstem-right-top"/>
    </align>
   </move>
-  <compile-if test="smooth">
+  <!--  <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="temp">
      <point num="uhstem-right-bottom"/>
      <point num="uhstem-right-top"/>
     </shift-absolute>
    </if>
-  </compile-if>
+  </compile-if>-->
   <move min-distance="no">
    <reference>
     <point num="uhstem-right-bottom"/>

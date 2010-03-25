@@ -1,29 +1,32 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <glyph ps-name="N" init-graphics="yes">
+  
   <!--
-     
-     Andrey V. Panov (C) 2008, 2009
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
+      
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-thinstem" value="cap-vert-stem"/>
   <param name="diag" value="cap--diag"/>
   <param name="lbearing" value="cap-h-lbearing"/>
+  
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
   <constant name="diag-right-top" value="lstem-left-top + vstem-hcount"/>
@@ -44,6 +47,7 @@
    <point num="diag-right-top"/>
    <point num="diag-right-bottom"/>
   </line>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -57,6 +61,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -80,6 +85,7 @@
    </reference>
    <point num="diag-left-top"/>
   </interpolate>
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -93,6 +99,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -142,7 +149,11 @@
      <move round="to-grid">
       <point num="rstem-right-bottom"/>
      </move>
-     <shift-absolute pixel-distance="hgrayshift">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-thinstem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="temp">
       <point num="rstem-right-bottom"/>
      </shift-absolute>
     </if>
@@ -170,6 +181,7 @@
    </reference>
    <point num="diag-left-bottom"/>
   </interpolate>
+  
   <with-round-state round="no">
    <with-minimum-distance value="diag-min-thick">
     <diagonal-stem distance="diag" save-vectors="yes" color="black">
@@ -190,16 +202,16 @@
    </with-freedom-vector>
   </with-projection-vector>
   <!--  <with-projection-vector axis="x"> -->
-  <with-freedom-vector to-line="parallel">
-   <line ref="diag-right"/>
-   <align>
-    <reference>
-     <point num="rstem-left-top"/>
-    </reference>
-    <point num="diag-right-bottom"/>
-   </align>
-  </with-freedom-vector>
-  <!--  </with-projection-vector> -->
+   <with-freedom-vector to-line="parallel">
+    <line ref="diag-right"/>
+    <align>
+     <reference>
+      <point num="rstem-left-top"/>
+     </reference>
+     <point num="diag-right-bottom"/>
+    </align>
+   </with-freedom-vector>
+   <!--  </with-projection-vector> -->
   <interpolate-untouched-points/>
  </glyph>
 </xgridfit>

@@ -3,7 +3,7 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  
  <!--
-     Copyright (C) 2008, 2009  Andrey V. Panov
+     Copyright (C) 2008, 2009, 2010  Andrey V. Panov
      
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
@@ -21,14 +21,13 @@
      -->
  
  <macro name="center-dotaccent">
-  <param name="point-left"/>
-  <!-- reper-point -->
-  <param name="point-right"/>
-  <!-- reper-point -->
+  <param name="point-left"/>  <!-- reper-point -->
+  <param name="point-right"/>  <!-- reper-point -->
   <param name="accent-left"/>
   <param name="accent-right"/>
   <param name="contour"/>
-<!--   <variable name="displacement-width"/> -->
+  
+  <!--   <variable name="displacement-width"/> -->
   <with-round-state round="to-double-grid">
    <set-equal target="width" source="round((((coord(point-right) + coord(point-left)) - coord(accent-left))  - coord(accent-right)) / 2.0)"/>
    <if test="width != 0.0">
@@ -47,7 +46,6 @@
  <!-- center-accent-with-anchor-and-two-reper-points -->
  
  <!--  <function name="make-diagonal"> -->
-  
   <macro name="make-diagonal">
    <param name="first-diag-first-point"/>
    <param name="first-diag-second-point"/>
@@ -99,9 +97,11 @@
       </align>
      </with-projection-vector>
     </with-freedom-vector>-->
-    <mdap round="yes">
-     <point num="second-diag-first-point"/>
-    </mdap>
+    <if test="not(is-glyph-grayscale)">
+     <mdap round="yes">
+      <point num="second-diag-first-point"/>
+     </mdap>
+    </if>
     <with-vectors to-line="orthogonal">
      <!--    <line ref="first-diag"/> -->
      <line>
@@ -138,17 +138,13 @@
   
   <function name="center-accent-with-anchor-and-two-reper-points">
    <!--the same as previous (center-point-with-two-reper-points) but with an additional contour-->
-   <param name="point-left"/>
-   <!-- reper-point -->
-   <param name="point-center"/>
-   <!-- central point of the accent to be adjusted -->
-   <param name="point-right"/>
-   <!-- reper-point -->
-   <param name="contour"/>
-   <!-- the whole accent -->
+   <param name="point-left"/>    <!-- reper-point -->
+   <param name="point-center"/>    <!-- central point of the accent to be adjusted -->
+   <param name="point-right"/>    <!-- reper-point -->
+   <param name="contour"/>    <!-- the whole accent -->
    <variable name="displacement-width"/>
    <with-round-state round="to-double-grid">
-    <set-equal target="displacement-width" source="(round-black((point-left -- point-right) / 2.0) +               coord(point-left)) -               coord(point-center)"/>
+    <set-equal target="displacement-width" source="(round-black((point-left -- point-right) / 2.0) + coord(point-left)) - coord(point-center)"/>
     <if test="displacement-width != 0.0">
      <shift-absolute pixel-distance="displacement-width">
       <point num="point-center"/>
@@ -164,6 +160,38 @@
   </function>
   <!-- center-accent-with-anchor-and-two-reper-points -->
   
+ <macro name="shift-edge">
+  <param name="shift"/>
+  <param name="cv"/>
+  <set-equal target="shift" source="0.5p * (control-value(cv) - round-black(control-value(cv)))"/>
+ </macro>
+ 
+ <macro name="double-shift-edge">
+  <param name="shift"/>
+  <param name="cv"/>
+  <set-equal target="shift" source="control-value(cv) - round-black(control-value(cv))"/>
+ </macro>
+ 
+ <macro name="shift-edge-points">
+  <param name="shift"/>
+  <param name="point-first"/>
+  <param name="point-second"/>
+  <set-equal target="shift" source="0.5p * ((point-first --- point-second) - (point-first -- point-second))"/>
+  <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
+   <set-equal target="shift" source="0.0p"/>
+  </if>
+ </macro>
+ 
+ <macro name="double-shift-edge-points">
+  <param name="shift"/>
+  <param name="point-first"/>
+  <param name="point-second"/>
+  <set-equal target="shift" source="(point-first --- point-second) - (point-first -- point-second)"/>
+  <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
+   <set-equal target="shift" source="0.0p"/>
+  </if>
+ </macro>
+ 
   <macro name="regularize-control-value-width">
    <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
    <param name="margin"/>   <!-- width of margin, should not be rounded -->
@@ -192,7 +220,7 @@
   </macro>
   
   <macro name="regularize-control-value-width-two-varmargin">
-  <!-- the same as previous but left-margin and right-margin are not control values -->
+   <!-- the same as previous but left-margin and right-margin are not control values -->
    <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
    <param name="left-margin"/>   <!-- variable, width of margin -->
    <param name="right-margin"/>   <!-- variable, width of margin -->
@@ -232,6 +260,65 @@
    <with-round-state round="down-to-grid">
     <set-equal target="cv-width" source="control-value(index(cv-width)) + round(temp / 2.0p)"/>
    </with-round-state>
+  </macro>
+  
+  <macro name="shift-accent">
+   <param name="point-base-left"/>
+   <param name="point-base-right"/>
+   <param name="point-acc-left"/>
+   <param name="point-acc-right"/>
+   
+   <if test="pixels-per-em &lt; max-x-shift">
+    <set-equal target="width-left" source="round(point-base-left -- point-acc-left)"/>
+    <set-equal target="width-right" source="round(point-base-right -- point-acc-right)"/>
+    <if test="(width-right &gt; 0) and (width-left &gt; 0)">
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="point-acc-left"/>
+     </shift-absolute>
+    </if>
+    <else>
+     <if test="(width-right &lt; 0) and (width-left &lt; 0)">
+      <shift-absolute pixel-distance="1.0p">
+       <point num="point-acc-left"/>
+      </shift-absolute>
+     </if>
+    </else>
+   </if>
+  </macro>
+  
+  <macro name="center-accent">
+   <param name="point-base-left"/>
+   <param name="point-base-right"/>
+   <param name="point-acc-left"/>
+   <param name="point-acc-right"/>
+   
+   <if test="pixels-per-em &lt; max-x-shift">
+    <with-round-state round="down-to-grid">
+     <set-equal target="temp" source="round((((coord(point-base-right) + coord(point-base-left)) - coord(point-acc-left)) - coord(point-acc-right)) / 2.0)"/>
+     <if test="temp != 0.0">
+      <shift-absolute pixel-distance="temp">
+       <point num="point-acc-left"/>
+      </shift-absolute>
+     </if>
+    </with-round-state>
+   </if>
+  </macro>
+  
+  <macro name="center-accent-extremum">
+   <param name="point-base-anchor"/>
+   <param name="point-acc-left"/>
+   <param name="point-acc-right"/>
+   
+   <if test="pixels-per-em &lt; max-x-shift">
+    <with-round-state round="down-to-grid">
+     <set-equal target="temp" source="round(coord(point-base-anchor) - ((coord(point-acc-left) + coord(point-acc-right)) / 2.0))"/>
+     <if test="temp != 0.0">
+      <shift-absolute pixel-distance="temp">
+       <point num="point-acc-left"/>
+      </shift-absolute>
+     </if>
+    </with-round-state>
+   </if>
   </macro>
   
  </xgridfit>

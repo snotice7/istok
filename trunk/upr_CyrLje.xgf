@@ -219,17 +219,38 @@
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-left-top"/>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="rstem-left-bottom"/>
      <point num="rstem-left-top"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="lstem-right-top"/>
-     <point num="lstem-right-bottom"/>
+    <shift-absolute pixel-distance="temp">
      <point num="rstem-right-top"/>
      <point num="up-inner-left-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-thinstem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lstem-left-bottom"/>
+     <point num="lstem-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lstem-right-top"/>
+     <point num="lstem-right-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="low-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
      <point num="low-outer-right"/>
     </shift-absolute>
    </if>
