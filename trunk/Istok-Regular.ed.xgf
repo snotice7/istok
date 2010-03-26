@@ -261,7 +261,6 @@
   <round value="cap-p-space" color="black"/>
   <round value="cap-cyrl-space" color="black"/>
   <round value="cap-cyrch-space" color="black"/>
-  <!--   <round value="cap-p-curve-stem" color="black"/> -->
   <round value="cap-tse-desc-horiz-shift"/>
   <round value="cap-sh-inner-space"/>
   <round value="small-x-height"/>
@@ -306,6 +305,7 @@
   
   <control-value-delta> <!--both for b/w and antialiased rendering-->
    <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
+   <delta-set cv="small-flig-space" size="6" distance="-8"/>
   </control-value-delta>
   
   <if test="not(is-glyph-grayscale)">
@@ -316,6 +316,7 @@
     <round value="cap-vert-thinstem" color="black"/>
     <round value="cap-vert-stem" color="black"/>
     <round value="cap-o-curve-stem" color="black"/>
+    <round value="cap-p-curve-stem" color="black"/>
     <round value="small-curve-hstem" color="black"/>
     <round value="small-horiz-stem" color="black"/>
     <round value="small-vert-thinstem" color="black"/>
@@ -334,13 +335,13 @@
      <!--      <delta-set cv="cap-vert-stem" size="8" distance="-8"/> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="8" distance="-8"/> -->
      <!--      <delta-set cv="cap-horiz-stem" size="10" distance="-8"/> -->
-     <delta-set cv="cap-horiz-stem" size="11" distance="-8"/>
-     <delta-set cv="cap-curve-hstem" size="11" distance="-8"/>
+     <!--<delta-set cv="cap-horiz-stem" size="11" distance="-8"/>-->
+     <!--<delta-set cv="cap-curve-hstem" size="11" distance="-8"/>-->
     </control-value-delta>
     
     <control-value-delta>
-     <!--      <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/> -->
-     <!--      <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/> -->
+     <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
+     <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="12" distance="-4"/>
@@ -418,6 +419,19 @@
    </if>
    
    <if test="pixels-per-em &gt; 11">
+    <if test="vertical-smoothing">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-horiz-stem)"/>
+     </call-macro>
+     <subtract minuend="cap-h-intersect-height" subtrahend="temp"/>
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-horiz-stem)"/>
+     </call-macro>
+     <subtract minuend="small-cyrn-intersect-height" subtrahend="temp"/>
+     <subtract minuend="sc-h-intersect-height" subtrahend="temp"/>
+    </if>
     <!--      <if test="vertical-smoothing">
      <subtract minuend="zero" subtrahend="vgrayshift"/>
      <subtract minuend="cap-o-baseline" subtrahend="vgrayshift"/>
@@ -633,6 +647,7 @@
   <xi:include href="upr_CyrLje.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrNje.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrDzhe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrTshe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrIzhica.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_a.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_b.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
