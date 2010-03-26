@@ -2,7 +2,7 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--M, Cyr M-->
  <glyph ps-name="M" init-graphics="yes">
-
+  
   <!--
       
       Copyright (C) 2007, 2008, 2009, 2010 Andrey V. Panov
@@ -21,14 +21,14 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
   <param name="thin-diag" value="cap--thindiag"/>
   <param name="thick-diag" value="cap-thindiag"/>
   <param name="lbearing" value="cap-h-lbearing"/>
-
+  
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
   <constant name="ldiag-right-top" value="lstem-left-top + vstem-hcount"/>
@@ -61,7 +61,7 @@
    <point num="rdiag-right-bottom"/>
    <point num="rdiag-right-top"/>
   </line>
-
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -75,7 +75,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -122,16 +122,18 @@
    </compile-if>
    <compile-if test="smooth">
     <if test="horizontal-smoothing">
-     <move round="to-grid">
-      <point num="rstem-right-bottom"/>
-     </move>
+     <with-round-state round="to-grid">
+      <move>
+       <point num="rstem-right-bottom"/>
+      </move>
       <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-stem)"/>
-    </call-macro>
-   <shift-absolute pixel-distance="temp">
-      <point num="rstem-right-bottom"/>
-     </shift-absolute>
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="index(vert-stem)"/>
+      </call-macro>
+      <shift-absolute pixel-distance="temp">
+       <point num="rstem-right-bottom"/>
+      </shift-absolute>
+     </with-round-state>
     </if>
    </compile-if>
    <align>
@@ -224,7 +226,7 @@
     </compile-if>
    </else>
   </if>-->
-
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -238,7 +240,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -333,7 +335,7 @@
   </compile-if>-->
   <interpolate-untouched-points/>
  </glyph> <!--Cyr M-->
-
+ 
  <!--Cyr m-->
  <glyph ps-name="afii10078" init-graphics="yes">
   <call-glyph ps-name="M">

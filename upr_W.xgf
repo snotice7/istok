@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <glyph ps-name="W">
+  
   <!--
       
-      Andrey V. Panov (C) 2008, 2009
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -19,11 +20,13 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="thin-diag" value="cap-diag"/>
   <param name="thick-diag" value="cap--diag"/>
   <param name="vert-stem" value="cap-vert-stem"/>
+  
   <constant name="left-v-ldiag-left-top" value="first-point"/>
   <constant name="left-v-ldiag-right-top" value="left-v-ldiag-left-top + vstem-hcount"/>
   <constant name="left-v-ldiag-right-bottom" value="left-v-ldiag-right-top + smooth-count"/>
@@ -44,6 +47,7 @@
   <constant name="left-v-rdiag-right-top" value="left-v-rdiag-right-bottom - smooth-count"/>
   <constant name="left-v-ldiag-left-bottom" value="left-v-rdiag-right-bottom + vstem-hcount"/>
   <constant name="last" value="left-v-ldiag-left-bottom + last-count"/>
+  
   <line name="left-v-ldiag-left">
    <point num="left-v-ldiag-left-top"/>
    <point num="left-v-ldiag-left-bottom"/>
@@ -76,17 +80,21 @@
    <point num="right-v-rdiag-right-bottom"/>
    <point num="right-v-rdiag-right-top"/>
   </line>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
+   <!--    <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <if test="vertical-smoothing">
-     <set-round-state round="no"/>
-    </if>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="left-v-ldiag-left-bottom"/>
    <align>
@@ -154,12 +162,15 @@
     <point num="middle-diag-intersect"/>
    </mdap>
   </if>
+  
   <compile-if test="smooth">
    <if test="vertical-smoothing">
     <set-round-state round="to-grid"/>
    </if>
+   <set-minimum-distance value="1.0p"/>
   </compile-if>
   <set-vectors axis="x"/>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -210,20 +221,24 @@
   </move>
   <compile-if test="slanted = 0">
    <interpolate round="yes">
-    <!--down-to-grid-->
     <reference>
      <point num="left-v-ldiag-left-top"/>
      <point num="left-v-rdiag-right-top"/>
     </reference>
     <point num="left-v-ldiag-left-bottom"/>
    </interpolate>
-   <move color="black">
+   <move round="no" color="black">
     <reference>
      <point num="left-v-ldiag-left-bottom"/>
     </reference>
     <point num="left-v-rdiag-right-bottom"/>
    </move>
-   <if test="(left-v-rdiag-right-bottom -- left-v-rdiag-left-top) = 0 and (left-v-ldiag-left-top -- left-v-ldiag-left-bottom) &gt;= 2.0p">
+   <if test="(not(is-glyph-grayscale))">
+    <mdap round="yes">
+     <point num="left-v-rdiag-right-bottom"/>
+    </mdap>
+   </if>
+   <if test="(left-v-rdiag-right-bottom -- left-v-rdiag-left-top) &lt; 0.8p and (left-v-ldiag-left-top -- left-v-ldiag-left-bottom) &gt;= 2.0p">
     <shift-absolute pixel-distance="-1.0p">
      <point num="left-v-ldiag-left-bottom"/>
      <point num="left-v-rdiag-right-bottom"/>
@@ -231,20 +246,20 @@
    </if>
    <!--  regularize bottom of the right v -->
    <!--  <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
-   <!--    <with-round-state round="to-double-grid">
+    <!--    <with-round-state round="to-double-grid">
      <set-equal target="width" source="round-black((coord(left-v-ldiag-left-top) + coord(left-v-rdiag-right-top)) / 2.0) -
                 ((coord(left-v-ldiag-left-bottom) + coord(left-v-rdiag-right-bottom)) / 2.0)"/>
     </with-round-state>-->
-   <!--    <if test="width != 0.0p">
+    <!--    <if test="width != 0.0p">
      <shift-absolute pixel-distance="width">
       <point num="left-v-ldiag-left-bottom"/>
       <point num="left-v-rdiag-right-bottom"/>
      </shift-absolute>
     </if>-->
-   <!--    <shift-absolute pixel-distance="0.05p">
+    <!--    <shift-absolute pixel-distance="0.05p">
      <point num="left-v-rdiag-right-bottom"/>
     </shift-absolute>-->
-   <!--  </if> -->
+    <!--  </if> -->
    <!--  make the left v similar to the right -->
    <with-round-state round="no">
     <move pixel-distance="(left-v-ldiag-left-bottom -- left-v-ldiag-left-top)">
@@ -435,8 +450,41 @@
     </shift-absolute>
    </if>
   </if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left-v-ldiag-left-top"/>
+     <point num="right-v-rdiag-left-top"/>
+     <!--<point num="left-v-ldiag-left-bottom"/>
+     <point num="right-v-ldiag-left-bottom"/>-->
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="left-v-ldiag-right-top"/>
+     <point num="right-v-rdiag-right-top"/>
+     <!--<point num="left-v-rdiag-right-bottom"/>
+     <point num="right-v-rdiag-right-bottom"/>-->
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="left-v-rdiag-left-top"/>
+     <with-param name="point-second" value="right-v-ldiag-right-top"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left-v-rdiag-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="right-v-ldiag-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
   <interpolate-untouched-points/>
  </glyph>
+ 
  <glyph ps-name="w" init-graphics="yes">
   <call-glyph ps-name="W">
    <with-param name="baseline" value="small-x-baseline"/>

@@ -700,7 +700,7 @@ SplineSet
  318 488 l 1,25,-1
  318 131 l 1,17,-1
 EndSplineSet
-Kerns2: 201 -363 "LGC kerning subtable"  36 -38 "LGC kerning subtable"  17 -186 "LGC kerning subtable" 
+Kerns2: 201 -363 "LGC kerning subtable"  36 -38 "LGC kerning subtable"  17 -186 "LGC kerning subtable"  {18-18 1}
 EndChar
 
 StartChar: x
@@ -1326,7 +1326,7 @@ SplineSet
  586 488 l 1,29,-1
  586 131 l 1,21,-1
 EndSplineSet
-Kerns2: 201 -363 "LGC kerning subtable"  36 -38 "LGC kerning subtable"  17 -186 "LGC kerning subtable" 
+Kerns2: 201 -363 "LGC kerning subtable"  36 -38 "LGC kerning subtable"  17 -186 "LGC kerning subtable"  {18-18 1}
 EndChar
 
 StartChar: v
