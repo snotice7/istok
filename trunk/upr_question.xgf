@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="question">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
+  <param name="vert-stem" value="digit-thicker-curve-stem"/>
+  <param name="curve-vert-stem" value="digit-thicker-curve-stem"/>
+  <param name="period-height" value="period-height"/>
+  <param name="period-vert-stem" value="period-width"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  
+  <constant name="upper-end-top" value="first-point"/>
+  <constant name="outer-top" value="upper-end-top + 4"/>
+  <constant name="outer-right-top" value="outer-top + 3"/>
+  <constant name="vstem-right-top" value="outer-right-top + 3"/>
+  <constant name="vstem-right-bottom" value="vstem-right-top + smooth-count"/>
+  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="vstem-left-top" value="vstem-left-bottom + smooth-count"/>
+  <constant name="inner-right-top" value="vstem-left-top + 3"/>
+  <constant name="inner-top" value="inner-right-top + 3"/>
+  <constant name="upper-end-bottom" value="inner-top + 4"/>
+  <constant name="period-left-bottom" value="upper-end-bottom + smooth-count + first-point"/>
+  <constant name="period-left-top" value="period-left-bottom + vstem-vcount"/>
+  <constant name="period-right-top" value="period-left-top + vstem-hcount"/>
+  <constant name="period-right-bottom" value="period-right-top + vstem-vcount"/>
+  <constant name="last" value="period-right-bottom + last-count"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="period-left-bottom"/>
+   <align>
+    <point num="period-right-bottom"/>
+   </align>
+  </move>
+  <move distance="period-height">
+   <point num="period-left-top"/>
+   <align>
+    <point num="period-right-top"/>
+   </align>
+   <move color="white">
+    <point num="vstem-left-bottom"/>
+   </move>
+  </move>
+  
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="vstem-left-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="upper-end-top"/>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right-top"/>
+   <move distance="curve-vert-stem" color="black">
+    <point num="inner-right-top"/>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="upper-end-top"/>
+    <point num="outer-right-top"/>
+   </reference>
+   <point num="period-left-bottom"/>
+   <point num="vstem-left-bottom"/>
+   <point num="upper-end-bottom"/>
+  </interpolate>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <mdap round="yes">
+   <point num="period-left-bottom"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="vstem-left-bottom"/>
+  </mdap>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+  </compile-if>
+  <move distance="period-vert-stem" color="black">
+   <reference>
+    <point num="period-left-bottom"/>
+   </reference>
+   <point num="period-right-bottom"/>
+  </move>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="vstem-right-bottom"/>
+  </move>
+  <compile-if test="slanted = 0">
+   <set-equal target="temp" source="round(((period-left-bottom -- vstem-left-bottom) - (vstem-right-bottom -- period-right-bottom)) * 0.5p)"/>
+   <if test="temp != 0">
+    <shift-absolute pixel-distance="temp">
+     <point num="period-left-bottom"/>
+     <point num="period-right-bottom"/>
+    </shift-absolute>
+    <!--<shift>
+     <reference>
+      <point num="period-left-bottom"/>
+     </reference>
+     <contour num="1"/>
+    </shift>-->
+   </if>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="period-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="period-left-bottom"/>
+     <!--      <point num="period-left-top"/> -->
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <!--      <point num="period-right-top"/> -->
+     <point num="period-right-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="vstem-left-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="vstem-right-bottom"/>
+    </shift-absolute>
+   </if>
+   <call-macro name="shift-edge">
+    <with-param name="shift" value="temp"/>
+    <with-param name="cv" value="curve-vert-stem"/>
+   </call-macro>
+   <shift-absolute pixel-distance="negative(temp)">
+    <point num="inner-right-top"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="temp">
+    <point num="outer-right-top"/>
+   </shift-absolute>
+  </compile-if>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>
