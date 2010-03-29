@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="R">
+ <glyph ps-name="R" init-graphics="yes">
   
   <!--
       
@@ -66,6 +66,11 @@
     <set-vectors axis="y"/>
    </else>
   </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
   
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
@@ -86,20 +91,28 @@
      <point num="up-inner-right-top"/>
     </align>
    </move>
-   <move>
-    <point num="up-inner-left-bottom"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <reference>
+    <point num="lstem-left-top"/>
+   </reference>
+   <point num="up-inner-left-bottom"/>
+   <align>
+    <point num="up-inner-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="lower-hstem-left-bottom"/>
     <align>
-     <point num="up-inner-right-bottom"/>
+     <point num="lower-hstem-right-bottom"/>
     </align>
-    <move distance="horiz-stem" color="black">
-     <point num="lower-hstem-left-bottom"/>
-     <align>
-      <point num="lower-hstem-right-bottom"/>
-     </align>
-     <interpolate>
-      <point num="intersect-low"/>
-     </interpolate>
-    </move>
+    <interpolate>
+     <point num="intersect-low"/>
+    </interpolate>
    </move>
   </move>
   <interpolate>

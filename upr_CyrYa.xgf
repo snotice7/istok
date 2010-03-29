@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Cyr Ya (Я)-->
- 
  <glyph ps-name="afii10049" init-graphics="yes">
+  
   <!--
       
       Copyright (C) 2008, 2009, 2010  Andrey V. Panov
@@ -56,7 +56,20 @@
    <point num="diag-r-bottom"/>
   </line>
   
-  <set-vectors axis="y"/>
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
@@ -76,20 +89,28 @@
      <point num="inner-right-top"/>
     </align>
    </move>
-   <move>
-    <point num="inner-left-bottom"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <reference>
+    <point num="left-top"/>
+   </reference>
+   <point num="inner-left-bottom"/>
+   <align>
+    <point num="inner-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="outer-right-bottom"/>
     <align>
-     <point num="inner-right-bottom"/>
+     <point num="intersect-right"/>
     </align>
-    <move distance="horiz-stem" color="black">
-     <point num="outer-right-bottom"/>
-     <align>
-      <point num="intersect-right"/>
-     </align>
-     <interpolate>
-      <point num="intersect-left"/>
-     </interpolate>
-    </move>
+    <interpolate>
+     <point num="intersect-left"/>
+    </interpolate>
    </move>
   </move>
   <interpolate>
@@ -99,7 +120,7 @@
    </reference>
    <point num="diag-l-top"/>
   </interpolate>
-  <compile-if test="slanted = 0">
+  <compile-if test="smooth">
    <if test="vertical-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
