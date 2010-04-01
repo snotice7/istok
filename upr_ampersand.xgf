@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+<!-- &  -->
+ <glyph ps-name="ampersand">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="diag" value="cap-thindiag"/>
+  <param name="o-baseline" value="cap-o-baseline"/>
+  <param name="x-baseline" value="cap-x-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="left-vert-stem" value="paren-curve-stem"/>
+  <param name="upper-left-vert-stem" value="digit-vert-stem"/>
+  <param name="upper-right-vert-stem" value="digit-vert-stem"/>
+  <param name="horiz-stem" value="digit-thin-horiz-stem"/>
+  
+  <constant name="lower-loop-outer-left" value="0"/>
+  <constant name="upper-joint-left-top" value="lower-loop-outer-left + 3"/>
+  <constant name="upper-loop-outer-left" value="upper-joint-left-top + 3"/>
+  <constant name="upper-loop-outer-top" value="upper-loop-outer-left + 3"/>
+  <constant name="upper-loop-outer-right" value="upper-loop-outer-top + 3"/>
+  <constant name="upper-joint-right-bottom" value="upper-loop-outer-right + 3"/>
+  <constant name="lower-joint-right-top" value="upper-joint-right-bottom + 1"/>
+  <constant name="arm-end-left" value="20"/>
+  <constant name="arm-end-right" value="arm-end-left + vstem-hcount"/>
+  <constant name="lower-joint-right-bottom" value="arm-end-right + 4"/>
+  <constant name="diag-right-bottom" value="29"/>
+  <constant name="diag-left-bottom" value="diag-right-bottom + vstem-hcount"/>
+  <constant name="lower-joint-left-bottom" value="diag-left-bottom + smooth-count"/>
+  <constant name="lower-loop-outer-bottom" value="lower-joint-left-bottom + 3"/>
+  <constant name="lower-loop-inner-left" value="lower-loop-outer-bottom + 3"/>
+  <constant name="lower-loop-inner-bottom" value="lower-loop-inner-left + 3"/>
+  <constant name="lower-joint-left-top" value="lower-loop-inner-bottom + 3"/>
+  <constant name="upper-joint-left-bottom" value="lower-joint-left-top + 1"/>
+  <constant name="upper-loop-inner-left" value="50"/>
+  <constant name="upper-joint-right-top" value="upper-loop-inner-left + 3"/>
+  <constant name="upper-loop-inner-right" value="upper-joint-right-top + 3"/>
+  <constant name="upper-loop-inner-top" value="upper-loop-inner-right + 3"/>
+  <constant name="last" value="upper-loop-inner-top + 2"/>
+  <line name="ldiag">
+   <point num="upper-joint-left-top"/>
+   <!--    <point num="diag-left-bottom"/> -->
+   <point num="lower-joint-left-bottom"/>
+  </line>
+  <line name="rdiag">
+   <point num="upper-joint-right-top"/>
+   <point num="diag-right-bottom"/>
+  </line>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lower-loop-outer-left"/>
+   <move distance="left-vert-stem" color="black">
+    <point num="lower-loop-inner-left"/>
+   </move>
+   <move color="black">
+    <point num="arm-end-right"/>
+    <move color="black">
+     <point num="arm-end-left"/>
+    </move>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="lower-loop-outer-left"/>
+    <point num="arm-end-right"/>
+   </reference>
+   <point num="upper-loop-outer-right"/>
+   <point num="upper-joint-left-top"/>
+   <!--    <point num="diag-left-bottom"/> -->
+   <point num="lower-joint-left-bottom"/>
+  </interpolate>
+  <mdap round="yes">
+   <point num="upper-loop-outer-right"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="upper-joint-left-top"/>
+  </mdap>
+  <mdap round="to-half-grid">
+   <point num="lower-joint-left-bottom"/>
+  </mdap>
+  <move min-distance="no">
+   <reference>
+    <point num="upper-joint-left-top"/>
+   </reference>
+   <point num="upper-loop-outer-left"/>
+   <move distance="upper-left-vert-stem" color="black">
+    <point num="upper-loop-inner-left"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="left-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lower-loop-outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lower-loop-inner-left"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="upper-left-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="upper-loop-outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="upper-loop-inner-left"/>
+    </shift-absolute>
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  <move distance="upper-right-vert-stem" color="black">
+   <reference>
+    <point num="upper-loop-outer-right"/>
+   </reference>
+   <point num="upper-loop-inner-right"/>
+  </move>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="only-horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  <move distance="o-baseline">
+   <point num="lower-loop-outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="lower-loop-inner-bottom"/>
+   </move>
+  </move>
+  <!--  <move distance="x-baseline">
+   <point num="diag-left-bottom"/>
+  </move>-->
+  <move distance="height">
+   <point num="upper-loop-outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="upper-loop-inner-top"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <point num="lower-joint-left-bottom"/>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="lower-loop-inner-bottom"/>
+    <point num="upper-loop-inner-top"/>
+   </reference>
+   <point num="upper-joint-left-top"/>
+   <point num="arm-end-right"/>
+  </interpolate>
+  <mdap round="yes">
+   <point num="arm-end-right"/>
+  </mdap>
+  <with-round-state round="no">
+   <diagonal-stem distance="diag" save-vectors="yes" min-distance="diag-min-thick" color="black">
+    <line ref="ldiag"/>
+    <line ref="rdiag"/>
+    <align>
+     <point num="upper-joint-left-bottom"/>
+     <point num="lower-joint-left-top"/>
+     <point num="diag-left-bottom"/>
+     <!--      <point num="lower-joint-left-bottom"/> -->
+    </align>
+    <align>
+     <point num="upper-joint-right-bottom"/>
+     <point num="lower-joint-right-top"/>
+     <point num="lower-joint-right-bottom"/>
+    </align>
+   </diagonal-stem>
+   <with-freedom-vector to-line="parallel">
+    <line ref="ldiag"/>
+    <move distance="x-baseline">
+     <point num="diag-left-bottom"/>
+    </move>
+    <align>
+     <reference>
+      <point num="diag-left-bottom"/>
+     </reference>
+     <point num="diag-right-bottom"/>
+    </align>
+   </with-freedom-vector>
+   <with-vectors to-line="parallel">
+    <line ref="ldiag"/>
+    <with-minimum-distance value="diag-min-thick">
+     <move color="black">
+      <reference>
+       <point num="lower-joint-left-bottom"/>
+      </reference>
+      <point num="lower-joint-left-top"/>
+     </move>
+     <move color="black">
+      <reference>
+       <point num="upper-joint-left-top"/>
+      </reference>
+      <point num="upper-joint-left-bottom"/>
+     </move>
+     <interpolate>
+      <reference>
+       <point num="upper-joint-left-top"/>
+       <!--      <point num="diag-left-bottom"/> -->
+       <point num="lower-joint-left-bottom"/>
+      </reference>
+      <!--     <point num="lower-joint-left-bottom"/> -->
+      <!--     <point num="upper-joint-left-bottom"/> -->
+      <point num="upper-joint-right-top"/>
+      <point num="lower-joint-right-bottom"/>
+      <!--     <point num="upper-joint-right-bottom"/> -->
+      <!--     <point num="lower-joint-right-top"/> -->
+     </interpolate>
+     <move color="black">
+      <reference>
+       <point num="upper-joint-right-top"/>
+      </reference>
+      <point num="upper-joint-right-bottom"/>
+     </move>
+     <move color="black">
+      <reference>
+       <point num="lower-joint-right-bottom"/>
+      </reference>
+      <point num="lower-joint-right-top"/>
+     </move>
+    </with-minimum-distance>
+    <if test="pixels-per-em &gt; 11">
+     <with-projection-vector axis="x">
+      <shift-absolute pixel-distance="-0.3p">
+       <point num="lower-joint-left-top"/>
+       <point num="lower-joint-right-top"/>
+      </shift-absolute>
+     </with-projection-vector>
+    </if>
+   </with-vectors>
+  </with-round-state>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

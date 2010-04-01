@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="guilsinglright" init-graphics="yes">
+
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="upper-diag" value="sign--thindiag"/>
+  <param name="lower-diag" value="sign-thindiag"/>
+  
+  <constant name="left-bottom" value="first-point"/>
+  <constant name="intersect-left" value="left-bottom + smooth-count"/>
+  <constant name="left-top" value="intersect-left + smooth-count"/>
+  <constant name="right-top" value="left-top + vstem-hcount"/>
+  <constant name="intersect-right" value="right-top + vstem-vcount"/>
+  <constant name="right-bottom" value="intersect-right + vstem-vcount"/>
+  <constant name="last" value="right-bottom + last-count"/>
+  <line name="top-left-side">
+   <point num="intersect-left"/>
+   <point num="left-top"/>
+  </line>
+  <line name="top-right-side">
+   <point num="intersect-right"/>
+   <point num="right-top"/>
+  </line>
+  <line name="bottom-left-side">
+   <point num="intersect-left"/>
+   <point num="left-bottom"/>
+  </line>
+  <line name="bottom-right-side">
+   <point num="intersect-right"/>
+   <point num="right-bottom"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="right-bottom"/>
+   <move color="black">
+    <point num="right-top"/>
+    <interpolate>
+     <point num="intersect-right"/>
+    </interpolate>
+   </move>
+  </move>
+  <set-equal target="temp" source="floor(coord(intersect-right)) - ceiling(coord(intersect-right))"/>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="right-top"/>
+   <align compile-if="slanted = 0">
+    <point num="right-bottom"/>
+   </align>
+   <move compile-if="slanted">
+    <point num="right-bottom"/>
+   </move>
+   <move>
+    <point num="intersect-right"/>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <if test="temp">
+   <shift-absolute pixel-distance="-0.05p">
+    <point num="right-bottom"/>
+    <point num="right-top"/>
+    <point num="intersect-right"/>
+   </shift-absolute>
+   <else>
+    <shift-absolute pixel-distance="0.35p">
+     <point num="right-bottom"/>
+     <point num="right-top"/>
+     <point num="intersect-right"/>
+    </shift-absolute>
+   </else>
+  </if>
+  
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-sim">
+    <diagonal-stem distance="upper-diag" save-vectors="yes" color="black">
+     <line ref="top-right-side"/>
+     <line ref="top-left-side"/>
+    </diagonal-stem>
+    <diagonal-stem distance="lower-diag" save-vectors="yes" color="black">
+     <line ref="bottom-right-side"/>
+     <line ref="bottom-left-side"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  <with-projection-vector to-line="orthogonal">
+   <line ref="top-right-side"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="bottom-left-side"/>
+    <align>
+     <reference>
+      <point num="left-top"/>
+     </reference>
+     <point num="intersect-left"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <set-vectors to-line="parallel">
+   <line ref="top-right-side"/>
+  </set-vectors>
+  <align>
+   <reference>
+    <point num="right-top"/>
+   </reference>
+   <point num="left-top"/>
+  </align>
+  <set-vectors to-line="parallel">
+   <line ref="bottom-right-side"/>
+  </set-vectors>
+  <align>
+   <reference>
+    <point num="right-bottom"/>
+   </reference>
+   <point num="left-bottom"/>
+  </align>
+  <interpolate-untouched-points/>
+  <compile-if test="slanted = 0">
+   <if test="(left-bearing -- left-bottom) &lt;= 0.5p">
+    <shift-absolute pixel-distance="1.0p">
+     <point num="right-bottom"/>
+    </shift-absolute>
+    <shift>
+     <reference>
+      <point num="right-bottom"/>
+     </reference>
+     <contour num="0"/>
+    </shift>
+   </if>
+  </compile-if>
+ </glyph>
+ 
+</xgridfit>

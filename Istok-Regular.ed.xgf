@@ -22,6 +22,7 @@
  <outfile fmflags="2560" pyflags="old-kern opentype">Istok-Regular.ttf</outfile>
  
  <constant name="diag-min-thick" value="0.5p"/>
+ <constant name="diag-min-sim" value="0.9p"/>
  <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
  <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
  <constant name="left-bearing" value="last + 1"/>
@@ -107,6 +108,7 @@
  <alias name="cap--thindiag" target="cap-thindiag"/>
  <alias name="small--diag" target="small-diag"/>
  <alias name="small--thindiag" target="small-thindiag"/>
+ <alias name="sign--thindiag" target="sign-thindiag"/>
  
  <control-value name="cap-h-lbearing" value="170"/>
  <control-value name="cap-x-lbearing" value="12"/>
@@ -187,6 +189,7 @@
  <control-value name="minus-thickness" value="120"/>
  <control-value name="sign-thindiag" value="120"/>
  <control-value name="emspace" value="1024"/>
+  <control-value name="paren-curve-stem" value="196"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -583,11 +586,16 @@
    </if>
   </pre-program>
   
+  <xi:include href="upr_quotesingle.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_exclam.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_percent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_period.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_question.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_ampersand.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_comma.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_exclam.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_less.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_greater.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_at.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_0.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_1.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_2.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -744,6 +752,8 @@
   <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_dotaccent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_guilsinglleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_guilsinglright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   
   <xi:include href="Istok-Regular_acc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
  </xgridfit>
