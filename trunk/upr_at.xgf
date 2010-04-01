@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--@-->
+ <glyph ps-name="at" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="diag" value="cap-thindiag"/>
+  <param name="curve-vstem" value="small-curve-vstem"/>
+  <param name="vert-stem" value="minus-thickness"/>
+  <param name="horiz-stem" value="minus-thickness"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="tail-outer-left" value="0"/>
+  <constant name="tail-outer-top" value="tail-outer-left + 3"/>
+  <constant name="tail-outer-right" value="tail-outer-top + 3"/>
+  <constant name="atail-joint-outer-bottom" value="tail-outer-right + 3"/>
+  <constant name="lower-joint-bottom" value="atail-joint-outer-bottom + 3"/>
+  <constant name="a-outer-bottom" value="lower-joint-bottom + 3 + cog-count"/>
+  <constant name="a-outer-left" value="a-outer-bottom + 3"/>
+  <constant name="a-outer-top" value="a-outer-left + 3"/>
+  <constant name="upper-joint-top" value="a-outer-top + 2"/>
+  <constant name="vstem-left-top" value="upper-joint-top + cog-count + smooth-count"/>
+  <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
+  <constant name="vstem-right-bottom" value="vstem-right-top + smooth-count"/>
+  <constant name="atail-joint-inner-bottom" value="vstem-right-bottom + 3"/>
+  <constant name="tail-inner-right" value="38"/>
+  <constant name="tail-inner-top" value="tail-inner-right + 3"/>
+  <constant name="tail-inner-left" value="tail-inner-top + 3"/>
+  <constant name="tail-inner-bottom" value="tail-inner-left + 3"/>
+  <constant name="lower-end-top" value="tail-inner-bottom + 4"/>
+  <constant name="lower-end-bottom" value="lower-end-top + hstem-vcount"/>
+  <constant name="tail-outer-bottom" value="lower-end-bottom + 4"/>
+  <constant name="a-inner-left" value="61"/>
+  <constant name="a-inner-bottom" value="a-inner-left + 3"/>
+  <constant name="lower-joint-top" value="a-inner-bottom + 2"/>
+  <constant name="vstem-left-bottom" value="lower-joint-top + 1"/>
+  <constant name="upper-joint-bottom" value="vstem-left-bottom + 1"/>
+  <constant name="a-inner-top" value="upper-joint-bottom + 4"/>
+  <constant name="last" value="a-inner-top + 2"/>
+  <line name="vstem-left-side">
+   <point num="vstem-left-top"/>
+   <point num="vstem-left-bottom"/>
+  </line>
+  <line name="vstem-right-side">
+   <point num="vstem-right-top"/>
+   <point num="vstem-right-bottom"/>
+  </line>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="tail-outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="tail-inner-left"/>
+   </move>
+   <move color="black">
+    <point num="tail-outer-right"/>
+    <move distance="vert-stem" color="black">
+     <point num="tail-inner-right"/>
+    </move>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <interpolate round="yes">
+   <reference>
+    <point num="tail-inner-left"/>
+    <point num="tail-inner-right"/>
+   </reference>
+   <point num="a-outer-left"/>
+   <point num="vstem-right-top"/>
+   <point num="vstem-right-bottom"/>
+  </interpolate>
+  <move distance="curve-vstem" color="black">
+   <reference>
+    <point num="a-outer-left"/>
+   </reference>
+   <point num="a-inner-left"/>
+  </move>
+  <if test="(vstem-right-bottom -- vstem-right-top) = 0.0p">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="vstem-right-top"/>
+   </shift-absolute>
+  </if>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="a-outer-bottom"/>
+   <align>
+    <point num="atail-joint-outer-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="a-inner-bottom"/>
+    <align>
+     <point num="atail-joint-inner-bottom"/>
+    </align>
+   </move>
+   <move color="white">
+    <point num="tail-inner-bottom"/>
+    <move distance="horiz-stem" color="black">
+     <point num="tail-outer-bottom"/>
+    </move>
+   </move>
+  </move>
+  <move>
+   <point num="a-outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="a-inner-top"/>
+    <interpolate round="yes">
+     <point num="vstem-right-top"/>
+    </interpolate>
+   </move>
+   <move color="white">
+    <point num="tail-inner-top"/>
+    <move distance="horiz-stem" color="black">
+     <point num="tail-outer-top"/>
+    </move>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="tail-outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="tail-inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="tail-inner-bottom"/>
+      <point num="atail-joint-outer-bottom"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="diag" save-vectors="yes" color="black">
+     <line ref="vstem-right-side"/>
+     <line ref="vstem-left-side"/>
+     <align>
+      <point num="upper-joint-top"/>
+      <!--     <point num="vstem-left-bottom - 1"/>
+      <point num="vstem-left-bottom + 1"/>-->
+     </align>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  <with-freedom-vector to-line="parallel">
+   <line ref="vstem-right-side"/>
+   <with-projection-vector axis="y">
+    <align>
+     <reference>
+      <point num="vstem-right-top"/>
+     </reference>
+     <point num="vstem-left-top"/>
+    </align>
+   </with-projection-vector>
+   <with-projection-vector to-line="parallel">
+    <line ref="vstem-right-side"/>
+    <interpolate>
+     <reference>
+      <point num="vstem-right-top"/>
+      <point num="vstem-right-bottom"/>
+     </reference>
+     <point num="vstem-left-bottom"/>
+     <point num="upper-joint-top"/>
+    </interpolate>
+   </with-projection-vector>
+  </with-freedom-vector>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

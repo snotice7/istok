@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="less" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="upper-diag" value="sign-thindiag"/>
+  <param name="lower-diag" value="sign--thindiag"/>
+  
+  <constant name="intersect-left-bottom" value="first-point"/>
+  <constant name="intersect-left-top" value="intersect-left-bottom + hstem-vcount"/>
+  <constant name="left-top" value="intersect-left-top + vstem-vcount"/>
+  <constant name="right-top" value="left-top + vstem-hcount"/>
+  <constant name="intersect-right" value="right-top + smooth-count"/>
+  <constant name="right-bottom" value="intersect-right + smooth-count + cog-count"/>
+  <constant name="left-bottom" value="right-bottom + vstem-hcount"/>
+  <constant name="last" value="left-bottom + last-count"/>
+  <line name="top-left-side">
+   <point num="intersect-left-top"/>
+   <point num="left-top"/>
+  </line>
+  <line name="top-right-side">
+   <point num="intersect-right"/>
+   <point num="right-top"/>
+  </line>
+  <line name="bottom-left-side">
+   <point num="intersect-left-bottom"/>
+   <point num="left-bottom"/>
+  </line>
+  <line name="bottom-right-side">
+   <point num="intersect-right"/>
+   <point num="right-bottom"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="left-bottom"/>
+   <move color="black">
+    <point num="left-top"/>
+    <interpolate>
+     <point num="intersect-left-top"/>
+     <point num="intersect-left-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="intersect-left-bottom"/>
+   <align>
+    <point num="intersect-left-top"/>
+   </align>
+   <move color="black">
+    <point num="left-top"/>
+    <align>
+     <point num="left-bottom"/>
+    </align>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-sim">
+    <diagonal-stem distance="upper-diag" save-vectors="yes" color="black">
+     <line ref="top-left-side"/>
+     <line ref="top-right-side"/>
+    </diagonal-stem>
+    <diagonal-stem distance="lower-diag" save-vectors="yes" color="black">
+     <line ref="bottom-left-side"/>
+     <line ref="bottom-right-side"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  <with-projection-vector to-line="orthogonal">
+   <line ref="top-left-side"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="bottom-right-side"/>
+    <align>
+     <reference>
+      <point num="right-top"/>
+     </reference>
+     <point num="intersect-right"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <set-vectors to-line="parallel">
+   <line ref="top-left-side"/>
+  </set-vectors>
+  <align>
+   <reference>
+    <point num="left-top"/>
+   </reference>
+   <point num="right-top"/>
+  </align>
+  <set-vectors to-line="parallel">
+   <line ref="bottom-left-side"/>
+  </set-vectors>
+  <align>
+   <reference>
+    <point num="left-bottom"/>
+   </reference>
+   <point num="right-bottom"/>
+  </align>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

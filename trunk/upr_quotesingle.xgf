@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="exclam" init-graphics="yes">
+ <!-- ' -->
+ <glyph ps-name="quotesingle" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2008, 2010 Andrey V. Panov
+      Copyright (C) 2007, 2008, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -21,9 +22,7 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="period-height" value="period-height"/>
-  <param name="vert-stem" value="period-width"/>
+  <param name="vert-stem" value="digit-vert-stem"/>
   <param name="height" value="cap-o-height"/>
   
   <constant name="left" value="0"/>
@@ -32,43 +31,21 @@
   <constant name="right" value="top-right + smooth-count"/>
   <constant name="bottom-right" value="right + smooth-count"/>
   <constant name="bottom-left" value="bottom-right + vstem-hcount"/>
-  <constant name="period-left-bottom" value="bottom-left + smooth-count + first-point"/>
-  <constant name="period-left-top" value="period-left-bottom + vstem-vcount"/>
-  <constant name="period-right-top" value="period-left-top + vstem-hcount"/>
-  <constant name="period-right-bottom" value="period-right-top + vstem-vcount"/>
-  <constant name="last" value="period-right-bottom + last-count"/>
+  <constant name="last" value="bottom-left + last-count"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
-   <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
   </compile-if>
   
-  <move distance="baseline">
-   <point num="period-left-bottom"/>
+  <move>
+   <point num="bottom-left"/>
    <align>
-    <point num="period-right-bottom"/>
+    <point num="bottom-right"/>
    </align>
-  </move>
-  <move distance="period-height">
-   <point num="period-left-top"/>
-   <align>
-    <point num="period-right-top"/>
-   </align>
-   <move color="white">
-    <point num="bottom-left"/>
-    <align>
-     <point num="bottom-right"/>
-    </align>
-   </move>
   </move>
   <move distance="height">
    <point num="top-left"/>
@@ -83,11 +60,6 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="to-grid"/>
-     </if>
-    </compile-if>
    </else>
   </compile-if>
   
@@ -95,16 +67,9 @@
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="period-left-bottom"/>
-   <align>
-    <point num="left"/>
-   </align>
+   <point num="left"/>
    <move distance="vert-stem" color="black">
-    <point num="period-right-bottom"/>
-    <align>
-     <point num="right"/>
-     <point num="period-right-top"/>
-    </align>
+    <point num="right"/>
     <move min-distance="no">
      <point num="right-bearing"/>
     </move>
@@ -123,13 +88,9 @@
      <with-param name="cv" value="vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <point num="period-left-bottom"/>
-     <point num="period-left-top"/>
      <point num="left"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <point num="period-right-top"/>
-     <point num="period-right-bottom"/>
      <point num="right"/>
     </shift-absolute>
    </if>
@@ -144,8 +105,24 @@
    <point num="bottom-left"/>
    <point num="bottom-right"/>
   </interpolate>
-  
-  <interpolate-untouched-points/>
- </glyph>
- 
+  <!-- <else>
+   <with-round-state round="to-double-grid">
+    <mdap round="yes">
+     <point num="bottom-left"/>
+    </mdap>
+    <mdap round="yes">
+     <point num="bottom-right"/>
+    </mdap>
+   </with-round-state>
+   <shift-absolute pixel-distance="0.05p">
+    <point num="bottom-right"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="-0.05p">
+    <point num="bottom-left"/>
+   </shift-absolute>
+  </else>
+ </compile-if>-->
+ <interpolate-untouched-points/>
+</glyph>
+
 </xgridfit>
