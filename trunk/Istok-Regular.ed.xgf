@@ -189,7 +189,7 @@
  <control-value name="minus-thickness" value="120"/>
  <control-value name="sign-thindiag" value="120"/>
  <control-value name="emspace" value="1024"/>
-  <control-value name="paren-curve-stem" value="196"/>
+ <control-value name="paren-curve-stem" value="196"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -232,11 +232,7 @@
    <with-param name="margin" value="small-cyrn-lbearing"/>
   </call-macro>
   <call-macro name="regularize-control-value-width">
-   <with-param name="cv-width" value="cap-cyri-space"/>
-   <with-param name="margin" value="cap-h-lbearing"/>
-  </call-macro>
-  <call-macro name="regularize-control-value-width">
-   <with-param name="cv-width" value="small-cyri-space"/>
+   <with-param name="cv-width" value="sc-h-space"/>
    <with-param name="margin" value="small-cyrn-lbearing"/>
   </call-macro>
   <call-macro name="regularize-control-value-width-two-margin">
@@ -249,6 +245,25 @@
    <with-param name="left-margin" value="(control-value(emspace) * 9.2p) / 100p"/>
    <with-param name="right-margin" value="(control-value(emspace) * 9.0p) / 100p"/>
   </call-macro>
+  <if test="pixels-per-em &gt;= 20">
+   <call-macro name="regularize-control-value-width">
+    <with-param name="cv-width" value="cap-cyri-space"/>
+    <with-param name="margin" value="cap-h-lbearing"/>
+   </call-macro>
+   <call-macro name="regularize-control-value-width">
+    <with-param name="cv-width" value="small-cyri-space"/>
+    <with-param name="margin" value="small-cyrn-lbearing"/>
+   </call-macro>
+   <call-macro name="regularize-control-value-width">
+    <with-param name="cv-width" value="sc-cyri-space"/>
+    <with-param name="margin" value="small-cyrn-lbearing"/>
+   </call-macro>
+   <else>
+    <set-equal target="cap-cyri-space" source="cap-h-space"/>
+    <set-equal target="small-cyri-space" source="small-cyrn-space"/>
+    <set-equal target="sc-cyri-space" source="sc-h-space"/>
+   </else>
+  </if>
   
   <round value="cap-x-height"/>
   <round value="cap-tse-desc"/>
@@ -289,7 +304,7 @@
   <round value="sc-o-space" color="black"/>
   <round value="sc-p-space" color="black"/>
   <round value="sc-b-low-space" color="black"/>
-  <round value="sc-cyri-space" color="black"/>
+  <!--<round value="sc-cyri-space" color="black"/>-->
   <round value="sc-cyrl-space" color="black"/>
   <round value="sc-cyrch-space" color="black"/>
   <round value="sc-sh-inner-space"/>
@@ -330,7 +345,7 @@
     <round value="digit-thin-horiz-stem" color="black"/>
     <round value="digit-thicker-curve-stem" color="black"/>
     <round value="digit-thinner-curve-stem" color="black"/>
-    <control-value-delta>
+    <!--     <control-value-delta> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/> -->
      <!--      <delta-set cv="cap-vert-stem" size="7" distance="-8"/> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="7" distance="-8"/> -->
@@ -340,7 +355,7 @@
      <!--      <delta-set cv="cap-horiz-stem" size="10" distance="-8"/> -->
      <!--<delta-set cv="cap-horiz-stem" size="11" distance="-8"/>-->
      <!--<delta-set cv="cap-curve-hstem" size="11" distance="-8"/>-->
-    </control-value-delta>
+     <!--     </control-value-delta> -->
     
     <control-value-delta>
      <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>

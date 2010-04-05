@@ -25,7 +25,7 @@
   <param name="thick-diag" value="cap-diag"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="vert-stem" value="cap-vert-stem"/>
-
+  
   <constant name="lower-hstem-left-bottom" value="first-point"/>
   <constant name="diag-left-side-bottom" value="lower-hstem-left-bottom + hstem-vcount"/>
   <constant name="diag-left-side-top" value="diag-left-side-bottom + smooth-count"/>
@@ -45,7 +45,7 @@
    <point num="diag-right-side-bottom"/>
    <point num="diag-right-side-top"/>
   </line>
-
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -54,7 +54,7 @@
     <set-vectors axis="y"/>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
    <point num="lower-hstem-left-bottom"/>
    <align>
@@ -116,8 +116,8 @@
    <set-freedom-vector axis="x"/>
    <set-round-state round="no"/>
    <else>-->
-  <set-vectors axis="x"/>
-  <!--   </else>
+    <set-vectors axis="x"/>
+    <!--   </else>
   </compile-if>-->
   <move color="white">
    <reference>
@@ -171,8 +171,8 @@
     <reference>
      <point num="lower-hstem-right-bottom"/>
     </reference>
+    <point num="lower-hstem-right-top"/>
    </align>
-   <point num="lower-hstem-right-top"/>
   </compile-if>
   <interpolate round="yes">
    <reference>
@@ -182,7 +182,7 @@
    <point num="upper-hstem-left-top"/>
    <point num="upper-hstem-right-top"/>
   </interpolate>
-<!--  <compile-if test="smooth">
+  <!--  <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <shift-absolute pixel-distance="hgrayshift-">
      <point num="lower-hstem-left-bottom"/>
@@ -252,16 +252,16 @@
    </align>
   </with-vectors>
   <!--   <with-projection-vector axis="x"> -->
-  <with-freedom-vector to-line="parallel">
-   <line ref="diag-right-side"/>
-   <align>
-    <reference>
-     <point num="upper-hstem-right-top"/>
-    </reference>
-    <point num="diag-right-side-top"/>
-   </align>
-  </with-freedom-vector>
-  <!--   </with-projection-vector> -->
+   <with-freedom-vector to-line="parallel">
+    <line ref="diag-right-side"/>
+    <align>
+     <reference>
+      <point num="upper-hstem-right-top"/>
+     </reference>
+     <point num="diag-right-side-top"/>
+    </align>
+   </with-freedom-vector>
+   <!--   </with-projection-vector> -->
   <with-projection-vector axis="y">
    <if test="coord(upper-hstem-right-top) &lt; coord(diag-right-side-top)">
     <move-point-to-intersection>

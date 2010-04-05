@@ -226,7 +226,7 @@
    <point num="vstem-left-top"/>
   </interpolate>
   <with-round-state round="no">
-   <diagonal-stem distance="cap-thindiag" save-vectors="yes" min-amount="diag-min-thick">
+   <diagonal-stem distance="cap-thindiag" save-vectors="yes" min-distance="diag-min-thick">
     <line ref="left-side"/>
     <line ref="right-side"/>
    </diagonal-stem>

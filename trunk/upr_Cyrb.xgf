@@ -54,6 +54,7 @@
    <point num="asc-flat-bottom-left"/>
    <point num="asc-flat-bottom"/>
   </line>
+  
   <set-vectors axis="y"/>
   <move distance="baseline">
    <point num="outer-bottom"/>
@@ -203,7 +204,7 @@
     </shift-absolute>
    </if>
   </compile-if>
-  <diagonal-stem distance="diag" round="no" save-vectors="yes" min-amount="diag-min-thick" color="black">
+  <diagonal-stem distance="diag" round="no" save-vectors="yes" min-distance="diag-min-thick" color="black">
    <line ref="diag-top"/>
    <line ref="diag-bottom"/>
   </diagonal-stem>
@@ -223,4 +224,5 @@
   </with-projection-vector>
   <interpolate-untouched-points/>
  </glyph>
+ 
 </xgridfit>

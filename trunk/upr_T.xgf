@@ -82,10 +82,11 @@
      <if test="vertical-smoothing">
       <set-round-state round="to-grid"/>
      </if>
+     <set-minimum-distance value="1.0p"/>
     </compile-if>
     <!-- </else>
   </compile-if>-->
-  <move min-distance="no" color="white" compile-if="slanted = 0">
+  <move min-distance="no" color="white" compile-if="slanted = 0"> <!---->
    <reference>
     <point num="left-bearing"/>
    </reference>
