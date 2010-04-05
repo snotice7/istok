@@ -219,6 +219,12 @@
     </align>
    </with-projection-vector>
   </compile-if>
+  <move min-distance="no">
+   <reference>
+    <point num="vstem-right-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
@@ -228,8 +234,8 @@
     <shift-absolute pixel-distance="negative(temp)">
      <point num="vstem-left-bottom"/>
      <point num="outer-right-bottom"/>
-     <!--   <point num="inner-right-bottom"/>
-     <point num="inner-right-top"/>-->
+     <point num="inner-right-bottom"/>
+     <point num="inner-right-top"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
      <point num="vstem-right-top"/>

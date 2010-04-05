@@ -126,10 +126,10 @@
     </interpolate>
    </move>
    <align>
-    <point num="vstem-right-top"/>
     <reference>
      <point num="vstem-right-bottom"/>
     </reference>
+    <point num="vstem-right-top"/>
    </align>
   </compile-if>
   

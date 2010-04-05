@@ -113,9 +113,7 @@
     <point num="low-inner-left-top"/>
    </reference>
    <point num="low-inner-right"/>
-   <align>
-    <point num="low-outer-right"/>
-   </align>
+   <point num="low-outer-right"/>
   </interpolate>
   
   <compile-if test="slanted">

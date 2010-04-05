@@ -54,20 +54,19 @@
    <param name="interpolation-point" value="-1"/>
    <param name="diag-width" value="-1"/>
    <!--   <param name="diag-min"/> -->
-   <line name="first-diag">
+   <!--   <line name="first-diag">
     <point num="first-diag-first-point"/>
     <point num="first-diag-second-point"/>
    </line>
    <line name="second-diag">
     <point num="second-diag-first-point"/>
     <point num="second-diag-second-point"/>
-   </line>
+   </line>-->
    <with-projection-vector to-line="orthogonal">
-    <!--    <line ref="first-diag"/> -->
     <line>
      <point num="first-diag-first-point"/>
      <point num="first-diag-second-point"/>
-    </line>
+    </line>   <!--    <line ref="first-diag"/> -->
     <!--    <move distance="absolute(diag-width)" round="no" cut-in="no" min-distance="diag-min-thick" color="black"> -->
      <compile-if test="diag-width &gt;= 0">
       <move distance="diag-width" round="no" cut-in="no" min-distance="diag-min-thick" color="black">
@@ -160,38 +159,38 @@
   </function>
   <!-- center-accent-with-anchor-and-two-reper-points -->
   
- <macro name="shift-edge">
-  <param name="shift"/>
-  <param name="cv"/>
-  <set-equal target="shift" source="0.5p * (control-value(cv) - round-black(control-value(cv)))"/>
- </macro>
- 
- <macro name="double-shift-edge">
-  <param name="shift"/>
-  <param name="cv"/>
-  <set-equal target="shift" source="control-value(cv) - round-black(control-value(cv))"/>
- </macro>
- 
- <macro name="shift-edge-points">
-  <param name="shift"/>
-  <param name="point-first"/>
-  <param name="point-second"/>
-  <set-equal target="shift" source="0.5p * ((point-first --- point-second) - (point-first -- point-second))"/>
-  <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
-   <set-equal target="shift" source="0.0p"/>
-  </if>
- </macro>
- 
- <macro name="double-shift-edge-points">
-  <param name="shift"/>
-  <param name="point-first"/>
-  <param name="point-second"/>
-  <set-equal target="shift" source="(point-first --- point-second) - (point-first -- point-second)"/>
-  <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
-   <set-equal target="shift" source="0.0p"/>
-  </if>
- </macro>
- 
+  <macro name="shift-edge">
+   <param name="shift"/>
+   <param name="cv"/>
+   <set-equal target="shift" source="0.5p * (control-value(cv) - round-black(control-value(cv)))"/>
+  </macro>
+  
+  <macro name="double-shift-edge">
+   <param name="shift"/>
+   <param name="cv"/>
+   <set-equal target="shift" source="control-value(cv) - round-black(control-value(cv))"/>
+  </macro>
+  
+  <macro name="shift-edge-points">
+   <param name="shift"/>
+   <param name="point-first"/>
+   <param name="point-second"/>
+   <set-equal target="shift" source="0.5p * ((point-first --- point-second) - (point-first -- point-second))"/>
+   <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
+    <set-equal target="shift" source="0.0p"/>
+   </if>
+  </macro>
+  
+  <macro name="double-shift-edge-points">
+   <param name="shift"/>
+   <param name="point-first"/>
+   <param name="point-second"/>
+   <set-equal target="shift" source="(point-first --- point-second) - (point-first -- point-second)"/>
+   <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
+    <set-equal target="shift" source="0.0p"/>
+   </if>
+  </macro>
+  
   <macro name="regularize-control-value-width">
    <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
    <param name="margin"/>   <!-- width of margin, should not be rounded -->
