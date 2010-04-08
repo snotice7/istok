@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1270030979
+ModificationTime: 1270642196
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -55,7 +55,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 0 16 14
+WinInfo: 32 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -6911,7 +6911,7 @@ EndChar
 StartChar: parenleft
 Encoding: 40 40 155
 Width: 670
-Flags: WO
+Flags: W
 VStem: 124 196<175.33 912.67>
 LayerCount: 2
 Back
@@ -7119,7 +7119,7 @@ EndChar
 StartChar: guilsinglright
 Encoding: 8250 8250 161
 Width: 682
-Flags: HW
+Flags: W
 DStem2: 423 540 561 563 0.648215 -0.761457<-472.544 0> 561 517 423 540 0.648215 0.761457<-544.484 -71.9401>
 LayerCount: 2
 Fore
@@ -7142,7 +7142,7 @@ EndChar
 StartChar: guillemotright
 Encoding: 187 187 162
 Width: 1032
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 161 8250 N 1 0 0 1 0 0 2
@@ -7502,13 +7502,45 @@ EndChar
 StartChar: braceright
 Encoding: 125 125 176
 Width: 776
-Flags: W
+Flags: HW
 HStem: -408 130<70 232.212> 479 130<538.112 686> 1366 130<70 232.212>
 VStem: 250 176<-261.699 361.046 726.954 1349.7>
 CounterMasks: 1 e0
 LayerCount: 2
 Fore
-Refer: 175 123 N -1 0 0 -1 776 1088 2
+SplineSet
+115 -408 m 0,0,1
+ 70 -408 70 -408 70 -373 c 2,2,-1
+ 70 -313 l 2,3,4
+ 70 -278 70 -278 115 -278 c 0,5,6
+ 213 -278 213 -278 231.5 -237 c 128,-1,7
+ 250 -196 250 -196 250 -101 c 2,8,-1
+ 250 185 l 2,9,10
+ 250 390 250 390 341.5 462 c 128,-1,11
+ 433 534 433 534 497 543 c 1,12,-1
+ 497 545 l 17,13,14
+ 433 554 433 554 341.5 626 c 128,-1,15
+ 250 698 250 698 250 903 c 2,16,-1
+ 250 1189 l 2,17,18
+ 250 1284 250 1284 231.5 1325 c 128,-1,19
+ 213 1366 213 1366 115 1366 c 0,20,21
+ 70 1366 70 1366 70 1401 c 2,22,-1
+ 70 1461 l 2,23,24
+ 70 1496 70 1496 115 1496 c 0,25,26
+ 300 1496 300 1496 363 1415.5 c 128,-1,27
+ 426 1335 426 1335 426 1166 c 2,28,-1
+ 426 931 l 2,29,30
+ 426 758 426 758 502.5 683.5 c 128,-1,31
+ 579 609 579 609 651 609 c 0,32,33
+ 686 609 686 609 686 564 c 2,34,-1
+ 686 524 l 2,35,36
+ 686 479 686 479 651 479 c 0,37,38
+ 579 479 579 479 502.5 404.5 c 128,-1,39
+ 426 330 426 330 426 157 c 2,40,-1
+ 426 -78 l 2,41,42
+ 426 -247 426 -247 363 -327.5 c 128,-1,43
+ 300 -408 300 -408 115 -408 c 0,0,1
+EndSplineSet
 EndChar
 
 StartChar: percent
@@ -8081,7 +8113,7 @@ EndChar
 StartChar: greater
 Encoding: 62 62 188
 Width: 1280
-Flags: HW
+Flags: W
 DStem2: 997 736 1150 785 0.865883 -0.500247<-1036.87 0> 1150 685 997 734 0.865883 0.500247<-1144.8 -107.968>
 LayerCount: 2
 Fore

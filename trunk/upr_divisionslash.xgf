@@ -48,7 +48,7 @@
   </move>
   
   <set-vectors axis="x"/>
-  <move round="to-double-grid" min-distance="no" color="white">
+  <move min-distance="no"> <!-- round="to-double-grid"-->
    <reference>
     <point num="left-bearing"/>
    </reference>
@@ -57,6 +57,22 @@
     <point num="left-top"/>
    </move>
   </move>
+  <if test="pixels-per-em &gt; 20">
+   <move>
+    <reference>
+     <point num="left-bottom"/>
+    </reference>
+    <point num="left-top"/>
+   </move>
+   <else>
+    <move round="to-half-grid">
+     <reference>
+      <point num="left-bottom"/>
+     </reference>
+     <point num="left-top"/>
+    </move>
+   </else>
+  </if>
   
   <with-round-state round="no">
    <with-minimum-distance value="diag-min-thick">
@@ -69,7 +85,7 @@
   <!--<compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
   </compile-if>
-      <set-equal target="width" source="round(right-top - - right-bearing) - rbearing"/>
+  <set-equal target="width" source="round(right-top - - right-bearing) - rbearing"/>
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <round value="width"/>
