@@ -109,6 +109,7 @@
  <alias name="small--diag" target="small-diag"/>
  <alias name="small--thindiag" target="small-thindiag"/>
  <alias name="sign--thindiag" target="sign-thindiag"/>
+ <alias name="accent--diag" target="accent-diag"/>
  
  <control-value name="cap-h-lbearing" value="170"/>
  <control-value name="cap-x-lbearing" value="12"/>
@@ -190,6 +191,8 @@
  <control-value name="sign-thindiag" value="120"/>
  <control-value name="emspace" value="1024"/>
  <control-value name="paren-curve-stem" value="196"/>
+ <control-value name="macron-thickness" value="110"/>
+ <control-value name="accent-diag" value="110"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -345,6 +348,7 @@
     <round value="digit-thin-horiz-stem" color="black"/>
     <round value="digit-thicker-curve-stem" color="black"/>
     <round value="digit-thinner-curve-stem" color="black"/>
+    <round value="macron-thickness" color="black"/>
     <!--     <control-value-delta> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/> -->
      <!--      <delta-set cv="cap-vert-stem" size="7" distance="-8"/> -->
@@ -598,6 +602,10 @@
     <if test="control-value(index(sign-thindiag)) &gt; temp">
      <set-equal target="sign-thindiag" source="temp"/>
     </if>
+    <set-equal target="temp" source="round-black(control-value(index(macron-thickness))) * 0.89p"/>
+    <if test="control-value(index(accent-diag)) &gt; temp">
+     <set-equal target="accent-diag" source="temp"/>
+    </if>
    </if>
   </pre-program>
   
@@ -608,6 +616,7 @@
   <xi:include href="upr_question.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_ampersand.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_comma.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_slash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_less.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_greater.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_at.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -766,6 +775,10 @@
   <xi:include href="upr_CyrYusc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_asciicircum.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_braceleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_braceright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_circumflex.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_dotaccent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>

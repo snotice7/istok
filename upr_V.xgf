@@ -137,7 +137,7 @@
   </move>
   <!--   <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
    <with-round-state round="to-double-grid">
-    <set-equal target="width" source="round-black((coord(ldiag-left-top) + coord(rdiag-right-top)) / 2.0) -                ((coord(ldiag-left-bottom) + coord(rdiag-right-bottom)) / 2.0)"/>
+    <set-equal target="width" source="round-black((coord(ldiag-left-top) + coord(rdiag-right-top)) / 2.0) - ((coord(ldiag-left-bottom) + coord(rdiag-right-bottom)) / 2.0)"/>
    </with-round-state>
    <compile-if test="slanted">
     <set-projection-vector axis="x"/>

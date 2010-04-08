@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--^-->
+ <glyph ps-name="asciicircum" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="left-diag" value="sign-thindiag"/>
+  <param name="right-diag" value="sign--thindiag"/>
+  
+  <constant name="ldiag-left-bottom" value="first-point"/>
+  <constant name="ldiag-left-top" value="ldiag-left-bottom + vstem-vcount"/>
+  <constant name="rdiag-right-top" value="ldiag-left-top + hstem-vcount"/>
+  <constant name="rdiag-right-bottom" value="rdiag-right-top + vstem-vcount"/>
+  <constant name="rdiag-left-bottom" value="rdiag-right-bottom + hstem-vcount"/>
+  <constant name="diag-intersect" value="rdiag-left-bottom + smooth-count"/>
+  <constant name="rdiag-left-top" value="diag-intersect"/>
+  <constant name="ldiag-right-top" value="diag-intersect + cog-count"/>
+  <constant name="ldiag-right-bottom" value="diag-intersect + smooth-count + cog-count"/>
+  <constant name="last" value="ldiag-right-bottom + last-count"/>
+  <line name="ldiag-left">
+   <point num="ldiag-left-bottom"/>
+   <point num="ldiag-left-top"/>
+  </line>
+  <line name="ldiag-right">
+   <point num="ldiag-right-bottom"/>
+   <point num="ldiag-right-top"/>
+  </line>
+  <line name="rdiag-right">
+   <point num="rdiag-right-bottom"/>
+   <point num="rdiag-right-top"/>
+  </line>
+  <line name="rdiag-left">
+   <point num="rdiag-left-bottom"/>
+   <point num="rdiag-left-top"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="ldiag-left-bottom"/>
+   <align>
+    <!--<point num="ldiag-right-bottom"/>
+    <point num="rdiag-left-bottom"/>-->
+    <point num="rdiag-right-bottom"/>
+   </align>
+   <move>
+    <point num="ldiag-left-top"/>
+    <align>
+     <point num="rdiag-right-top"/>
+    </align>
+    <!--<move color="black">
+     <point num="diag-intersect"/>
+    </move>-->
+   </move>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="ldiag-left-bottom"/>
+   <move color="black">
+    <point num="rdiag-right-bottom"/>
+   </move>
+  </move>
+  <!--<move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="rdiag-right-bottom"/>
+  </move>-->
+  <compile-if test="slanted = 0">
+   <interpolate round="down-to-grid">
+    <reference>
+     <point num="ldiag-left-bottom"/>
+     <point num="rdiag-right-bottom"/>
+    </reference>
+    <point num="ldiag-left-top"/>
+   </interpolate>
+   <move color="black">
+    <reference>
+     <point num="ldiag-left-top"/>
+    </reference>
+    <point num="rdiag-right-top"/>
+   </move>
+   <set-equal target="width" source="(rdiag-right-top -- rdiag-right-bottom) - (ldiag-left-bottom -- ldiag-left-top)"/>
+   <if test="width = 1.0p">
+    <shift-absolute pixel-distance="-1.0p">
+     <point num="rdiag-right-bottom"/>
+    </shift-absolute>
+    <else>
+     <if test="width = 2.0p">
+      <shift-absolute pixel-distance="1.0p">
+       <point num="ldiag-left-top"/>
+       <point num="rdiag-right-top"/>
+      </shift-absolute>
+     </if>
+    </else>
+   </if>
+   <if test="((rdiag-right-bottom -- right-bearing) - (left-bearing -- ldiag-left-bottom)) &gt;= 2.0p">
+    <shift-absolute pixel-distance="1.0p">
+     <point num="ldiag-left-bottom"/>
+     <point num="rdiag-right-bottom"/>
+     <point num="ldiag-left-top"/>
+     <point num="rdiag-right-top"/>
+    </shift-absolute>
+   </if>
+   <shift-absolute pixel-distance="-0.05p">
+    <point num="ldiag-left-top"/>
+    <point num="ldiag-left-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="0.05p">
+    <point num="rdiag-right-top"/>
+    <point num="rdiag-right-bottom"/>
+   </shift-absolute>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="ldiag-left-bottom"/>
+      <point num="rdiag-right-bottom"/>
+     </reference>
+     <point num="ldiag-left-top"/>
+     <point num="rdiag-right-top"/>
+    </interpolate>
+   </else>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="rdiag-right-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  
+  <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="right-diag" save-vectors="yes">
+     <line ref="rdiag-right"/>
+     <line ref="rdiag-left"/>
+    </diagonal-stem>
+    <diagonal-stem distance="left-diag" save-vectors="yes">
+     <line ref="ldiag-left"/>
+     <line ref="ldiag-right"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  <with-projection-vector axis="y">
+   <with-freedom-vector to-line="parallel">
+    <line ref="rdiag-right"/>
+    <interpolate>
+     <reference>
+      <point num="rdiag-right-bottom"/>
+      <point num="rdiag-right-top"/>
+     </reference>
+     <!--      <point num="rdiag-left-bottom"/> -->
+     <point num="rdiag-left-top"/>
+    </interpolate>
+    <with-projection-vector to-line="parallel">
+     <line ref="rdiag-right"/>
+     <interpolate>
+      <reference>
+       <point num="rdiag-right-bottom"/>
+       <point num="rdiag-right-top"/>
+      </reference>
+      <point num="rdiag-left-bottom"/>
+      <!--      <point num="rdiag-left-top"/> -->
+     </interpolate>
+    </with-projection-vector>
+   </with-freedom-vector>
+   <with-freedom-vector to-line="parallel">
+    <line ref="ldiag-left"/>
+    <interpolate>
+     <reference>
+      <point num="ldiag-left-bottom"/>
+      <point num="ldiag-left-top"/>
+     </reference>
+     <!--      <point num="ldiag-right-bottom"/> -->
+     <point num="ldiag-right-top"/>
+    </interpolate>
+    <with-projection-vector to-line="parallel">
+     <line ref="ldiag-left"/>
+     <interpolate>
+      <reference>
+       <point num="ldiag-left-bottom"/>
+       <point num="ldiag-left-top"/>
+      </reference>
+      <point num="ldiag-right-bottom"/>
+      <!--      <point num="ldiag-right-top"/> -->
+     </interpolate>
+    </with-projection-vector>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <if test="coord(rdiag-left-top) &lt; coord(ldiag-right-top)">
+   <move-point-to-intersection>
+    <point num="ldiag-right-top"/>
+    <line ref="ldiag-right"/>
+    <line ref="rdiag-left"/>
+   </move-point-to-intersection>
+   <move-point-to-intersection>
+    <point num="rdiag-left-top"/>
+    <line ref="ldiag-right"/>
+    <line ref="rdiag-left"/>
+   </move-point-to-intersection>
+  </if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
