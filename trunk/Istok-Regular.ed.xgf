@@ -46,6 +46,7 @@
  <constant name="smooth-count" value="2"/>
  <constant name="notch-count" value="3"/>
  <constant name="cog-count" value="1"/>
+ <constant name="corner-count" value="1"/>
  <constant name="open-end-count" value="5"/>
  <constant name="diag--halfnotch-count" value="5"/>
  <constant name="diag-halfnotch-count" value="6"/>
@@ -315,7 +316,6 @@
   <round value="digit-over-height"/>
   <round value="digit-six-inner-height" color="black"/>
   <round value="period-width" color="black"/>
-  <round value="minus-thickness" color="black"/>
   
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
@@ -348,7 +348,9 @@
     <round value="digit-thin-horiz-stem" color="black"/>
     <round value="digit-thicker-curve-stem" color="black"/>
     <round value="digit-thinner-curve-stem" color="black"/>
+    <round value="minus-thickness" color="black"/>
     <round value="macron-thickness" color="black"/>
+    <round value="paren-curve-stem" color="black"/>
     <!--     <control-value-delta> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/> -->
      <!--      <delta-set cv="cap-vert-stem" size="7" distance="-8"/> -->
@@ -373,6 +375,8 @@
      <delta-set cv="digit-thinner-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thinner-curve-stem" size="18" distance="-1"/>
      <delta-set cv="digit-thin-horiz-stem" size="12" distance="-3"/>
+     <delta-set cv="paren-curve-stem" size="7" distance="-8"/>
+     <delta-set cv="paren-curve-stem" size="8" distance="-8"/>
     </control-value-delta>
    </if>
    
@@ -614,6 +618,7 @@
   <xi:include href="upr_percent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_period.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_question.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_dollar.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_ampersand.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_comma.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_slash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -775,6 +780,8 @@
   <xi:include href="upr_CyrYusc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_bracketleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_bracketright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_asciicircum.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_braceleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_braceright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>

@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1270642196
+ModificationTime: 1270728041
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -55,7 +55,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 32 16 14
+WinInfo: 0 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -7351,12 +7351,28 @@ EndChar
 StartChar: bracketright
 Encoding: 93 93 171
 Width: 658
-Flags: W
+Flags: HW
 HStem: -408 130<70 312> 1366 130<70 312>
 VStem: 312 176<-278 1366>
 LayerCount: 2
 Fore
-Refer: 172 91 N -1 0 0 -1 658 1088 3
+SplineSet
+115 -408 m 2,0,1
+ 70 -408 70 -408 70 -373 c 2,2,-1
+ 70 -313 l 2,3,4
+ 70 -278 70 -278 115 -278 c 2,5,-1
+ 312 -278 l 1,6,-1
+ 312 1366 l 1,7,-1
+ 115 1366 l 2,8,9
+ 70 1366 70 1366 70 1401 c 2,10,-1
+ 70 1461 l 2,11,12
+ 70 1496 70 1496 115 1496 c 2,13,-1
+ 443 1496 l 2,14,15
+ 488 1496 488 1496 488 1451 c 2,16,-1
+ 488 -363 l 2,17,18
+ 488 -408 488 -408 443 -408 c 2,19,-1
+ 115 -408 l 2,0,1
+EndSplineSet
 EndChar
 
 StartChar: bracketleft
@@ -7502,7 +7518,7 @@ EndChar
 StartChar: braceright
 Encoding: 125 125 176
 Width: 776
-Flags: HW
+Flags: W
 HStem: -408 130<70 232.212> 479 130<538.112 686> 1366 130<70 232.212>
 VStem: 250 176<-261.699 361.046 726.954 1349.7>
 CounterMasks: 1 e0
