@@ -75,7 +75,7 @@
       <reference>
        <point num="slash-left-bottom"/>
       </reference>
-      <contour num="4"/>
+      <contour num="2"/>
      </shift>
      <else>
       <if test="width &gt; 0.5p">
@@ -145,6 +145,11 @@
     <contour num="3"/>
    </shift>
   </if>-->
+  <!--<compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>-->
   <move min-distance="no">
    <reference>
     <point num="right-o-right"/>
@@ -152,5 +157,12 @@
    <point num="right-bearing"/>
   </move>
  </glyph>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <mdap round="yes">
+     <point num="right-bearing"/>
+    </mdap>
+   </if>
+  </compile-if>
  
 </xgridfit>

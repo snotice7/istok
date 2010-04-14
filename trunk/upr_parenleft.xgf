@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="parenleft" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="vert-stem" value="paren-curve-stem"/>
+  
+  <constant name="left" value="0"/>
+  <constant name="upper-end-top" value="left + 3 + corner-count"/>
+  <constant name="upper-end-bottom" value="upper-end-top + vstem-hcount"/>
+  <constant name="right" value="upper-end-bottom + 3 + corner-count"/>
+  <constant name="lower-end-top" value="right + 3 + corner-count"/>
+  <constant name="lower-end-bottom" value="lower-end-top + vstem-hcount"/>
+  <constant name="last" value="lower-end-bottom + 2 + corner-count"/>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move>
+   <point num="lower-end-top"/>
+  </move>
+  <move>
+   <point num="upper-end-bottom"/>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="only-horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left"/>
+   <move distance="vert-stem" color="black">
+    <point num="right"/>
+    <move>
+     <point num="upper-end-bottom"/>
+     <align compile-if="slanted = 0">
+      <point num="lower-end-top"/>
+     </align>
+     <interpolate round="yes" compile-if="slanted">
+      <point num="lower-end-top"/>
+     </interpolate>
+     <move min-distance="no">
+      <point num="right-bearing"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

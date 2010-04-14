@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1270728041
+ModificationTime: 1271069563
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -6955,11 +6955,27 @@ EndChar
 StartChar: parenright
 Encoding: 41 41 156
 Width: 670
-Flags: W
+Flags: HW
 VStem: 350 196<175.33 912.67>
 LayerCount: 2
 Fore
-Refer: 155 40 N -1 0 0 -1 670 1088 0
+SplineSet
+76 -398 m 258,0,1
+ 45 -374 45 -374 78 -339 c 256,2,3
+ 168 -243 168 -243 259 -15.5 c 128,-1,4
+ 350 212 350 212 350 544 c 256,5,6
+ 350 876 350 876 259 1103.5 c 128,-1,7
+ 168 1331 168 1331 78 1427 c 256,8,9
+ 45 1462 45 1462 76 1486 c 258,10,-1
+ 111 1513 l 258,11,12
+ 141 1536 141 1536 179 1493 c 256,13,14
+ 338 1316 338 1316 442 1084 c 128,-1,15
+ 546 852 546 852 546 544 c 256,16,17
+ 546 236 546 236 442 4 c 128,-1,18
+ 338 -228 338 -228 179 -405 c 256,19,20
+ 141 -448 141 -448 111 -425 c 258,21,-1
+ 76 -398 l 258,0,1
+EndSplineSet
 EndChar
 
 StartChar: uni2116
@@ -7296,11 +7312,21 @@ EndChar
 StartChar: backslash
 Encoding: 92 92 168
 Width: 840
-Flags: W
+Flags: HW
 DStem2: 118 1436 7 1391 0.374368 -0.92728<-45.0261 1955.29>
 LayerCount: 2
 Fore
-Refer: 166 47 N -1 0 0 1 840 0 3
+SplineSet
+7 1391 m 6,0,1
+ -10 1433 -10 1433 22 1446 c 2,2,-1
+ 67 1464 l 2,3,4
+ 101 1478 101 1478 118 1436 c 2,5,-1
+ 833 -335 l 2,6,7
+ 850 -377 850 -377 816 -391 c 2,8,-1
+ 771 -409 l 2,9,10
+ 739 -422 739 -422 722 -380 c 2,11,-1
+ 7 1391 l 6,0,1
+EndSplineSet
 EndChar
 
 StartChar: plus
@@ -7351,7 +7377,7 @@ EndChar
 StartChar: bracketright
 Encoding: 93 93 171
 Width: 658
-Flags: HW
+Flags: W
 HStem: -408 130<70 312> 1366 130<70 312>
 VStem: 312 176<-278 1366>
 LayerCount: 2

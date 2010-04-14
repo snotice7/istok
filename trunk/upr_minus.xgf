@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="minus" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2007, 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="horiz-stem" value="minus-thickness"/>
+  <param name="glyph-width" value="minus-width"/>
+  
+  <constant name="left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-bottom + hstem-vcount"/>
+  <constant name="right-top" value="left-top + hstem-hcount"/>
+  <constant name="right-bottom" value="right-top + vstem-hcount"/>
+  <constant name="last" value="right-bottom + last-count"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-bottom"/>
+   <align>
+    <point num="left-top"/>
+   </align>
+   <move distance="glyph-width" color="black">
+    <point num="right-top"/>
+    <align>
+     <point num="right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <!--<compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <shift-absolute pixel-distance="hgrayshift-">
+     <point num="left-bottom"/>
+     <point num="left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="hgrayshift">
+     <point num="right-top"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>-->
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="left-top"/>
+    <align>
+     <point num="right-top"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left-bottom"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

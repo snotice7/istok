@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!-- fraction sign -->
- <glyph ps-name="uni2215" init-graphics="yes">
+ <glyph ps-name="backslash" init-graphics="yes">
   
   <!--
       
@@ -24,11 +23,11 @@
   
   <param name="diag" value="sign-thindiag"/>
   
-  <constant name="left-bottom" value="first-point"/>
-  <constant name="left-top" value="left-bottom + vstem-vcount"/>
+  <constant name="left-top" value="first-point"/>
   <constant name="right-top" value="left-top + vstem-hcount"/>
   <constant name="right-bottom" value="right-top + vstem-vcount"/>
-  <constant name="last" value="right-bottom + last-count"/>
+  <constant name="left-bottom" value="right-bottom + vstem-hcount"/>
+  <constant name="last" value="left-bottom + last-count"/>
   
   <line name="left-side">
    <point num="left-bottom"/>
@@ -40,6 +39,12 @@
   </line>
   
   <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
   <move>
    <point num="left-bottom"/>
   </move>
@@ -48,28 +53,34 @@
   </move>
   
   <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="only-horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
   <move min-distance="no"> <!-- round="to-double-grid"-->
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="left-bottom"/>
+   <point num="left-top"/>
    <!--<move>
-    <point num="left-top"/>
+    <point num="left-bottom"/>
    </move>-->
   </move>
   <if test="pixels-per-em &gt; 20">
    <move>
     <reference>
-     <point num="left-bottom"/>
+     <point num="left-top"/>
     </reference>
-    <point num="left-top"/>
+    <point num="left-bottom"/>
    </move>
    <else>
     <move round="to-half-grid">
      <reference>
-      <point num="left-bottom"/>
+      <point num="left-top"/>
      </reference>
-     <point num="left-top"/>
+     <point num="left-bottom"/>
     </move>
    </else>
   </if>
@@ -82,20 +93,6 @@
     </diagonal-stem>
    </with-minimum-distance>
   </with-round-state>
-  <!--<compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  </compile-if>
-  <set-equal target="width" source="round(right-top - - right-bearing) - rbearing"/>
-  <compile-if test="slanted">
-   <set-projection-vector axis="x"/>
-   <round value="width"/>
-  </compile-if>
-  <if test="width &lt; 0.0p">
-   <shift-absolute pixel-distance="width">
-    <point num="left-top"/>
-    <point num="right-top"/>
-   </shift-absolute>
-  </if>-->
   <with-vectors to-line="parallel">
    <line ref="left-side"/>
    <align>
@@ -113,7 +110,7 @@
   </with-vectors>
   <move round="no" min-distance="no">
    <reference>
-    <point num="right-top"/>
+    <point num="right-bottom"/>
    </reference>
    <point num="right-bearing"/>
   </move>

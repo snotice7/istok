@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="plus" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="vert-stem" value="minus-thickness"/>
+  <param name="horiz-stem" value="minus-thickness"/>
+  <param name="plus-width" value="minus-width"/>
+  
+  <constant name="hstem-left-bottom" value="first-point"/>
+  <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
+  <constant name="intersect-left-top" value="hstem-left-top + smooth-count"/>
+  <constant name="vstem-left-top" value="intersect-left-top + smooth-count"/>
+  <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
+  <constant name="intersect-right-top" value="vstem-right-top + smooth-count"/>
+  <constant name="hstem-right-top" value="intersect-right-top + smooth-count"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="intersect-right-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="vstem-right-bottom" value="intersect-right-bottom + smooth-count"/>
+  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="intersect-left-bottom" value="vstem-left-bottom + smooth-count"/>
+  <constant name="last" value="intersect-left-bottom"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <subtract result-to="width" minuend="plus-width" subtrahend="vert-stem"/>
+  <with-round-state round="down-to-grid">
+   <set-equal target="width" source="round(width / 2.0)"/>
+  </with-round-state>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="hstem-left-bottom"/>
+   <align>
+    <point num="hstem-left-top"/>
+   </align>
+   <move pixel-distance="width" color="black">
+    <point num="intersect-left-bottom"/>
+    <align>
+     <point num="intersect-left-top"/>
+    </align>
+    <move distance="minus-thickness" color="black">
+     <point num="intersect-right-bottom"/>
+     <align>
+      <point num="intersect-right-top"/>
+     </align>
+     <move pixel-distance="width" color="black">
+      <point num="hstem-right-top"/>
+      <align>
+       <point num="hstem-right-bottom"/>
+      </align>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <!--<point num="hstem-left-bottom"/>
+     <point num="hstem-left-top"/>-->
+     <point num="intersect-left-bottom"/>
+     <point num="intersect-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="intersect-right-bottom"/>
+     <point num="intersect-right-top"/>
+     <!--<point num="hstem-right-top"/>
+     <point num="hstem-right-bottom"/>-->
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="only-vertical-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <negate result-to="height" value="width"/>
+  <move>
+   <point num="hstem-left-bottom"/>
+   <align>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-right-bottom"/>
+    <point num="hstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="hstem-left-top"/>
+    <align>
+     <point num="intersect-left-top"/>
+     <point num="intersect-right-top"/>
+     <point num="hstem-right-top"/>
+    </align>
+    <move pixel-distance="width" color="black">
+     <point num="vstem-left-top"/>
+     <align>
+      <point num="vstem-right-top"/>
+     </align>
+    </move>
+   </move>
+   <move pixel-distance="height" color="black">
+    <point num="vstem-left-bottom"/>
+    <align>
+     <point num="vstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="hstem-left-bottom"/>
+     <point num="intersect-left-bottom"/>
+     <point num="intersect-right-bottom"/>
+     <point num="hstem-right-bottom"/>
+     <!--<point num="vstem-left-bottom"/>
+     <point num="vstem-right-bottom"/>-->
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="hstem-left-top"/>
+     <point num="intersect-left-top"/>
+     <point num="intersect-right-top"/>
+     <point num="hstem-right-top"/>
+     <!--<point num="vstem-left-top"/>
+     <point num="vstem-right-top"/>-->
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

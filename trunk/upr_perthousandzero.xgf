@@ -32,6 +32,11 @@
   <constant name="last" value="inner-top + 2"/>
   
   <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
   
   <move color="white">
    <reference>
@@ -80,6 +85,11 @@
   </compile-if>
   
   <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="only-vertical-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
   
   <move min-distance="no">
    <point num="outer-bottom"/>
