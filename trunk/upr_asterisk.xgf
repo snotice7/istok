@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--*-->
+ <glyph ps-name="asterisk">
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <constant name="sw-nw-joint" value="0"/>
+  <constant name="nw-beam-left" value="sw-nw-joint + 1"/>
+  <constant name="nw-beam-end" value="nw-beam-left + 3"/>
+  <constant name="nw-beam-right" value="nw-beam-end + 2"/>
+  <constant name="nw-n-joint" value="7"/>
+  <constant name="n-beam-left" value="nw-n-joint + 1"/>
+  <constant name="n-beam-end" value="n-beam-left + 3"/>
+  <constant name="n-beam-right" value="n-beam-end + 2"/>
+  <constant name="n-ne-joint" value="14"/>
+  <constant name="ne-beam-left" value="n-ne-joint + 1"/>
+  <constant name="ne-beam-end" value="ne-beam-left + 3"/>
+  <constant name="ne-beam-right" value="ne-beam-end + 2"/>
+  <constant name="ne-se-joint" value="21"/>
+  <constant name="se-beam-left" value="ne-se-joint + 1"/>
+  <constant name="se-beam-end" value="se-beam-left + 3"/>
+  <constant name="se-beam-right" value="se-beam-end + 2"/>
+  <constant name="se-s-joint" value="28"/>
+  <constant name="s-beam-left" value="se-s-joint + 1"/>
+  <constant name="s-beam-end" value="s-beam-left + 3"/>
+  <constant name="s-beam-right" value="s-beam-end + 2"/>
+  <constant name="s-sw-joint" value="35"/>
+  <constant name="sw-beam-left" value="s-sw-joint + 1"/>
+  <constant name="sw-beam-end" value="sw-beam-left + 3"/>
+  <constant name="sw-beam-right" value="sw-beam-end + 2"/>
+  <constant name="last" value="sw-beam-right"/>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="s-beam-end"/>
+   <move round="to-half-grid">
+    <point num="sw-nw-joint"/>
+    <delta>
+     <delta-set size="1" distance="8"/>
+    </delta>
+    <align>
+     <point num="ne-se-joint"/>
+    </align>
+   </move>
+  </move>
+  <measure-distance grid-fitted="yes" result-to="height">
+   <point num="s-beam-end"/>
+   <point num="sw-nw-joint"/>
+  </measure-distance>
+  <move round="no" pixel-distance="height">
+   <reference>
+    <point num="sw-nw-joint"/>
+   </reference>
+   <point num="n-beam-end"/>
+  </move>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+   </else>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="nw-n-joint"/>
+   <align>
+    <point num="s-sw-joint"/>
+   </align>
+   <move color="black">
+    <point num="n-ne-joint"/>
+    <align>
+     <point num="se-s-joint"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-vectors axis="x"/>
+   <set-equal target="temp" source="coord(s-sw-joint)"/>
+   <mdap round="to-grid">
+    <point num="s-sw-joint"/>
+   </mdap>
+   <shift-absolute pixel-distance="coord(s-sw-joint) - temp">
+    <point num="nw-n-joint"/>
+    <point num="n-ne-joint"/>
+    <point num="se-s-joint"/>
+   </shift-absolute>
+   <if test="(coord(s-sw-joint) - initial-coord(s-sw-joint)) &gt; 0.5p">
+    <shift-absolute pixel-distance="-1.0p">
+     <point num="s-sw-joint"/>
+     <point num="nw-n-joint"/>
+     <point num="n-ne-joint"/>
+     <point num="se-s-joint"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <set-equal target="width" source="((s-sw-joint -- se-s-joint) - (initial-coord(se-s-joint) - initial-coord(s-sw-joint))) / 2.0p"/>
+  <shift-absolute pixel-distance="width">
+   <point num="nw-n-joint"/>
+   <point num="s-sw-joint"/>
+  </shift-absolute>
+  <negate value="width"/>
+  <shift-absolute pixel-distance="width">
+   <point num="n-ne-joint"/>
+   <point num="se-s-joint"/>
+  </shift-absolute>
+  <interpolate compile-if="slanted = 0">
+   <reference>
+    <point num="nw-n-joint"/>
+    <point num="n-ne-joint"/>
+   </reference>
+   <point num="sw-nw-joint"/>
+   <point num="ne-se-joint"/>
+  </interpolate>
+  <subtract minuend="height" subtrahend="(nw-n-joint -- n-ne-joint) * 0.5p"/>
+  <multiply result-to="width" value1="0.866p" value2="height"/>
+  <compile-if test="slanted">
+   <multiply value1="width" value2="cos-it-ang"/>
+   <else>
+    <set-round-state round="no"/>
+   </else>
+  </compile-if>
+  <!--  <with-round-state round="no"> -->
+   <move pixel-distance="width" cut-in="no">
+    <reference>
+     <point num="n-ne-joint"/>
+    </reference>
+    <point num="ne-beam-end"/>
+    <align>
+     <point num="se-beam-end"/>
+    </align>
+   </move>
+   <negate value="width"/>
+   <move pixel-distance="width" cut-in="no">
+    <reference>
+     <point num="nw-n-joint"/>
+    </reference>
+    <point num="nw-beam-end"/>
+    <align>
+     <point num="sw-beam-end"/>
+    </align>
+   </move>
+   <!--  </with-round-state> -->
+  <compile-if test="slanted">
+   <interpolate>
+    <reference>
+     <point num="sw-beam-end"/>
+     <point num="ne-beam-end"/>
+    </reference>
+    <point num="sw-nw-joint"/>
+    <point num="ne-se-joint"/>
+    <point num="n-beam-left"/>
+    <point num="n-beam-right"/>
+    <point num="s-beam-left"/>
+    <point num="s-beam-right"/>
+   </interpolate>
+   <set-equal target="width" source="(1.0p - (n-beam-left -- n-beam-right)) / 2.0"/>
+   <if test="width &gt; 0.0p">
+    <shift-absolute pixel-distance="width">
+     <point num="n-beam-right"/>
+     <point num="s-beam-left"/>
+    </shift-absolute>
+    <negate value="width"/>
+    <shift-absolute pixel-distance="width">
+     <point num="n-beam-left"/>
+     <point num="s-beam-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

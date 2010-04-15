@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!-- English numbersign # -->
+ <glyph ps-name="numbersign" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="horiz-stem" value="minus-thickness"/>
+  <param name="vert-stem" value="minus-thickness"/>
+  <param name="diag" value="sign-thindiag"/>
+  
+  <constant name="lhstem-left-bottom" value="first-point"/>
+  <constant name="lhstem-left-top" value="lhstem-left-bottom + hstem-vcount"/>
+  <constant name="ll-intersect-left-top" value="lhstem-left-top + smooth-count"/>
+  <constant name="lu-intersect-left-bottom" value="ll-intersect-left-top + 1"/>
+  <constant name="uhstem-left-bottom" value="lu-intersect-left-bottom + smooth-count"/>
+  <constant name="uhstem-left-top" value="uhstem-left-bottom + hstem-vcount"/>
+  <constant name="lu-intersect-left-top" value="uhstem-left-top + smooth-count"/>
+  <constant name="ldiag-left-top" value="lu-intersect-left-top + smooth-count"/>
+  <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
+  <constant name="lu-intersect-right-top" value="ldiag-right-top + smooth-count"/>
+  <constant name="ru-intersect-left-top" value="lu-intersect-right-top + 1"/>
+  <constant name="rdiag-left-top" value="ru-intersect-left-top + smooth-count"/>
+  <constant name="rdiag-right-top" value="rdiag-left-top + vstem-hcount"/>
+  <constant name="ru-intersect-right-top" value="rdiag-right-top + smooth-count"/>
+  <constant name="uhstem-right-top" value="ru-intersect-right-top + smooth-count"/>
+  <constant name="uhstem-right-bottom" value="uhstem-right-top + hstem-vcount"/>
+  <constant name="ru-intersect-right-bottom" value="uhstem-right-bottom + smooth-count"/>
+  <constant name="rl-intersect-right-top" value="ru-intersect-right-bottom + 1"/>
+  <constant name="lhstem-right-top" value="rl-intersect-right-top + smooth-count"/>
+  <constant name="lhstem-right-bottom" value="lhstem-right-top + hstem-vcount"/>
+  <constant name="rl-intersect-right-bottom" value="lhstem-right-bottom + smooth-count"/>
+  <constant name="rdiag-right-bottom" value="rl-intersect-right-bottom + smooth-count"/>
+  <constant name="rdiag-left-bottom" value="rdiag-right-bottom + vstem-hcount"/>
+  <constant name="rl-intersect-left-bottom" value="rdiag-left-bottom + smooth-count"/>
+  <constant name="ll-intersect-right-bottom" value="rl-intersect-left-bottom + 1"/>
+  <constant name="ldiag-right-bottom" value="ll-intersect-right-bottom + smooth-count"/>
+  <constant name="ldiag-left-bottom" value="ldiag-right-bottom + vstem-hcount"/>
+  <constant name="ll-intersect-left-bottom" value="ldiag-left-bottom + smooth-count"/>
+  <constant name="ll-intersect-right-top" value="ll-intersect-left-bottom + 1"/>
+  <constant name="rl-intersect-left-top" value="ll-intersect-right-top + 1"/>
+  <constant name="ru-intersect-left-bottom" value="rl-intersect-left-top + 1"/>
+  <constant name="lu-intersect-right-bottom" value="ru-intersect-left-bottom + 1"/>
+  <constant name="last" value="lu-intersect-right-bottom"/>
+  
+  <line name="ldiag-left-side">
+   <point num="ldiag-left-bottom"/>
+   <point num="ldiag-left-top"/>
+  </line>
+  <line name="ldiag-right-side">
+   <point num="ldiag-right-bottom"/>
+   <point num="ldiag-right-top"/>
+  </line>
+  <line name="rdiag-left-side">
+   <point num="rdiag-left-bottom"/>
+   <point num="rdiag-left-top"/>
+  </line>
+  <line name="rdiag-right-side">
+   <point num="rdiag-right-bottom"/>
+   <point num="rdiag-right-top"/>
+  </line>
+  <line name="lhstem-bottom">
+   <point num="lhstem-left-bottom"/>
+   <point num="lhstem-right-bottom"/>
+  </line>
+  <line name="lhstem-top">
+   <point num="lhstem-left-top"/>
+   <point num="lhstem-right-top"/>
+  </line>
+  <line name="uhstem-bottom">
+   <point num="uhstem-left-bottom"/>
+   <point num="uhstem-right-bottom"/>
+  </line>
+  <line name="uhstem-top">
+   <point num="uhstem-left-top"/>
+   <point num="uhstem-right-top"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <move distance="zero">
+   <point num="ldiag-left-bottom"/>
+   <align>
+    <point num="ldiag-right-bottom"/>
+    <point num="rdiag-left-bottom"/>
+    <point num="rdiag-right-bottom"/>
+   </align>
+  </move>
+  <move>
+   <point num="ldiag-left-top"/>
+   <align>
+    <point num="ldiag-right-top"/>
+    <point num="rdiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </align>
+  </move>
+  <interpolate round="down-to-grid">
+   <reference>
+    <point num="ldiag-left-bottom"/>
+    <point num="ldiag-left-top"/>
+   </reference>
+   <point num="lhstem-left-bottom"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="lhstem-left-bottom"/>
+   </reference>
+   <point num="ll-intersect-left-bottom"/>
+   <point num="ll-intersect-right-bottom"/>
+   <point num="rl-intersect-left-bottom"/>
+   <point num="rl-intersect-right-bottom"/>
+   <point num="lhstem-right-bottom"/>
+  </align>
+  <move distance="horiz-stem" color="black">
+   <reference>
+    <point num="lhstem-left-bottom"/>
+   </reference>
+   <point num="lhstem-left-top"/>
+   <align>
+    <point num="ll-intersect-left-top"/>
+    <point num="ll-intersect-right-top"/>
+    <point num="rl-intersect-left-top"/>
+    <point num="rl-intersect-right-top"/>
+    <point num="lhstem-right-top"/>
+   </align>
+  </move>
+  <move pixel-distance="lhstem-left-bottom -- ldiag-left-bottom">
+   <reference>
+    <point num="ldiag-left-top"/>
+   </reference>
+   <point num="uhstem-left-top"/>
+   <align>
+    <point num="lu-intersect-left-top"/>
+    <point num="lu-intersect-right-top"/>
+    <point num="ru-intersect-left-top"/>
+    <point num="ru-intersect-right-top"/>
+    <point num="uhstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="uhstem-left-bottom"/>
+    <align>
+     <point num="lu-intersect-left-bottom"/>
+     <point num="lu-intersect-right-bottom"/>
+     <point num="ru-intersect-left-bottom"/>
+     <point num="ru-intersect-right-bottom"/>
+     <point num="uhstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lhstem-left-bottom"/>
+     <point num="ll-intersect-left-bottom"/>
+     <point num="ll-intersect-right-bottom"/>
+     <point num="rl-intersect-left-bottom"/>
+     <point num="rl-intersect-right-bottom"/>
+     <point num="lhstem-right-bottom"/>
+     <point num="uhstem-left-bottom"/>
+     <point num="lu-intersect-left-bottom"/>
+     <point num="lu-intersect-right-bottom"/>
+     <point num="ru-intersect-left-bottom"/>
+     <point num="ru-intersect-right-bottom"/>
+     <point num="uhstem-right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lhstem-left-top"/>
+     <point num="ll-intersect-left-top"/>
+     <point num="ll-intersect-right-top"/>
+     <point num="rl-intersect-left-top"/>
+     <point num="rl-intersect-right-top"/>
+     <point num="lhstem-right-top"/>
+     <point num="uhstem-left-top"/>
+     <point num="lu-intersect-left-top"/>
+     <point num="lu-intersect-right-top"/>
+     <point num="ru-intersect-left-top"/>
+     <point num="ru-intersect-right-top"/>
+     <point num="uhstem-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lhstem-left-bottom"/>
+   <move>
+    <point num="ldiag-left-top"/>
+    <interpolate round="yes">
+     <point num="ldiag-left-bottom"/>
+     <point num="uhstem-left-top"/>
+    </interpolate>
+   </move>
+   <move color="black">
+    <point num="lhstem-right-bottom"/>
+   </move>
+  </move>
+  <move pixel-distance="lhstem-left-bottom -- lhstem-right-bottom" color="black">
+   <reference>
+    <point num="uhstem-left-top"/>
+   </reference>
+   <point num="uhstem-right-top"/>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  </compile-if>
+  <set-equal target="width" source="(uhstem-right-top -- right-bearing)"/> <!-- - rbearing-->
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-equal target="width" source="round(width / cos-it-ang)"/>
+  </compile-if>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="uhstem-right-top"/>
+    <point num="lhstem-right-bottom"/>
+   </shift-absolute>
+  </if>
+  <move pixel-distance="ldiag-left-bottom -- lhstem-left-bottom">
+   <reference>
+    <point num="uhstem-right-top"/>
+   </reference>
+   <point num="rdiag-right-top"/>
+  </move>
+  <move pixel-distance="ldiag-left-top -- lhstem-left-bottom">
+   <reference>
+    <point num="uhstem-right-top"/>
+   </reference>
+   <point num="rdiag-right-bottom"/>
+  </move>
+  <multiply result-to="width" value1="vert-stem" value2="2.0"/>
+  <if test="width &lt; 2.0p">
+   <set-equal target="width" source="2.0p"/>
+  </if>
+  <if test="(ldiag-left-bottom -- rdiag-right-bottom) - width &lt; 0.8p">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="ldiag-left-top"/>
+    <point num="ldiag-left-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="1.0p">
+    <point num="rdiag-right-bottom"/>
+    <point num="rdiag-right-top"/>
+   </shift-absolute>
+  </if>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="ldiag-left-bottom"/>
+   </reference>
+   <point num="ldiag-right-bottom"/>
+  </move>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="rdiag-right-bottom"/>
+   </reference>
+   <point num="rdiag-left-bottom"/>
+  </move>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="ldiag-left-top"/>
+   </reference>
+   <point num="ldiag-right-top"/>
+  </move>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="rdiag-left-top"/>
+  </move>
+  
+  <move-point-to-intersection>
+   <point num="ll-intersect-left-bottom"/>
+   <line ref="ldiag-left-side"/>
+   <line ref="lhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ll-intersect-right-bottom"/>
+   <line ref="ldiag-right-side"/>
+   <line ref="lhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="rl-intersect-left-bottom"/>
+   <line ref="rdiag-left-side"/>
+   <line ref="lhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="rl-intersect-right-bottom"/>
+   <line ref="rdiag-right-side"/>
+   <line ref="lhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ll-intersect-left-top"/>
+   <line ref="ldiag-left-side"/>
+   <line ref="lhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ll-intersect-right-top"/>
+   <line ref="ldiag-right-side"/>
+   <line ref="lhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="rl-intersect-left-top"/>
+   <line ref="rdiag-left-side"/>
+   <line ref="lhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="rl-intersect-right-top"/>
+   <line ref="rdiag-right-side"/>
+   <line ref="lhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="lu-intersect-left-bottom"/>
+   <line ref="ldiag-left-side"/>
+   <line ref="uhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="lu-intersect-right-bottom"/>
+   <line ref="ldiag-right-side"/>
+   <line ref="uhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ru-intersect-left-bottom"/>
+   <line ref="rdiag-left-side"/>
+   <line ref="uhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ru-intersect-right-bottom"/>
+   <line ref="rdiag-right-side"/>
+   <line ref="uhstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="lu-intersect-left-top"/>
+   <line ref="ldiag-left-side"/>
+   <line ref="uhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="lu-intersect-right-top"/>
+   <line ref="ldiag-right-side"/>
+   <line ref="uhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ru-intersect-left-top"/>
+   <line ref="rdiag-left-side"/>
+   <line ref="uhstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="ru-intersect-right-top"/>
+   <line ref="rdiag-right-side"/>
+   <line ref="uhstem-top"/>
+  </move-point-to-intersection>
+  
+  <with-projection-vector to-line="orthogonal">
+   <line ref="ldiag-left-side"/>
+   <!--    <with-freedom-vector axis="x"> -->
+    <!--<align>
+     <reference>
+      <point num="uhstem-left-top"/>
+     </reference>
+     <point num="uhstem-left-bottom"/>
+    </align>
+    <align>
+     <reference>
+      <point num="lhstem-right-bottom"/>
+     </reference>
+     <point num="lhstem-right-top"/>
+    </align>-->
+    <align>
+     <reference>
+      <point num="uhstem-right-top"/>
+     </reference>
+     <point num="uhstem-right-bottom"/>
+     <point num="lhstem-right-bottom"/>
+     <point num="lhstem-right-top"/>
+    </align>
+    <align>
+     <reference>
+      <point num="lhstem-left-bottom"/>
+     </reference>
+     <point num="lhstem-left-top"/>
+     <point num="uhstem-left-top"/>
+     <point num="uhstem-left-bottom"/>
+    </align>
+    <!--    </with-freedom-vector> -->
+  </with-projection-vector>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
