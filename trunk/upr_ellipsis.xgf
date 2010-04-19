@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="ellipsis">
+
+  <!--
+
+      Copyright (C) 2008, 2010 Andrey V. Panov
+
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+
+     -->
+
+  <constant name="first-contour-left" value="period/left-bottom"/>
+  <constant name="first-contour-right" value="period/right-bottom"/>
+  <constant name="second-contour-left" value="period/total + period/left-bottom"/>
+  <constant name="second-contour-right" value="period/total + period/right-bottom"/>
+  <constant name="third-contour-left" value="period/total + period/total + period/left-bottom"/>
+  <constant name="third-contour-right" value="period/total + period/total + period/right-bottom"/>
+  <constant name="last" value="period/total + period/total + period/total"/>
+
+  <set-vectors axis="x"/>
+  <set-equal target="width" source="(first-contour-right -- second-contour-left) - (second-contour-right -- third-contour-left)"/>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="third-contour-left"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="third-contour-left"/>
+    </reference>
+    <contour num="2"/>
+   </shift>
+   <else>
+    <if test="width &gt; 0.0p">
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="third-contour-left"/>
+     </shift-absolute>
+     <shift>
+      <reference>
+       <point num="third-contour-left"/>
+      </reference>
+      <contour num="1"/>
+      <contour num="2"/>
+     </shift>
+    </if>
+   </else>
+  </if>
+ </glyph>
+</xgridfit>

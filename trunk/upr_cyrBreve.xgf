@@ -23,6 +23,7 @@
 
   <param name="cyri-space" value="cap-cyri-space"/>
   <param name="vert-stem" value="cap-vert-thinstem"/>
+
   <constant name="lbulb-left" value="first-point"/>
   <constant name="lbulb-top" value="lbulb-left + vstem-hcount"/>
   <constant name="lbulb-right" value="lbulb-top + smooth-count"/>
