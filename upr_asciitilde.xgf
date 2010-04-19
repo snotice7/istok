@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--~-->
+ <glyph ps-name="asciitilde" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="horiz-stem" value="dash-thickness"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  
+  <constant name="left-end-top" value="first-point"/>
+  <constant name="left-arc-top" value="left-end-top + 3 + corner-count"/>
+  <constant name="right-arc-top" value="left-arc-top + 3"/>
+  <constant name="right-end-top" value="right-arc-top + 3 + corner-count"/>
+  <constant name="right-end-bottom" value="right-end-top + vstem-hcount"/>
+  <constant name="right-arc-bottom" value="right-end-bottom + 3 + corner-count"/>
+  <constant name="left-arc-bottom" value="right-arc-bottom + 3"/>
+  <constant name="left-end-bottom" value="left-arc-bottom + 3 + corner-count"/>
+  <constant name="last" value="left-end-bottom + last-count"/>
+  
+  <set-vectors axis="x"/>
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-end-top"/>
+   <move>
+    <point num="right-end-bottom"/>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="left-end-top"/>
+    <point num="right-end-bottom"/>
+   </reference>
+   <point num="right-arc-bottom"/>
+   <point num="left-arc-top"/>
+   <point num="left-arc-bottom"/>
+   <point num="right-arc-top"/>
+   <point num="left-end-bottom"/>
+   <point num="right-end-top"/>
+  </interpolate>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="right-arc-bottom"/>
+   <move color="black">
+    <point num="right-arc-top"/>
+   </move>
+   <move min-distance="no">
+    <point num="left-arc-bottom"/>
+    <move pixel-distance="right-arc-bottom -- right-arc-top" color="black">
+     <point num="left-arc-top"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="right-arc-bottom"/>
+    <point num="left-arc-top"/>
+   </reference>
+   <point num="left-end-top"/>
+   <point num="left-end-bottom"/>
+   <point num="right-end-bottom"/>
+   <point num="right-end-top"/>
+  </interpolate>
+  <if test="(pixels-per-em &lt; 18) and ((right-arc-bottom -- left-end-top) &gt; 0)">
+   <with-vectors to-line="parallel">
+    <line>
+     <point num="left-end-top"/>
+     <point num="left-end-bottom"/>
+    </line>
+    <move color="black">
+     <reference>
+      <point num="left-end-top"/>
+     </reference>
+     <point num="left-end-bottom"/>
+    </move>
+    <move color="black">
+     <reference>
+      <point num="right-end-bottom"/>
+     </reference>
+     <point num="right-end-top"/>
+    </move>
+   </with-vectors>
+  </if>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

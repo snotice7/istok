@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1271069563
+ModificationTime: 1271676948
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -55,7 +55,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 0 16 14
+WinInfo: 224 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -6955,7 +6955,7 @@ EndChar
 StartChar: parenright
 Encoding: 41 41 156
 Width: 670
-Flags: HW
+Flags: W
 VStem: 350 196<175.33 912.67>
 LayerCount: 2
 Fore
@@ -7312,7 +7312,7 @@ EndChar
 StartChar: backslash
 Encoding: 92 92 168
 Width: 840
-Flags: HW
+Flags: W
 DStem2: 118 1436 7 1391 0.374368 -0.92728<-45.0261 1955.29>
 LayerCount: 2
 Fore
@@ -7817,11 +7817,21 @@ EndChar
 StartChar: grave
 Encoding: 96 96 183
 Width: 614
-Flags: W
+Flags: HW
 HStem: 1150 285<343.094 389.344>
 LayerCount: 2
 Fore
-Refer: 181 180 N -1 0 0 1 703 0 2
+SplineSet
+179 1383 m 2,0,1
+ 134 1435 134 1435 193 1435 c 2,2,-1
+ 304 1435 l 2,3,4
+ 359 1435 359 1435 385 1398 c 2,5,-1
+ 524 1203 l 2,6,7
+ 562 1150 562 1150 512 1150 c 10,8,-1
+ 438 1150 l 2,9,10
+ 382 1150 382 1150 357 1179 c 2,11,-1
+ 179 1383 l 2,0,1
+EndSplineSet
 EndChar
 
 StartChar: numbersign
@@ -8535,15 +8545,15 @@ EndChar
 StartChar: ellipsis
 Encoding: 8230 8230 202
 Width: 2048
-Flags: W
+Flags: HW
 HStem: 0 212<250 452 923 1125 1596 1798>
 VStem: 250 202<0 212> 923 202<0 212> 1596 202<0 212>
 CounterMasks: 1 70
 LayerCount: 2
 Fore
-Refer: 74 46 N 1 0 0 1 724 0 2
-Refer: 74 46 N 1 0 0 1 1397 0 2
 Refer: 74 46 N 1 0 0 1 51 0 2
+Refer: 74 46 S 1 0 0 1 724 0 2
+Refer: 74 46 N 1 0 0 1 1397 0 2
 EndChar
 
 StartChar: figuredash
@@ -8734,10 +8744,20 @@ EndChar
 StartChar: grave.cap
 Encoding: 63182 63182 214
 Width: 820
-Flags: W
+Flags: HW
 LayerCount: 2
 Fore
-Refer: 213 63177 N -1 0 0 1 820 0 3
+SplineSet
+166 1733 m 2,0,1
+ 103 1785 103 1785 180 1785 c 2,2,-1
+ 337 1785 l 2,3,4
+ 386 1785 386 1785 418 1748 c 2,5,-1
+ 551 1593 l 2,6,7
+ 596 1540 596 1540 539 1540 c 10,8,-1
+ 445 1540 l 2,9,10
+ 399 1540 399 1540 364 1569 c 2,11,-1
+ 166 1733 l 2,0,1
+EndSplineSet
 EndChar
 
 StartChar: tilde

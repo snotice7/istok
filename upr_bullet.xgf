@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="bullet" init-graphics="yes">
+  <!--
+     
+      Copyright (C) 2007, 2008, 2010  Andrey V. Panov
+     
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+     
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+     
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
+     -->
+
+  <constant name="left" value="0"/>
+  <constant name="top" value="left + 3"/>
+  <constant name="right" value="top + 3"/>
+  <constant name="bottom" value="right + 3"/>
+  <constant name="last" value="bottom + 2"/>
+
+  <set-vectors axis="x"/>
+  <move>
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left"/>
+   <move>
+    <point num="right"/>
+   </move>
+  </move>
+  <measure-distance grid-fitted="yes" result-to="width">
+   <point num="left"/>
+   <point num="right"/>
+  </measure-distance>
+
+  <set-vectors axis="y"/>
+  <move>
+   <point num="bottom"/>
+   <move pixel-distance="width">
+    <point num="top"/>
+   </move>
+  </move>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
