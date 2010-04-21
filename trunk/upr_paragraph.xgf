@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="paragraph" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="vert-stem" value="minus-thickness"/>
+  
+  <constant name="first-contour-mid-arc" value="0"/>
+  <constant name="first-contour-left-top" value="first-contour-mid-arc + 3"/>
+  <constant name="first-contour-right-top" value="first-contour-left-top + smooth-count"/>
+  <constant name="first-contour-right-bottom" value="first-contour-right-top + vstem-vcount"/>
+  <constant name="first-contour-left-bottom" value="first-contour-right-bottom + vstem-vcount"/>
+  <constant name="first-contour-arc-bottom" value="first-contour-left-bottom + smooth-count"/>
+  <constant name="second-contour-left-bottom" value="first-contour-arc-bottom + 3 + first-point"/>
+  <constant name="second-contour-left-top" value="second-contour-left-bottom + vstem-vcount"/>
+  <constant name="second-contour-right-top" value="second-contour-left-top + vstem-hcount"/>
+  <constant name="second-contour-right-bottom" value="second-contour-right-top + vstem-vcount"/>
+  <constant name="last" value="second-contour-right-bottom + last-count"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="first-contour-mid-arc"/>
+   <move>
+    <point num="first-contour-arc-bottom"/>
+    <align>
+     <point num="first-contour-left-bottom"/>
+    </align>
+    <interpolate>
+     <point num="first-contour-left-top"/>
+    </interpolate>
+    <move distance="vert-stem" color="black">
+     <point num="first-contour-right-top"/>
+     <align>
+      <point num="first-contour-right-bottom"/>
+     </align>
+     <move color="white">
+      <point num="second-contour-left-bottom"/>
+      <align>
+       <point num="second-contour-left-top"/>
+      </align>
+      <move distance="vert-stem" color="black">
+       <point num="second-contour-right-top"/>
+       <align>
+        <point num="second-contour-right-bottom"/>
+       </align>
+       <move min-distance="no">
+        <point num="right-bearing"/>
+       </move>
+      </move>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="first-contour-arc-bottom"/>
+     <point num="first-contour-left-bottom"/>
+     <point num="second-contour-left-bottom"/>
+     <point num="second-contour-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="first-contour-right-top"/>
+     <point num="first-contour-right-bottom"/>
+     <point num="second-contour-right-top"/>
+     <point num="second-contour-right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="first-contour-left-bottom"/>
+   <align>
+    <point num="first-contour-right-bottom"/>
+    <point num="second-contour-left-bottom"/>
+    <point num="second-contour-right-bottom"/>
+   </align>
+   <move color="black">
+    <point num="first-contour-left-top"/>
+    <align>
+     <point num="first-contour-right-top"/>
+     <point num="second-contour-left-top"/>
+     <point num="second-contour-right-top"/>
+    </align>
+   </move>
+  </move>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

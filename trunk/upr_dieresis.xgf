@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="dieresis" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="vert-stem" value="small-vert-stem"/>
+  
+  <constant name="first-contour-left-bottom" value="first-point"/>
+  <constant name="first-contour-left-top" value="first-contour-left-bottom + vstem-vcount"/>
+  <constant name="first-contour-right-top" value="first-contour-left-top + vstem-hcount"/>
+  <constant name="first-contour-right-bottom" value="first-contour-right-top + vstem-vcount"/>
+  <constant name="second-contour-left-bottom" value="first-contour-right-bottom + vstem-hcount"/>
+  <constant name="second-contour-left-top" value="second-contour-left-bottom + vstem-vcount"/>
+  <constant name="second-contour-right-top" value="second-contour-left-top + vstem-hcount"/>
+  <constant name="second-contour-right-bottom" value="second-contour-right-top + vstem-vcount"/>
+  <constant name="last" value="second-contour-right-bottom + last-count"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  
+  <move>
+   <point num="first-contour-left-bottom"/>
+   <align>
+    <point num="first-contour-right-bottom"/>
+    <point num="second-contour-left-bottom"/>
+    <point num="second-contour-right-bottom"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="first-contour-left-top"/>
+    <align>
+     <point num="first-contour-right-top"/>
+     <point num="second-contour-left-top"/>
+     <point num="second-contour-right-top"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="first-contour-left-bottom"/>
+     <point num="first-contour-right-bottom"/>
+     <point num="second-contour-left-bottom"/>
+     <point num="second-contour-right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="first-contour-left-top"/>
+     <point num="first-contour-right-top"/>
+     <point num="second-contour-left-top"/>
+     <point num="second-contour-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+   </else>
+  </compile-if>
+  
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="first-contour-left-bottom"/>
+   <align>
+    <point num="first-contour-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="first-contour-right-bottom"/>
+    <align>
+     <point num="first-contour-right-top"/>
+    </align>
+    <move color="white">
+     <point num="second-contour-left-bottom"/>
+     <align>
+      <point num="second-contour-left-top"/>
+     </align>
+     <move distance="vert-stem" color="black">
+      <point num="second-contour-right-bottom"/>
+      <align>
+       <point num="second-contour-right-top"/>
+      </align>
+      <move min-distance="no" color="white">
+       <point num="right-bearing"/>
+      </move>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <move round="to-grid">
+    <point num="right-bearing"/>
+   </move>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="first-contour-left-bottom"/>
+     <point num="first-contour-left-top"/>
+     <point num="second-contour-left-bottom"/>
+     <point num="second-contour-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="first-contour-right-top"/>
+     <point num="first-contour-right-bottom"/>
+     <point num="second-contour-right-top"/>
+     <point num="second-contour-right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+ <glyph ps-name="dieresis.cap" init-graphics="yes">
+  <call-glyph ps-name="dieresis">
+   <with-param name="vert-stem" value="cap-vert-stem"/>
+  </call-glyph>
+ </glyph>
+ 
+ <glyph ps-name="dieresis.alt0" init-graphics="yes">
+  <call-glyph ps-name="dieresis">
+   <with-param name="vert-stem" value="small-vert-stem"/>
+  </call-glyph>
+ </glyph>
+ 
+ <glyph ps-name="dieresis.alt1" init-graphics="yes">
+  <call-glyph ps-name="dieresis">
+   <with-param name="vert-stem" value="cap-vert-stem"/>
+  </call-glyph>
+ </glyph>
+ 
+</xgridfit>
