@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="question">
+ <glyph ps-name="question" init-graphics="yes">
   
   <!--
       

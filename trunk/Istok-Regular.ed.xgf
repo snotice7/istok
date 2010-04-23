@@ -188,14 +188,14 @@
  <control-value name="digit-six-hspace" value="928"/>
  
  <control-value name="period-width" value="202"/>
- <control-value name="minus-thickness" value="120"/>
+ <control-value name="dash-thickness" value="130"/>
+ <control-value name="minus-width" value="1120"/>
+  <!--  <control-value name="minus-thickness" value="120"/> -->
  <control-value name="sign-thindiag" value="120"/>
- <control-value name="emspace" value="1024"/>
  <control-value name="paren-curve-stem" value="196"/>
  <control-value name="macron-thickness" value="110"/>
  <control-value name="accent-diag" value="110"/>
- <control-value name="minus-width" value="1120"/>
- <control-value name="dash-thickness" value="130"/>
+ <control-value name="emspace" value="1024"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -358,6 +358,7 @@
     <round value="minus-thickness" color="black"/>
     <round value="macron-thickness" color="black"/>
     <round value="paren-curve-stem" color="black"/>
+    <round value="dash-thickness" color="black"/>
     <!--     <control-value-delta> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/> -->
      <!--      <delta-set cv="cap-vert-stem" size="7" distance="-8"/> -->
@@ -734,6 +735,7 @@
   <xi:include href="upr_Cyrhard.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrsoft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrlje.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_Cyrdje.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrtshe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrdzhe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -793,6 +795,7 @@
   <xi:include href="upr_CyrYusc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_section.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_degree.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_paragraph.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_bullet.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
