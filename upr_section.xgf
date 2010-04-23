@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="section" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="vert-thinstem" value="cap-vert-thinstem"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="lower-curl-outer-left" value="0"/>
+  <constant name="upper-intersect-top" value="lower-curl-outer-left + 3"/>
+  <constant name="upper-curl-outer-left" value="upper-intersect-top + 2"/>
+  <constant name="outer-top" value="upper-curl-outer-left + 3"/>
+  <constant name="upper-end-top" value="outer-top + 3 + corner-count"/>
+  <constant name="upper-end-bottom" value="upper-end-top + hstem-vcount"/>
+  <constant name="inner-top" value="upper-end-bottom + 3 + corner-count"/>
+  <constant name="upper-curl-inner-left" value="inner-top + 3"/>
+  <constant name="upper-curl-diag-right-top" value="upper-curl-inner-left + 1"/>
+  <constant name="upper-curl-diag-right-bottom" value="upper-curl-diag-right-top + 1"/>
+  <constant name="upper-curl-outer-right" value="upper-curl-diag-right-bottom + 1"/>
+  <constant name="lower-intersect-bottom" value="upper-curl-outer-right + 3"/>
+  <constant name="lower-curl-outer-right" value="lower-intersect-bottom + 2"/>
+  <constant name="outer-bottom" value="lower-curl-outer-right + 3"/>
+  <constant name="lower-end-bottom" value="outer-bottom + 3 + corner-count"/>
+  <constant name="lower-end-top" value="lower-end-bottom + hstem-vcount"/>
+  <constant name="inner-bottom" value="lower-end-top + 3 + corner-count"/>
+  <constant name="lower-curl-inner-right" value="inner-bottom + 3"/>
+  <constant name="lower-curl-diag-left-bottom" value="lower-curl-inner-right + 1"/>
+  <constant name="lower-curl-diag-left-top" value="lower-curl-upper-intersect-top + 1"/>
+  <constant name="lower-curl-inner-left" value="50"/>
+  <constant name="lower-curl-diag-right-top" value="lower-curl-inner-left + 1"/>
+  <constant name="lower-curl-diag-right-bottom" value="lower-curl-diag-right-top + 1"/>
+  <constant name="lower-intersect-top" value="lower-curl-diag-right-bottom + 1"/>
+  <constant name="upper-curl-inner-right" value="lower-intersect-top + 3"/>
+  <constant name="upper-curl-diag-left-bottom" value="upper-curl-inner-right + 1"/>
+  <constant name="upper-curl-diag-left-top" value="upper-curl-diag-left-bottom + 1"/>
+  <constant name="upper-intersect-bottom" value="upper-curl-diag-left-top + 1"/>
+  <constant name="last" value="upper-intersect-bottom + 2"/>
+  
+  <line name="upper-curl-diagonal-left-side">
+   <point num="upper-curl-diag-left-bottom"/>
+   <point num="upper-curl-diag-left-top"/>
+  </line>
+  <line name="upper-curl-diagonal-right-side">
+   <point num="upper-curl-diag-right-bottom"/>
+   <point num="upper-curl-diag-right-top"/>
+  </line>
+  <line name="lower-curl-diagonal-left-side">
+   <point num="lower-curl-diag-left-bottom"/>
+   <point num="lower-curl-diag-left-top"/>
+  </line>
+  <line name="lower-curl-diagonal-right-side">
+   <point num="lower-curl-diag-right-bottom"/>
+   <point num="lower-curl-diag-right-top"/>
+  </line>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lower-curl-outer-left"/>
+   <move round="no" distance="vert-thinstem" color="black">
+    <point num="lower-curl-inner-left"/>
+   </move>
+   <move min-distance="no">
+    <point num="upper-curl-outer-left"/>
+    <move round="no" distance="vert-stem" color="black">
+     <point num="upper-curl-inner-left"/>
+    </move>
+   </move>
+   <move color="black">
+    <point num="upper-curl-outer-right"/>
+    <move round="no" pixel-distance="lower-curl-inner-left -- lower-curl-outer-left" color="black">
+     <point num="upper-curl-inner-right"/>
+    </move>
+    <move pixel-distance="upper-curl-outer-left -- lower-curl-outer-left">
+     <point num="lower-curl-outer-right"/>
+     <move round="no" pixel-distance="upper-curl-inner-left -- upper-curl-outer-left" color="black">
+      <point num="lower-curl-inner-right"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <set-equal target="width" source="(upper-curl-outer-right -- right-bearing) - rbearing"/>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="upper-curl-outer-right"/>
+    <point num="upper-curl-inner-right"/>
+    <point num="lower-curl-outer-right"/>
+    <point num="lower-curl-inner-right"/>
+   </shift-absolute>
+  </if>
+  <interpolate>
+   <reference>
+    <point num="upper-curl-outer-left"/>
+    <point num="lower-curl-outer-right"/>
+   </reference>
+   <point num="upper-intersect-top"/>
+   <point num="upper-intersect-bottom"/>
+   <point num="lower-intersect-top"/>
+   <point num="lower-intersect-bottom"/>
+  </interpolate>
+  
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="inner-bottom"/>
+    <point num="inner-top"/>
+   </reference>
+   <point num="upper-curl-outer-left"/>
+   <point num="lower-curl-outer-right"/>
+   <point num="upper-intersect-top"/>
+   <point num="upper-intersect-bottom"/>
+   <point num="lower-intersect-top"/>
+   <point num="lower-intersect-bottom"/>
+  </interpolate>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
