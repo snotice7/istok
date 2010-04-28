@@ -1,51 +1,57 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr hard sign (Ъ)-->
- <glyph ps-name="afii10044" init-graphics="yes">
-
+ <!--Ѣ-->
+ <glyph ps-name="afii10146" init-graphics="yes">
   <!--
-     
-      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
-
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
   <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
+  <param name="height" value="cap-x-height"/>
+  <param name="hstem-height" value="-1"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
   <param name="curve-stem" value="cap-o-curve-stem"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="space" value="cap-b-low-space"/>
-
+  
   <constant name="hstem-left-bottom" value="first-point"/>
   <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
-  <constant name="right-top" value="hstem-left-top + hstem-hcount"/>
-  <constant name="up-inner-left-bottom" value="right-top + smooth-count"/>
+  <constant name="intersect-left-top" value="hstem-left-top + smooth-count"/>
+  <constant name="lstem-left-top" value="intersect-left-top + smooth-count"/>
+  <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
+  <constant name="intersect-right-top" value="lstem-right-top + smooth-count"/>
+  <constant name="hstem-right-top" value="intersect-right-top + smooth-count"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="intersect-right-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="up-inner-left-bottom" value="intersect-right-bottom + 1"/>
   <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
   <constant name="low-outer-right" value="up-inner-right-bottom + 3"/>
   <constant name="right-bottom" value="low-outer-right + 3"/>
   <constant name="lstem-left-bottom" value="right-bottom + smooth-count"/>
-  <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
-  <constant name="low-inner-left-bottom" value="lstem-left-top + 1"/>
+  <constant name="intersect-left-bottom" value="lstem-left-bottom + smooth-count"/>
+  <constant name="low-inner-left-bottom" value="intersect-left-bottom + 1"/>
   <constant name="low-inner-right-bottom" value="low-inner-left-bottom + 1"/>
   <constant name="low-inner-right" value="low-inner-right-bottom + 3"/>
   <constant name="low-inner-right-top" value="low-inner-right + 3"/>
   <constant name="low-inner-left-top" value="low-inner-right-top + 1"/>
   <constant name="last" value="low-inner-left-top"/>
-
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -59,7 +65,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -82,21 +88,64 @@
     <align>
      <point num="up-inner-right-bottom"/>
     </align>
+    <move compile-if="hstem-height &lt; 0">
+     <point num="intersect-left-bottom"/>
+     <align>
+      <point num="intersect-right-bottom"/>
+      <point num="hstem-left-bottom"/>
+      <point num="hstem-right-bottom"/>
+     </align>
+     <move distance="horiz-stem" color="black">
+      <point num="intersect-left-top"/>
+      <align>
+       <point num="intersect-right-top"/>
+       <point num="hstem-left-top"/>
+       <point num="hstem-right-top"/>
+      </align>
+     </move>
+    </move>
    </move>
   </move>
-  <move distance="x-height">
-   <point num="hstem-left-top"/>
+  <move distance="height">
+   <point num="lstem-left-top"/>
    <align>
-    <point num="right-top"/>
+    <point num="lstem-right-top"/>
    </align>
-   <move distance="horiz-stem">
-    <point num="hstem-left-bottom"/>
+  </move>
+  <set-equal target="temp" source="intersect-left-top -- lstem-left-top"/>
+  <compile-if test="hstem-height &lt; 0">
+   <if test="temp &lt;= 0">
+    <if test="(up-inner-left-bottom -- intersect-right-bottom) &gt; 1.5p or (temp &lt; 0)">
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="intersect-left-bottom"/>
+      <point num="intersect-right-bottom"/>
+      <point num="hstem-left-bottom"/>
+      <point num="hstem-right-bottom"/>
+      <point num="intersect-left-top"/>
+      <point num="intersect-right-top"/>
+      <point num="hstem-left-top"/>
+      <point num="hstem-right-top"/>
+     </shift-absolute>
+    </if>
+   </if>
+  </compile-if>
+  <move distance="hstem-height" compile-if="hstem-height &gt; 0">
+   <point num="intersect-left-top"/>
+   <align>
+    <point num="intersect-right-top"/>
+    <point num="hstem-left-top"/>
+    <point num="hstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="intersect-left-bottom"/>
     <align>
-     <point num="lstem-left-top"/>
+     <point num="intersect-right-bottom"/>
+     <point num="hstem-left-bottom"/>
+     <point num="hstem-right-bottom"/>
     </align>
    </move>
   </move>
-
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -111,7 +160,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -119,16 +168,20 @@
    <point num="lstem-left-bottom"/>
    <align compile-if="slanted = 0">
     <point num="lstem-left-top"/>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-left-top"/>
    </align>
    <interpolate>
     <point num="hstem-left-bottom"/>
    </interpolate>
    <move distance="vert-stem" color="black" compile-if="slanted = 0">
-    <point num="right-top"/>
+    <point num="lstem-right-top"/>
     <align>
      <point num="up-inner-left-bottom"/>
      <point num="low-inner-left-top"/>
      <point num="low-inner-left-bottom"/>
+     <point num="intersect-right-top"/>
+     <point num="intersect-right-bottom"/>
     </align>
    </move>
    <move distance="space" color="black">
@@ -144,7 +197,7 @@
      <reference>
       <point num="lstem-left-bottom"/>
      </reference>
-     <point num="right-top"/>
+     <point num="lstem-right-top"/>
      <align>
       <point num="low-inner-left-bottom"/>
      </align>
@@ -157,10 +210,20 @@
     </align>
     <align>
      <reference>
-      <point num="right-top"/>
+      <point num="lstem-left-bottom"/>
      </reference>
+     <point num="intersect-left-bottom"/>
+     <point num="intersect-left-top"/>
+    </align>
+    <align>
+     <reference>
+      <point num="lstem-right-top"/>
+     </reference>
+     <point num="intersect-right-top"/>
+     <point num="intersect-right-bottom"/>
      <point num="up-inner-left-bottom"/>
      <point num="low-inner-left-top"/>
+     <point num="low-inner-left-bottom"/>
     </align>
     <align>
      <reference>
@@ -168,19 +231,22 @@
      </reference>
      <point num="hstem-left-top"/>
     </align>
-    <set-equal target="width" source="(low-outer-right -- right-bearing)"/>    <!--- rbearing-->
+    <set-equal target="width" source="(low-outer-right -- right-bearing) - rbearing"/>
    </with-projection-vector>
    <round value="width" color="white"/>
    <else>
-    <set-equal target="width" source="(low-outer-right -- right-bearing)"/>    <!--- rbearing-->
+    <set-equal target="width" source="(low-outer-right -- right-bearing) - rbearing"/>
    </else>
   </compile-if>
-  <set-equal target="width" source="(low-outer-right -- right-bearing)"/>  <!--- rbearing-->
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="lstem-left-bottom"/>
     <point num="lstem-left-top"/>
-    <point num="right-top"/>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-left-top"/>
+    <point num="lstem-right-top"/>
+    <point num="intersect-right-top"/>
+    <point num="intersect-right-bottom"/>
     <point num="up-inner-left-bottom"/>
     <point num="low-inner-left-top"/>
     <point num="low-inner-left-bottom"/>
@@ -191,9 +257,23 @@
   <if test="(left-bearing -- hstem-left-bottom) = 0">
    <shift-absolute pixel-distance="1.0p">
     <point num="hstem-left-bottom"/>
-    <point num="hstem-left-top"/>
    </shift-absolute>
   </if>
+  <align>
+   <reference>
+    <point num="hstem-left-bottom"/>
+   </reference>
+   <point num="hstem-left-top"/>
+  </align>
+  <move pixel-distance="hstem-left-top -- intersect-left-top" round="no">
+   <reference>
+    <point num="intersect-right-top"/>
+   </reference>
+   <point num="hstem-right-top"/>
+   <align>
+    <point num="hstem-right-bottom"/>
+   </align>
+  </move>
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <set-round-state round="to-grid"/>
@@ -211,11 +291,15 @@
      <with-param name="cv" value="vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
+     <point num="intersect-left-bottom"/>
+     <point num="intersect-left-top"/>
      <point num="lstem-left-bottom"/>
      <point num="lstem-left-top"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <point num="right-top"/>
+     <point num="intersect-right-top"/>
+     <point num="intersect-right-bottom"/>
+     <point num="lstem-right-top"/>
      <point num="up-inner-left-bottom"/>
      <point num="low-inner-left-top"/>
      <point num="low-inner-left-bottom"/>
@@ -228,11 +312,11 @@
      <point num="low-inner-right"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-    <point num="low-outer-right"/>
+     <point num="low-outer-right"/>
     </shift-absolute>
    </if>
   </compile-if>
-
+  
   <interpolate-untouched-points/>
- </glyph> <!--Cyr Hard sign-->
+ </glyph>
 </xgridfit>

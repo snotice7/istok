@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr Tche (soft Ch)-->
- <glyph ps-name="afii10060" init-graphics="yes">
-  
+ <!--Cyr Dje (soft Dz)-->
+ <glyph ps-name="afii10051" init-graphics="yes">
   <!--
       
       Copyright (C) 2008, 2010 Andrey V. Panov
@@ -23,10 +22,11 @@
       -->
   
   <param name="baseline" value="cap-x-baseline"/>
+  <param name="o-baseline" value="cap-o-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
-  <!--   <param name="curve-stem" value="cap-o-curve-stem"/> -->
+  <param name="curve-stem" value="cap-o-curve-stem"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="curve-horiz-stem" value="cap-curve-hstem"/>
   
@@ -37,11 +37,13 @@
   <constant name="r-intersect" value="right-hstem-bottom + smooth-count"/>
   <constant name="joint-top" value="r-intersect + notch-count + 1"/>
   <constant name="arc-top" value="joint-top + 3"/>
-  <constant name="rstem-right-top" value="arc-top + 3"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
-  <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
-  <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
-  <constant name="arc-bottom" value="rstem-left-top + 3"/>
+  <constant name="rstem-right" value="arc-top + 3"/>
+  <constant name="curl-bottom" value="rstem-right + 3"/>
+  <constant name="curl-end-bottom" value="curl-bottom + 2 + corner-count"/>
+  <constant name="curl-end-top" value="curl-end-bottom + hstem-vcount"/>
+  <constant name="curl-top" value="curl-end-top + 2 + corner-count"/>
+  <constant name="rstem-left" value="curl-top + 3"/>
+  <constant name="arc-bottom" value="rstem-left + 3"/>
   <constant name="joint-bottom" value="arc-bottom + 3"/>
   <constant name="lstem-right-bottom" value="joint-bottom + smooth-count"/>
   <constant name="lstem-left-bottom" value="lstem-right-bottom + vstem-hcount"/>
@@ -66,8 +68,6 @@
    <point num="lstem-left-bottom"/>
    <align>
     <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-right-bottom"/>
    </align>
    <move compile-if="smooth = 0">
     <point num="arc-top"/>
@@ -80,6 +80,12 @@
       <point num="joint-bottom"/>
      </move>
     </move>
+   </move>
+  </move>
+  <move distance="o-baseline">
+   <point num="curl-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="curl-top"/>
    </move>
   </move>
   <move distance="x-height">
@@ -172,15 +178,9 @@
       </align>
      </move>
      <move color="black">
-      <point num="rstem-right-top"/>
-      <align>
-       <point num="rstem-right-bottom"/>
-      </align>
-      <move distance="vert-stem" color="black">
-       <point num="rstem-left-bottom"/>
-       <align>
-        <point num="rstem-left-top"/>
-       </align>
+      <point num="rstem-right"/>
+      <move distance="curve-stem" color="black">
+       <point num="rstem-left"/>
       </move>
       <move min-distance="no">
        <point num="right-bearing"/>
@@ -196,27 +196,32 @@
      <with-param name="cv" value="vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <!--<point num="left-hstem-bottom"/>
-     <point num="left-top"/>-->
+     <point num="left-hstem-bottom"/>
+     <point num="left-top"/>
      <point num="lstem-left-bottom"/>
      <point num="l-intersect"/>
-     <point num="rstem-left-top"/>
-     <point num="rstem-left-bottom"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <!--<point num="right-top"/>
-     <point num="right-hstem-bottom"/>-->
+     <point num="right-top"/>
+     <point num="right-hstem-bottom"/>
      <point num="joint-top"/>
      <point num="joint-bottom"/>
      <point num="lstem-right-bottom"/>
      <point num="r-intersect"/>
-     <point num="rstem-right-top"/>
-     <point num="rstem-right-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="rstem-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="rstem-right"/>
     </shift-absolute>
    </if>
   </compile-if>
   
   <interpolate-untouched-points/>
  </glyph>
- 
 </xgridfit>
