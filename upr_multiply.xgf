@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!-- × -->
+ <glyph ps-name="multiply" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="plus-width" value="minus-width"/>
+  <param name="diag" value="sign-thindiag"/>
+  
+  
+  <constant name="left-left-bottom" value="first-point"/>
+  <constant name="intersect-left" value="left-left-bottom + smooth-count"/>
+  <constant name="left-left-top" value="intersect-left + smooth-count"/>
+  <constant name="left-right-top" value="left-left-top + hstem-vcount"/>
+  <constant name="intersect-top" value="left-right-top + smooth-count"/>
+  <constant name="right-left-top" value="intersect-top + smooth-count"/>
+  <constant name="right-right-top" value="right-left-top + hstem-vcount"/>
+  <constant name="intersect-right" value="right-right-top + smooth-count"/>
+  <constant name="right-right-bottom" value="intersect-right + smooth-count"/>
+  <constant name="right-left-bottom" value="right-right-bottom + hstem-vcount"/>
+  <constant name="intersect-bottom" value="right-left-bottom + smooth-count"/>
+  <constant name="left-right-bottom" value="intersect-bottom + smooth-count"/>
+  <constant name="last" value="left-right-bottom + last-count"/>
+  
+  <line name="left-thinstem">
+   <point num="left-left-bottom"/>
+   <point num="right-left-top"/>
+  </line>
+  <line name="right-thinstem">
+   <point num="left-right-bottom"/>
+   <point num="right-right-top"/>
+  </line>
+  <line name="left-thickstem">
+   <point num="left-left-top"/>
+   <point num="right-left-bottom"/>
+  </line>
+  <line name="right-thickstem">
+   <point num="left-right-top"/>
+   <point num="right-right-bottom"/>
+  </line>
+  <variable name="width-1"/>
+  <variable name="width-2"/>
+  
+  <set-equal target="width-1" source="((control-value(index(plus-width)) - control-value(index(diag))) * 0.35355p)"/>
+  <set-equal target="width-2" source="((control-value(index(plus-width)) + control-value(index(diag))) * 0.35355p)"/>
+  <set-equal target="temp" source="round(control-value(index(diag)) * 1.4p)"/>
+  
+  <set-vectors axis="y"/>
+  <if test="temp &lt;= 1.0p">
+   <move round="to-half-grid">
+    <point num="intersect-left"/>
+   </move>
+   <else>
+    <move>
+     <point num="intersect-left"/>
+    </move>
+   </else>
+  </if>
+  <set-round-state round="no"/>
+  <move pixel-distance="negative(width-1)">
+   <reference>
+    <point num="intersect-left"/>
+   </reference>
+   <point num="left-left-bottom"/>
+   <align>
+    <point num="right-right-bottom"/>
+   </align>
+  </move>
+  <move pixel-distance="width-2">
+   <reference>
+    <point num="intersect-left"/>
+   </reference>
+   <point num="left-right-top"/>
+   <align>
+    <point num="right-left-top"/>
+   </align>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+<!--   <if test="temp &lt;= 1.0p"> -->
+   <move round="to-half-grid">
+    <point num="intersect-top"/>
+   </move>
+<!--   <else>
+    <move>
+     <point num="intersect-top"/>
+    </move>
+   </else>
+  </if>-->
+  <!--  <set-round-state round="no"/> -->
+  <move pixel-distance="negative(width-2)">
+   <reference>
+    <point num="intersect-top"/>
+   </reference>
+   <point num="left-left-bottom"/>
+  </move>
+  <move pixel-distance="width-1">
+   <reference>
+    <point num="intersect-top"/>
+   </reference>
+   <point num="right-left-top"/>
+  </move>
+  <!--  <with-round-state round="no"> -->
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="diag" save-vectors="yes" color="black">
+     <line ref="left-thinstem"/>
+     <line ref="right-thinstem"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+   <!--  </with-round-state> -->
+  <with-projection-vector to-line="parallel">
+   <line ref="left-thinstem"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="left-thinstem"/>
+    <align>
+     <reference>
+      <point num="left-left-bottom"/>
+     </reference>
+     <point num="left-right-bottom"/>
+    </align>
+    <align>
+     <reference>
+      <point num="right-left-top"/>
+     </reference>
+     <point num="right-right-top"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <align>
+   <reference>
+    <point num="left-right-bottom"/>
+   </reference>
+   <point num="left-right-top"/>
+  </align>
+  <align>
+   <reference>
+    <point num="right-right-top"/>
+   </reference>
+   <point num="right-right-bottom"/>
+  </align>
+  <!--  <with-round-state round="no"> -->
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="diag" save-vectors="yes" color="black">
+     <line ref="right-thickstem"/>
+     <line ref="left-thickstem"/>
+    </diagonal-stem>
+   </with-minimum-distance>
+   <!--  </with-round-state> -->
+  <with-vectors to-line="parallel">
+   <line ref="right-thickstem"/>
+   <align>
+    <reference>
+     <point num="left-right-top"/>
+    </reference>
+    <point num="left-left-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="right-right-bottom"/>
+    </reference>
+    <point num="right-left-bottom"/>
+   </align>
+  </with-vectors>
+  <move-point-to-intersection>
+   <point num="intersect-top"/>
+   <line ref="left-thinstem"/>
+   <line ref="right-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-bottom"/>
+   <line ref="right-thinstem"/>
+   <line ref="left-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-left"/>
+   <line ref="left-thinstem"/>
+   <line ref="left-thickstem"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-right"/>
+   <line ref="right-thinstem"/>
+   <line ref="right-thickstem"/>
+  </move-point-to-intersection>
+  <interpolate-untouched-points/>
+  
+<!--  <if test="temp &gt; 1.0p">
+   <mdap round="to-half-grid">
+    <point num="intersect-top"/>
+   </mdap>
+   <shift>
+    <reference>
+     <point num="intersect-top"/>
+    </reference>
+    <contour num="0"/>
+   </shift>
+  </if>-->
+ </glyph>
+</xgridfit>
