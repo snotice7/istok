@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="plusminus" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="minus-right-top" value="minus/right-top"/>
+  <param name="minus-right-bottom" value="minus/right-bottom"/>
+  <param name="plus-right" value="minus/total + plus/hstem-right-top"/>
+  
+  <set-vectors axis="x"/>
+  <set-equal target="width" source="minus-right-top -- plus-right"/>
+  <if test="width != 0">
+   <shift-absolute pixel-distance="width">
+    <!--    <range>
+     <point num="minus-right-top - 1"/>
+     <point num="minus-right-bottom + 1"/>
+    </range>-->
+    <point num="minus-right-top - 1"/>
+    <point num="minus-right-bottom + 1"/>
+    <point num="minus-right-top"/>
+    <point num="minus-right-top + 1"/>
+    <point num="minus-right-bottom - 1"/>
+    <point num="minus-right-bottom"/>
+   </shift-absolute>
+  </if>
+ </glyph>
+</xgridfit>

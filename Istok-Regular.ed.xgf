@@ -588,6 +588,10 @@
       <delta-set cv="cap-h-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyri-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyrch-space" size="5" distance="-8"/>
+      <delta-set cv="cap-h-lbearing" size="6" distance="8"/>
+      <delta-set cv="cap-h-space" size="6" distance="-8"/>
+      <delta-set cv="cap-cyri-space" size="6" distance="-8"/>
+      <delta-set cv="cap-cyrch-space" size="6" distance="-8"/>
      </control-value-delta>
     </if>
     <else>
@@ -835,6 +839,7 @@
   <xi:include href="upr_dieresis.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_minus.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_plus.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_pm.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_multiply.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>

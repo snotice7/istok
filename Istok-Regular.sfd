@@ -5,7 +5,7 @@ FamilyName: Istok
 Weight: Regular
 Copyright: (C) 2008-2009 Andrey V. Panov
 UComments: "2008-10-29: Created." 
-Version: 0.1
+Version: 0.2
 ItalicAngle: 0
 UnderlinePosition: -204
 UnderlineWidth: 102
@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1272368714
+ModificationTime: 1272540551
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -54,7 +54,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 96 16 14
+WinInfo: 0 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -8588,7 +8588,7 @@ EndChar
 StartChar: multiply
 Encoding: 215 215 205
 Width: 1280
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 SplineSet
@@ -10110,29 +10110,29 @@ EndChar
 StartChar: hungarumlaut
 Encoding: 733 733 268
 Width: 614
-Flags: W
+Flags: HW
 HStem: 1150 285<127.906 175.5 305 364 427.906 475.5>
 LayerCount: 2
 Fore
 SplineSet
-344 1150 m 18,0,1
- 305 1150 305 1150 332 1203 c 2,2,-1
- 431 1398 l 2,3,4
- 450 1435 450 1435 512 1435 c 2,5,-1
- 609 1435 l 2,6,7
- 664 1435 664 1435 623 1383 c 2,8,-1
- 463 1179 l 2,9,10
- 440 1150 440 1150 386 1150 c 2,11,-1
- 344 1150 l 18,0,1
-44 1150 m 18,12,13
- 5 1150 5 1150 32 1203 c 2,14,-1
- 131 1398 l 2,15,16
- 150 1435 150 1435 212 1435 c 2,17,-1
- 309 1435 l 2,18,19
- 364 1435 364 1435 323 1383 c 2,20,-1
- 163 1179 l 2,21,22
- 140 1150 140 1150 86 1150 c 2,23,-1
- 44 1150 l 18,12,13
+44 1150 m 18,0,1
+ 5 1150 5 1150 32 1203 c 2,2,-1
+ 131 1398 l 2,3,4
+ 150 1435 150 1435 212 1435 c 2,5,-1
+ 309 1435 l 2,6,7
+ 364 1435 364 1435 323 1383 c 2,8,-1
+ 163 1179 l 2,9,10
+ 140 1150 140 1150 86 1150 c 2,11,-1
+ 44 1150 l 18,0,1
+344 1150 m 18,12,13
+ 305 1150 305 1150 332 1203 c 2,14,-1
+ 431 1398 l 2,15,16
+ 450 1435 450 1435 512 1435 c 2,17,-1
+ 609 1435 l 2,18,19
+ 664 1435 664 1435 623 1383 c 2,20,-1
+ 463 1179 l 2,21,22
+ 440 1150 440 1150 386 1150 c 2,23,-1
+ 344 1150 l 18,12,13
 EndSplineSet
 EndChar
 
@@ -10533,6 +10533,7 @@ StartChar: ohungarumlaut
 Encoding: 337 337 282
 Width: 1148
 VWidth: 0
+Flags: H
 HStem: -17 130<416.93 731.07> 937 130<416.93 731.07> 1150 285<433.906 481.5 611 670 733.906 781.5>
 VStem: 85 186<277.934 772.066> 877 186<277.934 772.066>
 LayerCount: 2
