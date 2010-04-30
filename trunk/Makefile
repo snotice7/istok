@@ -16,7 +16,9 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 	cop_kern.ff cop_kern_mult.ff copy_anchors_acc.ff sc_sub.ff tab_sub.ff \
 	liga_sub.ff alt_sub.ff
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
-XGFFILES=upr_*.xgf $(FAMILY)-Regular.ed.xgf # it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.ed.xgf $(FAMILY)-BoldItalic.ed.xgf
+XGFFILES=inst_acc.py skipautoinst.txt \
+	upr_*.xgf $(FAMILY)-Regular.ed.xgf # it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.ed.xgf $(FAMILY)-BoldItalic.ed.xgf
+
 XGRIDFIT=xgridfit
 COMPRESS=xz -9
 TEXENC=ot1,t1,t2a
