@@ -14,7 +14,7 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 	make_cap_accent.ff make_superscript.ff dub_aligned.ff same_kern.ff \
 	make_kern.ff cop_kern_left.ff cop_kern_right.ff cop_kern_acc.ff \
 	cop_kern.ff cop_kern_mult.ff copy_anchors_acc.ff sc_sub.ff tab_sub.ff \
-	liga_sub.ff alt_sub.ff
+	liga_sub.ff sub_onum.ff alt_sub.ff
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
 XGFFILES=inst_acc.py skipautoinst.txt \
 	upr_*.xgf $(FAMILY)-Regular.ed.xgf # it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.ed.xgf $(FAMILY)-BoldItalic.ed.xgf
@@ -145,5 +145,5 @@ install:
 	$(INSTALL) -p --mode=644 $(DOCUMENTS) $(DESTDIR)$(docdir)/
 
 %.pe-dist:
-	$(XGRIDFIT) -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
+	$(XGRIDFIT) --processor=libxslt -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 
