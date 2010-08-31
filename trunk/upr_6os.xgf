@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ 
+ <!--
+     Copyright (C) 2010  Andrey V. Panov
+     
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+     
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see "http://www.gnu.org/licenses/".
+     
+     -->
+ 
+ <glyph ps-name="six.oldstyle" init-graphics="yes">
+  <call-glyph ps-name="six">
+   <with-param name="baseline" value="small-o-baseline"/>
+   <with-param name="height" value="oldstyledigit-asc-height"/>
+   <with-param name="horiz-stem" value="digit-thin-horiz-stem"/>
+   <with-param name="vert-stem" value="digit-thicker-curve-stem"/>
+   <with-param name="inner-height" value="oldstyledigit-six-inner-height"/>
+   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="space" value="oldstyledigit-six-hspace"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>
