@@ -223,10 +223,14 @@ foreach
  add_anchor_med.ff("above", "basechar", O_height, italic_angle)
 endloop
 
+Select("E")
+bbox = GlyphInfo("BBox")
+y_prof = GlyphInfo("YProfile",Round((bbox[0] + bbox[2])*0.5))
+height = Round(y_prof[1]) + 1
 SelectSingletons("AE",0u4D4,"OE")
 foreach
  if ( WorthOutputting() )
-  x_prof = GlyphInfo("XProfile",O_height/4)
+  x_prof = GlyphInfo("XProfile",height)
   AddAnchorPoint("above", "basechar", \
   Round((x_prof[2] + x_prof[3])*0.5 - O_height*tan_it*0.75), O_height)
  endif
