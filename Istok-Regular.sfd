@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1283772049
+ModificationTime: 1283945873
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 1136 16 14
+WinInfo: 160 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -72,7 +72,7 @@ Grid
 -2048 1272 m 0
  4096 1272 l 0
 EndSplineSet
-BeginChars: 65542 514
+BeginChars: 65542 519
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -23339,6 +23339,71 @@ SplineSet
  543 609 543 609 533 624 c 2,45,-1
  54 1368 l 2,0,1
 EndSplineSet
+EndChar
+
+StartChar: caron.alt
+Encoding: 57480 57480 514
+Width: 614
+Flags: W
+HStem: 1120 356
+VStem: 219 176<1210.5 1476>
+LayerCount: 2
+Fore
+SplineSet
+185 1153 m 2,0,1
+ 160 1166 160 1166 178 1203 c 256,2,3
+ 195 1237 195 1237 207 1276.5 c 128,-1,4
+ 219 1316 219 1316 219 1384 c 10,5,-1
+ 219 1431 l 2,6,7
+ 219 1476 219 1476 264 1476 c 2,8,-1
+ 350 1476 l 2,9,10
+ 395 1476 395 1476 395 1431 c 2,11,-1
+ 395 1399 l 258,12,13
+ 395 1308 395 1308 368.5 1247 c 128,-1,14
+ 342 1186 342 1186 296 1137 c 256,15,16
+ 269 1109 269 1109 247 1120 c 2,17,-1
+ 185 1153 l 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: dcaron
+Encoding: 271 271 515
+Width: 1346
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 514 57480 N 1 0 0 1 929 0 2
+Refer: 77 100 N 1 0 0 1 0 0 2
+EndChar
+
+StartChar: tcaron
+Encoding: 357 357 516
+Width: 757
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 514 57480 N 1 0 0 1 309 0 2
+Refer: 50 116 N 1 0 0 1 0 0 2
+EndChar
+
+StartChar: lcaron
+Encoding: 318 318 517
+Width: 684
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 514 57480 S 1 0 0 1 270 0 2
+Refer: 51 108 N 1 0 0 1 0 0 2
+EndChar
+
+StartChar: Lcaron
+Encoding: 317 317 518
+Width: 1136
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 514 57480 S 1 0 0 1 470 0 2
+Refer: 134 76 N 1 0 0 1 0 0 2
 EndChar
 EndChars
 EndSplineFont
