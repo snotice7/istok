@@ -52,8 +52,12 @@ $(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS)
 $(FAMILY)-Italic.ttf: $(FAMILY)-Italic.gen.ttf
 	cp -p $(FAMILY)-Italic.gen.ttf $(FAMILY)-Italic.ttf
 
-$(FAMILY)-Bold.ttf: $(FAMILY)-Bold.gen.ttf
-	cp -p $(FAMILY)-Bold.gen.ttf $(FAMILY)-Bold.ttf
+$(FAMILY)-Bold.ttf: $(FAMILY)-Bold.gen.ttf $(FAMILY)-Bold.py
+	fontforge -lang=py -script  $(FAMILY)-Bold.py
+
+$(FAMILY)-Bold.py: $(FAMILY)-Bold.xgf $(FAMILY)-Bold_acc.xgf upr_*.xgf
+	$(XGRIDFIT) -m -p 25 -G no -i $(FAMILY)-Bold_.sfd -o $(FAMILY)-Bold.ttf \
+	-O $(FAMILY)-Bold.py $(FAMILY)-Bold.xgf
 
 $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 	cp -p $(FAMILY)-BoldItalic.gen.ttf $(FAMILY)-BoldItalic.ttf
@@ -87,6 +91,7 @@ $(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd
 
 %_acc.xgf: %_.sfd
 	$(PYTHON) inst_acc.py -s skipautoinst.txt -i $*_.sfd  -o $*_acc.xgf
+
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
 tex-support: all
