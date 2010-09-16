@@ -88,7 +88,7 @@
     <align>
      <point num="up-inner-right-bottom"/>
     </align>
-    <move compile-if="hstem-height &lt; 0">
+    <move compile-if="(not(merge-mode) and hstem-height &lt; 0 or (merge-mode and not(nan(hstem-height))))">
      <point num="intersect-left-bottom"/>
      <align>
       <point num="intersect-right-bottom"/>
@@ -113,7 +113,7 @@
    </align>
   </move>
   <set-equal target="temp" source="intersect-left-top -- lstem-left-top"/>
-  <compile-if test="hstem-height &lt; 0">
+  <compile-if test="(not(merge-mode) and hstem-height &lt; 0 or (merge-mode and not(nan(hstem-height))))">
    <if test="temp &lt;= 0">
     <if test="(up-inner-left-bottom -- intersect-right-bottom) &gt; 1.5p or (temp &lt; 0)">
      <shift-absolute pixel-distance="-1.0p">
@@ -129,7 +129,7 @@
     </if>
    </if>
   </compile-if>
-  <move distance="hstem-height" compile-if="hstem-height &gt; 0">
+  <move distance="hstem-height" compile-if="(not(merge-mode) and hstem-height &gt; 0 or (merge-mode and nan(hstem-height)))">
    <point num="intersect-left-top"/>
    <align>
     <point num="intersect-right-top"/>

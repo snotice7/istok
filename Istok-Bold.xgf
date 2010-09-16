@@ -19,7 +19,7 @@
      
      -->
  
- <outfile fmflags="2560" pyflags="old-kern opentype">Istok-Regular.ttf</outfile>
+ <outfile fmflags="2560" pyflags="old-kern opentype">Istok-Bold.ttf</outfile>
  
  <constant name="diag-min-thick" value="0.5p"/>
  <constant name="diag-min-sim" value="0.9p"/>
@@ -34,7 +34,7 @@
  <constant name="total" value="last + 1"/>
  <constant name="max-x-shift" value="40"/>
  <constant name="regular" value="1"/>
- <constant name="bold" value="0"/>
+ <constant name="bold" value="1"/>
  <constant name="slanted" value="0"/>
  <constant name="smooth" value="1"/>
  <constant name="first-point" value="1"/>
@@ -83,24 +83,6 @@
  <variable name="only-horizontal-smoothing" value="0"/>
  <variable name="only-vertical-smoothing" value="0"/>
  
- <alias name="small-desc" target="cv-0"/>
- <alias name="cap-tse-desc" target="cv-1"/>
- <alias name="small-tse-desc" target="cv-2"/>
- <alias name="zero" target="cv-3"/>
- <alias name="small-x-height" target="cv-4"/>
- <alias name="cap-x-height" target="cv-7"/>
- <alias name="small-asc-height" target="cv-8"/>
- <alias name="cap-curve-hstem" target="cv-12"/>  <!--O-->
- <alias name="cap-horiz-stem" target="cv-13"/>  <!--Ц-->
- <alias name="cap-vert-thinstem" target="cv-18"/>  <!--Ц-->
- <alias name="cap-vert-stem" target="cv-21"/>  <!--I-->
- <alias name="cap-o-curve-stem" target="cv-22"/>  <!--O-->
- <alias name="small-curve-hstem" target="cv-9"/>  <!--o-->
- <alias name="small-horiz-stem" target="cv-11"/>  <!--ц-->
- <alias name="small-vert-stem" target="cv-15"/> <!--i-->
- <alias name="small-vert-thinstem" target="cv-17"/> <!--ц-->
- <alias name="small-o-curve-stem" target="cv-20"/> <!--o-->
- <alias name="minus-thickness" target="cv-10"/>
  <alias name="small-x-baseline" target="zero"/>
  <alias name="small-sh-inner-space" target="small-m-inner-space"/>
  <alias name="cap-x-baseline" target="zero"/>
@@ -112,96 +94,93 @@
  <alias name="sign--thindiag" target="sign-thindiag"/>
  <alias name="accent--diag" target="accent-diag"/>
  
- <control-value name="cap-h-lbearing" value="170"/>
- <control-value name="cap-x-lbearing" value="12"/>
- <control-value name="cap-h-intersect-height" value="664"/>
- <control-value name="cap-o-height" value="1464"/>
- <control-value name="cap-a-hstem-height" value="380"/>
- <control-value name="cap-o-baseline" value="-30"/>
- <control-value name="cap-o-space" value="1340"/>
- <control-value name="cap-p-space" value="1048"/>
- <control-value name="cap-o-lbearing" value="92"/>
- <control-value name="cap-p-curve-stem" value="195"/>
- <control-value name="cap-diag" value="188"/>
- <control-value name="cap-thindiag" value="176"/>
- <control-value name="cap-tse-desc-horiz-shift" value="182"/>
- <control-value name="cap-cyrz-lbearing" value="102"/>
- <control-value name="cap-h-space" value="1082"/>
- <control-value name="cap-cyri-space" value="1112"/>
- <control-value name="cap-cyrl-space" value="870"/>
- <control-value name="cap-cyrch-space" value="996"/>
- <control-value name="cap-b-low-space" value="1068"/>
- <control-value name="cap-sh-inner-space" value="754"/>
- <control-value name="cap-end-width" value="136"/> <!--562-->
+ <control-value name="zero" value="0"/>
+ <control-value name="cap-x-height" value="1434"/>
+ <control-value name="cap-tse-desc" value="-370"/>
+ <control-value name="cap-vert-thinstem" value="250"/>
+ <control-value name="cap-vert-stem" value="292"/>
+ <control-value name="cap-o-curve-stem" value="353"/>
+ <control-value name="cap-curve-hstem" value="236"/>
+ <control-value name="cap-horiz-stem" value="248"/>
+ <control-value name="small-x-height" value="1050"/>
+ <control-value name="small-asc-height" value="1476"/>
+ <control-value name="small-desc" value="-400"/>
+ <control-value name="small-tse-desc" value="-310"/>
+ <control-value name="small-vert-thinstem" value="230"/>
+ <control-value name="small-vert-stem" value="280"/>
+ <control-value name="small-o-curve-stem" value="296"/>
+ <control-value name="small-horiz-stem" value="200"/>
+ <control-value name="small-curve-hstem" value="196"/>
+ <control-value name="minus-thickness" value="186"/>
  
- <control-value name="small-cyrn-space" value="836"/>
- <control-value name="small-cyrn-lbearing" value="142"/>
- <control-value name="small-cyrn-intersect-height" value="482"/>
- <control-value name="small-o-height" value="1067"/>
- <control-value name="small-asc-over-height" value="1493"/>
- <control-value name="small-curve-desc" value="-417"/>
- <control-value name="small-o-baseline" value="-17"/>
- <control-value name="small-o-space" value="978"/>
- <control-value name="small-o-lbearing" value="85"/>
- <control-value name="small-x-lbearing" value="9"/>
- <control-value name="small-end-width" value="125"/>
- <control-value name="small-curve-vstem" value="176"/>
- <control-value name="small-tse-desc-horiz-shift" value="166"/>
- <control-value name="small-vert-thinstem" value="154"/>
- <control-value name="small-p-space" value="892"/>
- <control-value name="small-cyrz-lbearing" value="69"/>
- <control-value name="small-a-space" value="840"/>
- <control-value name="small-n-space" value="846"/>
- <control-value name="small-u-space" value="838"/>
- <control-value name="small-cyri-space" value="886"/>
- <control-value name="small-cyrl-space" value="673"/>
- <control-value name="small-cyrv-low-space" value="800"/>
- <control-value name="small-cyrch-space" value="814"/>
- <control-value name="small-m-inner-space" value="610"/> <!--434-->
- <control-value name="small-flig-space" value="773"/>
- <control-value name="small-diag" value="164"/>
- <control-value name="small-thindiag" value="146"/>
+ <control-value name="cap-h-lbearing" value="160"/>
+ <control-value name="cap-x-lbearing" value="9"/>
+ <control-value name="cap-h-intersect-height" value="622"/>
+ <control-value name="cap-o-height" value="1468"/>
+ <control-value name="cap-a-hstem-height" value="338"/>
+ <control-value name="cap-o-baseline" value="-34"/>
+ <control-value name="cap-o-space" value="1372"/>
+ <control-value name="cap-p-space" value="1083"/>
+ <control-value name="cap-o-lbearing" value="86"/>
+ <control-value name="cap-p-curve-stem" value="296"/>
+ <control-value name="cap-diag" value="288"/>
+ <control-value name="cap-thindiag" value="262"/>
+ <control-value name="cap-tse-desc-horiz-shift" value="192"/>
+ <control-value name="cap-cyrz-lbearing" value="97"/>
+ <control-value name="cap-h-space" value="1122"/>
+ <control-value name="cap-cyri-space" value="1172"/>
+ <control-value name="cap-cyrl-space" value="880"/>
+ <control-value name="cap-cyrch-space" value="1036"/>
+ <control-value name="cap-b-low-space" value="1105"/>
+ <control-value name="cap-sh-inner-space" value="472"/>
+ <control-value name="cap-end-width" value="180"/>
  
- <control-value name="sc-x-height" value="1120"/>
- <control-value name="sc-o-height" value="1137"/>
- <control-value name="sc-a-hstem-height" value="296"/>
- <control-value name="sc-h-intersect-height" value="517"/>
- <control-value name="sc-b-low-space" value="816"/>
- <control-value name="sc-h-space" value="856"/>
- <control-value name="sc-o-space" value="998"/>
- <control-value name="sc-p-space" value="798"/>
- <control-value name="sc-cyri-space" value="906"/>
- <control-value name="sc-cyrl-space" value="691"/>
- <control-value name="sc-sh-inner-space" value="616"/>
- <control-value name="sc-cyrch-space" value="832"/>
+ <control-value name="small-cyrn-space" value="920"/>
+ <control-value name="small-cyrn-lbearing" value="136"/>
+ <control-value name="small-cyrn-intersect-height" value="448"/>
+ <control-value name="small-o-height" value="1070"/>
+ <control-value name="small-asc-over-height" value="1496"/>
+ <control-value name="small-curve-desc" value="-420"/>
+ <control-value name="small-o-baseline" value="-20"/>
+ <control-value name="small-o-space" value="1046"/>
+ <control-value name="small-o-lbearing" value="80"/>
+ <control-value name="small-x-lbearing" value="6"/>
+ <control-value name="small-end-width" value="140"/>
+ <control-value name="small-curve-vstem" value="280"/>
+ <control-value name="small-tse-desc-horiz-shift" value="146"/>
+ <control-value name="small-p-space" value="976"/>
+ <control-value name="small-cyrz-lbearing" value="57"/>
+ <control-value name="small-a-space" value="907"/>
+ <control-value name="small-n-space" value="930"/>
+ <control-value name="small-u-space" value="924"/>
+ <control-value name="small-cyri-space" value="940"/>
+ <control-value name="small-cyrl-space" value="716"/>
+ <control-value name="small-cyrv-low-space" value="856"/>
+ <control-value name="small-cyrch-space" value="894"/>
+ <control-value name="small-m-inner-space" value="320"/> <!--434-->
+ <control-value name="small-flig-space" value="921"/>
+ <control-value name="small-diag" value="250"/>
+ <control-value name="small-thindiag" value="232"/>
  
- <control-value name="digit-vert-stem" value="176"/>
- <control-value name="digit-over-height" value="1452"/>
+ <control-value name="digit-vert-stem" value="280"/>
+ <control-value name="digit-over-height" value="1456"/>
  <control-value name="digit-height" value="1422"/>
- <control-value name="digit-mid-horiz-stem" value="164"/>
- <control-value name="digit-thinner-curve-stem" value="188"/>
- <control-value name="digit-thicker-curve-stem" value="196"/>
- <control-value name="digit-thin-horiz-stem" value="150"/>
- <control-value name="digit-six-inner-height" value="930"/> <!-- distance between of base and top of inner arc -->
- <control-value name="digit-six-hspace" value="928"/>
+ <control-value name="digit-mid-horiz-stem" value="248"/>
+ <control-value name="digit-thinner-curve-stem" value="292"/>
+ <control-value name="digit-thicker-curve-stem" value="300"/>
+ <control-value name="digit-thin-horiz-stem" value="224"/>
+ <control-value name="digit-six-inner-height" value="960"/> <!-- distance between of base and top of inner arc -->
+ <control-value name="digit-six-hspace" value="1026"/>
  
- <control-value name="period-width" value="202"/>
- <control-value name="dash-thickness" value="130"/>
- <control-value name="minus-width" value="1120"/>
-  <!--  <control-value name="minus-thickness" value="120"/> -->
- <control-value name="sign-thindiag" value="120"/>
- <control-value name="paren-curve-stem" value="196"/>
- <control-value name="macron-thickness" value="110"/>
- <control-value name="accent-diag" value="110"/>
+ <control-value name="period-width" value="292"/>
+ <control-value name="dash-thickness" value="200"/>
+ <control-value name="minus-width" value="1130"/>
+ <!--  <control-value name="minus-thickness" value="120"/> -->
+ <control-value name="sign-thindiag" value="186"/>
+ <control-value name="paren-curve-stem" value="300"/>
+ <control-value name="macron-thickness" value="166"/>
+ <control-value name="accent-diag" value="144"/>
  <control-value name="emspace" value="1024"/>
- 
- <control-value name="oldstyledigit-curve-baseline" value="-290"/>
- <control-value name="oldstyledigit-baseline" value="-270"/>
- <control-value name="oldstyledigit-over-height" value="1092"/>
- <control-value name="oldstyledigit-height" value="1072"/>
- <control-value name="oldstyledigit-asc-height" value="1362"/>
- <control-value name="oldstyledigit-six-inner-height" value="877"/>
- <control-value name="oldstyledigit-six-hspace" value="882"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -243,10 +222,6 @@
    <with-param name="cv-width" value="small-cyrn-space"/>
    <with-param name="margin" value="small-cyrn-lbearing"/>
   </call-macro>
-  <call-macro name="regularize-control-value-width">
-   <with-param name="cv-width" value="sc-h-space"/>
-   <with-param name="margin" value="small-cyrn-lbearing"/>
-  </call-macro>
   <call-macro name="regularize-control-value-width-two-margin">
    <with-param name="cv-width" value="small-p-space"/>
    <with-param name="left-margin" value="small-cyrn-lbearing"/>
@@ -271,14 +246,9 @@
     <with-param name="cv-width" value="small-cyri-space"/>
     <with-param name="margin" value="small-cyrn-lbearing"/>
    </call-macro>
-   <call-macro name="regularize-control-value-width">
-    <with-param name="cv-width" value="sc-cyri-space"/>
-    <with-param name="margin" value="small-cyrn-lbearing"/>
-   </call-macro>
    <else>
     <set-equal target="cap-cyri-space" source="cap-h-space"/>
     <set-equal target="small-cyri-space" source="small-cyrn-space"/>
-    <set-equal target="sc-cyri-space" source="sc-h-space"/>
    </else>
   </if>
   
@@ -314,39 +284,25 @@
   <round value="small-tse-desc-horiz-shift"/>
   <round value="small-m-inner-space"/>
   <round value="small-flig-space" color="black"/>
-  <round value="sc-x-height"/>
-  <round value="sc-a-hstem-height"/>
-  <round value="sc-h-intersect-height"/>
-  <round value="sc-h-space" color="black"/>
-  <round value="sc-o-space" color="black"/>
-  <round value="sc-p-space" color="black"/>
-  <round value="sc-b-low-space" color="black"/>
-  <!--<round value="sc-cyri-space" color="black"/>-->
-  <round value="sc-cyrl-space" color="black"/>
-  <round value="sc-cyrch-space" color="black"/>
-  <round value="sc-sh-inner-space"/>
   <round value="digit-height"/>
   <round value="digit-over-height"/>
   <round value="digit-six-inner-height" color="black"/>
   <round value="period-width" color="black"/>
-  <round value="oldstyledigit-curve-baseline"/>
-  <round value="oldstyledigit-baseline"/>
-  <round value="oldstyledigit-over-height"/>
-  <round value="oldstyledigit-height"/>
-  <round value="oldstyledigit-asc-height"/>
-  <round value="oldstyledigit-six-hspace" color="black"/>
-  <round value="oldstyledigit-six-inner-height" color="black"/>
-
+  
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="small-curve-desc" source="control-value(index(small-desc)) + control-value(index(small-o-baseline))"/>
   <set-equal target="small-asc-over-height" source="control-value(index(small-asc-height)) - control-value(index(small-o-baseline))"/>
-  <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="digit-over-height" source="control-value(index(digit-height)) - control-value(index(cap-o-baseline))"/>
   
   <control-value-delta> <!--both for b/w and antialiased rendering-->
-   <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
-   <delta-set cv="small-flig-space" size="6" distance="-8"/>
+   <delta-set cv="small-o-space" size="2" distance="-8"/>
+   <delta-set cv="small-cyrn-intersect-height" size="7" distance="-8"/>
+   <delta-set cv="small-vert-thinstem" size="2" distance="-8"/>
+   <delta-set cv="small-vert-stem" size="2" distance="-8"/>
+   <delta-set cv="small-o-curve-stem" size="2" distance="-8"/>
+   <delta-set cv="digit-thinner-curve-stem" size="2" distance="-8"/>
+   <delta-set cv="digit-thicker-curve-stem" size="2" distance="-8"/>
   </control-value-delta>
   
   <if test="not(is-glyph-grayscale)">
@@ -385,20 +341,17 @@
      <!--     </control-value-delta> -->
     
     <control-value-delta>
-     <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
-     <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-4"/>
-     <delta-set cv="digit-thicker-curve-stem" size="7" distance="-8"/>
-     <delta-set cv="digit-thicker-curve-stem" size="8" distance="-8"/>
-     <delta-set cv="digit-thicker-curve-stem" size="18" distance="-1"/>
-     <delta-set cv="digit-thinner-curve-stem" size="8" distance="-8"/>
-     <delta-set cv="digit-thinner-curve-stem" size="18" distance="-1"/>
-     <delta-set cv="digit-thin-horiz-stem" size="12" distance="-3"/>
-     <delta-set cv="paren-curve-stem" size="7" distance="-8"/>
-     <delta-set cv="paren-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="small-cyrn-intersect-height" size="12" distance="-8"/>
+     <delta-set cv="small-horiz-stem" size="7" distance="-8"/>
+     <delta-set cv="small-vert-thinstem" size="3" distance="-8"/>
+     <delta-set cv="small-vert-thinstem" size="10" distance="-8"/>
+     <delta-set cv="small-vert-thinstem" size="11" distance="-8"/>
+     <delta-set cv="small-vert-thinstem" size="12" distance="-8"/>
     </control-value-delta>
+    <if test="pixels-per-em &lt;= 24">
+    <set-equal target="cap-o-curve-stem" source="control-value(cap-vert-stem)"/>
+    <set-equal target="small-curve-hstem" source="control-value(small-horiz-stem)"/>
+    </if>
    </if>
    
    <if test="control-value(small-o-lbearing) = 0">
@@ -410,18 +363,10 @@
    <if test="control-value(small-cyrn-space) &lt; control-value(small-cyrch-space)">
     <set-equal target="small-cyrch-space" source="control-value(small-cyrn-space)"/>
    </if>
-   <if test="control-value(sc-h-space) &lt; control-value(sc-cyrch-space)">
-    <set-equal target="sc-cyrch-space" source="control-value(sc-h-space)"/>
-   </if>
    <call-macro name="regularize-midstem">
     <with-param name="midstem-height" value="cap-h-intersect-height"/>
     <with-param name="stem-width" value="cap-horiz-stem"/>
     <with-param name="full-height" value="cap-x-height"/>
-   </call-macro>
-   <call-macro name="regularize-midstem">
-    <with-param name="midstem-height" value="sc-h-intersect-height"/>
-    <with-param name="stem-width" value="small-horiz-stem"/>
-    <with-param name="full-height" value="sc-x-height"/>
    </call-macro>
    <call-macro name="regularize-midstem">
     <with-param name="midstem-height" value="small-cyrn-intersect-height"/>
@@ -439,12 +384,6 @@
     <with-param name="stem-width" value="small-vert-stem"/>
     <with-param name="margin" value="small-cyrn-lbearing"/>
     <with-param name="full-width" value="control-value(emspace) * 1.63p"/>
-   </call-macro>
-   <call-macro name="regularize-control-value-double-width">
-    <with-param name="cv-width" value="sc-sh-inner-space"/>
-    <with-param name="stem-width" value="small-vert-stem"/>
-    <with-param name="margin" value="small-cyrn-lbearing"/>
-    <with-param name="full-width" value="control-value(emspace) * 1.65p"/>
    </call-macro>
    
    <if test="is-glyph-grayscale">
@@ -477,7 +416,6 @@
       <with-param name="cv" value="index(small-horiz-stem)"/>
      </call-macro>
      <subtract minuend="small-cyrn-intersect-height" subtrahend="temp"/>
-     <subtract minuend="sc-h-intersect-height" subtrahend="temp"/>
     </if>
     <!--      <if test="vertical-smoothing">
      <subtract minuend="zero" subtrahend="vgrayshift"/>
@@ -556,9 +494,6 @@
      <add value1="small-u-space" value2="temp"/>
      <add value1="small-cyri-space" value2="temp"/>
      <add value1="small-cyrch-space" value2="temp"/>
-     <add value1="sc-h-space" value2="temp"/>
-     <add value1="sc-cyri-space" value2="temp"/>
-     <add value1="sc-cyrch-space" value2="temp"/>
      
      <call-macro name="double-shift-edge">
       <with-param name="shift" value="temp"/>
@@ -566,7 +501,6 @@
      </call-macro>
      <!--     <add value1="small-o-curve-stem" value2="temp"/> -->
      <add value1="small-o-space" value2="temp"/>
-     <add value1="sc-o-space" value2="temp"/>
      
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
@@ -577,7 +511,6 @@
      <subtract minuend="small-tse-desc-horiz-shift" subtrahend="temp"/>
      <add value1="small-p-space" value2="temp"/>
      <add value1="small-cyrv-low-space" value2="temp"/>
-     <add value1="sc-b-low-space" value2="temp"/>
      
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
@@ -586,7 +519,6 @@
      <subtract minuend="small-o-lbearing" subtrahend="temp"/>
      <add value1="small-p-space" value2="temp"/>
      <add value1="small-cyrv-low-space" value2="temp"/>
-     <add value1="sc-b-low-space" value2="temp"/>
      
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
@@ -595,9 +527,9 @@
      <add value1="small-tse-desc-horiz-shift" value2="temp"/>
      
      <set-minimum-distance value="0.51p"/>
-
-     <control-value-delta>
-      <delta-set cv="cap-h-lbearing" size="5" distance="8"/>
+     
+     <!--<control-value-delta>
+            <delta-set cv="cap-h-lbearing" size="5" distance="8"/>
       <delta-set cv="cap-h-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyri-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyrch-space" size="5" distance="-8"/>
@@ -605,7 +537,7 @@
       <delta-set cv="cap-h-space" size="6" distance="-8"/>
       <delta-set cv="cap-cyri-space" size="6" distance="-8"/>
       <delta-set cv="cap-cyrch-space" size="6" distance="-8"/>
-     </control-value-delta>
+     </control-value-delta>-->
     </if>
     <else>
      <if test="is-glyph-grayscale">
@@ -774,60 +706,13 @@
   <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_uni0274.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_uni0280.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_esh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fi.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fl.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_longs.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_perthousandzero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_divisionslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Asc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Bsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Csc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Dsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Esc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Fsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Gsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Hsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Isc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Jsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Ksc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Lsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Msc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Nsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Osc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Psc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Qsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Rsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Ssc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Tsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Usc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Vsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Wsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Xsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Ysc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_Zsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrBsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrGsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrDsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrZsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrIsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrKsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrLsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrPsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrUsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrFsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrCsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrChsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrShsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrShchsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrHardsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrSoftsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrEhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrYusc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrYasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrZhsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  
   <xi:include href="upr_section.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_degree.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_paragraph.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -859,7 +744,7 @@
   <xi:include href="upr_ellipsis.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_1t.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_7t.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_0os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <!--  <xi:include href="upr_0os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_1os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_2os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_3os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -877,7 +762,7 @@
   <xi:include href="upr_6ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_7ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_8ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_9ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_9ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
   
-  <xi:include href="Istok-Regular_acc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="Istok-Bold_acc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
  </xgridfit>

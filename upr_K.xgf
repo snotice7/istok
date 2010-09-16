@@ -28,6 +28,7 @@
   <param name="thick-diag" value="cap--diag"/>
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="upper-diag-height" value="cap-x-height"/>
+  <param name="asc-k" value="0"/> <!--defined for k with ascender-->
   
   <constant name="vstem-left-bottom" value="first-point"/>
   <constant name="vstem-left-top" value="vstem-left-bottom + vstem-vcount"/>
@@ -88,16 +89,16 @@
   </move>
   <move distance="vstem-height">
    <point num="vstem-left-top"/>
-   <align compile-if="upper-diag-height = vstem-height">
+   <align compile-if="asc-k = 0">
     <point num="vstem-right-top"/>
     <point num="ru-diag-l-top"/>
     <point num="ru-diag-r-top"/>
    </align>
-   <align compile-if="upper-diag-height != vstem-height">
+   <align compile-if="asc-k &gt; 0">
     <point num="vstem-right-top"/>
    </align>
   </move>
-  <compile-if test="upper-diag-height != vstem-height">
+  <compile-if test="asc-k &gt; 0">
    <move distance="upper-diag-height">
     <point num="ru-diag-l-top"/>
    </move>
@@ -392,6 +393,7 @@
    <with-param name="thick-diag" value="small--diag"/>
    <with-param name="lbearing" value="small-cyrn-lbearing"/>
    <with-param name="upper-diag-height" value="small-x-height"/>
+   <with-param name="asc-k" value="1"/>
   </call-glyph>
  </glyph>
  

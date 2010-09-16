@@ -186,7 +186,8 @@
    </reference>
    <point num="hstem-left-bottom"/>
   </interpolate>-->
-  <move distance="intersect-height" compile-if="intersect-height &gt; 0">
+  <move distance="intersect-height" compile-if="(not(merge-mode) and intersect-height &gt; 0
+                                                 or (merge-mode and nan(intersect-height)))">
    <point num="hstem-left-bottom"/>
    <!--   <align>
     <point num="hstem-right-bottom"/>
@@ -201,7 +202,7 @@
     </interpolate>
    </move>
   </move>
-  <compile-if test="intersect-height = 0">
+  <compile-if test="((not(merge-mode) and intersect-height = 0) or (merge-mode and not(nan(intersect-height))))">
    <interpolate round="to-grid">
     <reference>
      <point num="inner-bottom"/>

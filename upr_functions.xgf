@@ -68,7 +68,8 @@
      <point num="first-diag-second-point"/>
     </line>   <!--    <line ref="first-diag"/> -->
     <!--    <move distance="absolute(diag-width)" round="no" cut-in="no" min-distance="diag-min-thick" color="black"> -->
-     <compile-if test="diag-width &gt;= 0">
+     <compile-if test="(not(merge-mode) and diag-width >= 0) or
+                        (merge-mode and nan(diag-width)) &gt;= 0">
       <move distance="diag-width" round="no" cut-in="no" min-distance="diag-min-thick" color="black">
        <reference>
         <point num="first-diag-first-point"/>
