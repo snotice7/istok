@@ -345,6 +345,20 @@
      <point num="rl-diag-r-bottom"/>
     </align>
    </with-freedom-vector>
+   <if test="coord(ru-diag-r-bottom) &lt; coord(vstem-right-bottom)">
+    <with-freedom-vector to-line="parallel">
+     <line>
+      <point num="vstem-right-top"/>
+      <point num="vstem-right-bottom"/>
+     </line>
+     <align>
+      <reference>
+       <point num="vstem-right-bottom"/>
+      </reference>
+      <point num="ru-diag-r-bottom"/>
+     </align>
+    </with-freedom-vector>
+   </if>
   </with-projection-vector>
   <move-point-to-intersection>
    <point num="rl-diag-r-top"/>
