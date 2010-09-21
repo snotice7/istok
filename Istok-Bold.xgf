@@ -188,7 +188,7 @@
  
  <pre-program>
   <set-dropout-type value="5"/>
-  <if test="pixels-per-em &gt; 11">
+  <if test="pixels-per-em &gt;= 11">
    <!-- corrections for antialiasing -->
    <if test="is-glyph-grayscale or (is-cleartype-enabled and not(is-BGR-order))">
     <set-equal target="horizontal-smoothing" source="1"/>
@@ -229,13 +229,13 @@
   </call-macro>
   <call-macro name="regularize-control-value-width-two-varmargin">
    <with-param name="cv-width" value="digit-six-hspace"/>
-   <with-param name="left-margin" value="(control-value(emspace) * 9.2p) / 100p"/>
-   <with-param name="right-margin" value="(control-value(emspace) * 9.0p) / 100p"/>
+   <with-param name="left-margin" value="(control-value(emspace) * 8.8p) / 100p"/>
+   <with-param name="right-margin" value="(control-value(emspace) * 8.6p) / 100p"/>
   </call-macro>
   <call-macro name="regularize-control-value-width-two-varmargin">
    <with-param name="cv-width" value="minus-width"/>
-   <with-param name="left-margin" value="(control-value(emspace) * 8.0p) / 100p"/>
-   <with-param name="right-margin" value="(control-value(emspace) * 8.0p) / 100p"/>
+   <with-param name="left-margin" value="(control-value(emspace) * 7.5p) / 100p"/>
+   <with-param name="right-margin" value="(control-value(emspace) * 7.5p) / 100p"/>
   </call-macro>
   <if test="pixels-per-em &gt;= 20">
    <call-macro name="regularize-control-value-width">
@@ -287,7 +287,6 @@
   <round value="digit-height"/>
   <round value="digit-over-height"/>
   <round value="digit-six-inner-height" color="black"/>
-  <round value="period-width" color="black"/>
   
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
@@ -296,13 +295,19 @@
   <set-equal target="digit-over-height" source="control-value(index(digit-height)) - control-value(index(cap-o-baseline))"/>
   
   <control-value-delta> <!--both for b/w and antialiased rendering-->
-   <delta-set cv="small-o-space" size="2" distance="-8"/>
+   <delta-set cv="cap-o-curve-stem" size="0" distance="-2"/>
+   <delta-set cv="cap-o-curve-stem" size="1" distance="-4"/>
    <delta-set cv="small-cyrn-intersect-height" size="7" distance="-8"/>
+   <delta-set cv="small-cyrn-space" size="2" distance="8"/>
+   <delta-set cv="small-cyri-space" size="2" distance="8"/>
+   <delta-set cv="small-cyrch-space" size="2" distance="8"/>
+   <delta-set cv="small-vert-thinstem" size="2" distance="-2"/>
+   <!--   <delta-set cv="small-o-space" size="2" distance="-8"/>
    <delta-set cv="small-vert-thinstem" size="2" distance="-8"/>
    <delta-set cv="small-vert-stem" size="2" distance="-8"/>
    <delta-set cv="small-o-curve-stem" size="2" distance="-8"/>
    <delta-set cv="digit-thinner-curve-stem" size="2" distance="-8"/>
-   <delta-set cv="digit-thicker-curve-stem" size="2" distance="-8"/>
+   <delta-set cv="digit-thicker-curve-stem" size="2" distance="-8"/>-->
   </control-value-delta>
   
   <if test="not(is-glyph-grayscale)">
@@ -323,11 +328,12 @@
     <round value="digit-mid-horiz-stem" color="black"/>
     <round value="digit-thin-horiz-stem" color="black"/>
     <round value="digit-thicker-curve-stem" color="black"/>
-    <round value="digit-thinner-curve-stem" color="black"/>
+    <!--     <round value="digit-thinner-curve-stem" color="black"/> -->
     <round value="minus-thickness" color="black"/>
     <round value="macron-thickness" color="black"/>
     <round value="paren-curve-stem" color="black"/>
     <round value="dash-thickness" color="black"/>
+    <!--     <round value="period-width" color="black"/> -->
     <!--     <control-value-delta> -->
      <!--      <delta-set cv="cap-o-curve-stem" size="6" distance="-8"/> -->
      <!--      <delta-set cv="cap-vert-stem" size="7" distance="-8"/> -->
@@ -347,10 +353,12 @@
      <delta-set cv="small-vert-thinstem" size="10" distance="-8"/>
      <delta-set cv="small-vert-thinstem" size="11" distance="-8"/>
      <delta-set cv="small-vert-thinstem" size="12" distance="-8"/>
+     <delta-set cv="small-thindiag" size="3" distance="-2"/>
     </control-value-delta>
+    
     <if test="pixels-per-em &lt;= 24">
-    <set-equal target="cap-o-curve-stem" source="control-value(cap-vert-stem)"/>
-    <set-equal target="small-curve-hstem" source="control-value(small-horiz-stem)"/>
+     <set-equal target="cap-o-curve-stem" source="control-value(cap-vert-stem)"/>
+     <set-equal target="small-curve-hstem" source="control-value(small-horiz-stem)"/>
     </if>
    </if>
    
@@ -377,13 +385,13 @@
     <with-param name="cv-width" value="cap-sh-inner-space"/>
     <with-param name="stem-width" value="cap-vert-stem"/>
     <with-param name="margin" value="cap-h-lbearing"/>
-    <with-param name="full-width" value="control-value(emspace) * 1.99p"/>
+    <with-param name="full-width" value="control-value(emspace) * 2.09p"/>
    </call-macro>
    <call-macro name="regularize-control-value-double-width">
     <with-param name="cv-width" value="small-m-inner-space"/>
     <with-param name="stem-width" value="small-vert-stem"/>
     <with-param name="margin" value="small-cyrn-lbearing"/>
-    <with-param name="full-width" value="control-value(emspace) * 1.63p"/>
+    <with-param name="full-width" value="control-value(emspace) * 1.73p"/>
    </call-macro>
    
    <if test="is-glyph-grayscale">
@@ -529,7 +537,7 @@
      <set-minimum-distance value="0.51p"/>
      
      <!--<control-value-delta>
-            <delta-set cv="cap-h-lbearing" size="5" distance="8"/>
+      <delta-set cv="cap-h-lbearing" size="5" distance="8"/>
       <delta-set cv="cap-h-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyri-space" size="5" distance="-8"/>
       <delta-set cv="cap-cyrch-space" size="5" distance="-8"/>
