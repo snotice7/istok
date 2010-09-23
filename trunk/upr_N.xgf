@@ -85,6 +85,10 @@
    </reference>
    <point num="diag-left-top"/>
   </interpolate>
+
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -212,6 +216,11 @@
     </align>
    </with-freedom-vector>
    <!--  </with-projection-vector> -->
+
+  <call-macro name="restore-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+
   <interpolate-untouched-points/>
  </glyph>
 </xgridfit>

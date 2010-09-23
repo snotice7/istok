@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1284980801
+ModificationTime: 1285156370
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -52,7 +52,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 48 16 14
+WinInfo: 144 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -76,7 +76,7 @@ Grid
 -1759.83 1768 m 0
  4384.17 1768 l 0
 EndSplineSet
-BeginChars: 65553 365
+BeginChars: 65553 370
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -16766,7 +16766,7 @@ SplineSet
  492 202 492 202 536 165 c 260,29,30
  553 151 553 151 592 138.5 c 132,-1,31
  631 126 631 126 684 126 c 260,32,33
- 786 126 786 126 858.5 192 c 4
+ 786 126 786 126 858.5 192 c 4,34,35
  932 258 932 258 962 392 c 260,35,36
  996 538 996 538 917.5 597.5 c 132,-1,37
  839 657 839 657 701 663 c 4,38,39
@@ -16824,6 +16824,87 @@ SplineSet
  242 0 242 0 192 0 c 2,54,-1
  100 0 l 2,0,1
 EndSplineSet
+EndChar
+
+StartChar: caron.alt
+Encoding: 57480 57480 365
+Width: 614
+Flags: W
+HStem: 1119 357
+VStem: 419 179<1270.53 1472.82>
+LayerCount: 2
+Back
+SplineSet
+331 1153 m 6,0,1
+ 309 1166 309 1166 336 1203 c 260,2,3
+ 361 1237 361 1237 382 1276.5 c 132,-1,4
+ 403 1316 403 1316 419 1384 c 14,5,-1
+ 429 1431 l 6,6,7
+ 439 1476 439 1476 485 1476 c 6,8,-1
+ 571 1476 l 6,9,10
+ 616 1476 616 1476 605 1431 c 6,11,-1
+ 598 1399 l 262,12,13
+ 577 1308 577 1308 536.5 1247 c 132,-1,14
+ 496 1186 496 1186 438 1137 c 260,15,16
+ 405 1109 405 1109 386 1120 c 6,17,-1
+ 331 1153 l 6,0,1
+EndSplineSet
+Fore
+SplineSet
+331 1156 m 2,0,1
+ 308 1171 308 1171 336 1206 c 256,2,3
+ 363 1240 363 1240 386 1288 c 128,-1,4
+ 409 1336 409 1336 419 1384 c 10,5,-1
+ 429 1431 l 2,6,7
+ 439 1476 439 1476 485 1476 c 2,8,-1
+ 571 1476 l 2,9,10
+ 615 1476 615 1476 605 1431 c 2,11,-1
+ 598 1399 l 258,12,13
+ 575 1294 575 1294 531 1232.5 c 128,-1,14
+ 487 1171 487 1171 442 1136 c 256,15,16
+ 407 1109 407 1109 390 1119 c 2,17,-1
+ 331 1156 l 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: dcaron
+Encoding: 271 271 366
+Width: 1346
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 77 100 N 1 0 0 1 0 0 2
+Refer: 365 57480 N 1 0 0 1 929 0 2
+EndChar
+
+StartChar: Lcaron
+Encoding: 317 317 367
+Width: 1136
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 134 76 N 1 0 0 1 0 0 2
+Refer: 365 57480 S 1 0 0 1 470 0 2
+EndChar
+
+StartChar: lcaron
+Encoding: 318 318 368
+Width: 684
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 51 108 N 1 0 0 1 0 0 2
+Refer: 365 57480 S 1 0 0 1 270 0 2
+EndChar
+
+StartChar: tcaron
+Encoding: 357 357 369
+Width: 757
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 50 116 N 1 0 0 1 0 0 2
+Refer: 365 57480 N 1 0 0 1 309 0 2
 EndChar
 EndChars
 EndSplineFont

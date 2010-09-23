@@ -81,18 +81,11 @@
    <point num="right-v-rdiag-right-top"/>
   </line>
   
-  <compile-if test="slanted">
-   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-   <set-projection-vector axis="y"/>
-   <!--    <set-round-state round="to-grid"/> -->
-   <else>
-    <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
-   </else>
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -171,6 +164,10 @@
   </compile-if>
   <set-vectors axis="x"/>
   
+  <call-macro name="move-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -186,15 +183,15 @@
     </move>
    </move>
   </move>
-  <compile-if test="slanted">
+  <!--  <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-  </compile-if>
+  </compile-if>-->
   <set-equal target="width" source="(right-v-rdiag-right-top -- right-bearing)"/>
   <!-- - rbearing-->
-  <compile-if test="slanted">
+  <!--  <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <round value="width"/>
-  </compile-if>
+  </compile-if>-->
   <if test="width &lt; 0.0p or width &gt;= 2.0p">
    <if test="odd((left-v-ldiag-left-top -- left-v-rdiag-left-top) + (right-v-ldiag-right-top -- right-v-rdiag-right-top) + width)">
     <set-equal target="width" source="width - 1.0p"/>
@@ -273,16 +270,45 @@
     </move>
    </with-round-state>
    <else>
-    <interpolate>
+    <interpolate round="yes">
      <reference>
       <point num="left-v-ldiag-left-top"/>
       <point num="right-v-rdiag-right-top"/>
      </reference>
      <point num="left-v-ldiag-left-bottom"/>
-     <point num="left-v-rdiag-right-bottom"/>
-     <point num="right-v-ldiag-left-bottom"/>
-     <point num="right-v-rdiag-right-bottom"/>
+     <!--     <point num="left-v-rdiag-right-bottom"/>-->
+     <!--      <point num="right-v-ldiag-left-bottom"/> -->
+     <!--      <point num="right-v-rdiag-right-bottom"/> -->
     </interpolate>
+    <move round="no" color="black">
+     <reference>
+      <point num="left-v-ldiag-left-bottom"/>
+     </reference>
+     <point num="left-v-rdiag-right-bottom"/>
+    </move>
+    <if test="(not(is-glyph-grayscale))">
+     <mdap round="yes">
+      <point num="left-v-rdiag-right-bottom"/>
+     </mdap>
+    </if>
+    <interpolate round="up-to-grid">
+     <reference>
+      <point num="right-v-ldiag-right-top"/>
+      <point num="left-v-rdiag-left-top"/>
+     </reference>
+     <point num="right-v-ldiag-left-bottom"/>
+    </interpolate>
+    <move round="no" color="black">
+     <reference>
+      <point num="right-v-ldiag-left-bottom"/>
+     </reference>
+     <point num="right-v-rdiag-right-bottom"/>
+    </move>
+    <if test="(not(is-glyph-grayscale))">
+     <mdap round="yes">
+      <point num="right-v-rdiag-right-bottom"/>
+     </mdap>
+    </if>
    </else>
   </compile-if>
   <interpolate>
@@ -481,6 +507,10 @@
     </shift-absolute>
    </if>
   </compile-if>
+  
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

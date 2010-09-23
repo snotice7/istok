@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1284981938
+ModificationTime: 1285156651
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 48 16 14
+WinInfo: 16 16 14
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -350 -350 1136 1150]
@@ -76,7 +76,7 @@ Grid
 -1754.34 1272 m 0
  4389.66 1272 l 0
 EndSplineSet
-BeginChars: 65542 346
+BeginChars: 65542 351
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -15816,6 +15816,87 @@ SplineSet
  332 0 332 0 262 0 c 2,54,-1
  110 0 l 2,0,1
 EndSplineSet
+EndChar
+
+StartChar: caron.alt
+Encoding: 57480 57480 346
+Width: 614
+Flags: W
+HStem: 1108 368
+VStem: 374 278<1285.32 1471.25>
+LayerCount: 2
+Back
+SplineSet
+302 1159 m 6,0,1
+ 266 1177 266 1177 297 1220 c 260,2,3
+ 318 1249 318 1249 337.5 1295 c 132,-1,4
+ 357 1341 357 1341 369 1394 c 14,5,-1
+ 374 1416 l 6,6,7
+ 388 1476 388 1476 448 1476 c 6,8,-1
+ 608 1476 l 6,9,10
+ 668 1476 668 1476 654 1416 c 6,11,-1
+ 652 1407 l 262,12,13
+ 631 1316 631 1316 584.5 1248.5 c 132,-1,14
+ 538 1181 538 1181 484 1135 c 260,15,16
+ 434 1092 434 1092 397 1110 c 6,17,-1
+ 302 1159 l 6,0,1
+EndSplineSet
+Fore
+SplineSet
+301 1163 m 2,0,1
+ 266 1182 266 1182 296 1224 c 256,2,3
+ 317 1253 317 1253 338.5 1304.5 c 128,-1,4
+ 360 1356 360 1356 369 1394 c 10,5,-1
+ 374 1416 l 2,6,7
+ 388 1476 388 1476 448 1476 c 2,8,-1
+ 608 1476 l 2,9,10
+ 667 1476 667 1476 654 1416 c 2,11,-1
+ 652 1407 l 258,12,13
+ 625 1285 625 1285 571.5 1221 c 128,-1,14
+ 518 1157 518 1157 486 1133 c 256,15,16
+ 431 1092 431 1092 399 1108 c 2,17,-1
+ 301 1163 l 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: dcaron
+Encoding: 271 271 347
+Width: 1464
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 77 100 N 1 0 0 1 0 0 2
+Refer: 346 57480 N 1 0 0 1 1005 0 2
+EndChar
+
+StartChar: Lcaron
+Encoding: 317 317 348
+Width: 1162
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 134 76 N 1 0 0 1 0 0 2
+Refer: 346 57480 N 1 0 0 1 500 0 2
+EndChar
+
+StartChar: lcaron
+Encoding: 318 318 349
+Width: 824
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 51 108 N 1 0 0 1 0 0 2
+Refer: 346 57480 S 1 0 0 1 365 0 2
+EndChar
+
+StartChar: tcaron
+Encoding: 357 357 350
+Width: 858
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 50 116 N 1 0 0 1 0 0 2
+Refer: 346 57480 S 1 0 0 1 399 0 2
 EndChar
 EndChars
 EndSplineFont
