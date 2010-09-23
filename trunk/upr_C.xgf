@@ -43,11 +43,17 @@
   <constant name="last" value="outer-bottom + 2"/>
   
   <set-vectors axis="x"/>
+  
+  <call-macro name="move-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <set-round-state round="no"/>
    </if>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -115,6 +121,10 @@
     </shift-absolute>
    </if>
   </compile-if>-->
+  
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <set-vectors axis="y"/>
   <compile-if test="smooth">
