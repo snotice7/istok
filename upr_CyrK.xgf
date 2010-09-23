@@ -2,8 +2,10 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Cyr K (К)-->
  <glyph ps-name="afii10028" init-graphics="yes">
+
   <!--
-      Copyright (C) 2008, 2009  Andrey V. Panov
+
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -19,6 +21,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
@@ -27,6 +30,7 @@
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
+
   <constant name="vstem-left-bottom" value="first-point"/>
   <constant name="vstem-left-top" value="vstem-left-bottom + vstem-vcount"/>
   <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
@@ -44,6 +48,7 @@
   <constant name="vstem-right-bottom" value="rhstem-left-bottom + smooth-count"/>
   <constant name="last" value="vstem-right-bottom + last-count"/>
   <constant name="diag-shift" value="-0.05p"/>
+
   <line name="ru-diag-l">
    <point num="ru-diag-l-top"/>
    <point num="ru-diag-l-bottom"/>
@@ -60,10 +65,11 @@
    <point num="rl-diag-l-top"/>
    <point num="rl-diag-l-bottom"/>
   </line>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
+   <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
     <compile-if test="smooth">
@@ -73,6 +79,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
@@ -112,6 +119,11 @@
     <point num="ru-diag-r-top"/>
    </align>
   </move>
+
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -125,7 +137,8 @@
     </compile-if>
    </else>
   </compile-if>
-  <move distance="lbearing" min-distance="no" color="white">
+  
+  <move distance="lbearing" color="white"> <!--min-distance="no"-->
    <reference>
     <point num="left-bearing"/>
    </reference>
@@ -188,6 +201,11 @@
    </reference>
    <point num="right-bearing"/>
   </move>
+  
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+
   <interpolate-untouched-points/>
  </glyph>
  <!--Cyr k-->

@@ -4,7 +4,7 @@
   
   <!--
       
-      Copyright (C) 2008, 2009 Andrey V. Panov
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -61,14 +61,18 @@
    <point num="diag-right-top"/>
   </line>
   
-  <compile-if test="slanted">
+  <!--  <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
    <set-round-state round="no"/>
-   <else>
+   <else>-->
     <set-vectors axis="x"/>
-   </else>
-  </compile-if>
+    <!--   </else>
+  </compile-if>-->
+  
+  <call-macro name="move-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <move color="white">
    <reference>
@@ -82,13 +86,26 @@
    <move distance="up-vert-stem" color="black">
     <point num="inner-left"/>
    </move>
+   <move min-distance="no" color="white" compile-if="slanted">
+    <point num="outer-right"/>
+    <move distance="low-vert-stem" color="black">
+     <point num="inner-right"/>
+     <interpolate>
+      <point num="upper-end-top"/>
+      <point num="upper-end-bottom"/>
+     </interpolate>
+    </move>
+    <move color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
   </move>
-  <move min-distance="no" color="white">
+  <move min-distance="no" color="white" compile-if="slanted = 0">
    <reference>
     <point num="right-bearing"/>
    </reference>
    <point num="outer-right"/>
-   <move distance="low-vert-stem" color="black" compile-if="slanted = 0">
+   <move distance="low-vert-stem" color="black">
     <point num="inner-right"/>
     <interpolate>
      <point num="upper-end-top"/>
@@ -104,7 +121,7 @@
    <point num="diag-right-top"/>
    <point num="diag-right-bottom"/>
   </interpolate>
-  <compile-if test="slanted">
+  <!--  <compile-if test="slanted">
    <with-projection-vector axis="x">
     <move distance="low-vert-stem" color="black">
      <reference>
@@ -138,7 +155,7 @@
     <point num="outer-right - 1"/>
     <point num="outer-right + 1"/>
    </align>
-  </compile-if>
+  </compile-if>-->
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
@@ -164,18 +181,22 @@
    </if>
   </compile-if>
   
-  <compile-if test="slanted">
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
+  <!--  <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
    <set-round-state round="to-grid"/>
-   <else>
+   <else>-->
     <set-vectors axis="y"/>
     <if test="vertical-smoothing">
      <set-round-state round="no"/>
     </if>
-   </else>
-  </compile-if>
-
+    <!--   </else>
+  </compile-if>-->
+  
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="horiz-stem" color="black">
