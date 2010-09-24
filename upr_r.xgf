@@ -4,7 +4,7 @@
   
   <!--
       
-      Andrey V. Panov (C) 2008, 2009
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -104,6 +104,10 @@
     </interpolate>
    </else>
   </if>
+
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -118,6 +122,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -152,6 +157,10 @@
    </reference>
    <point num="upper-end-bottom"/>
   </interpolate>
+  
+  <call-macro name="restore-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

@@ -4,7 +4,7 @@
  <glyph ps-name="afii10043" init-graphics="yes">
   <!--
      
-     Andrey V. Panov (C) 2007, 2008, 2009
+      Copyright (C) 2007, 2008, 2009, 2010 Andrey V. Panov
      
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
      along with this program.  If not, see "http://www.gnu.org/licenses/".
      
      -->
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
@@ -46,6 +47,7 @@
   <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
   <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
   <constant name="last" value="rdesc-left-top"/>
+
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -59,6 +61,7 @@
     </compile-if>
    </else>
   </compile-if>
+  
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -91,6 +94,11 @@
     <point num="rdesc-right-bottom"/>
    </align>
   </move>
+
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -102,6 +110,7 @@
     </if>
    </else>
   </compile-if>
+
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -164,6 +173,11 @@
     <point num="right-bearing"/>
    </move>
   </compile-if>
+  
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+
   <interpolate-untouched-points/>
  </glyph>
  <!--Cyr Shch-->
