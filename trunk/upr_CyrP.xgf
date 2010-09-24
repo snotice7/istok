@@ -52,6 +52,7 @@
     </compile-if>
    </else>
   </compile-if>
+
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
    <align>
@@ -72,6 +73,10 @@
     </align>
    </move>
   </move>
+
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -123,19 +128,11 @@
    </move>
   </compile-if>
   
+  <call-macro name="restore-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+
   <interpolate-untouched-points/>
  </glyph>
  <!--Cyr P-->
- 
- <glyph ps-name="afii10081" init-graphics="yes">
-  <call-glyph ps-name="afii10033">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-   <with-param name="space" value="small-cyrn-space"/>
-  </call-glyph>
- </glyph>
- 
 </xgridfit>

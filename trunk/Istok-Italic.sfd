@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1285156370
+ModificationTime: 1285300029
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -52,7 +52,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 144 16 14
+WinInfo: 64 16 13
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -7089,7 +7089,7 @@ EndChar
 StartChar: Q
 Encoding: 81 81 144
 Width: 1514
-Flags: W
+Flags: HW
 HStem: -377 140<871.896 1194.9> -25 151<516.312 625 817 938.456> 1308 156<667.493 1087.43>
 VStem: 110 205<331.918 899.608> 625 192<-183.375 -20.7288> 1290 205<534.392 1102.02>
 LayerCount: 2
@@ -7116,15 +7116,6 @@ SplineSet
 EndSplineSet
 Fore
 SplineSet
-315 556 m 256,0,1
- 315 351 315 351 421.5 238.5 c 128,-1,2
- 528 126 528 126 738 126 c 256,3,4
- 958 126 958 126 1124 309.5 c 128,-1,5
- 1290 493 1290 493 1290 878 c 256,6,7
- 1290 1083 1290 1083 1183.5 1195.5 c 128,-1,8
- 1077 1308 1077 1308 867 1308 c 256,9,10
- 647 1308 647 1308 481 1124.5 c 128,-1,11
- 315 941 315 941 315 556 c 256,0,1
 110 580 m 256,12,13
  110 980 110 980 324 1222 c 128,-1,14
  538 1464 538 1464 878 1464 c 256,15,16
@@ -7143,6 +7134,15 @@ SplineSet
  625 -208 625 -208 625 -25 c 1,37,38
  395 -2 395 -2 266 132 c 0,39,40
  110 295 110 295 110 580 c 256,12,13
+315 556 m 256,0,1
+ 315 351 315 351 421.5 238.5 c 128,-1,2
+ 528 126 528 126 738 126 c 256,3,4
+ 958 126 958 126 1124 309.5 c 128,-1,5
+ 1290 493 1290 493 1290 878 c 256,6,7
+ 1290 1083 1290 1083 1183.5 1195.5 c 128,-1,8
+ 1077 1308 1077 1308 867 1308 c 256,9,10
+ 647 1308 647 1308 481 1124.5 c 128,-1,11
+ 315 941 315 941 315 556 c 256,0,1
 EndSplineSet
 Kerns2: 146 -43 "LGC kerning subtable" 
 EndChar
@@ -16870,7 +16870,7 @@ EndChar
 StartChar: dcaron
 Encoding: 271 271 366
 Width: 1346
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 77 100 N 1 0 0 1 0 0 2
@@ -16880,7 +16880,7 @@ EndChar
 StartChar: Lcaron
 Encoding: 317 317 367
 Width: 1136
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 134 76 N 1 0 0 1 0 0 2
@@ -16890,7 +16890,7 @@ EndChar
 StartChar: lcaron
 Encoding: 318 318 368
 Width: 684
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 51 108 N 1 0 0 1 0 0 2
@@ -16900,7 +16900,7 @@ EndChar
 StartChar: tcaron
 Encoding: 357 357 369
 Width: 757
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 50 116 N 1 0 0 1 0 0 2
