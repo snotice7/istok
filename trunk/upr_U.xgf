@@ -125,12 +125,10 @@
    </move>
   </compile-if>
 
-  <call-macro name="restore-left-border">
+  <call-macro name="restore-left-border-x">
    <with-param name="point-lbearing" value="left-bearing"/>
   </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>
- 
- 
 </xgridfit>

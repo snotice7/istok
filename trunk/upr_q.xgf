@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--q-->
  <glyph ps-name="q" init-graphics="yes">
+
   <!--
       
-      Andrey V. Panov (C) 2008, 2009
+      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -100,19 +100,17 @@
    </move>
   </move>
   
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="horizontal-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
-   </else>
+  <call-macro name="move-left-border">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -121,7 +119,7 @@
    <move distance="curve-vstem" color="black">
     <point num="inner-left"/>
    </move>
-   <move distance="space" round="no" cut-in="no" color="black">
+   <move distance="space" round="no" cut-in="no" color="black" compile-if="slanted = 0">
     <point num="vstem-right-top"/>
     <align>
      <point num="vstem-right-bottom"/>
@@ -141,6 +139,42 @@
     </move>
    </move>
   </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+   <move distance="space" color="black">
+    <reference>
+     <point num="outer-left"/>
+    </reference>
+    <point num="vstem-right-top"/>
+    <align>
+     <point num="vstem-right-bottom"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="vstem-left-bottom"/>
+     <align>
+      <point num="upper-joint-top"/>
+      <point num="upper-joint-bottom"/>
+      <point num="lower-joint-top"/>
+      <point num="lower-joint-bottom"/>
+      <point num="vstem-left-top"/>
+     </align>
+    </move>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+   <interpolate>
+    <reference>
+     <point num="inner-left"/>
+     <point num="lower-joint-top"/>
+    </reference>
+    <point num="outer-top"/>
+    <point num="inner-top"/>
+    <point num="outer-bottom"/>
+    <point num="inner-bottom"/>
+   </interpolate>
+  </compile-if>
   <compile-if test="smooth or slanted">
    <compile-if test="slanted">
     <set-projection-vector axis="x"/>
@@ -149,6 +183,11 @@
     <point num="right-bearing"/>
    </move>
   </compile-if>
+  
+  <call-macro name="restore-left-border-x">
+   <with-param name="point-lbearing" value="left-bearing"/>
+  </call-macro>
+  
   <interpolate-untouched-points/>
  </glyph>
  

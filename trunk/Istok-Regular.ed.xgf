@@ -253,6 +253,10 @@
    <with-param name="left-margin" value="small-cyrn-lbearing"/>
    <with-param name="right-margin" value="small-o-lbearing"/>
   </call-macro>
+  <call-macro name="regularize-control-value-width">
+   <with-param name="cv-width" value="small-u-space"/>
+   <with-param name="margin" value="small-cyrn-lbearing"/>
+  </call-macro>
   <call-macro name="regularize-control-value-width-two-varmargin">
    <with-param name="cv-width" value="digit-six-hspace"/>
    <with-param name="left-margin" value="(control-value(emspace) * 9.2p) / 100p"/>
@@ -751,6 +755,7 @@
   <xi:include href="upr_q.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_r.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_t.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_u.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_y.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrb.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrv.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
