@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="a" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  <call-glyph ps-name="q">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="lstem-height" value="small-x-height"/>
+   <with-param name="o-baseline" value="small-o-baseline"/>
+   <with-param name="o-height" value="small-o-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="curve-vstem" value="small-o-curve-stem"/>
+   <with-param name="curve-hstem" value="small-curve-hstem"/>
+   <with-param name="lbearing" value="small-o-lbearing"/>
+   <with-param name="space" value="small-a-space"/>
+   <with-param name="upper-notch" value="cog-count"/>
+   <with-param name="lower-notch" value="cog-count"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>

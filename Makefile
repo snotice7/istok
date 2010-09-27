@@ -74,7 +74,7 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 	ttx2xgf $*.gen.ttx $*.gen.xgf
 #	patch -l --no-backup-if-mismatch < $*.xgf.diff
 
-%.tmp.xgf: %.ed.xgf upr_*.xgf %_acc.xgf
+%.tmp.xgf: %.ed.xgf upr_*.xgf it_*.xgf %_acc.xgf
 	xmllint --xinclude $*.ed.xgf > $*.tmp.xgf
 
 %.xml: %.gen.xgf %.tmp.xgf
