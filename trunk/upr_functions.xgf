@@ -245,6 +245,24 @@
   </macro>
   
   <!--Used for m, Ш-->
+  <macro name="regularize-control-value-double-width-two-varmargin">
+   <param name="cv-width"/>   <!-- regularized control value, should not be rounded -->
+   <param name="left-margin"/>   <!-- variable, width of margin -->
+   <param name="stem-width"/>
+   <param name="right-margin"/>   <!-- variable, width of margin -->
+   <set-equal target="width" source="round-white(left-margin)"/>
+   <if test="width = 0">
+    <set-equal target="temp" source="1.0p"/>
+    <else>
+     <set-equal target="temp" source="width"/>
+    </else>
+   </if>
+   <set-equal target="temp" source="(((round((2.0p * control-value(index(cv-width))) + left-margin + right-margin + control-value(stem-width)) - temp) - round(control-value(stem-width))) - round-white(right-margin))"/>
+   <with-round-state round="down-to-grid">
+    <set-equal target="cv-width" source="round(temp / 2.0p)"/>
+   </with-round-state>
+  </macro>
+  
   <macro name="regularize-control-value-double-width">
    <param name="cv-width"/>
    <param name="margin"/>

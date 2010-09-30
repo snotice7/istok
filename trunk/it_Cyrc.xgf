@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="y" init-graphics="yes">
+ <!--ц-->
+ <glyph ps-name="afii10088">
   
   <!--
       
-      Copyright (C) 2008, 2009, 2010 Andrey V. Panov
+      Copyright (C) 2008, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -21,16 +22,17 @@
       
       -->
   
-  <param name="baseline" value="small-curve-desc"/>
+  <param name="baseline" value="small-x-baseline"/>
   <param name="o-baseline" value="small-o-baseline"/>
   <param name="height" value="small-x-height"/>
   <param name="curve-hstem" value="small-curve-hstem"/>
   <param name="vert-stem" value="small-vert-stem"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
   <param name="lbearing" value="small-cyrn-lbearing"/>
-  <param name="space" value="small-cyrn-space"/>
-  <param name="c-flat-ends" value="small-c-flat-ends"/>
-  <param name="upper-notch" value="cog-count"/>
-  <param name="lower-notch" value="notch-count"/>
+  <param name="space" value="small-u-space"/>
+  <param name="tse-desc" value="small-tse-desc"/>
+  <param name="tse-desc-horiz-shift" value="small-tse-desc-horiz-shift"/>
+  <param name="vert-thinstem" value="small-vert-thinstem"/>
   
   <constant name="lstem-left-bottom" value="0"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
@@ -41,12 +43,11 @@
   <constant name="rstem-left-top" value="joint-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
   <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
-  <constant name="desc-bottom" value="rstem-right-bottom + 3"/>
-  <constant name="lower-end-bottom" value="desc-bottom + 3"/>
-  <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
-  <constant name="desc-top" value="lower-end-top + 3"/>
-  <constant name="rstem-left-bottom" value="desc-top + 3"/>
-  <constant name="joint-bottom" value="rstem-left-bottom + lower-notch + 1"/>
+  <constant name="rdesc-right-top" value="rstem-right-bottom + 3 + smooth-count"/>
+  <constant name="rdesc-right-bottom" value="rdesc-right-top + vstem-vcount"/>
+  <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
+  <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
+  <constant name="joint-bottom" value="rdesc-left-top + 4 + cog-count"/>
   <constant name="arc-bottom" value="joint-bottom + 3"/>
   <constant name="last" value="arc-bottom + 2"/>
   
@@ -65,9 +66,9 @@
   </compile-if>
   
   <move distance="baseline">
-   <point num="desc-bottom"/>
-   <move distance="curve-hstem" color="black">
-    <point num="desc-top"/>
+   <point num="rdesc-left-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="rdesc-right-top"/>
    </move>
   </move>
   <move distance="height">
@@ -90,30 +91,12 @@
     </move>
    </move>
   </move>
-  <if test="pixels-per-em &lt; c-flat-ends">
+  <move distance="tse-desc">
+   <point num="rdesc-left-bottom"/>
    <align>
-    <reference>
-     <point num="desc-bottom"/>
-    </reference>
-    <point num="lower-end-bottom"/>
+    <point num="rdesc-right-bottom"/>
    </align>
-   <align>
-    <reference>
-     <point num="desc-top"/>
-    </reference>
-    <point num="lower-end-top"/>
-   </align>
-   <else>
-    <interpolate>
-     <reference>
-      <point num="desc-top"/>
-      <point num="arc-bottom"/>
-     </reference>
-     <point num="lower-end-bottom"/>
-     <point num="lower-end-top"/>
-    </interpolate>
-   </else>
-  </if>
+  </move>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -142,45 +125,42 @@
     <align>
      <point num="lstem-right-bottom"/>
     </align>
-    <interpolate compile-if="slanted = 0">
-     <point num="lower-end-bottom"/>
-    </interpolate>
    </move>
    <move distance="space" color="black">
     <point num="rstem-right-top"/>
     <align>
      <point num="rstem-right-bottom"/>
     </align>
+    <interpolate>
+     <point num="arc-top"/>
+     <point num="arc-bottom"/>
+    </interpolate>
+    <move distance="tse-desc-horiz-shift" min-distance="no">
+     <point num="rdesc-right-bottom"/>
+     <align>
+      <point num="rdesc-right-top"/>
+     </align>
+     <move distance="vert-thinstem" color="black">
+      <point num="rdesc-left-top"/>
+      <align>
+       <point num="rdesc-left-bottom"/>
+      </align>
+     </move>
+     <move min-distance="no" color="white">
+      <point num="right-bearing"/>
+     </move>
+    </move>
     <move distance="vert-stem" color="black">
      <point num="joint-bottom"/>
      <align>
       <point num="rstem-left-top"/>
       <point num="joint-top"/>
-      <point num="rstem-left-bottom"/>
      </align>
-    </move>
-    <move min-distance="no" color="white">
-     <point num="right-bearing"/>
     </move>
    </move>
   </move>
   <compile-if test="smooth or slanted">
    <compile-if test="slanted">
-    <interpolate>
-     <reference>
-      <point num="lstem-right-bottom"/>
-      <point num="joint-top"/>
-     </reference>
-     <point num="arc-bottom"/>
-     <point num="arc-top"/>
-    </interpolate>
-    <interpolate>
-     <reference>
-      <point num="lstem-left-bottom"/>
-      <point num="lstem-right-bottom"/>
-     </reference>
-     <point num="lower-end-bottom"/>
-    </interpolate>
     <set-projection-vector axis="x"/>
    </compile-if>
    <move round="to-grid">
@@ -190,5 +170,4 @@
   
   <interpolate-untouched-points/>
  </glyph>
- 
 </xgridfit>

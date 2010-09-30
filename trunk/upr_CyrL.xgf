@@ -46,99 +46,9 @@
   <constant name="last" value="curl-right-bottom + last-count"/>
   
   <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-   </else>
-  </compile-if>
-  
-  <move color="white">
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="lstem-left-top"/>
-   </align>
-   <move distance="vert-thinstem" color="black">
-    <point num="lstem-right-top"/>
-    <align>
-     <point num="lstem-right-bottom"/>
-    </align>
-   </move>
-   <move distance="cyrl-space" color="black">
-    <point num="rstem-right-top"/>
-    <align>
-     <point num="rstem-right-bottom"/>
-    </align>
-    <move distance="vert-stem" color="black">
-     <point num="rstem-left-bottom"/>
-     <align>
-      <point num="rstem-left-top"/>
-     </align>
-    </move>
-   </move>
-  </move>
-  <compile-if test="slanted">
-   <set-equal target="temp" source="left-bearing -- lstem-left-bottom"/>
-   <with-round-state round="to-grid">
-    <round value="temp" result-to="h-shift"/>
-   </with-round-state>
-   <multiply value1="h-shift" value2="cos-it-ang"/>
-   <set-projection-vector axis="x"/>
-   <shift-absolute pixel-distance="h-shift - temp">
-    <point num="lstem-left-bottom"/>
-    <point num="lstem-left-top"/>
-    <point num="lstem-right-top"/>
-    <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-left-top"/>
-    <point num="rstem-right-top"/>
-    <point num="rstem-right-bottom"/>
-   </shift-absolute>
-   <set-round-state round="to-grid"/>
-  </compile-if>
-  <move color="white" min-distance="no">
-   <reference>
-    <point num="rstem-right-bottom"/>
-   </reference>
-   <point num="right-bearing"/>
-  </move>
-  <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-stem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="rstem-left-bottom"/>
-     <point num="rstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="rstem-right-top"/>
-     <point num="rstem-right-bottom"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-thinstem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="lstem-right-top"/>
-     <point num="lstem-right-bottom"/>
-    </shift-absolute>
-   </if>
-  </compile-if>
-  
-  <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
+   <!--    <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
     <if test="vertical-smoothing">
@@ -175,6 +85,101 @@
     </align>
    </move>
   </move>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-left-top"/>
+   </align>
+   <move distance="vert-thinstem" color="black">
+    <point num="lstem-right-top"/>
+    <align>
+     <point num="lstem-right-bottom"/>
+    </align>
+   </move>
+   <move distance="cyrl-space" color="black">
+    <point num="rstem-right-top"/>
+    <align>
+     <point num="rstem-right-bottom"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="rstem-left-bottom"/>
+     <align>
+      <point num="rstem-left-top"/>
+     </align>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-equal target="temp" source="left-bearing -- lstem-left-bottom"/>
+   <with-round-state round="to-grid">
+    <round value="temp" result-to="width"/>
+   </with-round-state>
+   <multiply value1="width" value2="cos-it-ang"/>
+   <set-projection-vector axis="x"/>
+   <shift-absolute pixel-distance="width - temp">
+    <point num="lstem-left-bottom"/>
+    <point num="lstem-left-top"/>
+    <point num="lstem-right-top"/>
+    <point num="lstem-right-bottom"/>
+    <point num="rstem-left-bottom"/>
+    <point num="rstem-left-top"/>
+    <point num="rstem-right-top"/>
+    <point num="rstem-right-bottom"/>
+   </shift-absolute>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <move color="white" min-distance="no">
+   <reference>
+    <point num="rstem-right-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <compile-if test="smooth and (slanted = 0)">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="rstem-left-bottom"/>
+     <point num="rstem-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="rstem-right-top"/>
+     <point num="rstem-right-bottom"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-thinstem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lstem-left-bottom"/>
+     <point num="lstem-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lstem-right-top"/>
+     <point num="lstem-right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <interpolate-untouched-points/>
  </glyph> <!--Cyr L-->

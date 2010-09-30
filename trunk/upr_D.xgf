@@ -108,7 +108,7 @@
     </align>
    </move>
   </move>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <set-round-state round="to-grid"/>
    </if>

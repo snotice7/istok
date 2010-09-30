@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--"Yu"-->
+ <!--"yu"-->
+ 
  <glyph ps-name="afii10048" init-graphics="yes">
   
   <!--
@@ -38,12 +39,12 @@
   <constant name="left-top" value="left-bottom + vstem-vcount"/>
   <constant name="right-top" value="left-top + vstem-hcount"/>
   <constant name="joiner-left-top" value="right-top + smooth-count"/>
-  <constant name="outer-left" value="joiner-left-top + 1"/>
-  <constant name="joiner-right-top" value="outer-left"/>
-  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="joiner-right-top" value="joiner-left-top + 1"/>
+  <constant name="outer-top" value="joiner-right-top + 3"/>
   <constant name="outer-right" value="outer-top + 3"/>
   <constant name="outer-bottom" value="outer-right + 3"/>
-  <constant name="joiner-right-bottom" value="outer-bottom + 3"/>
+  <constant name="outer-left" value="outer-bottom + 3"/>
+  <constant name="joiner-right-bottom" value="outer-left + 2"/>
   <constant name="joiner-left-bottom" value="joiner-right-bottom + 1"/>
   <constant name="right-bottom" value="joiner-left-bottom + smooth-count"/>
   <constant name="inner-left" value="right-bottom + last-count + 1"/>
@@ -95,7 +96,20 @@
    </move>
   </move>
   
-  <set-vectors axis="x"/>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="only-vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -105,107 +119,59 @@
     <point num="left-top"/>
    </align>
    <move distance="vert-stem" color="black">
-    <point num="right-top"/>
+    <point num="right-bottom"/>
     <align>
-     <point num="joiner-left-top"/>
-     <point num="joiner-left-bottom"/>
-     <point num="right-bottom"/>
-    </align>
-    <move color="black">
-     <!--distance="cap-yu-joiner-length"-->
-     <point num="joiner-right-top"/>
-     <align>
-      <point num="joiner-right-bottom"/>
-     </align>
-     <move distance="curve-vert-stem" color="black">
-      <point num="inner-left"/>
-     </move>
-     <move distance="space" color="white">
-      <point num="outer-right"/>
-      <move distance="curve-vert-stem" color="black">
-       <point num="inner-right"/>
-      </move>
-     </move>
-    </move>
-   </move>
-  </move>
-  <set-equal target="width" source="(outer-right -- right-bearing)"/>  <!--- rbearing-->
-  <if test="(joiner-left-bottom -- joiner-right-bottom) + width &lt;= 0">
-   <add value1="width" value2="1.0p"/>
-  </if>
-  <if test="width &lt; 0.0p">
-   <shift-absolute pixel-distance="width">
-    <point num="joiner-right-top"/>
-    <point num="joiner-right-bottom"/>
-    <point num="inner-left"/>
-    <point num="inner-right"/>
-    <point num="outer-right"/>
-   </shift-absolute>
-  </if>
-  <interpolate>
-   <reference>
-    <point num="joiner-right-top"/>
-    <point num="outer-right"/>
-   </reference>
-   <point num="outer-top"/>
-   <point num="outer-bottom"/>
-   <point num="inner-bottom"/>
-   <point num="inner-top"/>
-  </interpolate>
-  <move min-distance="no">
-   <reference>
-    <point num="outer-right"/>
-   </reference>
-   <point num="right-bearing"/>
-  </move>
-  <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-stem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="left-bottom"/>
-     <point num="left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
      <point num="right-top"/>
      <point num="joiner-left-top"/>
      <point num="joiner-left-bottom"/>
-     <point num="right-bottom"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(curve-vert-stem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <!--    <point num="joiner-right-top"/>
-     <point num="joiner-right-bottom"/>-->
-     <point num="inner-right"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="inner-left"/>
-     <point num="outer-right"/>
-    </shift-absolute>
-   </if>
+    </align>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
   </compile-if>
-
+  <move round="no" color="white">
+   <reference>
+    <point num="joiner-left-bottom"/>
+   </reference>
+   <point num="outer-left"/>
+  </move>
+  <compile-if test="slanted">
+   <set-round-state round="to-grid"/>
+   <set-minimum-distance value="1.0p"/>
+  </compile-if>
+  <move>
+   <point num="outer-left"/>
+   <move distance="curve-vert-stem" color="black">
+    <point num="inner-left"/>
+    <interpolate>
+     <point num="joiner-right-top"/>
+     <point num="joiner-right-bottom"/>
+    </interpolate>
+   </move>
+   <move distance="space" round="no" cut-in="no" color="black">
+    <point num="outer-right"/>
+    <move distance="curve-vert-stem" color="black">
+     <point num="inner-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+   <interpolate>
+    <reference>
+     <point num="outer-left"/>
+     <point num="outer-right"/>
+    </reference>
+    <point num="outer-top"/>
+    <point num="outer-bottom"/>
+    <point num="inner-bottom"/>
+    <point num="inner-top"/>
+   </interpolate>
+  </with-projection-vector>
   <interpolate-untouched-points/>
-  <!-- Symmetrize "O" -->
-  <!--  <compile-if test="slanted = 0">
-   <align>
-    <reference>
-     <point num="outer-right - 1"/>
-    </reference>
-    <point num="joiner-right-top + 1"/>
-   </align>
-   <align>
-    <reference>
-     <point num="outer-right + 1"/>
-    </reference>
-    <point num="joiner-right-bottom - 1"/>
-   </align>
-  </compile-if>-->
  </glyph>
  
  <glyph ps-name="afii10096" init-graphics="yes">

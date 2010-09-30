@@ -84,11 +84,7 @@
    </reference>
    <point num="lstem-diag-intersect"/>
   </interpolate>
-  
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-  
+   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -128,7 +124,7 @@
       <point num="rstem-diag-intersect"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -196,10 +192,6 @@
     </align>
    </with-freedom-vector>
    <!--  </with-projection-vector> -->
-  
-  <call-macro name="restore-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

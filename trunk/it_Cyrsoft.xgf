@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr Soft sign (Ь)-->
- <glyph ps-name="afii10046" init-graphics="yes">
+ <!--Cyr soft sign (ь)-->
+ 
+ <glyph ps-name="afii10094" init-graphics="yes">
   
   <!--
-     
-      Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
-
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="intersect-height" value="cap-h-intersect-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="curve-stem" value="cap-o-curve-stem"/>
-  <param name="horiz-stem" value="cap-horiz-stem"/>
-  <param name="lbearing" value="cap-h-lbearing"/>
-  <param name="space" value="cap-b-low-space"/>
-
-  <constant name="lstem-left-bottom" value="first-point"/>
-  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="x-height" value="small-x-height"/>
+  <param name="intersect-height" value="small-cyrn-intersect-height"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="curve-stem" value="small-o-curve-stem"/>
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="lbearing" value="small-cyrn-lbearing"/>
+  <param name="space" value="small-cyrv-low-space"/>
+  
+  <constant name="lstem-left-bottom" value="0"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
   <constant name="right-top" value="lstem-left-top + vstem-hcount"/>
-  <constant name="up-inner-left-bottom" value="right-top + smooth-count"/>
-  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-left-bottom" value="right-top + smooth-count + notch-count"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 3"/>
   <constant name="low-outer-right" value="up-inner-right-bottom + 3"/>
   <constant name="right-bottom" value="low-outer-right + 3"/>
-  <constant name="low-inner-left-bottom" value="right-bottom  + 1"/>
-  <constant name="low-inner-right-bottom" value="low-inner-left-bottom + 1"/>
-  <constant name="low-inner-right" value="low-inner-right-bottom + 3"/>
-  <constant name="low-inner-right-top" value="low-inner-right + 3"/>
-  <constant name="low-inner-left-top" value="low-inner-right-top + 1"/>
-  <constant name="last" value="low-inner-left-top"/>
-
+  <constant name="low-inner-left" value="22"/>
+  <constant name="low-inner-bottom" value="low-inner-left + 3"/>
+  <constant name="low-inner-right" value="low-inner-bottom + 3"/>
+  <constant name="low-inner-top" value="low-inner-right + 3"/>
+  <constant name="last" value="low-inner-top + 2"/>
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -58,29 +58,20 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="right-bottom"/>
-   </align>
+   <point num="right-bottom"/>
    <move distance="horiz-stem" color="black">
-    <point num="low-inner-left-bottom"/>
-    <align>
-     <point num="low-inner-right-bottom"/>
-    </align>
+    <point num="low-inner-bottom"/>
    </move>
   </move>
   <move distance="intersect-height">
-   <point num="low-inner-left-top"/>
-   <align>
-    <point num="low-inner-right-top"/>
-   </align>
+   <point num="low-inner-top"/>
    <move distance="horiz-stem" color="black">
-    <point num="up-inner-left-bottom"/>
-    <align>
-     <point num="up-inner-right-bottom"/>
-    </align>
+    <point num="up-inner-right-bottom"/>
+    <move min-distance="no">
+     <point num="up-inner-left-bottom"/>
+    </move>
    </move>
   </move>
   <move distance="x-height">
@@ -89,7 +80,7 @@
     <point num="right-top"/>
    </align>
   </move>
-
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -103,7 +94,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
@@ -116,8 +107,7 @@
     <point num="right-top"/>
     <align>
      <point num="up-inner-left-bottom"/>
-     <point num="low-inner-left-top"/>
-     <point num="low-inner-left-bottom"/>
+     <point num="low-inner-left"/>
     </align>
    </move>
    <move distance="space" color="black">
@@ -130,6 +120,16 @@
     </move>
    </move>
   </move>
+  <interpolate>
+   <reference>
+    <point num="up-inner-left-bottom"/>
+    <point num="low-outer-right"/>
+   </reference>
+   <point num="right-bottom"/>
+   <point num="low-inner-bottom"/>
+   <point num="low-inner-top"/>
+   <point num="up-inner-right-bottom"/>
+  </interpolate>
   
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
@@ -150,19 +150,19 @@
    <compile-if test="slanted">
     <set-projection-vector axis="x"/>
    </compile-if>
-    <set-round-state round="to-grid"/>
-    <set-minimum-distance value="1.0p"/>
-    <move min-distance="no" color="white">
-     <reference>
-      <point num="low-outer-right"/>
-     </reference>
-     <point num="right-bearing"/>
-    </move>
+   <set-round-state round="to-grid"/>
+   <set-minimum-distance value="1.0p"/>
+   <move min-distance="no" color="white">
+    <reference>
+     <point num="low-outer-right"/>
+    </reference>
+    <point num="right-bearing"/>
+   </move>
    <move round="yes">
     <point num="right-bearing"/>
    </move>
   </compile-if>
   <interpolate-untouched-points/>
  </glyph>
- <!--Ь-->
+ <!--ь-->
 </xgridfit>

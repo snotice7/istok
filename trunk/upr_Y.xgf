@@ -90,12 +90,12 @@
     <point num="rdiag-right-top"/>
    </align>
   </move>
+  
   <!-- <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
    <set-round-state round="no"/>
    <else>-->
-    
     <set-vectors axis="x"/>
     <compile-if test="smooth">
      <if test="vertical-smoothing">
@@ -118,8 +118,7 @@
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-round-state round="no"/>
   </compile-if>
-  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/>
-  <!--- rbearing-->
+  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/>   <!--- rbearing-->
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="rdiag-right-top"/>
@@ -135,8 +134,7 @@
     </with-projection-vector>
    </compile-if>
   </if>
-  <interpolate>
-   <!--round="yes"-->
+  <interpolate>    <!--round="yes"-->
    <reference>
     <point num="ldiag-left-top"/>
     <point num="rdiag-right-top"/>
@@ -193,6 +191,9 @@
   </align>
   <compile-if test="slanted">
    <set-vectors axis="x"/>
+   <compile-if test="smooth = 0">
+    <set-round-state round="to-grid"/>
+   </compile-if>
    <set-equal target="temp" source="coord(vstem-left-bottom)"/>
    <mdap round="to-grid">
     <point num="vstem-left-bottom"/>
@@ -259,6 +260,7 @@
     <point num="rdiag-left-bottom"/>
    </shift-absolute>
   </if>
+  
   <set-vectors axis="y"/>
   <interpolate>
    <reference>

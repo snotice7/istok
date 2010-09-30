@@ -2,26 +2,26 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--"Cyr f" -->
  <glyph ps-name="afii10086" init-graphics="yes">
-
+  
   <!--
-     
+      
       Copyright (C) 2008, 2009, 2010 Andrey V. Panov
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
-
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
   <constant name="larc-outer-left" value="0"/>
   <constant name="larc-outer-top" value="larc-outer-left + 3"/>
   <constant name="larc-upper-joint-top" value="larc-outer-top + 3"/>
@@ -54,6 +54,7 @@
     <set-round-state round="no"/>
    </if>
   </compile-if>
+  
   <move distance="small-desc">
    <point num="vstem-left-bottom"/>
    <align>
@@ -102,20 +103,22 @@
     <point num="vstem-right-top"/>
    </align>
   </move>
+  
   <set-vectors axis="x"/>
   <compile-if test="smooth">
    <if test="vertical-smoothing">
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>
-  <move min-distance="no" distance="small-o-lbearing" color="white">
+  
+  <move distance="small-o-lbearing" color="white">
    <reference>
     <point num="left-bearing"/>
    </reference>
    <point num="larc-outer-left"/>
    <move distance="small-o-curve-stem" color="black">
     <point num="larc-inner-left"/>
-    <move color="white">
+    <move color="white" compile-if="slanted = 0">
      <point num="vstem-left-top"/>
      <align>
       <point num="larc-upper-joint-top"/>
@@ -143,9 +146,50 @@
     </move>
    </move>
   </move>
+  <compile-if test="slanted">
+   <with-round-state round="no">
+    <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+     <move color="white">
+      <reference>
+       <point num="larc-inner-left"/>
+      </reference>
+      <point num="vstem-left-top"/>
+      <align>
+       <point num="larc-upper-joint-top"/>
+       <point num="larc-upper-joint-bottom"/>
+       <point num="larc-lower-joint-top"/>
+       <point num="larc-lower-joint-bottom"/>
+       <point num="vstem-left-bottom"/>
+      </align>
+      <move distance="small-vert-stem" color="black">
+       <point num="vstem-right-top"/>
+       <align>
+        <point num="rarc-upper-joint-top"/>
+        <point num="rarc-upper-joint-bottom"/>
+        <point num="rarc-lower-joint-top"/>
+        <point num="rarc-lower-joint-bottom"/>
+        <point num="vstem-right-bottom"/>
+       </align>
+       <move pixel-distance="larc-inner-left -- vstem-left-top" color="white">
+        <point num="rarc-inner-right"/>
+       </move>
+      </move>
+     </move>
+    </with-projection-vector>
+   </with-round-state>
+   <mdap round="yes">
+    <point num="rarc-inner-right"/>
+   </mdap>
+   <move distance="small-o-curve-stem" color="black">
+    <reference>
+     <point num="rarc-inner-right"/>
+    </reference>
+    <point num="rarc-outer-right"/>
+   </move>
+  </compile-if>
   <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/> <!-- - rbearing-->
   <if test="width &lt; 0.0p">
-   <if test="odd((larc-outer-left -- larc-lower-joint-bottom) + (rarc-lower-joint-bottom -- rarc-outer-right) + width)">
+   <if test="odd((larc-outer-left -- larc-lower-joint-bottom) + (rarc-upper-joint-top -- rarc-outer-right) + width)">
     <set-equal target="width" source="width - 1.0p"/>
    </if>
    <shift-absolute pixel-distance="width">
@@ -169,26 +213,28 @@
   </if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(small-vert-stem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="vstem-left-bottom"/>
-     <point num="larc-upper-joint-top"/>
-     <point num="larc-upper-joint-bottom"/>
-     <point num="larc-lower-joint-top"/>
-     <point num="larc-lower-joint-bottom"/>
-     <point num="vstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="vstem-right-top"/>
-     <point num="rarc-upper-joint-top"/>
-     <point num="rarc-upper-joint-bottom"/>
-     <point num="rarc-lower-joint-top"/>
-     <point num="rarc-lower-joint-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
+    <compile-if test="slanted = 0 ">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-vert-stem)"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="vstem-left-bottom"/>
+      <point num="larc-upper-joint-top"/>
+      <point num="larc-upper-joint-bottom"/>
+      <point num="larc-lower-joint-top"/>
+      <point num="larc-lower-joint-bottom"/>
+      <point num="vstem-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="vstem-right-top"/>
+      <point num="rarc-upper-joint-top"/>
+      <point num="rarc-upper-joint-bottom"/>
+      <point num="rarc-lower-joint-top"/>
+      <point num="rarc-lower-joint-bottom"/>
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
      <with-param name="cv" value="index(small-o-curve-stem)"/>
