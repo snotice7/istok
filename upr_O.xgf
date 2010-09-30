@@ -45,10 +45,6 @@
   
   <set-vectors axis="x"/>
   
-  <call-macro name="move-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-  
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <set-round-state round="no"/>
@@ -79,10 +75,6 @@
     </move>
    </move>
   </move>
-  
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <compile-if test="smooth">
    <if test="horizontal-smoothing">

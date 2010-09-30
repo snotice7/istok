@@ -100,8 +100,8 @@
    </reference>
    <point num="outer-top"/>
   </move>
-  <if test="coord(outer-top) &gt; control-value(index(small-o-height))">
-   <move distance="small-o-height">
+  <if test="coord(outer-top) &gt; control-value(index(height))">
+   <move distance="height">
     <point num="outer-top"/>
    </move>
   </if>

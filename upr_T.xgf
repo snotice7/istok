@@ -86,25 +86,25 @@
     </compile-if>
     <!-- </else>
   </compile-if>-->
-  <move min-distance="no" color="white" compile-if="slanted = 0"> <!---->
+  <move min-distance="no" color="white"> <!---->
    <reference>
     <point num="left-bearing"/>
    </reference>
    <point num="left-hstem-bottom"/>
-   <align>
+   <align compile-if="slanted = 0">
     <point num="left-top"/>
    </align>
    <move color="black">
     <point num="left-bottom"/>
-    <align>
+    <align compile-if="slanted = 0">
      <point num="l-intersect"/>
     </align>
-    <move distance="vert-stem" color="black">
+    <move distance="vert-stem" color="black" compile-if="slanted = 0">
      <point num="r-intersect"/>
      <align>
       <point num="right-bottom"/>
      </align>
-     <move pixel-distance="left-hstem-bottom -- l-intersect" color="black">
+     <move pixel-distance="left-hstem-bottom -- l-intersect">
       <point num="right-top"/>
       <align>
        <point num="right-hstem-bottom"/>
@@ -114,44 +114,46 @@
    </move>
   </move>
   <compile-if test="slanted">
-   <set-equal target="width" source="round(left-bottom --- l-intersect) * cos-it-ang"/>
-   <set-equal target="temp" source="round-white(left-bearing --- left-hstem-bottom) + floor((y-coord(left-hstem-bottom) * tg-it-ang))"/>
-   <!--+ tg-y-delta-->
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-round-state round="no"/>
-   <move min-distance="no" pixel-distance="temp" color="white">
-    <reference>
-     <point num="left-bearing"/>
-    </reference>
-    <point num="left-hstem-bottom"/>
-    <align>
-     <point num="left-top"/>
-    </align>
-    <move pixel-distance="width" color="black">
-     <point num="l-intersect"/>
+   <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+    <with-round-state round="no">
+     <compile-if test="smooth">
+      <if test="horizontal-smoothing">
+       <call-macro name="shift-edge">
+        <with-param name="shift" value="temp"/>
+        <with-param name="cv" value="vert-stem"/>
+       </call-macro>
+       <shift-absolute pixel-distance="negative(temp)">
+        <point num="left-bottom"/>
+       </shift-absolute>
+      </if>
+     </compile-if>
      <align>
-      <point num="left-bottom"/>
+      <reference>
+       <point num="left-bottom"/>
+      </reference>
+      <point num="l-intersect"/>
      </align>
      <move distance="vert-stem" color="black">
-      <point num="r-intersect"/>
+      <reference>
+       <point num="left-bottom"/>
+      </reference>
+      <point num="right-bottom"/>
       <align>
-       <point num="right-bottom"/>
+       <point num="r-intersect"/>
       </align>
-      <move pixel-distance="width" color="black">
+      <move pixel-distance="left-hstem-bottom -- l-intersect">
        <point num="right-top"/>
        <align>
         <point num="right-hstem-bottom"/>
        </align>
       </move>
      </move>
-    </move>
-   </move>
-  </compile-if>
-  <set-equal target="width" source="(right-top -- right-bearing)"/>  <!--- rbearing-->
-  <compile-if test="slanted">
-   <set-projection-vector axis="x"/>
-   <set-round-state round="to-grid"/>
-   <round value="width"/>
+     <set-equal target="width" source="round((right-top -- right-bearing) / cos-it-ang)"/>
+    </with-round-state>
+   </with-projection-vector>
+   <else>
+    <set-equal target="width" source="(right-top -- right-bearing)"/>  <!--- rbearing-->
+   </else>
   </compile-if>
   <if test="width &lt; 0.0p or width &gt;= 2.0p">
    <if test="odd((left-hstem-bottom -- l-intersect) + (r-intersect -- right-hstem-bottom) + width)">

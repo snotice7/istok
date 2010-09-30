@@ -4,7 +4,7 @@
  <glyph ps-name="afii10024" init-graphics="yes">
   
   <!--
-
+      
       Copyright (C) 2008, 2009, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
   <param name="lbearing" value="cap-x-lbearing"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
-
+  
   <constant name="ll-diag-l-bottom" value="first-point"/>
   <!--"left lower diagonal leftside bottom"-->
   <constant name="ll-diag-l-top" value="ll-diag-l-bottom + smooth-count"/>
@@ -92,7 +92,7 @@
    <point num="rl-diag-l-top"/>
    <point num="rl-diag-l-bottom"/>
   </line>
-
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
@@ -106,7 +106,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="baseline">
    <point num="vstem-left-bottom"/>
    <align>
@@ -167,12 +167,12 @@
   </compile-if>
   <set-vectors axis="x"/>
   
-  <move color="white">
+  <move color="white" compile-if="slanted = 0">
    <reference>
     <point num="left-bearing"/>
    </reference>
    <point num="vstem-left-bottom"/>
-   <align compile-if="slanted = 0">
+   <align>
     <point num="lhstem-right-top"/>
     <point num="vstem-left-top"/>
     <point num="lhstem-right-bottom"/>
@@ -186,7 +186,7 @@
    </interpolate>
    <move distance="vert-stem" color="black">
     <point num="vstem-right-bottom"/>
-    <align compile-if="slanted = 0">
+    <align>
      <point num="vstem-right-top"/>
      <point num="rhstem-left-top"/>
      <point num="rhstem-left-bottom"/>
@@ -194,6 +194,19 @@
    </move>
   </move>
   <compile-if test="slanted">
+   <move color="white"> <!--round="up-to-grid"-->
+    <reference>
+     <point num="left-bearing"/>
+    </reference>
+    <point num="vstem-left-bottom"/>
+    <interpolate>
+     <point num="lu-diag-l-bottom"/>
+     <point num="lu-diag-l-top"/>
+     <point num="intersect-left"/>
+     <point num="ll-diag-l-top"/>
+     <!--      <point num="ll-diag-l-bottom"/> -->
+    </interpolate>
+   </move>
    <mdap round="up-to-grid">
     <point num="lu-diag-l-top"/>
    </mdap>
@@ -201,6 +214,12 @@
     <point num="ll-diag-l-bottom"/>
    </mdap>
    <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+    <move round="no" distance="vert-stem" color="black">
+     <reference>
+      <point num="vstem-left-bottom"/>
+     </reference>
+     <point num="vstem-right-bottom"/>
+    </move>
     <align>
      <reference>
       <point num="vstem-left-bottom"/>
@@ -410,7 +429,7 @@
   </compile-if>-->
   <interpolate-untouched-points/>
  </glyph> <!--Cyr zh-->
-
+ 
  <glyph ps-name="afii10072" init-graphics="yes">
   <call-glyph ps-name="afii10024">
    <with-param name="baseline" value="small-x-baseline"/>

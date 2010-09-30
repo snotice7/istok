@@ -134,19 +134,12 @@
    </if>
   </compile-if>
   
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-    <!--   <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="to-grid"/>
-     </if>
-    </compile-if>-->
-   </else>
-  </compile-if>
+  <set-vectors axis="x"/>
+  <!--   <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>-->
   
   <move distance="lbearing" color="white">
    <reference>
@@ -155,7 +148,7 @@
    <point num="larc-outer-left"/>
    <move distance="vert-curve-stem" color="black">
     <point num="larc-inner-left"/>
-    <move color="white">
+    <move color="white" compile-if="slanted = 0">
      <point num="vstem-left-top"/>
      <align>
       <point num="larc-outer-top"/>
@@ -183,10 +176,50 @@
     </move>
    </move>
   </move>
-  <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/>
-  <!-- - rbearing-->
+  <compile-if test="slanted">
+   <with-round-state round="no">
+    <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+     <move color="white">
+      <reference>
+       <point num="larc-inner-left"/>
+      </reference>
+      <point num="vstem-left-top"/>
+      <align>
+       <point num="larc-outer-top"/>
+       <point num="larc-inner-top"/>
+       <point num="larc-inner-bottom"/>
+       <point num="larc-outer-bottom"/>
+       <point num="vstem-left-bottom"/>
+      </align>
+      <move distance="vert-stem" color="black">
+       <point num="vstem-right-top"/>
+       <align>
+        <point num="rarc-outer-top"/>
+        <point num="rarc-inner-top"/>
+        <point num="rarc-inner-bottom"/>
+        <point num="rarc-outer-bottom"/>
+        <point num="vstem-right-bottom"/>
+       </align>
+       <move round="no" pixel-distance="larc-inner-left -- vstem-left-top" color="white">
+        <point num="rarc-inner-right"/>
+       </move>
+      </move>
+     </move>
+    </with-projection-vector>
+   </with-round-state>
+   <mdap round="yes">
+    <point num="rarc-inner-right"/>
+   </mdap>
+   <move distance="vert-curve-stem" color="black">
+    <reference>
+     <point num="rarc-inner-right"/>
+    </reference>
+    <point num="rarc-outer-right"/>
+   </move>
+  </compile-if>
+  <set-equal target="width" source="(rarc-outer-right -- right-bearing)"/>  <!-- - rbearing-->
   <if test="width &lt; 0.0p">
-   <if test="odd((larc-outer-left -- larc-inner-bottom) + (rarc-inner-bottom -- rarc-outer-right) + width)">
+   <if test="odd((larc-outer-left -- larc-inner-bottom) + (rarc-inner-top -- rarc-outer-right) + width)">
     <set-equal target="width" source="width - 1.0p"/>
    </if>
    <shift-absolute pixel-distance="width">
@@ -210,26 +243,28 @@
   </if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="vstem-left-bottom"/>
-     <point num="larc-outer-top"/>
-     <point num="larc-inner-top"/>
-     <point num="larc-inner-bottom"/>
-     <point num="larc-outer-bottom"/>
-     <point num="vstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="vstem-right-top"/>
-     <point num="rarc-outer-top"/>
-     <point num="rarc-inner-top"/>
-     <point num="rarc-inner-bottom"/>
-     <point num="rarc-outer-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
+    <compile-if test="slanted = 0 ">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="vstem-left-bottom"/>
+      <point num="larc-outer-top"/>
+      <point num="larc-inner-top"/>
+      <point num="larc-inner-bottom"/>
+      <point num="larc-outer-bottom"/>
+      <point num="vstem-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="vstem-right-top"/>
+      <point num="rarc-outer-top"/>
+      <point num="rarc-inner-top"/>
+      <point num="rarc-inner-bottom"/>
+      <point num="rarc-outer-bottom"/>
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
      <with-param name="cv" value="vert-curve-stem"/>

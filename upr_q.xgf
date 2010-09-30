@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <glyph ps-name="q" init-graphics="yes">
-
+  
   <!--
       
       Copyright (C) 2008, 2009, 2010 Andrey V. Panov
@@ -100,10 +100,6 @@
    </move>
   </move>
   
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-  
   <set-vectors axis="x"/>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
@@ -134,7 +130,7 @@
       <point num="vstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -160,7 +156,7 @@
       <point num="vstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -183,10 +179,6 @@
     <point num="right-bearing"/>
    </move>
   </compile-if>
-  
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

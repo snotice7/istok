@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr hard sign (Ъ)-->
- <glyph ps-name="afii10044" init-graphics="yes">
+ <!--Cyr hard sign (ъ)-->
+ <glyph ps-name="afii10092" init-graphics="yes">
   
   <!--
       
@@ -22,29 +22,30 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="intersect-height" value="cap-h-intersect-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="curve-stem" value="cap-o-curve-stem"/>
-  <param name="horiz-stem" value="cap-horiz-stem"/>
-  <param name="space" value="cap-b-low-space"/>
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="x-height" value="small-x-height"/>
+  <param name="intersect-height" value="small-cyrn-intersect-height"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="curve-stem" value="small-o-curve-stem"/>
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="left-horiz-stem" value="small-horiz-stem"/>
+  <param name="lbearing" value="small-cyrn-lbearing"/>
+  <param name="space" value="small-cyrv-low-space"/>
   
   <constant name="hstem-left-bottom" value="first-point"/>
   <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
   <constant name="right-top" value="hstem-left-top + hstem-hcount"/>
-  <constant name="up-inner-left-bottom" value="right-top + smooth-count"/>
-  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-left-bottom" value="right-top + smooth-count + notch-count"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 3"/>
   <constant name="low-outer-right" value="up-inner-right-bottom + 3"/>
   <constant name="right-bottom" value="low-outer-right + 3"/>
-  <constant name="lstem-left-bottom" value="right-bottom + smooth-count"/>
-  <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
-  <constant name="low-inner-left-bottom" value="lstem-left-top + 1"/>
-  <constant name="low-inner-right-bottom" value="low-inner-left-bottom + 1"/>
-  <constant name="low-inner-right" value="low-inner-right-bottom + 3"/>
-  <constant name="low-inner-right-top" value="low-inner-right + 3"/>
-  <constant name="low-inner-left-top" value="low-inner-right-top + 1"/>
-  <constant name="last" value="low-inner-left-top"/>
+  <constant name="lstem-left-bottom" value="right-bottom + 3"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + 1"/>
+  <constant name="low-inner-left" value="26"/>
+  <constant name="low-inner-bottom" value="low-inner-left + 3"/>
+  <constant name="low-inner-right" value="low-inner-bottom + 3"/>
+  <constant name="low-inner-top" value="low-inner-right + 3"/>
+  <constant name="last" value="low-inner-top + 2"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -61,27 +62,18 @@
   </compile-if>
   
   <move distance="baseline">
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="right-bottom"/>
-   </align>
+   <point num="right-bottom"/>
    <move distance="horiz-stem" color="black">
-    <point num="low-inner-left-bottom"/>
-    <align>
-     <point num="low-inner-right-bottom"/>
-    </align>
+    <point num="low-inner-bottom"/>
    </move>
   </move>
   <move distance="intersect-height">
-   <point num="low-inner-left-top"/>
-   <align>
-    <point num="low-inner-right-top"/>
-   </align>
+   <point num="low-inner-top"/>
    <move distance="horiz-stem" color="black">
-    <point num="up-inner-left-bottom"/>
-    <align>
-     <point num="up-inner-right-bottom"/>
-    </align>
+    <point num="up-inner-right-bottom"/>
+    <move min-distance="no">
+     <point num="up-inner-left-bottom"/>
+    </move>
    </move>
   </move>
   <move distance="x-height">
@@ -89,7 +81,7 @@
    <align>
     <point num="right-top"/>
    </align>
-   <move distance="horiz-stem">
+   <move distance="left-horiz-stem">
     <point num="hstem-left-bottom"/>
     <align>
      <point num="lstem-left-top"/>
@@ -120,8 +112,7 @@
     <point num="right-top"/>
     <align>
      <point num="up-inner-left-bottom"/>
-     <point num="low-inner-left-top"/>
-     <point num="low-inner-left-bottom"/>
+     <point num="low-inner-left"/>
     </align>
    </move>
    <move distance="space" color="black" compile-if="slanted = 0">
@@ -140,9 +131,8 @@
       </reference>
       <point num="right-top"/>
       <align>
-       <point num="low-inner-left-bottom"/>
+       <point num="low-inner-left"/>
        <point num="up-inner-left-bottom"/>
-       <point num="low-inner-left-top"/>
       </align>
      </move>
      <align>
@@ -160,6 +150,16 @@
      <move distance="space" color="black">
       <point num="low-outer-right"/>
      </move>
+     <interpolate>
+      <reference>
+       <point num="up-inner-left-bottom"/>
+       <point num="low-outer-right"/>
+      </reference>
+      <point num="right-bottom"/>
+      <point num="low-inner-bottom"/>
+      <point num="low-inner-top"/>
+      <point num="up-inner-right-bottom"/>
+     </interpolate>
     </with-projection-vector>
    </with-round-state>
    <move>
@@ -190,10 +190,13 @@
     <point num="lstem-left-top"/>
     <point num="right-top"/>
     <point num="up-inner-left-bottom"/>
-    <point num="low-inner-left-top"/>
-    <point num="low-inner-left-bottom"/>
+    <point num="low-inner-left"/>
     <point num="low-inner-right"/>
     <point num="low-outer-right"/>
+    <point num="right-bottom"/>
+    <point num="low-inner-bottom"/>
+    <point num="low-inner-top"/>
+    <point num="up-inner-right-bottom"/>
    </shift-absolute>
   </if>
   <move min-distance="no" color="white">
@@ -216,8 +219,7 @@
      <shift-absolute pixel-distance="temp">
       <point num="right-top"/>
       <point num="up-inner-left-bottom"/>
-      <point num="low-inner-left-top"/>
-      <point num="low-inner-left-bottom"/>
+      <point num="low-inner-left"/>
      </shift-absolute>
     </compile-if>
     <call-macro name="shift-edge">

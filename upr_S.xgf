@@ -70,10 +70,6 @@
     <!--   </else>
   </compile-if>-->
   
-  <call-macro name="move-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
@@ -180,10 +176,6 @@
     </shift-absolute>
    </if>
   </compile-if>
-  
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <!--  <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>

@@ -28,7 +28,7 @@
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
-  <param name="curve-stem" value="cap-p-curve-stem"/>
+  <param name="curve-vstem" value="cap-p-curve-stem"/>
   
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
@@ -151,6 +151,11 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
    </else>
   </compile-if>
   
@@ -175,7 +180,7 @@
     <interpolate>     <!-- round="yes"-->
      <point num="diag-l-top"/>
     </interpolate>
-    <move distance="curve-stem" color="black">
+    <move distance="curve-vstem" color="black" compile-if="slanted = 0">
      <point num="up-inner-right"/>
      <interpolate round="yes">
       <point num="diag-l-bottom"/>
@@ -183,6 +188,29 @@
     </move>
    </move>
   </move>
+  
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <set-minimum-distance value="1.0p"/>
+   <move>
+    <point num="up-outer-right"/>
+    <move distance="curve-vstem" color="black">
+     <point num="up-inner-right"/>
+    </move>
+    <!--<move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>-->
+   </move>
+   <interpolate round="yes">
+    <reference>
+     <point num="up-inner-left-bottom"/>
+     <point num="up-inner-right"/>
+    </reference>
+    <point num="diag-l-bottom"/>
+   </interpolate>
+  </compile-if>
+  
   <set-equal target="width" source="(diag-l-bottom -- right-bearing) - 1.0p"/>
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
@@ -191,21 +219,23 @@
   </if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="lstem-left-bottom"/>
+      <point num="lstem-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="lower-hstem-left-bottom"/>
+      <point num="lstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="lower-hstem-left-bottom"/>
-     <point num="lstem-right-bottom"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="curve-stem"/>
+     <with-param name="cv" value="curve-vstem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
      <point num="up-inner-right"/>

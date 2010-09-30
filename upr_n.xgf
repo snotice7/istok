@@ -85,10 +85,6 @@
     </move>
    </move>
   </move>
-
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -131,7 +127,7 @@
       <point num="rstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -145,10 +141,6 @@
    </move>
   </compile-if>
   
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-
   <interpolate-untouched-points/>
  </glyph>
  

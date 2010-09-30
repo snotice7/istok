@@ -27,6 +27,7 @@
   <param name="lbearing" value="small-cyrn-lbearing"/>
   
   <constant name="left-bottom" value="first-point"/>
+  <constant name="vstem-left-top" value="left-bottom + vstem-vcount"/>
   <constant name="left-top" value="left-bottom + vstem-vcount + vstem-vcount"/>
   <constant name="right-top" value="left-top + vstem-hcount"/>
   <constant name="right-bottom" value="right-top + vstem-vcount"/>
@@ -58,10 +59,6 @@
     <point num="right-top"/>
    </align>
   </move>
-
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -82,12 +79,18 @@
     <point num="left-bearing"/>
    </reference>
    <point num="left-bottom"/>
+   <align>
+    <point num="vstem-left-top"/>
+   </align>
    <move distance="vert-stem" color="black">
     <point num="right-top"/>
     <align>
      <point num="right-bottom"/>
     </align>
-    <move min-distance="no">
+    <interpolate>
+     <point num="left-top"/>
+    </interpolate>
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -101,10 +104,6 @@
    </move>
   </compile-if>
   
-  <call-macro name="restore-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-
   <interpolate-untouched-points/>
  </glyph>
  

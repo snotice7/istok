@@ -129,10 +129,6 @@
    </else>
   </if>
   
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-  
   <set-vectors axis="x"/>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
@@ -166,7 +162,7 @@
       <point num="vstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -192,7 +188,7 @@
       <point num="vstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no">
+    <move min-distance="no" color="white">
      <point num="right-bearing"/>
     </move>
    </move>
@@ -222,10 +218,6 @@
     <point num="right-bearing"/>
    </move>
   </compile-if>
-  
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

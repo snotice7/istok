@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--ы-->
+ <glyph ps-name="afii10093" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <constant name="last" value="afii10094/total + I/last"/>
+  <set-vectors axis="x"/>
+  <set-equal target="width" source="afii10094/low-outer-right -- (afii10094/total + I/left-bottom)"/>
+  <if test="width &lt; 0.5p">
+   <shift-absolute pixel-distance="round(negative(width)) + 1.0p">
+    <point num="afii10094/total + I/left-bottom"/>
+    <point num="right-bearing"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="afii10094/total + I/left-bottom"/>
+    </reference>
+    <contour num="2"/>
+   </shift>
+  </if>
+  <compile-if test="regular">
+   <set-equal target="width" source="round(control-value(emspace) * 0.256p) - ((afii10094/total + I/right-bottom) -- right-bearing)"/>
+  </compile-if>
+  <compile-if test="bold">
+   <set-equal target="width" source="round(control-value(emspace) * 0.25p) - ((afii10094/total + I/right-bottom) -- right-bearing)"/>
+  </compile-if>
+  <if test="width &gt; 0p">
+   <shift-absolute pixel-distance="width">
+    <point num="right-bearing"/>
+   </shift-absolute>
+  </if>
+  <!--  <move color="white">
+   <reference>
+    <point num="afii10094/total + I/right-bottom"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>-->
+  <mdap round="yes">
+   <point num="right-bearing"/>
+  </mdap>
+ </glyph>
+ 
+</xgridfit>

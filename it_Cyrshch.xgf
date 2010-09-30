@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="m" init-graphics="yes">
+ <!--щ-->
+ <glyph ps-name="afii10091">
   
   <!--
       
-      Andrey V. Panov (C) 2008, 2009
+      Copyright (C) 2008, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -22,34 +23,40 @@
       -->
   
   <param name="baseline" value="small-x-baseline"/>
-  <param name="lstem-height" value="small-x-height"/>
-  <param name="o-height" value="small-o-height"/>
-  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="o-baseline" value="small-o-baseline"/>
+  <param name="height" value="small-x-height"/>
   <param name="curve-hstem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
   <param name="lbearing" value="small-cyrn-lbearing"/>
-  <param name="space" value="small-m-inner-space"/>
-  <param name="notch" value="cog-count"/>
+  <param name="sh-inner-space" value="small-m-inner-space"/>
+  <param name="tse-desc" value="small-tse-desc"/>
+  <param name="tse-desc-horiz-shift" value="small-tse-desc-horiz-shift"/>
+  <param name="vert-thinstem" value="small-vert-thinstem"/>
   
-  <constant name="lstem-left-bottom" value="first-point"/>
-  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+  <constant name="lstem-left-bottom" value="0"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
   <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
-  <constant name="ljoint-top" value="lstem-right-top + smooth-count + notch"/>
-  <constant name="larc-top" value="ljoint-top + 3"/>
-  <constant name="rjoint-top" value="larc-top + 3 + cog-count"/>
-  <constant name="rarc-top" value="rjoint-top + 3"/>
-  <constant name="rstem-right-top" value="rarc-top + 3"/>
+  <constant name="lstem-right-bottom" value="lstem-right-top + smooth-count"/>
+  <constant name="larc-top" value="lstem-right-bottom + 3"/>
+  <constant name="ljoint-top" value="larc-top + 3"/>
+  <constant name="mstem-left-top" value="ljoint-top + smooth-count"/>
+  <constant name="mstem-right-top" value="mstem-left-top + vstem-hcount"/>
+  <constant name="mstem-right-bottom" value="mstem-right-top + smooth-count"/>
+  <constant name="rarc-top" value="mstem-right-bottom + 3"/>
+  <constant name="rjoint-top" value="rarc-top + 3"/>
+  <constant name="rstem-left-top" value="rjoint-top + smooth-count"/>
+  <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
   <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
-  <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
-  <constant name="rstem-left-top" value="rstem-left-bottom + smooth-count"/>
-  <constant name="rarc-bottom" value="rstem-left-top + 3"/>
-  <constant name="rjoint-bottom" value="rarc-bottom + 3"/>
-  <constant name="mstem-right-bottom" value="rjoint-bottom + smooth-count"/>
-  <constant name="mstem-left-bottom" value="mstem-right-bottom + vstem-hcount"/>
-  <constant name="mstem-left-top" value="mstem-left-bottom + smooth-count"/>
-  <constant name="larc-bottom" value="mstem-left-top + 3"/>
-  <constant name="ljoint-bottom" value="larc-bottom + 3"/>
-  <constant name="lstem-right-bottom" value="ljoint-bottom + smooth-count"/>
-  <constant name="last" value="lstem-right-bottom + last-count"/>
+  <constant name="rdesc-right-top" value="rstem-right-bottom + 3 + smooth-count"/>
+  <constant name="rdesc-right-bottom" value="rdesc-right-top + vstem-vcount"/>
+  <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
+  <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
+  <constant name="rjoint-bottom" value="rdesc-left-top + 4 + cog-count"/>
+  <constant name="rarc-bottom" value="rjoint-bottom + 3"/>
+  <constant name="ljoint-bottom" value="rarc-bottom + 3 + cog-count"/>
+  <constant name="larc-bottom" value="ljoint-bottom + 3"/>
+  <constant name="last" value="larc-bottom + 2"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -66,44 +73,50 @@
   </compile-if>
   
   <move distance="baseline">
-   <point num="lstem-left-bottom"/>
-   <align>
-    <point num="lstem-right-bottom"/>
-    <point num="mstem-left-bottom"/>
-    <point num="mstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-right-bottom"/>
-   </align>
+   <point num="rdesc-left-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="rdesc-right-top"/>
+   </move>
   </move>
-  <move distance="lstem-height">
+  <move distance="height">
    <point num="lstem-left-top"/>
    <align>
     <point num="lstem-right-top"/>
+    <point num="mstem-left-top"/>
+    <point num="mstem-right-top"/>
+    <point num="rstem-left-top"/>
+    <point num="rstem-right-top"/>
    </align>
   </move>
-  <move distance="o-height">
-   <point num="larc-top"/>
+  <move distance="o-baseline">
+   <point num="larc-bottom"/>
    <align>
-    <point num="rarc-top"/>
+    <point num="rarc-bottom"/>
    </align>
    <move distance="curve-hstem" color="black">
-    <point num="larc-bottom"/>
+    <point num="larc-top"/>
     <align>
-     <point num="rarc-bottom"/>
+     <point num="rarc-top"/>
     </align>
    </move>
    <move min-distance="no">
-    <point num="ljoint-top"/>
+    <point num="ljoint-bottom"/>
     <align>
-     <point num="rjoint-top"/>
+     <point num="rjoint-bottom"/>
     </align>
     <move color="black">
-     <point num="ljoint-bottom"/>
+     <point num="ljoint-top"/>
      <align>
-      <point num="rjoint-bottom"/>
+      <point num="rjoint-top"/>
      </align>
     </move>
    </move>
+  </move>
+  <move distance="tse-desc">
+   <point num="rdesc-left-bottom"/>
+   <align>
+    <point num="rdesc-right-bottom"/>
+   </align>
   </move>
   
   <compile-if test="slanted">
@@ -131,35 +144,34 @@
    <move distance="vert-stem" color="black">
     <point num="lstem-right-top"/>
     <align>
-     <point num="ljoint-top"/>
-     <point num="ljoint-bottom"/>
      <point num="lstem-right-bottom"/>
     </align>
    </move>
-   <move distance="space" round="no" cut-in="no">
-    <point num="mstem-left-bottom"/>
+   <move distance="sh-inner-space" round="no" cut-in="no">
+    <point num="ljoint-top"/>
     <align>
      <point num="mstem-left-top"/>
     </align>
-    <interpolate compile-if="slanted">
+    <interpolate>
      <point num="larc-top"/>
      <point num="larc-bottom"/>
     </interpolate>
     <move distance="vert-stem" color="black">
-     <point num="mstem-right-bottom"/>
+     <point num="mstem-right-top"/>
      <align>
-      <point num="rjoint-bottom"/>
+      <point num="mstem-right-bottom"/>
      </align>
      <interpolate>
-      <point num="rjoint-top"/>
+      <point num="ljoint-bottom"/>
      </interpolate>
     </move>
-    <move distance="space" round="no" cut-in="no">
-     <point num="rstem-left-bottom"/>
+    <move distance="sh-inner-space" round="no" cut-in="no">
+     <point num="rjoint-bottom"/>
      <align>
       <point num="rstem-left-top"/>
+      <point num="rjoint-top"/>
      </align>
-     <interpolate compile-if="slanted">
+     <interpolate>
       <point num="rarc-top"/>
       <point num="rarc-bottom"/>
      </interpolate>
@@ -168,8 +180,20 @@
       <align>
        <point num="rstem-right-bottom"/>
       </align>
-      <move min-distance="no" color="white">
-       <point num="right-bearing"/>
+      <move distance="tse-desc-horiz-shift" min-distance="no">
+       <point num="rdesc-right-bottom"/>
+       <align>
+        <point num="rdesc-right-top"/>
+       </align>
+       <move distance="vert-thinstem" color="black">
+        <point num="rdesc-left-top"/>
+        <align>
+         <point num="rdesc-left-bottom"/>
+        </align>
+       </move>
+       <move min-distance="no" color="white">
+        <point num="right-bearing"/>
+       </move>
       </move>
      </move>
     </move>
@@ -186,5 +210,4 @@
   
   <interpolate-untouched-points/>
  </glyph>
- 
 </xgridfit>

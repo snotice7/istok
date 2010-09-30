@@ -157,7 +157,7 @@
     </align>
    </move>
   </move>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>

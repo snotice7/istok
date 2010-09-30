@@ -148,20 +148,42 @@
    </move>
    <move distance="space" color="black">
     <point num="low-outer-right"/>
-    <move distance="curve-stem" color="black">
+    <move distance="curve-stem" color="black" compile-if="slanted = 0">
      <point num="low-inner-right"/>
     </move>
-    <move min-distance="no" round="to-grid">
+    <move min-distance="no" round="to-grid" compile-if="slanted = 0">
      <point num="up-outer-right"/>
      <move distance="vert-stem" color="black">
       <point num="up-inner-right"/>
      </move>
     </move>
-    <move min-distance="no" color="white">
+    <move min-distance="no" color="white" compile-if="slanted = 0">
      <point num="right-bearing"/>
     </move>
    </move>
   </move>
+  
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <set-minimum-distance value="1.0p"/>
+   <move>
+    <point num="low-outer-right"/>
+    <move round="no" distance="curve-stem" color="black">
+     <point num="low-inner-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+    <move min-distance="no">
+     <point num="up-outer-right"/>
+     <move round="no" distance="vert-stem" color="black">
+      <point num="up-inner-right"/>
+     </move>
+    </move>
+   </move>
+  </compile-if>
+  
   <interpolate>
    <reference>
     <point num="up-inner-left-bottom"/>

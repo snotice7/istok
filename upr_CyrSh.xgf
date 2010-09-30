@@ -27,6 +27,7 @@
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="sh-inner-space" value="cap-sh-inner-space"/>
+
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
   <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
@@ -79,10 +80,6 @@
     <point num="rstem-right-top"/>
    </align>
   </move>
-
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -90,9 +87,11 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
-    <if test="horizontal-smoothing">
-     <set-round-state round="no"/>
-    </if>
+    <compile-if test="smooth">
+     <if test="horizontal-smoothing">
+      <set-round-state round="no"/>
+     </if>
+    </compile-if>
    </else>
   </compile-if>
 
@@ -147,10 +146,6 @@
    </move>
   </compile-if>
   
-  <call-macro name="restore-left-border-x">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
-
   <interpolate-untouched-points/>
  </glyph>
  <!--Cyr Sh-->

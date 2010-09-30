@@ -67,10 +67,6 @@
     <point num="right-top"/>
    </align>
   </move>
-
-  <call-macro name="move-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -127,10 +123,6 @@
     </shift-absolute>
    </if>
   </compile-if>
-
-  <call-macro name="restore-left-border">
-   <with-param name="point-lbearing" value="left-bearing"/>
-  </call-macro>
   
   <interpolate-untouched-points/>
  </glyph>

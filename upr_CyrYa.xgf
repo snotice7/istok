@@ -152,34 +152,36 @@
    <align compile-if="slanted = 0">
     <point num="vstem-right-top"/>
    </align>
-   <move distance="vert-stem" color="black">
+   <move distance="vert-stem" color="black" compile-if="slanted = 0">
     <point num="vstem-left-bottom"/>
-    <align compile-if="slanted = 0">
+    <align>
      <point num="outer-right-bottom"/>
      <point num="inner-right-bottom"/>
      <point num="inner-right-top"/>
     </align>
    </move>
   </move>
-  <set-equal target="width" source="(vstem-right-bottom -- right-bearing) - rbearing"/>
-  <if test="width &lt; 0.0p">
-   <compile-if test="slanted">
-    <shift-absolute pixel-distance="width">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
-    <else>
+  <compile-if test="slanted = 0">
+   <set-equal target="width" source="(vstem-right-bottom -- right-bearing) - rbearing"/>
+   <if test="width &lt; 0.0p">
+    <!--   <compile-if test="slanted">
      <shift-absolute pixel-distance="width">
       <point num="vstem-left-bottom"/>
-      <point num="outer-right-bottom"/>
-      <point num="inner-right-bottom"/>
-      <point num="inner-right-top"/>
-      <point num="vstem-right-top"/>
       <point num="vstem-right-bottom"/>
      </shift-absolute>
-    </else>
-   </compile-if>
-  </if>
+     <else>-->
+      <shift-absolute pixel-distance="width">
+       <point num="vstem-left-bottom"/>
+       <point num="outer-right-bottom"/>
+       <point num="inner-right-bottom"/>
+       <point num="inner-right-top"/>
+       <point num="vstem-right-top"/>
+       <point num="vstem-right-bottom"/>
+      </shift-absolute>
+      <!--     </else>
+    </compile-if>-->
+   </if>
+  </compile-if>
   <interpolate>
    <reference>
     <point num="left-bearing"/>
@@ -192,9 +194,6 @@
   <mdap round="yes">
    <point num="outer-left"/>
   </mdap>
-  <mdap round="yes">
-   <point num="diag-l-bottom"/>
-  </mdap>
   <move distance="curve-stem" color="black">
    <reference>
     <point num="outer-left"/>
@@ -202,7 +201,16 @@
    <point num="inner-left"/>
   </move>
   <compile-if test="slanted">
+   <mdap round="down-to-grid">
+    <point num="diag-l-bottom"/>
+   </mdap>
    <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+    <move round="no" distance="vert-stem" color="black">
+     <reference>
+      <point num="vstem-right-bottom"/>
+     </reference>
+     <point num="vstem-left-bottom"/>
+    </move>
     <align>
      <reference>
       <point num="vstem-right-bottom"/>
@@ -218,8 +226,13 @@
      <point num="inner-right-top"/>
     </align>
    </with-projection-vector>
+   <else>
+    <mdap round="yes">
+     <point num="diag-l-bottom"/>
+    </mdap>
+   </else>
   </compile-if>
-  <move min-distance="no">
+  <move min-distance="no" color="white">
    <reference>
     <point num="vstem-right-bottom"/>
    </reference>
@@ -227,20 +240,22 @@
   </move>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="vstem-left-bottom"/>
-     <point num="outer-right-bottom"/>
-     <point num="inner-right-bottom"/>
-     <point num="inner-right-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="vstem-right-top"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="vstem-left-bottom"/>
+      <point num="outer-right-bottom"/>
+      <point num="inner-right-bottom"/>
+      <point num="inner-right-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="vstem-right-top"/>
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
      <with-param name="cv" value="curve-stem"/>
@@ -263,6 +278,7 @@
   </call-macro>
   <interpolate-untouched-points/>
  </glyph> <!--Cyr ya-->
+ 
  <!--я-->
  <glyph ps-name="afii10097" init-graphics="yes">
   <call-glyph ps-name="afii10049">

@@ -47,95 +47,6 @@
   <constant name="outer-bottom" value="vstem-right-bottom + 3"/>
   <constant name="last" value="outer-bottom + 2"/>
   
-  <set-vectors axis="x"/>
-  
-  <move distance="lbearing" color="white">
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="outer-left"/>
-   <move distance="vert-stem" color="black">
-    <point num="inner-left"/>
-   </move>
-   <move color="black">
-    <point num="vstem-right-bottom"/>
-    <align compile-if="slanted = 0">
-     <point num="vstem-right-top"/>
-    </align>
-    <interpolate round="yes">
-     <point num="upper-end-top"/>
-    </interpolate>
-    <move distance="right-vert-stem" color="black" compile-if="slanted = 0">
-     <point num="vstem-left-bottom"/>
-     <align>
-      <point num="stroke-right-bottom"/>
-     </align>
-     <interpolate>
-      <point num="stroke-left-bottom"/>
-      <point num="stroke-left-top"/>
-     </interpolate>
-    </move>
-    <move min-distance="no">
-     <point num="right-bearing"/>
-    </move>
-   </move>
-  </move>
-  <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="outer-left"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="inner-left"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="right-vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="vstem-left-bottom"/>
-     <point num="stroke-right-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="vstem-right-bottom"/>
-     <point num="vstem-right-top"/>
-    </shift-absolute>
-   </if>
-   <!--   <move round="to-grid">
-    <point num="right-bearing"/>
-   </move>-->
-  </compile-if>
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-round-state round="no"/>
-   <move distance="right-vert-stem" color="black">
-    <reference>
-     <point num="vstem-right-bottom"/>
-    </reference>
-    <point num="vstem-left-bottom"/>
-    <align>
-     <point num="stroke-right-bottom"/>
-    </align>
-    <interpolate>
-     <point num="stroke-left-bottom"/>
-     <point num="stroke-left-top"/>
-    </interpolate>
-   </move>
-   <align>
-    <reference>
-     <point num="vstem-right-bottom"/>
-    </reference>
-    <point num="vstem-right-top"/>
-   </align>
-  </compile-if>
-  
-  <compile-if test="slanted">
-   <set-round-state round="to-grid"/>
-  </compile-if>
   <set-vectors axis="y"/>
   
   <move distance="baseline">
@@ -219,6 +130,94 @@
     </interpolate>
    </else>
   </if>
+  
+  <set-vectors axis="x"/>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+   <move color="black">
+    <point num="vstem-right-bottom"/>
+    <align compile-if="slanted = 0">
+     <point num="vstem-right-top"/>
+    </align>
+    <interpolate round="yes">
+     <point num="upper-end-top"/>
+    </interpolate>
+    <move distance="right-vert-stem" color="black" compile-if="slanted = 0">
+     <point num="vstem-left-bottom"/>
+     <align>
+      <point num="stroke-right-bottom"/>
+     </align>
+     <interpolate>
+      <point num="stroke-left-bottom"/>
+      <point num="stroke-left-top"/>
+     </interpolate>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+   <move distance="right-vert-stem" color="black">
+    <reference>
+     <point num="vstem-right-bottom"/>
+    </reference>
+    <point num="vstem-left-bottom"/>
+    <align>
+     <point num="stroke-right-bottom"/>
+    </align>
+    <interpolate>
+     <point num="stroke-left-bottom"/>
+     <point num="stroke-left-top"/>
+    </interpolate>
+   </move>
+   <align>
+    <reference>
+     <point num="vstem-right-bottom"/>
+    </reference>
+    <point num="vstem-right-top"/>
+   </align>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left"/>
+    </shift-absolute>
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="right-vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="vstem-left-bottom"/>
+      <point num="stroke-right-bottom"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="vstem-right-bottom"/>
+      <point num="vstem-right-top"/>
+     </shift-absolute>
+    </compile-if>
+   </if>
+   <!--   <move round="to-grid">
+    <point num="right-bearing"/>
+   </move>-->
+  </compile-if>
   
   <interpolate-untouched-points/>
  </glyph>
