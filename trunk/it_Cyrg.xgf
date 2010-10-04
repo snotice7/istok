@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!-- г -->
+ <glyph ps-name="afii10068" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="height" value="small-o-height"/>
+  <param name="up-vert-stem" value="small-vert-stem"/>
+  <param name="low-vert-stem" value="small-o-curve-stem"/>
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  <param name="s-flat-upper-end" value="17"/>
+  <param name="diag" value="small-thindiag"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="diag-left-bottom" value="outer-left + 4"/>
+  <constant name="diag-left-top" value="diag-left-bottom + 3"/>
+  <constant name="inner-right-top" value="diag-left-top + 4"/>
+  <constant name="inner-top" value="inner-right-top + 4"/>
+  <constant name="upper-end-bottom" value="inner-top + 3"/>
+  <constant name="upper-end-top" value="upper-end-bottom + open-end-count"/>
+  <constant name="real-upper-end-bottom" value="upper-end-bottom + 1"/>
+  <constant name="real-upper-end-top" value="real-upper-end-bottom + hstem-hcount"/>
+  <constant name="outer-top" value="upper-end-top + 3"/>
+  <constant name="outer-right-top" value="outer-top + 4"/>
+  <constant name="diag-right-top" value="outer-right-top + 4"/>
+  <constant name="diag-right-bottom" value="diag-right-top + 3"/>
+  <constant name="inner-left-bottom" value="diag-right-bottom + 4"/>
+  <constant name="inner-bottom" value="inner-left-bottom + 4"/>
+  <constant name="lower-end-top" value="inner-bottom + 3"/>
+  <constant name="lower-end-bottom" value="lower-end-top + open-end-count"/>
+  <constant name="real-lower-end-top" value="lower-end-top + 1"/>
+  <constant name="real-lower-end-bottom" value="real-lower-end-top + hstem-hcount"/>
+  <constant name="outer-bottom" value="lower-end-bottom + 3"/>
+  <constant name="last" value="outer-bottom + 3"/>
+  
+  <line name="diagonal-left-side">
+   <point num="diag-left-bottom"/>
+   <point num="diag-left-top"/>
+  </line>
+  <line name="diagonal-right-side">
+   <point num="diag-right-bottom"/>
+   <point num="diag-right-top"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="inner-bottom"/>
+    <point num="inner-top"/>
+   </reference>
+   <point num="diag-left-bottom"/>
+   <point num="diag-left-top"/>
+   <!--  <point num="diag-right-top"/>
+   <point num="diag-right-bottom"/>-->
+  </interpolate>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="real-lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="real-lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="real-lower-end-bottom"/>
+     <point num="real-lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <if test="pixels-per-em &lt; s-flat-upper-end">
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="real-upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="real-upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="real-upper-end-bottom"/>
+     <point num="real-upper-end-top"/>
+    </interpolate>
+    <!--<mdap round="up-to-grid">
+     <point num="upper-end-top"/>
+    </mdap>
+    <shift>
+     <reference>
+      <point num="upper-end-top"/>
+     </reference>
+     <point num="upper-end-bottom"/>
+    </shift>-->
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="low-vert-stem" color="black">
+    <point num="inner-left-bottom"/>
+    <interpolate>
+     <point num="real-upper-end-top"/>
+    </interpolate>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right-top"/>
+   <move distance="up-vert-stem" color="black">
+    <point num="inner-right-top"/>
+    <interpolate>
+     <point num="real-lower-end-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  <!--  <mdap round="to-double-grid">
+   <point num="real-upper-end-top"/>
+  </mdap>
+  <move round="to-double-grid" min-distance="no" color="black">
+   <reference>
+    <point num="real-upper-end-top"/>
+   </reference>
+   <point num="real-upper-end-bottom"/>
+  </move>-->
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="up-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-right-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right-top"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="low-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="inner-left-bottom"/>
+    <point num="inner-right-top"/>
+   </reference>
+   <point num="diag-left-bottom"/>
+   <point num="diag-left-top"/>
+  </interpolate>
+  
+  <with-minimum-distance value="diag-min-thick">
+   <diagonal-stem distance="diag" save-vectors="yes" round="no" color="black">
+    <line ref="diagonal-left-side"/>
+    <line ref="diagonal-right-side"/>
+   </diagonal-stem>
+  </with-minimum-distance>
+  <with-freedom-vector to-line="parallel">
+   <line ref="diagonal-left-side"/>
+   <with-projection-vector axis="x"> <!--to-line="orthogonal"-->
+    <!--     <line ref="diagonal-left-side"/> -->
+    <interpolate>
+     <reference>
+      <!--      <point num="diag-left-bottom"/>
+      <point num="diag-left-top"/>-->
+      <point num="inner-left-bottom"/>
+      <point num="inner-right-top"/>
+     </reference>
+     <point num="diag-right-bottom"/>
+     <point num="diag-right-top"/>
+    </interpolate>
+   </with-projection-vector>
+  </with-freedom-vector>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--"д"-->
+ <glyph ps-name="afii10069" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="o-height" value="small-o-height"/>
+  <param name="asc-height" value="small-asc-height"/>
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="right-vert-stem" value="small-vert-stem"/>
+  <param name="lbearing" value="small-o-lbearing"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="joint-left" value="outer-top + 3 + cog-count"/>
+  <constant name="asc-inner-right" value="joint-left + 2"/>
+  <constant name="asc-inner-top" value="asc-inner-right + 3"/>
+  <constant name="upper-end-bottom" value="asc-inner-top + 3"/>
+  <constant name="upper-end-top" value="upper-end-bottom + open-end-count"/>
+  <constant name="real-upper-end-bottom" value="upper-end-bottom + 1"/>
+  <constant name="real-upper-end-top" value="real-upper-end-bottom + hstem-hcount"/>
+  <constant name="asc-outer-top" value="upper-end-top + 3"/>
+  <constant name="outer-right" value="asc-outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="inner-left" value="32"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="last" value="inner-top + 2"/>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="o-height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+   <move min-distance="no">
+    <point num="joint-left"/>
+   </move>
+  </move>
+  <move distance="asc-height">
+   <point num="asc-outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="asc-inner-top"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="asc-inner-top"/>
+    </reference>
+    <point num="real-upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="asc-outer-top"/>
+    </reference>
+    <point num="real-upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="outer-top"/>
+      <point num="asc-inner-top"/>
+     </reference>
+     <point num="real-upper-end-bottom"/>
+     <point num="real-upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move distance="right-vert-stem" color="black">
+    <point num="asc-inner-right"/>
+    <interpolate>
+     <point num="inner-right"/>
+     <point num="joint-left"/>
+    </interpolate>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="right-vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-asc-right"/>
+     <point num="inner-right"/>
+     <point num="joint-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right"/>
+    </shift-absolute>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
