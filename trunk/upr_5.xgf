@@ -33,6 +33,8 @@
   
   <constant name="lower-end-bottom" value="0"/>
   <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
+  <constant name="real-lower-end-bottom" value="1"/>
+  <constant name="real-lower-end-top" value="real-lower-end-bottom + hstem-hcount"/>
   <constant name="inner-bottom" value="lower-end-top + 3"/>
   <constant name="inner-right" value="inner-bottom + 3"/>
   <constant name="inner-top" value="inner-right + 3"/>
@@ -102,13 +104,13 @@
     <reference>
      <point num="outer-bottom"/>
     </reference>
-    <point num="lower-end-bottom"/>
+    <point num="real-lower-end-bottom"/>
    </align>
    <align>
     <reference>
      <point num="inner-bottom"/>
     </reference>
-    <point num="lower-end-top"/>
+    <point num="real-lower-end-top"/>
    </align>
    <else>
     <interpolate>
@@ -116,8 +118,8 @@
       <point num="inner-bottom"/>
       <point num="inner-top"/>
      </reference>
-     <point num="lower-end-bottom"/>
-     <point num="lower-end-top"/>
+     <point num="real-lower-end-bottom"/>
+     <point num="real-lower-end-top"/>
     </interpolate>
    </else>
   </if>
@@ -128,12 +130,12 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="to-grid"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
   </compile-if>
   
   <move color="white">
@@ -144,9 +146,9 @@
    <align>
     <point num="vstem-left-top"/>
    </align>
-   <interpolate>
-    <point num="lower-end-bottom"/>
-    <point num="lower-end-top"/>
+   <interpolate compile-if="slanted = 0">
+    <point num="real-lower-end-bottom"/>
+    <point num="real-lower-end-top"/>
    </interpolate>
    <move distance="vert-stem" color="black">
     <point num="vstem-curl-intersect"/>
@@ -158,7 +160,23 @@
   </move>
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
+   <move min-distance="no">
+    <reference>
+     <point num="vstem-left-bottom"/>
+    </reference>
+    <point num="real-lower-end-bottom"/>
+    <move min-distance="no">
+     <point num="real-lower-end-top"/>
+    </move>
+   </move>
    <set-round-state round="to-grid"/>
+   <!--   <interpolate>
+    <reference>
+     <point num="real-lower-end-bottom"/>
+     <point num="vstem-left-bottom"/>
+    </reference>
+    <point num="real-lower-end-top"/>
+   </interpolate>-->
   </compile-if>
   <move min-distance="no" color="white">
    <reference>

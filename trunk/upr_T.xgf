@@ -43,12 +43,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -114,19 +114,25 @@
    </move>
   </move>
   <compile-if test="slanted">
+   <compile-if test="smooth">
+    <if test="horizontal-smoothing">
+     <call-macro name="shift-edge-slanted">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="left-bottom"/>
+     </shift-absolute>
+    </if>
+   </compile-if>
    <with-projection-vector x-component="x-skew1" y-component="y-skew1">
     <with-round-state round="no">
-     <compile-if test="smooth">
-      <if test="horizontal-smoothing">
-       <call-macro name="shift-edge">
-        <with-param name="shift" value="temp"/>
-        <with-param name="cv" value="vert-stem"/>
-       </call-macro>
-       <shift-absolute pixel-distance="negative(temp)">
-        <point num="left-bottom"/>
-       </shift-absolute>
-      </if>
-     </compile-if>
+     <align>
+      <reference>
+       <point num="left-hstem-bottom"/>
+      </reference>
+      <point num="left-top"/>
+     </align>
      <align>
       <reference>
        <point num="left-bottom"/>
@@ -151,6 +157,7 @@
      <set-equal target="width" source="round((right-top -- right-bearing) / cos-it-ang)"/>
     </with-round-state>
    </with-projection-vector>
+   <round value="width"/>
    <else>
     <set-equal target="width" source="(right-top -- right-bearing)"/>  <!--- rbearing-->
    </else>
@@ -176,7 +183,7 @@
    </reference>
    <point num="right-bearing"/>
   </move>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>

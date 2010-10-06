@@ -136,15 +136,15 @@
      <point num="real-upper-end-bottom"/>
      <point num="real-upper-end-top"/>
     </interpolate>
-    <!--<mdap round="up-to-grid">
-     <point num="upper-end-top"/>
+    <mdap round="up-to-grid">
+     <point num="real-upper-end-top"/>
     </mdap>
     <shift>
      <reference>
-      <point num="upper-end-top"/>
+      <point num="real-upper-end-top"/>
      </reference>
-     <point num="upper-end-bottom"/>
-    </shift>-->
+     <point num="real-upper-end-bottom"/>
+    </shift>
    </else>
   </if>
   
@@ -162,7 +162,7 @@
    <point num="outer-left"/>
    <move distance="low-vert-stem" color="black">
     <point num="inner-left-bottom"/>
-    <interpolate>
+    <interpolate round="yes">
      <point num="real-upper-end-top"/>
     </interpolate>
    </move>

@@ -53,10 +53,16 @@
     <point num="left-bearing"/>
    </reference>
    <point num="outer-left"/>
-   <move distance="vert-stem" color="black">
+   <move distance="vert-stem" color="black" compile-if="slanted = 0">
     <point num="intersect-top"/>
     <interpolate round="down-to-grid">
      <point num="inner-oval-left"/>
+    </interpolate>
+   </move>
+   <move distance="vert-stem" color="black" compile-if="slanted">
+    <point num="inner-oval-left"/>
+    <interpolate>
+     <point num="intersect-top"/>
     </interpolate>
    </move>
    <move distance="space" color="black" compile-if="slanted = 0">

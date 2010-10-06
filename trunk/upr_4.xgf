@@ -57,10 +57,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <if test="any-smoothing">
-     <set-minimum-distance value="1.0p"/>
-    </if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="any-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -121,16 +123,9 @@
    </if>
   </compile-if>
   
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-   </else>
-  </compile-if>
+  <set-vectors axis="x"/>
   
-  <move color="white">
+  <move color="white" compile-if="slanted = 0">
    <reference>
     <point num="left-bearing"/>
    </reference>
@@ -145,7 +140,7 @@
      <point num="inner-right-bottom"/>
      <point num="inner-right-top"/>
     </align>
-    <move distance="digit-vert-stem" color="black">
+    <move distance="vert-stem" color="black">
      <point num="vstem-right-top"/>
      <align>
       <point num="vstem-right-bottom"/>
@@ -161,26 +156,79 @@
     </move>
    </move>
   </move>
-  <set-equal target="width" source="(hstem-right-bottom -- right-bearing) - rbearing"/>
-  <if test="width &lt; 0.0p">
-   <shift-absolute pixel-distance="width">
-    <point num="hstem-right-bottom"/>
-    <point num="hstem-right-top"/>
-   </shift-absolute>
-   <if test="hstem-intersect-right-bottom -- hstem-right-bottom &lt; 0.5p">
-    <shift-absolute pixel-distance="-1.0p">
-     <point num="vstem-left-bottom"/>
+  <compile-if test="slanted">
+   <move min-distance="no" color="white">
+    <reference>
+     <point num="left-bearing"/>
+    </reference>
+    <point num="hstem-left-bottom"/>
+   </move>
+   <move color="white">
+    <reference>
+     <point num="right-bearing"/>
+    </reference>
+    <point num="vstem-right-bottom"/>
+   </move>
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <align>
+    <reference>
+     <point num="hstem-left-bottom"/>
+    </reference>
+    <point num="hstem-left-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="vstem-right-bottom"/>
+    </reference>
+    <point num="vstem-right-top"/>
+    <point num="hstem-intersect-right-bottom"/>
+    <point num="hstem-intersect-right-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <reference>
+     <point num="vstem-right-bottom"/>
+    </reference>
+    <point num="vstem-left-bottom"/>
+    <align>
      <point num="hstem-intersect-left-bottom"/>
      <point num="inner-right-bottom"/>
      <point num="inner-right-top"/>
-     <point num="vstem-right-top"/>
-     <point num="vstem-right-bottom"/>
-     <point num="hstem-intersect-right-bottom"/>
-     <point num="hstem-intersect-right-top"/>
-    </shift-absolute>
-   </if>
-  </if>
-  <compile-if test="slanted">
+    </align>
+   </move>
+   <move min-distance="no">
+    <reference>
+     <point num="right-bearing"/>
+    </reference>
+    <point num="hstem-right-top"/>
+    <align>
+     <point num="hstem-right-bottom"/>
+    </align>
+   </move>
+   <else>
+    <set-equal target="width" source="(hstem-right-bottom -- right-bearing) - rbearing"/>
+    <if test="width &lt; 0.0p">
+     <shift-absolute pixel-distance="width">
+      <point num="hstem-right-bottom"/>
+      <point num="hstem-right-top"/>
+     </shift-absolute>
+     <if test="hstem-intersect-right-bottom -- hstem-right-bottom &lt; 0.5p">
+      <shift-absolute pixel-distance="-1.0p">
+       <point num="vstem-left-bottom"/>
+       <point num="hstem-intersect-left-bottom"/>
+       <point num="inner-right-bottom"/>
+       <point num="inner-right-top"/>
+       <point num="vstem-right-top"/>
+       <point num="vstem-right-bottom"/>
+       <point num="hstem-intersect-right-bottom"/>
+       <point num="hstem-intersect-right-top"/>
+      </shift-absolute>
+     </if>
+    </if>
+   </else>
+  </compile-if>
+  <!--  <compile-if test="slanted">
    <set-vectors axis="x"/>
    <set-equal target="temp" source="coord(vstem-left-bottom)"/>
    <mdap round="to-grid">
@@ -195,8 +243,8 @@
     <point num="hstem-intersect-right-bottom"/>
     <point num="hstem-intersect-right-top"/>
    </shift-absolute>
-  </compile-if>
-  <compile-if test="smooth">
+  </compile-if>-->
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>

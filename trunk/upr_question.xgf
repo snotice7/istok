@@ -26,7 +26,7 @@
   <param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
   <param name="vert-stem" value="digit-thicker-curve-stem"/>
   <param name="curve-vert-stem" value="digit-thicker-curve-stem"/>
-  <param name="period-height" value="period-height"/>
+  <param name="dot-height" value="period-height"/>
   <param name="period-vert-stem" value="period-width"/>
   <param name="c-flat-ends" value="cap-c-flat-ends"/>
   
@@ -52,12 +52,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -66,13 +66,16 @@
     <point num="period-right-bottom"/>
    </align>
   </move>
-  <move distance="period-height">
+  <move distance="dot-height">
    <point num="period-left-top"/>
    <align>
     <point num="period-right-top"/>
    </align>
    <move color="white">
     <point num="vstem-left-bottom"/>
+    <align>
+     <point num="vstem-right-bottom"/>
+    </align>
    </move>
   </move>
   
@@ -156,68 +159,86 @@
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-round-state round="no"/>
   </compile-if>
+  <align>
+   <reference>
+    <point num="period-left-bottom"/>
+   </reference>
+   <point num="period-left-top"/>
+  </align>
+  <align>
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="vstem-left-top"/>
+  </align>
   <move distance="period-vert-stem" color="black">
    <reference>
     <point num="period-left-bottom"/>
    </reference>
    <point num="period-right-bottom"/>
+   <align>
+    <point num="period-right-top"/>
+   </align>
   </move>
   <move distance="vert-stem" color="black">
    <reference>
     <point num="vstem-left-bottom"/>
    </reference>
    <point num="vstem-right-bottom"/>
+   <align>
+    <point num="vstem-right-top"/>
+   </align>
   </move>
-  <compile-if test="slanted = 0">
-   <set-equal target="temp" source="round(((period-left-bottom -- vstem-left-bottom) - (vstem-right-bottom -- period-right-bottom)) * 0.5p)"/>
-   <if test="temp != 0">
-    <shift-absolute pixel-distance="temp">
-     <point num="period-left-bottom"/>
-     <point num="period-right-bottom"/>
-    </shift-absolute>
-    <!--<shift>
-     <reference>
-      <point num="period-left-bottom"/>
-     </reference>
-     <contour num="1"/>
-    </shift>-->
-   </if>
+  <set-equal target="temp" source="round(((period-left-bottom -- vstem-left-bottom) - (vstem-right-bottom -- period-right-bottom)) * 0.5p)"/>
+  <if test="temp != 0">
+   <shift-absolute pixel-distance="temp">
+    <point num="period-left-bottom"/>
+    <point num="period-right-bottom"/>
+    <point num="period-left-top"/>
+    <point num="period-right-top"/>
+   </shift-absolute>
+  </if>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="period-vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="period-left-bottom"/>
+      <!--      <point num="period-left-top"/> -->
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <!--      <point num="period-right-top"/> -->
+      <point num="period-right-bottom"/>
+     </shift-absolute>
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="vstem-left-bottom"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="period-vert-stem"/>
+     <with-param name="cv" value="curve-vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <point num="period-left-bottom"/>
-     <!--      <point num="period-left-top"/> -->
+     <point num="inner-right-top"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <!--      <point num="period-right-top"/> -->
-     <point num="period-right-bottom"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="vstem-left-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="vstem-right-bottom"/>
+     <point num="outer-right-top"/>
     </shift-absolute>
    </if>
-   <call-macro name="shift-edge">
-    <with-param name="shift" value="temp"/>
-    <with-param name="cv" value="curve-vert-stem"/>
-   </call-macro>
-   <shift-absolute pixel-distance="negative(temp)">
-    <point num="inner-right-top"/>
-   </shift-absolute>
-   <shift-absolute pixel-distance="temp">
-    <point num="outer-right-top"/>
-   </shift-absolute>
   </compile-if>
   <interpolate-untouched-points/>
  </glyph>

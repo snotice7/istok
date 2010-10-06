@@ -50,12 +50,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -143,6 +143,20 @@
      <point num="right-bearing"/>
     </move>
    </move>
+   <compile-if test="smooth">
+    <if test="horizontal-smoothing">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="curve-vstem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="up-inner-right"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="up-outer-right"/>
+     </shift-absolute>
+    </if>
+   </compile-if>
   </compile-if>
   
   <compile-if test="smooth">

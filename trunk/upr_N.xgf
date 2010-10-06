@@ -54,12 +54,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -212,7 +212,7 @@
     </align>
    </with-freedom-vector>
    <!--  </with-projection-vector> -->
-
+  
   <interpolate-untouched-points/>
  </glyph>
 </xgridfit>

@@ -27,10 +27,8 @@
   <param name="curve-hstem" value="small-curve-hstem"/>
   <param name="vert-stem" value="small-vert-stem"/>
   <param name="lbearing" value="small-cyrn-lbearing"/>
-  <param name="space" value="small-cyrn-space"/>
+  <param name="space" value="small-u-space"/>
   <param name="c-flat-ends" value="small-c-flat-ends"/>
-  <param name="upper-notch" value="cog-count"/>
-  <param name="lower-notch" value="notch-count"/>
   
   <constant name="lstem-left-bottom" value="0"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
@@ -46,7 +44,7 @@
   <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
   <constant name="desc-top" value="lower-end-top + 3"/>
   <constant name="rstem-left-bottom" value="desc-top + 3"/>
-  <constant name="joint-bottom" value="rstem-left-bottom + lower-notch + 1"/>
+  <constant name="joint-bottom" value="rstem-left-bottom + notch-count"/>
   <constant name="arc-bottom" value="joint-bottom + 3"/>
   <constant name="last" value="arc-bottom + 2"/>
   
@@ -56,12 +54,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">

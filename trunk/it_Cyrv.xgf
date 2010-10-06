@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ 
+ <!--в-->
+ 
+ <glyph ps-name="afii10067" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="height" value="small-o-height"/>
+  <param name="curve-horiz-stem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="right-vert-stem" value="small-vert-stem"/>
+  <param name="lbearing" value="small-o-lbearing"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
+  <param name="intersect-height" value="small-cyrn-intersect-height"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="up-outer-right" value="outer-top + 3"/>
+  <constant name="curve-intersect" value="up-outer-right + 3"/>
+  <constant name="low-outer-right" value="curve-intersect + 3 + cog-count"/>
+  <constant name="outer-bottom" value="low-outer-right + 3"/>
+  <constant name="up-inner-left-bottom" value="33"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-right" value="up-inner-right-bottom + 2"/>
+  <constant name="up-inner-right-top" value="up-inner-right + 3"/>
+  <constant name="up-inner-left-top" value="up-inner-right-top + 2"/>
+  <constant name="low-inner-left" value="19"/>
+  <constant name="low-inner-right-bottom" value="low-inner-left + 3"/>
+  <constant name="low-inner-right" value="low-inner-right-bottom + 3"/>
+  <constant name="low-inner-right-top" value="low-inner-right + 3"/>
+  <constant name="low-inner-left-top" value="low-inner-right-top + 3"/>
+  <constant name="last" value="up-inner-left-top"/>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="low-inner-right-bottom"/>
+   </move>
+   <!--   <move compile-if="smooth = 0">
+    <point num="low-inner-left-top"/>
+    <move round="no" color="black">
+     <point num="up-inner-left-bottom"/>
+    </move>
+    <move round="no" min-distance="no">
+     <point num="low-inner-right-top"/>
+    </move>
+   </move>-->
+  </move>
+  <!--  <compile-if test="smooth">
+   <move round="to-grid">
+    <point num="low-inner-left-top"/>
+    <move round="no" color="black">
+     <point num="up-inner-left-bottom"/>
+    </move>
+    <move round="no" min-distance="no">
+     <point num="low-inner-right-top"/>
+    </move>
+   </move>
+  </compile-if>-->
+  <move distance="intersect-height">
+   <point num="low-inner-right-top"/>
+   <move round="no" min-distance="no">
+    <point num="low-inner-left-top"/>
+    <move round="no" color="black">
+     <point num="up-inner-left-bottom"/>
+    </move>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="up-inner-right-top"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="low-inner-right-top"/>
+    <point num="up-inner-left-bottom"/>
+   </reference>
+   <point num="curve-intersect"/>
+  </interpolate>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="low-inner-left"/>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="low-outer-right"/>
+   <move distance="vert-stem" color="black">
+    <point num="low-inner-right"/>
+   </move>
+   <move min-distance="no">
+    <point num="up-outer-right"/>
+    <move distance="right-vert-stem" color="black">
+     <point num="up-inner-right"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="low-inner-left"/>
+    <point num="low-inner-right"/>
+   </reference>
+   <point num="up-inner-left-bottom"/>
+   <point num="curve-intersect"/>
+  </interpolate>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+     <point num="low-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="low-inner-left"/>
+     <point num="low-outer-right"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="up-inner-right"/>
+     <with-param name="point-second" value="up-outer-right"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="up-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="up-outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>  <!--Cyr V-->
+</xgridfit>

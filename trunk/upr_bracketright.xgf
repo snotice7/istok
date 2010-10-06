@@ -73,12 +73,12 @@
    <set-round-state round="no"/>
    <else>
     <set-vectors axis="x"/>
-    <compile-if test="smooth">
-     <if test="horizontal-smoothing">
-      <set-minimum-distance value="1.0p"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
   </compile-if>
   
   <move min-distance="no" color="white">

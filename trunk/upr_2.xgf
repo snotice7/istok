@@ -132,6 +132,7 @@
     <set-round-state round="to-grid"/>
    </if>
   </compile-if>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>

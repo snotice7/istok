@@ -3,7 +3,7 @@
  <!--E, Cyr E-->
  
  <glyph ps-name="E" init-graphics="yes">
-
+  
   <!--
       
       Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
@@ -22,7 +22,7 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-
+  
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
@@ -50,12 +50,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
