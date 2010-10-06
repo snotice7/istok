@@ -53,12 +53,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -84,7 +84,7 @@
    </reference>
    <point num="lstem-diag-intersect"/>
   </interpolate>
-   
+  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>

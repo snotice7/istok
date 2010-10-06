@@ -149,7 +149,7 @@
      <point num="joiner-right-bottom"/>
     </interpolate>
    </move>
-   <move distance="space" round="no" cut-in="no" color="black">
+   <move distance="space" color="black">
     <point num="outer-right"/>
     <move distance="curve-vert-stem" color="black">
      <point num="inner-right"/>
@@ -159,6 +159,22 @@
     </move>
    </move>
   </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(curve-vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left"/>
+     <point num="outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   <with-projection-vector x-component="x-skew1" y-component="y-skew1">
    <interpolate>
     <reference>

@@ -99,6 +99,15 @@
      <point num="real-upper-end-bottom"/>
      <point num="real-upper-end-top"/>
     </interpolate>
+    <mdap round="up-to-grid">
+     <point num="real-upper-end-top"/>
+    </mdap>
+    <shift>
+     <reference>
+      <point num="real-upper-end-top"/>
+     </reference>
+     <point num="real-upper-end-bottom"/>
+    </shift>
    </else>
   </if>
   
@@ -138,7 +147,7 @@
      <with-param name="cv" value="right-vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <point num="inner-asc-right"/>
+     <point num="asc-inner-right"/>
      <point num="inner-right"/>
      <point num="joint-left"/>
     </shift-absolute>

@@ -22,7 +22,7 @@
       -->
   
   <param name="baseline" value="cap-x-baseline"/>
-  <param name="period-height" value="period-height"/>
+  <param name="dot-height" value="period-height"/>
   <param name="vert-stem" value="period-width"/>
   <param name="height" value="cap-o-height"/>
   
@@ -44,12 +44,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -58,7 +58,7 @@
     <point num="period-right-bottom"/>
    </align>
   </move>
-  <move distance="period-height">
+  <move distance="dot-height">
    <point num="period-left-top"/>
    <align>
     <point num="period-right-top"/>
@@ -116,7 +116,7 @@
     <point num="right-bearing"/>
    </move>
   </compile-if>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
@@ -133,6 +133,9 @@
      <point num="right"/>
     </shift-absolute>
    </if>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
   </compile-if>
   <interpolate>
    <reference>

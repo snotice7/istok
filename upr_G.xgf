@@ -186,6 +186,8 @@
     </reference>
     <point num="vstem-right-top"/>
    </align>
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">

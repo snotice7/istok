@@ -69,7 +69,7 @@
     </line>   <!--    <line ref="first-diag"/> -->
     <!--    <move distance="absolute(diag-width)" round="no" cut-in="no" min-distance="diag-min-thick" color="black"> -->
      <compile-if test="(not(merge-mode) and diag-width >= 0) or
-                        (merge-mode and nan(diag-width)) &gt;= 0">
+      (merge-mode and nan(diag-width)) &gt;= 0">
       <move distance="diag-width" round="no" cut-in="no" min-distance="diag-min-thick" color="black">
        <reference>
         <point num="first-diag-first-point"/>
@@ -190,6 +190,17 @@
    <if test="((point-first -- point-second) &lt;= 1.0p) and (shift &lt; 0)">
     <set-equal target="shift" source="0.0p"/>
    </if>
+  </macro>
+  
+  <macro name="shift-edge-slanted">
+   <param name="shift"/>
+   <param name="cv"/>
+   <compile-if test="slanted">
+    <set-equal target="shift" source="0.5p * ((control-value(cv) / cos-it-ang) - round-black(control-value(cv) / cos-it-ang))"/>
+    <else>
+     <set-equal target="shift" source="0.5p * (control-value(cv) - round-black(control-value(cv)))"/>
+    </else>
+   </compile-if>
   </macro>
   
   <macro name="regularize-control-value-width">

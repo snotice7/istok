@@ -49,9 +49,6 @@ $(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS)
 	fntsample -f $< -o $@
 
 # Temporarily. We don't want to change anything in autoinstructed following faces:
-$(FAMILY)-Italic.ttf: $(FAMILY)-Italic.gen.ttf
-	cp -p $(FAMILY)-Italic.gen.ttf $(FAMILY)-Italic.ttf
-
 $(FAMILY)-Bold.ttf: $(FAMILY)-Bold.gen.ttf $(FAMILY)-Bold.py
 	fontforge -lang=py -script  $(FAMILY)-Bold.py
 

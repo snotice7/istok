@@ -114,12 +114,21 @@
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-contour-left"/>
+     <point num="dstem-bottom-left"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="inner-contour-right"/>
+     <with-param name="point-second" value="outer-right"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="inner-contour-right"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
      <point num="outer-right"/>
-     <point num="inner-contour-left"/>
-     <point num="dstem-bottom-left"/>
     </shift-absolute>
    </if>
   </compile-if>
@@ -133,6 +142,7 @@
     <set-round-state round="to-grid"/>
    </if>-->
   </compile-if>
+  
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="curve-horiz-stem" color="black">
@@ -145,6 +155,11 @@
     <point num="inner-contour-top"/>
    </move>
   </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
   <interpolate round="yes">
    <reference>
     <point num="inner-bottom"/>
@@ -152,7 +167,7 @@
    </reference>
    <point num="dstem-bottom-left"/>
   </interpolate>
-  <move color="black">
+  <move round="no" color="black">
    <reference>
     <point num="dstem-bottom-left"/>
    </reference>

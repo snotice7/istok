@@ -3,23 +3,23 @@
  <!--Cyr Sh-->
  <glyph ps-name="afii10042" init-graphics="yes">
   <!--
-     
+      
       Copyright (C) 2007, 2008, 2009, 2010 Andrey V. Panov
-     
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-     
-     You should have received a copy of the GNU General Public License
-     along with this program.  If not, see "http://www.gnu.org/licenses/".
-     
-     -->
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
   
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
@@ -27,7 +27,7 @@
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="sh-inner-space" value="cap-sh-inner-space"/>
-
+  
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
   <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
@@ -41,19 +41,19 @@
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
   <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
   <constant name="last" value="rstem-right-bottom + last-count"/>
-
+  
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -94,7 +94,7 @@
     </compile-if>
    </else>
   </compile-if>
-
+  
   <move distance="lbearing" color="white">
    <reference>
     <point num="left-bearing"/>

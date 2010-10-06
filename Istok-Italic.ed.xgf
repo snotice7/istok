@@ -43,7 +43,7 @@
  <constant name="cos-it-ang" value="0.9744p"/>
  <constant name="cos-it-ang-sto" value="97.44p"/>
  <constant name="one-cos-it-ang" value="0.0256p"/>
- <constant name="smooth" value="0"/>
+ <constant name="smooth" value="1"/>
  <constant name="first-point" value="1"/>
  <constant name="last-count" value="1"/>
  <constant name="hstem-vcount" value="3"/>
@@ -180,6 +180,7 @@
  <control-value name="digit-six-hspace" value="928"/>
  
  <control-value name="period-width" value="202"/>
+ <control-value name="period-height" value="202"/>
  <control-value name="dash-thickness" value="130"/>
  <control-value name="minus-width" value="1120"/>
   <!--  <control-value name="minus-thickness" value="120"/> -->
@@ -190,7 +191,6 @@
  <control-value name="emspace" value="1024"/>
  <control-value name="shift-border" value="-120"/>
  
- <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
  <xi:include href="it_border.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
@@ -327,8 +327,27 @@
   <round value="digit-height"/>
   <round value="digit-over-height"/>
   <round value="digit-six-inner-height" color="black"/>
-  <round value="period-width" color="black"/>
+  <!--   <round value="period-width" color="black"/> -->
   <round value="shift-border"/>
+  
+  <if test="control-value(cap-h-lbearing) = 0">
+   <set-equal target="cap-h-lbearing" source="1.0p"/>
+  </if>
+  <if test="control-value(cap-o-lbearing) = 0">
+   <set-equal target="cap-o-lbearing" source="1.0p"/>
+  </if>
+  <if test="control-value(cap-cyrz-lbearing) = 0">
+   <set-equal target="cap-cyrz-lbearing" source="1.0p"/>
+  </if>
+  <if test="control-value(small-cyrn-lbearing) = 0">
+   <set-equal target="small-cyrn-lbearing" source="1.0p"/>
+  </if>
+  <if test="control-value(small-o-lbearing) = 0">
+   <set-equal target="small-o-lbearing" source="1.0p"/>
+  </if>
+  <if test="control-value(small-cyrz-lbearing) = 0">
+   <set-equal target="small-cyrz-lbearing" source="1.0p"/>
+  </if>
 
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
@@ -350,6 +369,7 @@
    <set-equal target="small-x-lbearing" source="0"/>
   </if>
   
+  <if test="not(is-glyph-grayscale)">
    <set-control-value-cut-in value="1.06p"/>
    <!--   <if test="pixels-per-em &lt; 21 and pixels-per-em &gt; 11">-->
     <round value="cap-curve-hstem" color="black"/>
@@ -401,6 +421,12 @@
      <delta-set cv="small-vert-thinstem" size="9" distance="-8"/>
      <delta-set cv="small-vert-thinstem" size="10" distance="-8"/>
     </control-value-delta>
+    
+    <if test="pixels-per-em &lt;= 24">
+     <set-equal target="cap-o-curve-stem" source="control-value(cap-vert-stem)"/>
+     <set-equal target="small-curve-hstem" source="control-value(small-horiz-stem)"/>
+    </if>
+   </if>
    
    <if test="control-value(small-o-lbearing) = 0">
     <set-equal target="small-o-lbearing" source="1.0p"/>
@@ -440,7 +466,149 @@
     
    </if>
    
+   <if test="pixels-per-em &gt; 11">
+    <if test="vertical-smoothing">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-horiz-stem)"/>
+     </call-macro>
+     <subtract minuend="cap-h-intersect-height" subtrahend="temp"/>
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-horiz-stem)"/>
+     </call-macro>
+     <subtract minuend="small-cyrn-intersect-height" subtrahend="temp"/>
+    </if>
+    <!--      <if test="vertical-smoothing">
+     <subtract minuend="zero" subtrahend="vgrayshift"/>
+     <subtract minuend="cap-o-baseline" subtrahend="vgrayshift"/>
+     <add value1="cap-o-height" value2="vgrayshift"/>
+     <add value1="cap-x-height" value2="vgrayshift"/>
+     <subtract minuend="cap-b-intersect-height" subtrahend="vgrayshift"/>
+     <subtract minuend="cap-h-intersect-height" subtrahend="vgrayshift"/>
+     <add value1="cap-horiz-stem" value2="double-hgrayshift"/>
+     <subtract minuend="cap-tse-desc" subtrahend="vgrayshift"/>
+     <subtract minuend="small-o-baseline" subtrahend="vgrayshift"/>
+     <add value1="small-o-height" value2="vgrayshift"/>
+     <add value1="small-x-height" value2="vgrayshift"/>
+     <add value1="small-asc-height" value2="vgrayshift"/>
+     <add value1="small-asc-over-height" value2="vgrayshift"/>
+     <subtract minuend="cap-a-hstem-height" subtrahend="vgrayshift"/>
+     <subtract minuend="small-cyrn-intersect-height" subtrahend="vgrayshift"/>
+     <subtract minuend="small-tse-desc" subtrahend="vgrayshift"/>
+     <subtract minuend="small-desc" subtrahend="vgrayshift"/>
+     <add value1="small-horiz-stem" value2="double-hgrayshift"/>
+     <add value1="small-curve-hstem" value2="double-hgrayshift"/>
+     <add value1="digit-height" value2="vgrayshift"/>
+     <add value1="digit-over-height" value2="vgrayshift"/>
+     <subtract minuend="digit-six-inner-height" subtrahend="vgrayshift"/>
+     <add value1="digit-thin-horiz-stem" value2="double-hgrayshift"/>
+     <add value1="digit-mid-horiz-stem" value2="double-hgrayshift"/>
+    </if>-->
+    <if test="horizontal-smoothing">
+     <set-control-value-cut-in value="2.1p"/>
+     
+     <call-macro name="double-shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-vert-stem)"/>
+     </call-macro>
+     <!--     <add value1="cap-vert-stem" value2="temp"/> -->
+     <add value1="cap-h-space" value2="temp"/>
+     <add value1="cap-cyri-space" value2="temp"/>
+     <add value1="cap-cyrch-space" value2="temp"/>
+     
+     <call-macro name="double-shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-o-curve-stem)"/>
+     </call-macro>
+     <!--     <add value1="cap-o-curve-stem" value2="temp"/> -->
+     <add value1="cap-o-space" value2="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-vert-stem)"/>
+     </call-macro>
+     <subtract minuend="cap-h-lbearing" subtrahend="temp"/>
+     <subtract minuend="cap-cyrz-lbearing" subtrahend="temp"/>
+     <subtract minuend="cap-tse-desc-horiz-shift" subtrahend="temp"/>
+     <!--     <add value1="cap-p-curve-stem" value2="temp"/> -->
+     <add value1="cap-b-low-space" value2="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-o-curve-stem)"/>
+     </call-macro>
+     <add value1="cap-b-low-space" value2="temp"/>
+     <subtract minuend="cap-o-lbearing" subtrahend="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(cap-vert-thinstem)"/>
+     </call-macro>
+     <add value1="cap-tse-desc-horiz-shift" value2="temp"/>
+     
+     <call-macro name="double-shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-vert-stem)"/>
+     </call-macro>
+     <!--     <add value1="small-vert-stem" value2="temp"/> -->
+     <add value1="small-cyrn-space" value2="temp"/>
+     <add value1="small-u-space" value2="temp"/>
+     <add value1="small-cyri-space" value2="temp"/>
+     <add value1="small-cyrch-space" value2="temp"/>
+     
+     <call-macro name="double-shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-o-curve-stem)"/>
+     </call-macro>
+     <!--     <add value1="small-o-curve-stem" value2="temp"/> -->
+     <add value1="small-o-space" value2="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-vert-stem)"/>
+     </call-macro>
+     <subtract minuend="small-cyrn-lbearing" subtrahend="temp"/>
+     <subtract minuend="small-cyrz-lbearing" subtrahend="temp"/>
+     <subtract minuend="small-tse-desc-horiz-shift" subtrahend="temp"/>
+     <add value1="small-p-space" value2="temp"/>
+     <add value1="small-cyrv-low-space" value2="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-o-curve-stem)"/>
+     </call-macro>
+     <subtract minuend="small-o-lbearing" subtrahend="temp"/>
+     <add value1="small-p-space" value2="temp"/>
+     <add value1="small-cyrv-low-space" value2="temp"/>
+     
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(small-vert-thinstem)"/>
+     </call-macro>
+     <add value1="small-tse-desc-horiz-shift" value2="temp"/>
+     
+     <set-minimum-distance value="0.51p"/>
+     
+     <!--<control-value-delta>
+      <delta-set cv="cap-h-lbearing" size="5" distance="8"/>
+      <delta-set cv="cap-h-space" size="5" distance="-8"/>
+      <delta-set cv="cap-cyri-space" size="5" distance="-8"/>
+      <delta-set cv="cap-cyrch-space" size="5" distance="-8"/>
+      <delta-set cv="cap-h-lbearing" size="6" distance="8"/>
+      <delta-set cv="cap-h-space" size="6" distance="-8"/>
+      <delta-set cv="cap-cyri-space" size="6" distance="-8"/>
+      <delta-set cv="cap-cyrch-space" size="6" distance="-8"/>
+     </control-value-delta>-->
+    </if>
+    <else>
+     <if test="is-glyph-grayscale">
+      <set-control-value-cut-in value="1.06p"/>
+     </if>
+    </else>
+   </if>
    
+   <if test="not(horizontal-smoothing)">
     <set-equal target="temp" source="round-black(control-value(index(cap-vert-stem))) * 0.89p"/>
     <if test="control-value(index(cap-diag)) &gt; temp">
      <set-equal target="cap-diag" source="temp"/>
@@ -473,6 +641,7 @@
     <if test="control-value(index(accent-diag)) &gt; temp">
      <set-equal target="accent-diag" source="temp"/>
     </if>
+   </if>
   
   <set-equal target="digit-vert-stem" source="(control-value(digit-vert-stem) * cos-it-ang-sto) / 100.0p"/>
   <set-equal target="cap-h-lbearing" source="(control-value(cap-h-lbearing) * cos-it-ang-sto) / 100.0p"/>
@@ -498,17 +667,18 @@
   <set-equal target="small-cyrn-space" source="(control-value(small-cyri-space) * cos-it-ang-sto) / 100.0p"/>
   <set-equal target="small-cyrch-space" source="(control-value(small-cyrch-space) * cos-it-ang-sto) / 100.0p"/>
   <set-equal target="small-tse-desc-horiz-shift" source="(control-value(small-tse-desc-horiz-shift) * cos-it-ang-sto) / 100.0p"/>
+  <set-equal target="period-width" source="(control-value(period-width) * cos-it-ang-sto) / 100.0p"/>
 
 <!--   <round value="emspace"/> -->
   </pre-program>
   
-<!--  <xi:include href="upr_quotesingle.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_exclam.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_quotesingle.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+<!--   <xi:include href="upr_exclam.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/> -->
   <xi:include href="upr_numbersign.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_percent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+<!--  <xi:include href="upr_percent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
   <xi:include href="upr_period.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_question.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_dollar.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+<!--   <xi:include href="upr_question.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/> -->
+<!--  <xi:include href="upr_dollar.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
   <xi:include href="upr_ampersand.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_parenleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_parenright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -529,7 +699,7 @@
   <xi:include href="upr_6.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_7.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_8.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_9.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
+  <xi:include href="upr_9.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_A.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_B.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_C.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -582,8 +752,8 @@
   <xi:include href="upr_CyrNje.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrDzhe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrTshe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrFita.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  <xi:include href="upr_CyrIzhica.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
+  <xi:include href="upr_CyrFita.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
+  <xi:include href="upr_CyrIzhica.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_a.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_b.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_d.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -605,7 +775,7 @@
   <xi:include href="upr_u.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_y.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrb.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-<!--  <xi:include href="it_Cyrv.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
+  <xi:include href="it_Cyrv.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_Cyrg.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_Cyrd.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrn.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -625,7 +795,7 @@
   <xi:include href="upr_CyrYat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_Cyryat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
   <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-<!--  <xi:include href="it_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+<!--  <xi:include href="it_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
   <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_esh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fi.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>

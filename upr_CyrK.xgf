@@ -2,9 +2,9 @@
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
  <!--Cyr K (К)-->
  <glyph ps-name="afii10028" init-graphics="yes">
-
+  
   <!--
-
+      
       Copyright (C) 2008, 2009, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
-
+  
   <constant name="vstem-left-bottom" value="first-point"/>
   <constant name="vstem-left-top" value="vstem-left-bottom + vstem-vcount"/>
   <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
@@ -48,7 +48,7 @@
   <constant name="vstem-right-bottom" value="rhstem-left-bottom + smooth-count"/>
   <constant name="last" value="vstem-right-bottom + last-count"/>
   <constant name="diag-shift" value="-0.05p"/>
-
+  
   <line name="ru-diag-l">
    <point num="ru-diag-l-top"/>
    <point num="ru-diag-l-bottom"/>
@@ -72,12 +72,12 @@
    <!--   <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
-    <compile-if test="smooth">
-     <if test="vertical-smoothing">
-      <set-round-state round="no"/>
-     </if>
-    </compile-if>
    </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
   </compile-if>
   
   <move distance="baseline">
@@ -197,7 +197,7 @@
    </reference>
    <point num="right-bearing"/>
   </move>
-
+  
   <interpolate-untouched-points/>
  </glyph>
  <!--Cyr k-->
