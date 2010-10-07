@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="afii10193">
+  <!--
+      
+      Copyright (C) 2008, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="tse-desc" value="small-tse-desc"/>
+  <param name="vert-thinstem" value="small-vert-thinstem"/>
+  
+  <constant name="desc-left-bottom" value="34"/>
+  <constant name="desc-left-top" value="desc-left-bottom + vstem-vcount"/>
+  <constant name="desc-right-top" value="desc-left-top + vstem-hcount"/>
+  <constant name="desc-right-bottom" value="desc-right-top + vstem-vcount"/>
+  <constant name="last" value="desc-right-bottom + last-count"/>
+  
+  <call-glyph ps-name="u">
+   <with-param name="left-sidebearing" value="last + 1"/>
+  </call-glyph>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+   </else>
+  </compile-if>
+  
+  <move>
+   <reference>
+    <point num="u/lstem-left-bottom"/>
+   </reference>
+   <point num="desc-left-bottom"/>
+   <align>
+    <point num="desc-left-top"/>
+   </align>
+   <move distance="vert-thinstem" color="black">
+    <point num="desc-right-top"/>
+    <align>
+     <point num="desc-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <set-round-state round="to-grid"/>
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  
+  <move distance="tse-desc">
+   <point num="desc-left-bottom"/>
+   <align>
+    <point num="desc-right-bottom"/>
+   </align>
+  </move>
+  <move>
+   <point num="desc-left-top"/>
+   <align>
+    <point num="desc-right-top"/>
+   </align>
+  </move>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

@@ -44,7 +44,6 @@
   <constant name="last" value="inner-top + 2"/>
   
   <set-vectors axis="x"/>
-  
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <set-round-state round="no"/>
@@ -80,16 +79,16 @@
    <if test="horizontal-smoothing">
     <set-round-state round="to-grid"/>
     <set-minimum-distance value="1.0p"/>
-    <move min-distance="no" color="white">
-     <reference>
-      <point num="outer-right"/>
-     </reference>
-     <point num="right-bearing"/>
-    </move>
-    <mdap round="yes">
-     <point num="right-bearing"/>
-    </mdap>
    </if>
+   <move min-distance="no" color="white">
+    <reference>
+     <point num="outer-right"/>
+    </reference>
+    <point num="right-bearing"/>
+   </move>
+   <mdap round="yes">
+    <point num="right-bearing"/>
+   </mdap>
   </compile-if>
   
   <set-vectors axis="y"/>
@@ -98,6 +97,7 @@
     <set-round-state round="no"/>
    </if>
   </compile-if>
+  
   <move distance="baseline">
    <point num="outer-bottom"/>
    <move distance="horiz-stem" color="black">

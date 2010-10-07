@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr sh-->
- <glyph ps-name="afii10090">
+ <glyph ps-name="u" init-graphics="yes">
   
   <!--
       
@@ -28,29 +27,22 @@
   <param name="curve-hstem" value="small-curve-hstem"/>
   <param name="vert-stem" value="small-vert-stem"/>
   <param name="lbearing" value="small-cyrn-lbearing"/>
-  <param name="sh-inner-space" value="small-m-inner-space"/>
+  <param name="space" value="small-u-space"/>
   <param name="left-sidebearing" value="last + 1"/>
   
   <constant name="lstem-left-bottom" value="0"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
   <constant name="lstem-right-top" value="lstem-left-top + vstem-hcount"/>
   <constant name="lstem-right-bottom" value="lstem-right-top + smooth-count"/>
-  <constant name="larc-top" value="lstem-right-bottom + 3"/>
-  <constant name="ljoint-top" value="larc-top + 3"/>
-  <constant name="mstem-left-top" value="ljoint-top + smooth-count"/>
-  <constant name="mstem-right-top" value="mstem-left-top + vstem-hcount"/>
-  <constant name="mstem-right-bottom" value="mstem-right-top + smooth-count"/>
-  <constant name="rarc-top" value="mstem-right-bottom + 3"/>
-  <constant name="rjoint-top" value="rarc-top + 3"/>
-  <constant name="rstem-left-top" value="rjoint-top + smooth-count"/>
+  <constant name="arc-top" value="lstem-right-bottom + 3"/>
+  <constant name="joint-top" value="arc-top + 3"/>
+  <constant name="rstem-left-top" value="joint-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
   <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
   <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
-  <constant name="rjoint-bottom" value="rstem-left-bottom + smooth-count + cog-count"/>
-  <constant name="rarc-bottom" value="rjoint-bottom + 3"/>
-  <constant name="ljoint-bottom" value="rarc-bottom + 3 + cog-count"/>
-  <constant name="larc-bottom" value="ljoint-bottom + 3"/>
-  <constant name="last" value="larc-bottom + 2"/>
+  <constant name="joint-bottom" value="rstem-left-bottom + smooth-count + cog-count"/>
+  <constant name="arc-bottom" value="joint-bottom + 3"/>
+  <constant name="last" value="arc-bottom + 2"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -76,33 +68,19 @@
    <point num="lstem-left-top"/>
    <align>
     <point num="lstem-right-top"/>
-    <point num="mstem-left-top"/>
-    <point num="mstem-right-top"/>
     <point num="rstem-left-top"/>
     <point num="rstem-right-top"/>
    </align>
   </move>
   <move distance="o-baseline">
-   <point num="larc-bottom"/>
-   <align>
-    <point num="rarc-bottom"/>
-   </align>
+   <point num="arc-bottom"/>
    <move distance="curve-hstem" color="black">
-    <point num="larc-top"/>
-    <align>
-     <point num="rarc-top"/>
-    </align>
+    <point num="arc-top"/>
    </move>
    <move min-distance="no">
-    <point num="ljoint-bottom"/>
-    <align>
-     <point num="rjoint-bottom"/>
-    </align>
+    <point num="joint-bottom"/>
     <move color="black">
-     <point num="ljoint-top"/>
-     <align>
-      <point num="rjoint-top"/>
-     </align>
+     <point num="joint-top"/>
     </move>
    </move>
   </move>
@@ -135,49 +113,38 @@
      <point num="lstem-right-bottom"/>
     </align>
    </move>
-   <move distance="sh-inner-space" round="no" cut-in="no">
-    <point num="ljoint-top"/>
+   <move distance="space" color="black">
+    <point num="rstem-right-top"/>
     <align>
-     <point num="mstem-left-top"/>
+     <point num="rstem-right-bottom"/>
     </align>
     <interpolate>
-     <point num="larc-top"/>
-     <point num="larc-bottom"/>
+     <point num="arc-top"/>
+     <point num="arc-bottom"/>
     </interpolate>
     <move distance="vert-stem" color="black">
-     <point num="mstem-right-top"/>
-     <align>
-      <point num="mstem-right-bottom"/>
-     </align>
-     <interpolate>
-      <point num="ljoint-bottom"/>
-     </interpolate>
-    </move>
-    <move distance="sh-inner-space" round="no" cut-in="no">
      <point num="rstem-left-bottom"/>
      <align>
       <point num="rstem-left-top"/>
-      <point num="rjoint-top"/>
-      <point num="rjoint-bottom"/>
+      <point num="joint-top"/>
+      <point num="joint-bottom"/>
      </align>
-     <interpolate>
-      <point num="rarc-top"/>
-      <point num="rarc-bottom"/>
-     </interpolate>
-     <move distance="vert-stem" color="black">
-      <point num="rstem-right-top"/>
-      <align>
-       <point num="rstem-right-bottom"/>
-      </align>
-      <move min-distance="no" color="white">
-       <point num="right-bearing"/>
-      </move>
-     </move>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
     </move>
    </move>
   </move>
   <compile-if test="smooth or slanted">
    <compile-if test="slanted">
+    <interpolate>
+     <reference>
+      <point num="lstem-right-bottom"/>
+      <point num="joint-top"/>
+     </reference>
+     <point num="arc-bottom"/>
+     <point num="arc-top"/>
+    </interpolate>
     <set-projection-vector axis="x"/>
    </compile-if>
    <move round="to-grid">
@@ -187,5 +154,4 @@
   
   <interpolate-untouched-points/>
  </glyph>
- <!--Cyr sh-->
 </xgridfit>

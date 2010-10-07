@@ -26,9 +26,9 @@
   <param name="x-height" value="cap-x-height"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
-  <!--   <param name="curve-stem" value="cap-o-curve-stem"/> -->
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="curve-horiz-stem" value="cap-curve-hstem"/>
+  <param name="space" value="cap-cyrch-space"/>
   
   <constant name="left-hstem-bottom" value="first-point"/>
   <constant name="left-top" value="left-hstem-bottom + hstem-vcount"/>
@@ -171,25 +171,25 @@
        <point num="right-hstem-bottom"/>
       </align>
      </move>
-     <move color="black">
+    </move>
+    <move distance="space" color="black">
+     <point num="rstem-right-bottom"/>
+     <align>
       <point num="rstem-right-top"/>
+     </align>
+     <move distance="vert-stem" color="black">
+      <point num="rstem-left-bottom"/>
       <align>
-       <point num="rstem-right-bottom"/>
+       <point num="rstem-left-top"/>
       </align>
-      <move distance="vert-stem" color="black">
-       <point num="rstem-left-bottom"/>
-       <align>
-        <point num="rstem-left-top"/>
-       </align>
-      </move>
-      <move min-distance="no">
-       <point num="right-bearing"/>
-      </move>
+     </move>
+     <move min-distance="no">
+      <point num="right-bearing"/>
      </move>
     </move>
    </move>
   </move>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
@@ -214,6 +214,15 @@
      <point num="rstem-right-bottom"/>
     </shift-absolute>
    </if>
+  </compile-if>
+  <compile-if test="smooth or slanted">
+   <compile-if test="slanted">
+    <set-projection-vector axis="x"/>
+    <set-round-state round="to-grid"/>
+   </compile-if>
+   <move round="yes">
+    <point num="right-bearing"/>
+   </move>
   </compile-if>
   
   <interpolate-untouched-points/>

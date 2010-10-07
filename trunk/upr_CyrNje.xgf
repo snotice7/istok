@@ -178,7 +178,7 @@
       <move distance="curve-stem" color="black" compile-if="slanted = 0">
        <point num="low-inner-right"/>
       </move>
-      <move min-distance="no" color="white" compile-if="slanted = 0">
+    <move min-distance="no" color="white" compile-if="(slanted = 0) and (smooth = 0)">
        <point num="right-bearing"/>
       </move>
      </move>
@@ -194,9 +194,11 @@
   </if>-->
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <set-minimum-distance value="1.0p"/>
    <move>
     <point num="low-outer-right"/>
-    <move distance="curve-stem" color="black">
+    <move round="no" distance="curve-stem" color="black">
      <point num="low-inner-right"/>
     </move>
     <move min-distance="no" color="white">
@@ -226,25 +228,11 @@
    </if>
   </compile-if>-->
   <compile-if test="smooth">
-   <move round="to-grid">
+   <move round="to-grid or slanted">
     <point num="right-bearing"/>
    </move>
   </compile-if>
   
   <interpolate-untouched-points/>
  </glyph>
- <glyph ps-name="afii10107" init-graphics="yes">
-  <call-glyph ps-name="afii10059">
-   <with-param name="baseline" value="small-x-baseline"/>
-   <with-param name="x-height" value="small-x-height"/>
-   <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
-   <with-param name="soft-space" value="small-cyrv-low-space"/>
-   <with-param name="curve-stem" value="small-o-curve-stem"/>
-   <with-param name="h-space" value="small-cyrn-space"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
-  </call-glyph>
- </glyph>
- 
 </xgridfit>
