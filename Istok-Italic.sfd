@@ -3,7 +3,7 @@ FontName: Istok-Italic
 FullName: Istok Italic
 FamilyName: Istok
 Weight: Italic
-Copyright: (C) 2008-2009 Andrey V. Panov
+Copyright: (C) 2008, 2009, 2010 Andrey V. Panov
 UComments: "2008-10-29: Created." 
 Version: 0.2
 ItalicAngle: -13
@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1286279889
+ModificationTime: 1286446411
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -52,7 +52,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 0 16 13
+WinInfo: 64 16 13
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -1699,14 +1699,14 @@ EndChar
 StartChar: i
 Encoding: 105 105 31
 Width: 460
-Flags: W
+Flags: HW
 HStem: 0 21<44.5 175.5> 1030 20<286.5 417.5> 1240 176<339.186 494.941>
 VStem: 32 398 319 196
 DStem2: 21.9775 0 197.977 0 0.224951 0.97437<29.6943 1087.43>
 LayerCount: 2
 Fore
-Refer: 32 729 S 1 0 0 1 -77 0 2
-Refer: 0 305 N 1 0 0 1 0 0 3
+Refer: 0 305 S 1 0 0 1 0 0 3
+Refer: 32 729 N 1 0 0 1 -77 0 2
 Kerns2: 131 -38 "LGC kerning subtable"  74 -39 "LGC kerning subtable"  136 -41 "LGC kerning subtable"  82 -37 "LGC kerning subtable"  132 -38 "LGC kerning subtable" 
 EndChar
 
@@ -1797,7 +1797,7 @@ EndChar
 StartChar: afii10103
 Encoding: 1110 1110 35
 Width: 460
-Flags: W
+Flags: HW
 LayerCount: 2
 Fore
 Refer: 31 105 N 1 0 0 1 0 0 3
@@ -3443,14 +3443,14 @@ StartChar: j
 Encoding: 106 106 66
 Width: 466
 VWidth: 0
-Flags: W
+Flags: HW
 HStem: -417 130<-289.125 -64.5002> 1030 20<292.5 423.5> 1240 176<345.186 500.941>
 VStem: 325 196
 DStem2: -68.6572 -417 108.199 -417 0.224951 0.97437<187.564 1515.48>
 LayerCount: 2
 Fore
-Refer: 32 729 N 1 0 0 1 -71 0 2
 Refer: 65 567 N 1 0 0 1 0 0 3
+Refer: 32 729 N 1 0 0 1 -71 0 2
 Kerns2: 131 -38 "LGC kerning subtable"  74 -39 "LGC kerning subtable"  136 -41 "LGC kerning subtable"  82 -37 "LGC kerning subtable"  132 -38 "LGC kerning subtable" 
 EndChar
 
@@ -4141,7 +4141,7 @@ StartChar: afii10105
 Encoding: 1112 1112 81
 Width: 466
 VWidth: 0
-Flags: W
+Flags: HW
 LayerCount: 2
 Fore
 Refer: 66 106 N 1 0 0 1 0 0 3
@@ -7718,7 +7718,7 @@ EndChar
 StartChar: parenright
 Encoding: 41 41 156
 Width: 670
-Flags: HW
+Flags: W
 VStem: 395 196<459.601 1134.08>
 LayerCount: 2
 Back
@@ -8035,7 +8035,7 @@ EndChar
 StartChar: guilsinglright
 Encoding: 8250 8250 161
 Width: 682
-Flags: HW
+Flags: W
 VStem: 59 512
 DStem2: 560 517 431 556 0.734255 0.678873<-597.997 -68.2429> 431 556 571 563 0.526355 -0.850265<-425.906 0>
 LayerCount: 2
@@ -8074,7 +8074,7 @@ EndChar
 StartChar: guillemotright
 Encoding: 187 187 162
 Width: 1032
-Flags: HW
+Flags: W
 VStem: 59 512 409 512
 DStem2: 560 517 431 556 0.734255 0.678873<-597.997 -68.2429> 431 556 571 563 0.526355 -0.850265<-425.906 0> 910 517 781 556 0.734255 0.678873<-597.997 -68.2429> 781 556 921 563 0.526355 -0.850265<-425.906 0>
 LayerCount: 2
@@ -8161,7 +8161,7 @@ EndChar
 StartChar: nine
 Encoding: 57 57 164
 Width: 1110
-Flags: HW
+Flags: W
 HStem: -30 158<263.311 584.213> 523 153<450.918 736.359> 1302 150<547.803 812.088>
 VStem: 179 196<751.903 1093.09> 894 189<593.038 679 726.285 1215.38>
 LayerCount: 2
@@ -8393,7 +8393,7 @@ EndChar
 StartChar: bracketright
 Encoding: 93 93 171
 Width: 658
-Flags: HW
+Flags: W
 HStem: -408 130<-124.675 127> 1366 130<284.325 506>
 DStem2: 712.389 1496 536.013 1496 0.224951 0.97437<-1860.22 -173.096>
 LayerCount: 2
@@ -8646,7 +8646,7 @@ EndChar
 StartChar: braceright
 Encoding: 125 125 176
 Width: 776
-Flags: HW
+Flags: W
 HStem: -408 130<-123.675 57.3936> 479 130<554.484 686.419> 1366 130<285.325 416.822>
 DStem2: 651.441 1496 474.877 1496 0.224951 0.97437<-1854.08 -1142.88 -793.391 -201.785>
 CounterMasks: 1 e0
@@ -9529,7 +9529,7 @@ EndChar
 StartChar: greater
 Encoding: 62 62 188
 Width: 1280
-Flags: HW
+Flags: W
 DStem2: 1044 736 1197 785 0.865883 -0.500247<-1036.83 0> 1197 685 1044 734 0.865883 0.500247<-1144.8 -107.968>
 LayerCount: 2
 Fore
@@ -10863,7 +10863,7 @@ EndChar
 StartChar: caron
 Encoding: 711 711 223
 Width: 614
-Flags: HW
+Flags: W
 HStem: 1138 20<420.5 495.5>
 DStem2: 209 1343 464 1240 0.697021 -0.717051<-37.8572 251.597> 779 1327 466 1240 0.819533 0.573033<-306.368 51.9627>
 LayerCount: 2
@@ -12558,7 +12558,7 @@ EndChar
 StartChar: caron.cap
 Encoding: 63178 63178 286
 Width: 820
-Flags: HW
+Flags: W
 HStem: 1510 245
 DStem2: 328 1650 658 1623 0.889529 -0.456879<-29.9201 305.88> 760 1528 660 1623 0.924017 0.382352<-56.0783 323.371>
 LayerCount: 2
