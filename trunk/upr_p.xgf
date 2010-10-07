@@ -185,7 +185,7 @@
    <mdap round="yes">
     <point num="right-bearing"/>
    </mdap>
-   <compile-if test="smooth">
+   <compile-if test="smooth and slanted">
     <if test="horizontal-smoothing">
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
