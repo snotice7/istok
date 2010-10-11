@@ -14,7 +14,8 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 	make_cap_accent.ff make_superscript.ff dub_aligned.ff same_kern.ff \
 	make_kern.ff cop_kern_left.ff cop_kern_right.ff cop_kern_acc.ff \
 	cop_kern.ff cop_kern_mult.ff copy_anchors_acc.ff sc_sub.ff tab_sub.ff \
-	liga_sub.ff sub_onum.ff alt_sub.ff
+	liga_sub.ff sub_onum.ff alt_sub.ff \
+	make_kern_sc.ff same_kern_sc.ff
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
 XGFFILES=inst_acc.py skipautoinst.txt \
 	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf # $(FAMILY)-BoldItalic.ed.xgf

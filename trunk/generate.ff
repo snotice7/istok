@@ -67,6 +67,8 @@ tab_sub.ff()
 #endif
 if (fontname == "Istok-Regular")
  sc_sub.ff()
+ same_kern_sc.ff()
+ make_kern_sc.ff()
 endif
 add_accented.ff()
 liga_sub.ff()
