@@ -1,6 +1,6 @@
-# Copyright (C) 2009 Andrey V. Panov
+# Copyright (C) 2009, 2010 Andrey V. Panov
 #
-# This program is free software; you can redistribute it and/or modify
+# This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2, or (at your option)
 # any later version.
@@ -11,8 +11,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# along with this program.  If not, see "http://www.gnu.org/licenses/".
 #
 # This fontforge script proposed for copying kerning info from Latin letters to 
 # similar Cyrillic ones
@@ -33,6 +32,7 @@ common_gl=["space","exclam","quotesingle","parenleft","parenright","comma",\
            "guillemotright","endash","emdash","quotedblleft","quotedblright",\
            "quotedblbase","ellipsis"]
 
+size_sc = SizeOf(latin_gl)
 latin_gl = latin_gl + common_gl
 cyr_gl = cyr_gl + common_gl
 size_ar = SizeOf(latin_gl)
@@ -42,7 +42,7 @@ while (i < size_ar)
  if ( WorthOutputting(latin_gl[i]) && WorthOutputting(cyr_gl[i]))
   j = 0
   while (j < size_ar)
-   if ( i != j && WorthOutputting(latin_gl[j]) && WorthOutputting(cyr_gl[j]))
+   if ((i != j) && !(i > size_sc && j > size_sc) && WorthOutputting(latin_gl[j]) && WorthOutputting(cyr_gl[j]))
     Select(latin_gl[i])
     kern = GlyphInfo("Kern", latin_gl[j])
     if (kern != 0)
