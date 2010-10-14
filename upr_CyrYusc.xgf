@@ -22,7 +22,7 @@
    <with-param name="x-baseline" value="small-x-baseline"/>
    <with-param name="x-height" value="sc-x-height"/>
    <with-param name="vert-stem" value="small-vert-stem"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="lbearing" value="sc-h-lbearing"/>
    <with-param name="intersect-height" value="sc-h-intersect-height"/>
    <with-param name="horiz-stem" value="small-horiz-stem"/>
    <with-param name="o-baseline" value="small-o-baseline"/>

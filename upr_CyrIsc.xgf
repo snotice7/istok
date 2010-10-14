@@ -25,7 +25,7 @@
    <with-param name="x-height" value="sc-x-height"/>
    <with-param name="vert-stem" value="small-vert-stem"/>
    <with-param name="diag" value="small-thindiag"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="lbearing" value="sc-h-lbearing"/>
    <with-param name="cyri-space" value="sc-cyri-space"/>
   </call-glyph>
  </glyph>

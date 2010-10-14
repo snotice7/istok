@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="cyrBreve" init-graphics="yes">
-
+ <glyph ps-name="cyrBreve">
+  
   <!--
       
-      Copyright (C) 2007, 2008, 2009, 2010 Andrey V. Panov
+      Copyright (C) 2007, 2008, 2010 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -20,20 +20,18 @@
       along with this program.  If not, see "http://www.gnu.org/licenses/".
       
       -->
-
-  <param name="cyri-space" value="cap-cyri-space"/>
+  
   <param name="vert-stem" value="cap-vert-thinstem"/>
-
+  
   <constant name="lbulb-left" value="first-point"/>
   <constant name="lbulb-top" value="lbulb-left + vstem-hcount"/>
   <constant name="lbulb-right" value="lbulb-top + smooth-count"/>
   <constant name="junction-top" value="lbulb-right + 3"/>
-  <constant name="rbulb-left" value="junction-top + 3"/>
-  <constant name="rbulb-top" value="rbulb-left + smooth-count"/>
-  <constant name="rbulb-right" value="rbulb-top + vstem-hcount"/>
-  <constant name="junction-bottom" value="rbulb-right + 5"/>
+  <constant name="left-end-top" value="junction-top + 3"/>
+  <constant name="left-end-bottom" value="left-end-top + open-end-count"/>
+  <constant name="junction-bottom" value="left-end-bottom + 3"/>
   <constant name="last" value="junction-bottom + 3"/>
-
+  
   <set-vectors axis="y"/>
   <move>
    <point num="junction-bottom"/>
@@ -42,12 +40,19 @@
    </move>
    <move color="black">
     <point num="lbulb-top"/>
-    <align>
-     <point num="rbulb-top"/>
-    </align>
+   </move>
+   <move>
+    <point num="left-end-bottom"/>
    </move>
   </move>
-
+  <if test="(pixels-per-em &lt; 30)">
+   <if test="(left-end-bottom -- lbulb-top) &gt; 0.0p">
+    <shift-absolute pixel-distance="1.0p">
+     <point num="left-end-bottom"/>
+    </shift-absolute>
+   </if>
+  </if>
+  
   <set-vectors axis="x"/>
   <move color="white">
    <reference>
@@ -57,41 +62,20 @@
    <move distance="vert-stem" color="black">
     <point num="lbulb-right"/>
    </move>
-   <move color="black">
-    <point num="rbulb-right"/>
-    <move distance="vert-stem" color="black">
-     <!--pixel-distance="lbulb-right - - lbulb-left"-->
-     <point num="rbulb-left"/>
-    </move>
-   </move>
   </move>
-  <!--  Check wether both Cyr i and this glyph have the same eveness/oddity  -->
-  <if test="even(lbulb-right -- rbulb-left) != even(round-white(control-value(cyri-space)))">
-   <if test="lbulb-right -- rbulb-left &lt;= 2.0p">
-    <set-equal target="temp" source="1.0p"/>
-    <else>
-     <set-equal target="temp" source="-1.0p"/>
-    </else>
-   </if>
-   <shift-absolute pixel-distance="temp">
-    <point num="rbulb-left"/>
-    <point num="rbulb-right"/>
-   </shift-absolute>
-  </if>
-  <move min-distance="no">
+  <move round="no" min-distance="no" color="white">
    <reference>
-    <point num="rbulb-right"/>
+    <point num="right-bearing"/>
    </reference>
-   <point num="right-bearing"/>
+   <point num="left-end-bottom"/>
   </move>
   <interpolate-untouched-points/>
  </glyph>
-
+ 
  <glyph ps-name="cyrbreve" init-graphics="yes">
   <call-glyph ps-name="cyrBreve">
-   <with-param name="cyri-space" value="small-cyri-space"/>
    <with-param name="vert-stem" value="small-vert-thinstem"/>
   </call-glyph>
  </glyph>
-
+ 
 </xgridfit>
