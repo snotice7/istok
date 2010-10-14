@@ -25,7 +25,7 @@
    <with-param name="intersect-height" value="sc-h-intersect-height"/>
    <with-param name="vert-stem" value="small-vert-stem"/>
    <with-param name="horiz-stem" value="small-horiz-stem"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="lbearing" value="sc-h-lbearing"/>
   </call-glyph>
  </glyph>
 </xgridfit>

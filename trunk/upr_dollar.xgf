@@ -80,220 +80,9 @@
   </line>
   
   <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
-   <else>
-    <set-vectors axis="x"/>
-   </else>
-  </compile-if>
-  
-  <move color="white">
-   <reference>
-    <point num="left-bearing"/>
-   </reference>
-   <point num="outer-left"/>
-   <interpolate>
-    <point num="lower-end-bottom"/>
-    <point num="lower-end-top"/>
-   </interpolate>
-   <move distance="up-vert-stem" color="black">
-    <point num="inner-left"/>
-   </move>
-  </move>
-  <move min-distance="no" color="white">
-   <reference>
-    <point num="right-bearing"/>
-   </reference>
-   <point num="outer-right"/>
-   <move distance="low-vert-stem" color="black" compile-if="slanted = 0">
-    <point num="inner-right"/>
-    <interpolate>
-     <point num="upper-end-top"/>
-     <point num="upper-end-bottom"/>
-    </interpolate>
-   </move>
-  </move>
-  <compile-if test="slanted = 0">
-   <if test="pixels-per-em &lt; 12">
-    <if test="(outer-right -- right-bearing) = 1.0p">
-     <shift-absolute pixel-distance="1.0p">
-      <point num="outer-right"/>
-      <point num="inner-right"/>
-      <point num="upper-end-top"/>
-      <point num="upper-end-bottom"/>
-     </shift-absolute>
-    </if>
-   </if>
-   <mdap round="yes">
-    <point num="lower-end-bottom"/>
-   </mdap>
-   <mdap round="yes">
-    <point num="upper-end-top"/>
-   </mdap>
-  </compile-if>
-  <interpolate>
-   <reference>
-    <point num="outer-left"/>
-    <point num="outer-right"/>
-   </reference>
-   <point num="diag-right-top"/>
-   <point num="diag-right-bottom"/>
-   <point num="vstem-left-bottom"/>
-  </interpolate>
-  <compile-if test="slanted = 0">
-   <mdap round="yes">
-    <point num="vstem-left-bottom"/>
-   </mdap>
-  </compile-if>
-  <move distance="mid-vert-stem" color="black">
-   <reference>
-    <point num="vstem-left-bottom"/>
-   </reference>
-   <point num="vstem-right-bottom"/>
-  </move>
-  <compile-if test="slanted">
-   <with-projection-vector axis="x">
-    <move distance="low-vert-stem" color="black">
-     <reference>
-      <point num="outer-right"/>
-     </reference>
-     <point num="inner-right"/>
-     <interpolate>
-      <point num="upper-end-top"/>
-      <point num="upper-end-bottom"/>
-     </interpolate>
-    </move>
-   </with-projection-vector>
-   <align>
-    <reference>
-     <point num="outer-left"/>
-    </reference>
-    <point num="outer-left - 1"/>
-    <point num="outer-left + 1"/>
-   </align>
-   <align>
-    <reference>
-     <point num="inner-left"/>
-    </reference>
-    <point num="inner-left + 1"/>
-    <point num="inner-left - 1"/>
-   </align>
-   <align>
-    <reference>
-     <point num="outer-right"/>
-    </reference>
-    <point num="outer-right - 1"/>
-    <point num="outer-right + 1"/>
-   </align>
-  </compile-if>
-  <set-equal target="width" source="(vstem-right-bottom -- outer-right) - (outer-left -- vstem-left-bottom)"/>
-  <compile-if test="slanted = 0">
-   <if test="width &gt; 1.0p">
-    <shift-absolute pixel-distance="1.0p">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
-    <else>
-     <if test="width &lt; 0.0p">
-      <shift-absolute pixel-distance="-1.0p">
-       <point num="vstem-left-bottom"/>
-       <point num="vstem-right-bottom"/>
-      </shift-absolute>
-     </if>
-    </else>
-   </if>
-   <else>
-    <shift-absolute pixel-distance="width / 2.0">
-     <point num="vstem-left-bottom"/>
-     <point num="vstem-right-bottom"/>
-    </shift-absolute>
-    <align>
-     <reference>
-      <point num="inner-right"/>
-     </reference>
-     <point num="inner-right - 1"/>
-     <point num="inner-right + 1"/>
-    </align>
-    <align>
-     <reference>
-      <point num="inner-left"/>
-     </reference>
-     <point num="inner-left - 1"/>
-     <point num="inner-left + 1"/>
-    </align>
-    <interpolate>
-     <reference>
-      <point num="vstem-left-bottom"/>
-      <point num="lower-end-bottom"/>
-     </reference>
-     <point num="lower-joint-left-bottom + 2"/>
-    </interpolate>
-   </else>
-  </compile-if>
-  <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <if test="(vstem-right-bottom -- inner-right) &gt; 0">
-     <call-macro name="shift-edge">
-      <with-param name="shift" value="temp"/>
-      <with-param name="cv" value="low-vert-stem"/>
-     </call-macro>
-     <shift-absolute pixel-distance="negative(temp)">
-      <point num="inner-right"/>
-     </shift-absolute>
-     <shift-absolute pixel-distance="temp">
-      <point num="outer-right"/>
-     </shift-absolute>
-    </if>
-    <if test="(inner-left -- vstem-left-bottom) &gt; 0">
-     <call-macro name="shift-edge">
-      <with-param name="shift" value="temp"/>
-      <with-param name="cv" value="up-vert-stem"/>
-     </call-macro>
-     <shift-absolute pixel-distance="negative(temp)">
-      <point num="outer-left"/>
-     </shift-absolute>
-     <shift-absolute pixel-distance="temp">
-      <point num="inner-left"/>
-     </shift-absolute>
-     <call-macro name="shift-edge">
-      <with-param name="shift" value="temp"/>
-      <with-param name="cv" value="mid-vert-stem"/>
-     </call-macro>
-     <shift-absolute pixel-distance="negative(temp)">
-      <point num="vstem-left-bottom"/>
-     </shift-absolute>
-     <shift-absolute pixel-distance="temp">
-      <point num="vstem-right-bottom"/>
-     </shift-absolute>
-    </if>
-   </if>
-  </compile-if>
-  <align>
-   <reference>
-    <point num="vstem-left-bottom"/>
-   </reference>
-   <point num="lower-joint-left-bottom"/>
-   <point num="lower-joint-left-top"/>
-   <point num="upper-joint-left-bottom"/>
-   <point num="upper-joint-left-top"/>
-   <point num="vstem-left-top"/>
-  </align>
-  <align>
-   <reference>
-    <point num="vstem-right-bottom"/>
-   </reference>
-   <point num="lower-joint-right-bottom"/>
-   <point num="lower-joint-right-top"/>
-   <point num="upper-joint-right-bottom"/>
-   <point num="upper-joint-right-top"/>
-   <point num="vstem-right-top"/>
-  </align>
-  
-  <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
    <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
+   <!--    <set-round-state round="to-grid"/> -->
    <else>
     <set-vectors axis="y"/>
    </else>
@@ -386,6 +175,257 @@
     </interpolate>
    </else>
   </if>
+  
+  <!--  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>-->
+    <set-vectors axis="x"/>
+    <!--   </else>
+  </compile-if>-->
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <interpolate>
+    <point num="lower-end-bottom"/>
+    <point num="lower-end-top"/>
+   </interpolate>
+   <move distance="up-vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+   <move min-distance="no" color="white" compile-if="slanted">
+    <point num="outer-right"/>
+    <move distance="low-vert-stem" color="black">
+     <point num="inner-right"/>
+     <interpolate>
+      <point num="upper-end-top"/>
+      <point num="upper-end-bottom"/>
+     </interpolate>
+    </move>
+    <move color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <move min-distance="no" color="white" compile-if="slanted = 0">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move distance="low-vert-stem" color="black">
+    <point num="inner-right"/>
+    <interpolate>
+     <point num="upper-end-top"/>
+     <point num="upper-end-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  <compile-if test="slanted = 0">
+   <if test="pixels-per-em &lt; 12">
+    <if test="(outer-right -- right-bearing) = 1.0p">
+     <shift-absolute pixel-distance="1.0p">
+      <point num="outer-right"/>
+      <point num="inner-right"/>
+      <point num="upper-end-top"/>
+      <point num="upper-end-bottom"/>
+     </shift-absolute>
+    </if>
+   </if>
+   <mdap round="yes">
+    <point num="lower-end-bottom"/>
+   </mdap>
+   <mdap round="yes">
+    <point num="upper-end-top"/>
+   </mdap>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="outer-left"/>
+    <point num="outer-right"/>
+   </reference>
+   <point num="diag-right-top"/>
+   <point num="diag-right-bottom"/>
+   <point num="vstem-left-bottom"/>
+  </interpolate>
+  <compile-if test="slanted = 0">
+   <mdap round="yes">
+    <point num="vstem-left-bottom"/>
+   </mdap>
+   <else>
+    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+    <set-round-state round="no"/>
+   </else>
+  </compile-if>
+  <move distance="mid-vert-stem" color="black">
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="vstem-right-bottom"/>
+  </move>
+  <!--  <compile-if test="slanted">
+   <with-projection-vector axis="x">
+    <move distance="low-vert-stem" color="black">
+     <reference>
+      <point num="outer-right"/>
+     </reference>
+     <point num="inner-right"/>
+     <interpolate>
+      <point num="upper-end-top"/>
+      <point num="upper-end-bottom"/>
+     </interpolate>
+    </move>
+   </with-projection-vector>
+   <align>
+    <reference>
+     <point num="outer-left"/>
+    </reference>
+    <point num="outer-left - 1"/>
+    <point num="outer-left + 1"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-left"/>
+    </reference>
+    <point num="inner-left + 1"/>
+    <point num="inner-left - 1"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-right"/>
+    </reference>
+    <point num="outer-right - 1"/>
+    <point num="outer-right + 1"/>
+   </align>
+  </compile-if>-->
+  <set-equal target="width" source="(vstem-right-bottom -- outer-right) - (outer-left -- vstem-left-bottom)"/>
+  <compile-if test="slanted = 0">
+   <if test="width &gt; 1.0p">
+    <shift-absolute pixel-distance="1.0p">
+     <point num="vstem-left-bottom"/>
+     <point num="vstem-right-bottom"/>
+    </shift-absolute>
+    <else>
+     <if test="width &lt; 0.0p">
+      <shift-absolute pixel-distance="-1.0p">
+       <point num="vstem-left-bottom"/>
+       <point num="vstem-right-bottom"/>
+      </shift-absolute>
+     </if>
+    </else>
+   </if>
+   <else>
+    <shift-absolute pixel-distance="width / 2.0">
+     <point num="vstem-left-bottom"/>
+     <point num="vstem-right-bottom"/>
+    </shift-absolute>
+    <interpolate>
+     <reference>
+      <point num="vstem-left-bottom"/>
+      <point num="lower-end-bottom"/>
+     </reference>
+     <point num="lower-joint-left-bottom + 2"/>
+    </interpolate>
+   </else>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <compile-if test="slanted = 0">
+     <if test="(vstem-right-bottom -- inner-right) &gt; 0">
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="low-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="inner-right"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="outer-right"/>
+      </shift-absolute>
+     </if>
+     <if test="(inner-left -- vstem-left-bottom) &gt; 0">
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="up-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="outer-left"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="inner-left"/>
+      </shift-absolute>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="mid-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="vstem-left-bottom"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="vstem-right-bottom"/>
+      </shift-absolute>
+     </if>
+     <else>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="low-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="inner-right"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="outer-right"/>
+      </shift-absolute>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="up-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="outer-left"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="inner-left"/>
+      </shift-absolute>
+     </else>
+    </compile-if>
+   </if>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  </compile-if>
+  <align>
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="lower-joint-left-bottom"/>
+   <point num="lower-joint-left-top"/>
+   <point num="upper-joint-left-bottom"/>
+   <point num="upper-joint-left-top"/>
+   <point num="vstem-left-top"/>
+  </align>
+  <align>
+   <reference>
+    <point num="vstem-right-bottom"/>
+   </reference>
+   <point num="lower-joint-right-bottom"/>
+   <point num="lower-joint-right-top"/>
+   <point num="upper-joint-right-bottom"/>
+   <point num="upper-joint-right-top"/>
+   <point num="vstem-right-top"/>
+  </align>
+  
   <with-minimum-distance value="diag-min-thick">
    <diagonal-stem distance="diag" save-vectors="yes" round="no" color="black">
     <line ref="diagonal-right-side"/>

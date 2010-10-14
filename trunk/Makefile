@@ -1,3 +1,4 @@
+FONTFORGE:=/usr/bin/env fontforge
 VERSION:=$(shell date +"%Y%m%d")
 FAMILY=Istok
 PKGNAME=istok
@@ -7,9 +8,10 @@ DOCUMENTS=AUTHORS ChangeLog COPYING README
 TTFFILES=$(FAMILY)-Regular.ttf $(FAMILY)-Italic.ttf $(FAMILY)-Bold.ttf $(FAMILY)-BoldItalic.ttf
 #PFBFILES=$(FAMILY)-Regular.pfb $(FAMILY)-Italic.pfb $(FAMILY)-Bold.pfb $(FAMILY)-BoldItalic.pfb
 #AFMFILES=$(FAMILY)-Regular.afm $(FAMILY)-Italic.afm $(FAMILY)-Bold.afm $(FAMILY)-BoldItalic.afm
-FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
+FFSCRIPTS=generate.ff 
+EXTRAFFSCRIPTS=make_dup_vertshift.ff new_glyph.ff add_anchor_ext.ff \
 	add_anchor_y.ff add_anchor_med.ff anchors.ff combining.ff make_comb.ff \
-	dub_glyph.pe spaces_dashes.ff case_sub.ff add_ipa.ff hflip_glyph.ff \
+	dub_glyph.ff spaces_dashes.ff case_sub.ff add_ipa.ff hflip_glyph.ff \
 	make_dup_rot.ff add_accented.ff dub_glyph_ch.ff same_cyrext.ff \
 	make_cap_accent.ff make_superscript.ff dub_aligned.ff same_kern.ff \
 	make_kern.ff cop_kern_left.ff cop_kern_right.ff cop_kern_acc.ff \
@@ -17,7 +19,7 @@ FFSCRIPTS=generate.ff make_dup_vertshift.pe new_glyph.ff add_anchor_ext.ff \
 	liga_sub.ff sub_onum.ff alt_sub.ff \
 	make_kern_sc.ff same_kern_sc.ff
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
-XGFFILES=inst_acc.py skipautoinst.txt \
+XGFFILES=skipautoinst.txt \
 	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf # $(FAMILY)-BoldItalic.ed.xgf
 
 XGRIDFIT=xgridfit
@@ -34,16 +36,16 @@ docdir=$(prefix)/doc/$(PKGNAME)
 
 all: $(TTFFILES)
 
-$(FAMILY)-Regular.gen.ttf: $(FAMILY)-Regular.sfd  $(FFSCRIPTS)
+$(FAMILY)-Regular.gen.ttf: $(FAMILY)-Regular.sfd  $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Regular
 
-$(FAMILY)-Italic.gen.ttf: $(FAMILY)-Italic.sfd $(FFSCRIPTS)
+$(FAMILY)-Italic.gen.ttf: $(FAMILY)-Italic.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Italic 
 
-$(FAMILY)-Bold.gen.ttf: $(FAMILY)-Bold.sfd $(FFSCRIPTS)
+$(FAMILY)-Bold.gen.ttf: $(FAMILY)-Bold.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Bold 
 
-$(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS)
+$(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-BoldItalic 
 
 %.pdf: %.ttf
@@ -81,13 +83,13 @@ $(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
 %.py: %.xml
 	xgridfit -p 25 -G no -i $*.gen.ttf -o $*.ttf $<
 
-$(FAMILY)-Regular_acc.xgf: $(FAMILY)-Regular_.sfd
+$(FAMILY)-Regular_acc.xgf: $(FAMILY)-Regular_.sfd inst_acc.py
 	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-Regular_.sfd  -o $(FAMILY)-Regular_acc.xgf
 
-$(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd
+$(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd inst_acc.py
 	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-Bold_.sfd  -o $(FAMILY)-Bold_acc.xgf
 
-%_acc.xgf: %_.sfd
+%_acc.xgf: %_.sfd inst_acc.py
 	$(PYTHON) inst_acc.py -s skipautoinst.txt -i $*_.sfd  -o $*_acc.xgf
 
 .SECONDARY : *.py *.xml *.xgf *.ttx
@@ -147,6 +149,6 @@ install:
 	mkdir -p $(DESTDIR)$(docdir)
 	$(INSTALL) -p --mode=644 $(DOCUMENTS) $(DESTDIR)$(docdir)/
 
-%.pe-dist:
+%.pe-dist: %.xml
 	$(XGRIDFIT) --processor=libxslt -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 

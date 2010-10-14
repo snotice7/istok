@@ -136,6 +136,7 @@
     </move>
    </move>
   </move>
+
   <compile-if test="smooth or slanted">
    <compile-if test="slanted">
     <with-projection-vector axis="x">

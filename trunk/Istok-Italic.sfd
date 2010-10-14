@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1286446411
+ModificationTime: 1286881553
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -52,7 +52,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 64 16 13
+WinInfo: 0 16 13
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -1699,7 +1699,7 @@ EndChar
 StartChar: i
 Encoding: 105 105 31
 Width: 460
-Flags: HW
+Flags: W
 HStem: 0 21<44.5 175.5> 1030 20<286.5 417.5> 1240 176<339.186 494.941>
 VStem: 32 398 319 196
 DStem2: 21.9775 0 197.977 0 0.224951 0.97437<29.6943 1087.43>
@@ -1797,7 +1797,7 @@ EndChar
 StartChar: afii10103
 Encoding: 1110 1110 35
 Width: 460
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 31 105 N 1 0 0 1 0 0 3
@@ -3443,7 +3443,7 @@ StartChar: j
 Encoding: 106 106 66
 Width: 466
 VWidth: 0
-Flags: HW
+Flags: W
 HStem: -417 130<-289.125 -64.5002> 1030 20<292.5 423.5> 1240 176<345.186 500.941>
 VStem: 325 196
 DStem2: -68.6572 -417 108.199 -417 0.224951 0.97437<187.564 1515.48>
@@ -4141,7 +4141,7 @@ StartChar: afii10105
 Encoding: 1112 1112 81
 Width: 466
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 66 106 N 1 0 0 1 0 0 3
@@ -9323,7 +9323,7 @@ EndChar
 StartChar: dollar
 Encoding: 36 36 186
 Width: 1110
-Flags: W
+Flags: HW
 HStem: -28 150<235.271 380> 1289 157<840 924.188>
 VStem: 263 186<912.458 1209.71> 783 196<248.513 538.921>
 DStem2: 337.611 -210 457.611 -210 0.224951 0.97437<16.8955 186.871 370.817 864.458 1076.64 1550.87 1726.57 1884.18>
@@ -9473,8 +9473,8 @@ SplineSet
  610 139 610 139 696.5 206.5 c 128,-1,69
  783 274 783 274 783 382 c 256,70,71
  783 432 783 432 769.5 485 c 128,-1,72
- 756 538 756 538 686 582 c 1,73,-1
- 646 606 l 1,74,-1
+ 756 538 756 538 686 582 c 0,73,74
+ 667 595 667 595 646 606 c 1,75,-1
  535 125 l 1,67,68
 EndSplineSet
 EndChar

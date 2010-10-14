@@ -192,7 +192,7 @@
     </move>
    </move>
   </move>
-  <compile-if test="smooth">
+  <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
@@ -217,6 +217,13 @@
      <point num="intersect-right-bottom"/>
     </shift-absolute>
    </if>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+   <mdap round="yes">
+    <point num="right-bearing"/>
+   </mdap>
   </compile-if>
   
   <interpolate-untouched-points/>

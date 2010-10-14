@@ -103,15 +103,20 @@
     </move>
    </move>
   </move>
-<!--  <compile-if test="smooth">
+  <!--  <compile-if test="smooth">
    <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="vgrayshift-">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="outer-bottom"/>
+     <with-param name="point-second" value="inner-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
      <point num="outer-bottom"/>
      <point num="inner-top"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="vgrayshift">
-     <point num="outer-top"/>
+    <shift-absolute pixel-distance="temp">
      <point num="inner-bottom"/>
+     <point num="outer-top"/>
     </shift-absolute>
    </if>
   </compile-if>-->

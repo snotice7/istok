@@ -24,7 +24,7 @@
    <with-param name="x-height" value="sc-x-height"/>
    <with-param name="vert-thinstem" value="small-vert-stem"/>
    <with-param name="diag" value="small--thindiag"/>
-   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="lbearing" value="sc-h-lbearing"/>
   </call-glyph>
  </glyph>
 </xgridfit>

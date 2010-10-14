@@ -71,11 +71,6 @@
     <set-vectors axis="y"/>
    </else>
   </compile-if>
-  <compile-if test="smooth">
-   <if test="vertical-smoothing">
-    <set-round-state round="no"/>
-   </if>
-  </compile-if>
   
   <move distance="baseline">
    <point num="lstem-left-bottom"/>
@@ -127,6 +122,31 @@
    </reference>
    <point num="inner-top"/>
   </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="outer-bottom"/>
+     <with-param name="point-second" value="inner-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-bottom"/>
+     <point num="inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-top"/>
+     <point num="outer-bottom"/>
+    </shift-absolute>
+    <call-macro name="double-shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="horiz-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="temp">
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -175,8 +195,14 @@
     <point num="rstem-right-bottom"/>
    </move>
   </move>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+  </compile-if>
   <compile-if test="smooth or slanted">
    <set-round-state round="to-grid"/>
+   <move>
+    <point num="rstem-right-bottom"/>
+   </move>
   </compile-if>
   <move min-distance="no" color="white">
    <reference>
@@ -190,7 +216,7 @@
     </interpolate>
     <move color="black">
      <point num="outer-right"/>
-     <move pixel-distance="left-bottom -- outer-left">
+     <move pixel-distance="left-bottom -- outer-left" compile-if="slanted = 0">
       <point num="right-bottom"/>
      </move>
      <move pixel-distance="inner-left -- outer-left" color="black">
@@ -199,6 +225,7 @@
     </move>
    </move>
   </move>
+  
   <compile-if test="smooth or slanted">
    <compile-if test="slanted">
     <with-projection-vector axis="x">
@@ -209,10 +236,7 @@
    </compile-if>
    <compile-if test="smooth">
     <if test="horizontal-smoothing">
-     <move round="to-grid">
-      <point num="rstem-right-bottom"/>
-     </move>
-     <call-macro name="shift-edge">
+     <call-macro name="shift-edge-slanted">
       <with-param name="shift" value="temp"/>
       <with-param name="cv" value="vert-thinstem"/>
      </call-macro>
@@ -220,6 +244,17 @@
       <point num="rstem-right-bottom"/>
      </shift-absolute>
     </if>
+   </compile-if>
+   <compile-if test="slanted">
+    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+    <set-round-state round="no"/>
+    <interpolate>
+     <reference>
+      <point num="inner-right"/>
+      <point num="outer-right"/>
+     </reference>
+     <point num="right-bottom"/>
+    </interpolate>
    </compile-if>
    <align>
     <reference>
@@ -236,10 +271,6 @@
      <point num="rstem-left-top"/>
     </align>
    </move>
-  </compile-if>
-  <compile-if test="slanted">
-   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-round-state round="no"/>
   </compile-if>
   <set-equal target="width" source="(outer-right -- right-bearing)"/>
   <!-- - rbearing-->
@@ -303,6 +334,22 @@
     </shift-absolute>
    </if>
   </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <align>
+    <reference>
+     <point num="left-bottom"/>
+    </reference>
+    <point num="left-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="right-bottom"/>
+    </reference>
+    <point num="right-top"/>
+   </align>
+  </compile-if>
+  
   <with-round-state round="no">
    <with-minimum-distance value="diag-min-thick">
     <diagonal-stem distance="diag" save-vectors="yes" color="black">
@@ -333,6 +380,7 @@
     </align>
    </with-freedom-vector>
    <!--  </with-projection-vector> -->
+  
   <interpolate-untouched-points/>
  </glyph>
 </xgridfit>
