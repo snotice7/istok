@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- Й -->
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="afii10027" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="i-left" value="afii10026/lstem-left-top"/>
+  <param name="i-right" value="afii10026/rstem-right-top"/>
+  <param name="breve-center-bottom" value="afii10026/total + cyrBreve/junction-bottom"/>
+  <param name="breve-contour" value="1"/>
+  
+  <set-vectors axis="y"/>
+  <if test="(i-left -- breve-center-bottom) &lt; 1.0p">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="breve-center-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="breve-center-bottom"/>
+    </reference>
+    <contour num="breve-contour"/>
+   </shift>
+  </if>
+  
+  <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  <set-equal target="width" source="((coord(i-right) + coord(i-left)) / 2.0) - coord(breve-center-bottom)"/>
+  <set-vectors axis="x"/>
+  <with-round-state round="down-to-grid">
+   <round value="width"/>
+  </with-round-state>
+  <if test="width != 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="breve-center-bottom"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="breve-center-bottom"/>
+    </reference>
+    <contour num="breve-contour"/>
+   </shift>
+  </if>
+ </glyph>
+ 
+ <glyph ps-name="afii10075" init-graphics="yes">
+  <call-glyph ps-name="afii10027">
+   <with-param name="i-left" value="u/lstem-left-top"/>
+   <with-param name="i-right" value="u/rstem-right-top"/>
+   <with-param name="breve-center-bottom" value="u/total + cyrBreve/junction-bottom"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>

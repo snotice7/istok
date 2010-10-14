@@ -135,7 +135,6 @@
    </if>
   </compile-if>-->
   
-  
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-freedom-vector axis="x"/>
@@ -164,14 +163,14 @@
      <point num="lstem-right-bottom"/>
     </align>
    </move>
-   <move distance="cyrl-space" color="white">
+   <move distance="cyrl-space" color="black">
     <point num="rstem-right-top"/>
     <align>
      <point num="up-inner-left-bottom"/>
      <point num="low-inner-left-top"/>
      <point num="low-inner-left-bottom"/>
     </align>
-    <move distance="cap-vert-stem" color="black">
+    <move distance="vert-stem" color="black">
      <point num="rstem-left-bottom"/>
      <align>
       <point num="rstem-left-top"/>
@@ -190,12 +189,11 @@
   </move>
   <compile-if test="slanted">
    <set-equal target="temp" source="left-bearing -- lstem-left-bottom"/>
-   <with-round-state round="to-grid">
-    <round value="temp" result-to="h-shift"/>
-   </with-round-state>
-   <multiply value1="h-shift" value2="cos-it-ang"/>
+   <set-round-state round="to-grid"/>
+   <round value="temp" result-to="width"/>
+   <multiply value1="width" value2="cos-it-ang"/>
    <set-projection-vector axis="x"/>
-   <shift-absolute pixel-distance="h-shift - temp">
+   <shift-absolute pixel-distance="width - temp">
     <point num="lstem-left-bottom"/>
     <point num="lstem-left-top"/>
     <point num="lstem-right-top"/>
@@ -206,6 +204,7 @@
     <point num="up-inner-left-bottom"/>
     <point num="low-inner-left-top"/>
     <point num="low-inner-left-bottom"/>
+    <point num="low-outer-right"/>
    </shift-absolute>
    <move>
     <point num="low-outer-right"/>
@@ -219,30 +218,32 @@
   </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-stem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="rstem-left-bottom"/>
-     <point num="rstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="rstem-right-top"/>
-     <point num="up-inner-left-bottom"/>
-    </shift-absolute>
-    <call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="index(vert-thinstem)"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-left-top"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="lstem-right-top"/>
-     <point num="lstem-right-bottom"/>
-    </shift-absolute>
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(vert-stem)"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="rstem-left-bottom"/>
+      <point num="rstem-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="rstem-right-top"/>
+      <point num="up-inner-left-bottom"/>
+     </shift-absolute>
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="index(vert-thinstem)"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="lstem-left-bottom"/>
+      <point num="lstem-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="lstem-right-top"/>
+      <point num="lstem-right-bottom"/>
+     </shift-absolute>
+    </compile-if>
     <call-macro name="shift-edge">
      <with-param name="shift" value="temp"/>
      <with-param name="cv" value="curve-stem"/>
@@ -254,9 +255,11 @@
      <point num="low-outer-right"/>
     </shift-absolute>
    </if>
-   <move round="to-grid">
-    <point num="right-bearing"/>
-   </move>
+   <compile-if test="slanted = 0">
+    <move round="to-grid">
+     <point num="right-bearing"/>
+    </move>
+   </compile-if>
   </compile-if>
   
   <interpolate-untouched-points/>

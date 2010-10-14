@@ -41,17 +41,17 @@
    <move color="black">
     <point num="lbulb-top"/>
    </move>
-   <move>
+   <move round="no">
     <point num="left-end-bottom"/>
    </move>
   </move>
-  <if test="(pixels-per-em &lt; 30)">
-   <if test="(left-end-bottom -- lbulb-top) &gt; 0.0p">
+  <!--<if test="(pixels-per-em &lt; 30)">
+   <if test="(left-end-bottom - - lbulb-top) &gt; 0.0p">
     <shift-absolute pixel-distance="1.0p">
      <point num="left-end-bottom"/>
     </shift-absolute>
    </if>
-  </if>
+  </if>-->
   
   <set-vectors axis="x"/>
   <move color="white">
