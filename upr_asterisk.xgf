@@ -114,6 +114,7 @@
      <point num="se-s-joint"/>
     </shift-absolute>
    </if>
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
   </compile-if>
   <set-equal target="width" source="((s-sw-joint -- se-s-joint) - (initial-coord(se-s-joint) - initial-coord(s-sw-joint))) / 2.0p"/>
   <shift-absolute pixel-distance="width">
@@ -125,7 +126,7 @@
    <point num="n-ne-joint"/>
    <point num="se-s-joint"/>
   </shift-absolute>
-  <interpolate compile-if="slanted = 0">
+  <interpolate> <!--compile-if="slanted = 0"-->
    <reference>
     <point num="nw-n-joint"/>
     <point num="n-ne-joint"/>
