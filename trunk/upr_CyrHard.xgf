@@ -158,6 +158,9 @@
       <point num="hstem-left-top"/>
      </align>
      <move distance="space" color="black">
+      <reference>
+       <point num="lstem-left-bottom"/>
+      </reference>
       <point num="low-outer-right"/>
      </move>
     </with-projection-vector>

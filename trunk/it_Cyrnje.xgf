@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Њ-->
- <glyph ps-name="afii10059">
+ <!--њ-->
+ <glyph ps-name="afii10107" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2007, 2008, 2010 Andrey V. Panov
+      Copyright (C) 2008, 2010  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -22,15 +22,17 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="x-height" value="cap-x-height"/>
-  <param name="intersect-height" value="cap-h-intersect-height"/>
-  <param name="vert-stem" value="cap-vert-stem"/>
-  <param name="horiz-stem" value="cap-horiz-stem"/>
-  <param name="lbearing" value="cap-h-lbearing"/>
-  <param name="h-space" value="cap-h-space"/>
-  <param name="soft-space" value="cap-b-low-space"/>
-  <param name="curve-stem" value="cap-o-curve-stem"/>
+  <param name="x-baseline" value="small-x-baseline"/>
+  <param name="o-baseline" value="small-o-baseline"/>
+  <param name="x-height" value="small-x-height"/>
+  <param name="intersect-height" value="small-cyrn-intersect-height"/>
+  <param name="curve-hstem" value="small-curve-hstem"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="lbearing" value="small-cyrn-lbearing"/>
+  <param name="h-space" value="small-cyrn-space"/>
+  <param name="soft-space" value="small-cyrv-low-space"/>
+  <param name="curve-stem" value="small-o-curve-stem"/>
   
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
@@ -39,20 +41,19 @@
   <constant name="intersect-right-top" value="intersect-left-top + 1"/>
   <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
-  <constant name="up-inner-left-bottom" value="rstem-right-top + smooth-count"/>
-  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-left-bottom" value="rstem-right-top + smooth-count + notch-count"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 3"/>
   <constant name="low-outer-right" value="up-inner-right-bottom + 3"/>
   <constant name="right-bottom" value="low-outer-right + 3"/>
-  <constant name="rstem-left-bottom" value="right-bottom + smooth-count"/>
-  <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
+  <constant name="rstem-left-bottom" value="right-bottom + 3"/>
+  <constant name="intersect-right-bottom" value="rstem-left-bottom + 1"/>
   <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
   <constant name="lstem-right-bottom" value="intersect-left-bottom + smooth-count"/>
-  <constant name="low-inner-left-bottom" value="lstem-right-bottom + 2"/>
-  <constant name="low-inner-right-bottom" value="low-inner-left-bottom + 1"/>
-  <constant name="low-inner-right" value="low-inner-right-bottom + 3"/>
-  <constant name="low-inner-right-top" value="low-inner-right + 3"/>
-  <constant name="low-inner-left-top" value="low-inner-right-top + 1"/>
-  <constant name="last" value="low-inner-left-top"/>
+  <constant name="low-inner-left" value="lstem-right-bottom + 2"/>
+  <constant name="low-inner-bottom" value="low-inner-left + 3"/>
+  <constant name="low-inner-right" value="low-inner-bottom + 3"/>
+  <constant name="low-inner-top" value="low-inner-right + 3"/>
+  <constant name="last" value="low-inner-top + 2"/>
   
   <compile-if test="slanted">
    <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
@@ -68,34 +69,40 @@
    </if>
   </compile-if>
   
-  <move distance="baseline">
+  <move distance="o-baseline">
+   <point num="right-bottom"/>
+   <move distance="curve-hstem" color="black">
+    <point num="low-inner-bottom"/>
+   </move>
+  </move>
+  <move>
+   <point num="rstem-left-bottom"/>
+  </move>
+  <move distance="x-baseline">
    <point num="lstem-left-bottom"/>
    <align>
     <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="right-bottom"/>
    </align>
-   <move distance="horiz-stem" color="black">
-    <point num="low-inner-left-bottom"/>
-    <align>
-     <point num="low-inner-right-bottom"/>
-    </align>
-   </move>
   </move>
   <move distance="intersect-height">
    <point num="intersect-left-bottom"/>
    <align>
     <point num="intersect-right-bottom"/>
-    <point num="low-inner-left-top"/>
-    <point num="low-inner-right-top"/>
    </align>
-   <move distance="horiz-stem">
+   <move distance="horiz-stem" color="black">
     <point num="intersect-left-top"/>
     <align>
      <point num="intersect-right-top"/>
-     <point num="up-inner-left-bottom"/>
-     <point num="up-inner-right-bottom"/>
     </align>
+   </move>
+  </move>
+  <move distance="intersect-height">
+   <point num="low-inner-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="up-inner-right-bottom"/>
+    <move min-distance="no">
+     <point num="up-inner-left-bottom"/>
+    </move>
    </move>
   </move>
   <move distance="x-height">
@@ -106,28 +113,6 @@
     <point num="rstem-right-top"/>
    </align>
   </move>
-  <!--  <compile-if test="smooth">
-   <if test="vertical-smoothing">
-    <shift-absolute pixel-distance="vgrayshift-">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-right-bottom"/>
-     <point num="rstem-left-bottom"/>
-     <point num="right-bottom"/>
-     <point num="intersect-left-bottom"/>
-     <point num="intersect-right-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="vgrayshift">
-     <point num="lstem-left-top"/>
-     <point num="lstem-right-top"/>
-     <point num="intersect-left-top"/>
-     <point num="intersect-right-top"/>
-     <point num="rstem-left-top"/>
-     <point num="rstem-right-top"/>
-     <point num="up-inner-left-bottom"/>
-     <point num="up-inner-right-bottom"/>
-    </shift-absolute>
-   </if>
-  </compile-if>-->
   
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -163,8 +148,7 @@
     <point num="rstem-right-top"/>
     <align>
      <point num="up-inner-left-bottom"/>
-     <point num="low-inner-left-top"/>
-     <point num="low-inner-left-bottom"/>
+     <point num="low-inner-left"/>
     </align>
     <move distance="vert-stem">
      <point num="rstem-left-bottom"/>
@@ -178,7 +162,7 @@
       <move distance="curve-stem" color="black" compile-if="slanted = 0">
        <point num="low-inner-right"/>
       </move>
-    <move min-distance="no" color="white" compile-if="(slanted = 0) and (smooth = 0)">
+      <move min-distance="no" color="white" compile-if="(slanted = 0) and (smooth = 0)">
        <point num="right-bearing"/>
       </move>
      </move>
@@ -198,7 +182,7 @@
    <set-minimum-distance value="1.0p"/>
    <move>
     <point num="low-outer-right"/>
-    <move round="no" distance="curve-stem" color="black">
+    <move distance="curve-stem" color="black">
      <point num="low-inner-right"/>
     </move>
     <move min-distance="no" color="white">
@@ -206,31 +190,19 @@
     </move>
    </move>
   </compile-if>
-  <!--  <compile-if test="smooth">
+  <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <shift-absolute pixel-distance="hgrayshift-">
-     <point num="lstem-left-bottom"/>
-     <point num="lstem-left-top"/>
-     <point num="rstem-left-bottom"/>
-     <point num="intersect-right-top"/>
-     <point num="intersect-right-bottom"/>
-     <point num="rstem-left-top"/>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="low-inner-right"/>
     </shift-absolute>
-    <shift-absolute pixel-distance="hgrayshift">
-     <point num="lstem-right-top"/>
-     <point num="intersect-left-top"/>
-     <point num="intersect-left-bottom"/>
-     <point num="lstem-right-bottom"/>
-     <point num="rstem-right-top"/>
-     <point num="up-inner-left-bottom"/>
+    <shift-absolute pixel-distance="temp">
      <point num="low-outer-right"/>
     </shift-absolute>
    </if>
-  </compile-if>-->
-  <compile-if test="smooth or slanted">
-   <move round="to-grid">
-    <point num="right-bearing"/>
-   </move>
   </compile-if>
   
   <interpolate-untouched-points/>
