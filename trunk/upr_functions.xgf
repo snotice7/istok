@@ -350,4 +350,32 @@
    </if>
   </macro>
   
+  <macro name="shift-slanted-vstem">
+   <param name="point-left"/>
+   <param name="cv"/>
+   <param name="check-left-border" value="0"/>
+   
+   <!--  vectors should be set to x-axis, round state should be to-grid -->
+   <set-equal target="width" source="(y-coord(point-left) * tg-it-ang-sto) / 100p"/>
+   <compile-if test="check-left-border">
+    <if test="width &lt; 0.5p">
+     <add value1="width" value2="1.0p"/>
+    </if>
+   </compile-if>
+   <shift-absolute pixel-distance="width - round(width)">
+    <point num="point-left"/>
+   </shift-absolute>
+   <compile-if test="smooth">
+    <if test="horizontal-smoothing">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="cv"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="point-left"/>
+     </shift-absolute>
+    </if>
+   </compile-if>
+  </macro>
+  
  </xgridfit>

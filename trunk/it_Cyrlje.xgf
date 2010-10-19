@@ -113,6 +113,16 @@
     </align>
    </move>
   </move>
+  <compile-if test="slanted">
+   <interpolate>
+    <reference>
+     <point num="hstem-left-bottom"/>
+     <point num="curl-right-top"/>
+    </reference>
+    <point num="lstem-left-bottom"/>
+    <point num="lstem-left-top"/>
+   </interpolate>
+  </compile-if>
   
   <set-vectors axis="x"/>
   <compile-if test="smooth">
@@ -126,57 +136,63 @@
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="rstem-left-bottom"/>
+   <point num="lstem-left-bottom"/>
   </move>
-  <!--   <compile-if test="smooth">
-   <if test="horizontal-smoothing">
-    <call-macro name="shift-edge-slanted">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="rstem-left-bottom"/>
-    </shift-absolute>
-   </if>
-  </compile-if>-->
-  <with-round-state round="no">
-   <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+  <!--   <with-round-state round="up-to-grid"> -->
+   <call-macro name="shift-slanted-vstem">
+    <with-param name="point-left" value="lstem-left-bottom"/>
+    <with-param name="cv" value="vert-thinstem"/>
+    <with-param name="check-left-border" value="1"/>
+   </call-macro>
+   <!--   </with-round-state> -->
+  <with-projection-vector x-component="x-skew1" y-component="y-skew1">
+   <with-round-state round="no">
     <align>
      <reference>
-      <point num="rstem-left-bottom"/>
+      <point num="lstem-left-bottom"/>
      </reference>
-     <point num="rstem-left-top"/>
+     <point num="lstem-left-top"/>
     </align>
-    <move distance="soft-space" color="black">
-     <point num="low-outer-right"/>
-    </move>
-    <move distance="vert-stem" color="black">
+    <move distance="vert-thinstem" color="black">
      <reference>
-      <point num="rstem-left-bottom"/>
+      <point num="lstem-left-bottom"/>
+     </reference>
+     <point num="lstem-right-top"/>
+     <align>
+      <point num="lstem-right-bottom"/>
+     </align>
+    </move>
+    <move distance="cyrl-space" color="black">
+     <reference>
+      <point num="lstem-left-bottom"/>
      </reference>
      <point num="low-inner-left"/>
      <align>
       <point num="up-inner-left-bottom"/>
       <point num="rstem-right-top"/>
      </align>
-    </move>
-    <move distance="cyrl-space" color="black">
-     <reference>
-      <point num="low-inner-left"/>
-     </reference>
-     <point num="lstem-left-bottom"/>
-     <align>
-      <point num="lstem-left-top"/>
-     </align>
-     <move distance="vert-thinstem" color="black">
-      <point num="lstem-right-top"/>
+     <move distance="vert-stem" color="black">
+      <point num="rstem-left-bottom"/>
       <align>
-       <point num="lstem-right-bottom"/>
+       <point num="rstem-left-top"/>
       </align>
+      <move distance="soft-space" color="black">
+       <point num="low-outer-right"/>
+      </move>
      </move>
     </move>
-   </with-projection-vector>
-  </with-round-state>
+    <interpolate>
+     <reference>
+      <point num="up-inner-left-bottom"/>
+      <point num="low-outer-right"/>
+     </reference>
+     <point num="right-bottom"/>
+     <point num="low-inner-bottom"/>
+     <point num="low-inner-top"/>
+     <point num="up-inner-right-bottom"/>
+    </interpolate>
+   </with-round-state>
+  </with-projection-vector>
   <move>
    <point num="low-outer-right"/>
    <move distance="curve-stem" color="black">
@@ -186,6 +202,21 @@
     <point num="right-bearing"/>
    </move>
   </move>
+  <interpolate round="down-to-grid">
+   <reference>
+    <point num="left-bearing"/>
+    <point num="lstem-left-bottom"/>
+   </reference>
+   <point num="curl-left-bottom"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="curl-left-bottom"/>
+    <point num="lstem-left-bottom"/>
+   </reference>
+   <point num="curl-left-top"/>
+   <point num="curl-right-top + 1"/>
+  </interpolate>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">

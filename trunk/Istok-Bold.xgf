@@ -132,7 +132,7 @@
  <control-value name="cap-cyrl-space" value="880"/>
  <control-value name="cap-cyrch-space" value="1036"/>
  <control-value name="cap-b-low-space" value="1105"/>
- <control-value name="cap-sh-inner-space" value="472"/>
+ <control-value name="cap-sh-inner-space" value="764"/>
  <control-value name="cap-end-width" value="180"/>
  
  <control-value name="small-cyrn-space" value="920"/>
@@ -153,11 +153,11 @@
  <control-value name="small-a-space" value="907"/>
  <control-value name="small-n-space" value="930"/>
  <control-value name="small-u-space" value="924"/>
- <control-value name="small-cyri-space" value="940"/>
+ <control-value name="small-cyri-space" value="924"/>
  <control-value name="small-cyrl-space" value="716"/>
  <control-value name="small-cyrv-low-space" value="856"/>
  <control-value name="small-cyrch-space" value="894"/>
- <control-value name="small-m-inner-space" value="320"/> <!--434-->
+ <control-value name="small-m-inner-space" value="600"/> <!--434-->
  <control-value name="small-flig-space" value="921"/>
  <control-value name="small-diag" value="250"/>
  <control-value name="small-thindiag" value="232"/>
