@@ -43,6 +43,7 @@
  <constant name="cos-it-ang" value="0.9744p"/>
  <constant name="cos-it-ang-sto" value="97.44p"/>
  <constant name="one-cos-it-ang" value="0.0256p"/>
+ <constant name="tg-it-ang-sto" value="23.0868p"/>
  <constant name="smooth" value="1"/>
  <constant name="first-point" value="1"/>
  <constant name="last-count" value="1"/>
@@ -535,6 +536,7 @@
      <subtract minuend="cap-tse-desc-horiz-shift" subtrahend="temp"/>
      <!--     <add value1="cap-p-curve-stem" value2="temp"/> -->
      <add value1="cap-b-low-space" value2="temp"/>
+     <add value1="cap-cyrl-space" value2="temp"/>
      
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
@@ -548,6 +550,7 @@
       <with-param name="cv" value="index(cap-vert-thinstem)"/>
      </call-macro>
      <add value1="cap-tse-desc-horiz-shift" value2="temp"/>
+     <add value1="cap-cyrl-space" value2="temp"/>
      
      <call-macro name="double-shift-edge">
       <with-param name="shift" value="temp"/>
@@ -575,6 +578,7 @@
      <subtract minuend="small-tse-desc-horiz-shift" subtrahend="temp"/>
      <add value1="small-p-space" value2="temp"/>
      <add value1="small-cyrv-low-space" value2="temp"/>
+     <add value1="small-cyrl-space" value2="temp"/>
      
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
@@ -589,6 +593,7 @@
       <with-param name="cv" value="index(small-vert-thinstem)"/>
      </call-macro>
      <add value1="small-tse-desc-horiz-shift" value2="temp"/>
+     <add value1="small-cyrl-space" value2="temp"/>
      
      <set-minimum-distance value="0.51p"/>
      

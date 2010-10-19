@@ -89,46 +89,66 @@
     </align>
    </move>
   </move>
+  <compile-if test="slanted">
+   <interpolate>
+    <reference>
+     <point num="hstem-left-bottom"/>
+     <point num="curl-right-top"/>
+    </reference>
+    <point num="lstem-left-bottom"/>
+   </interpolate>
+  </compile-if>
   
   <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
   <move color="white">
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="rstem-right-bottom"/>
+   <point num="lstem-left-bottom"/>
   </move>
+  <!--   <with-round-state round="up-to-grid"> -->
+   <call-macro name="shift-slanted-vstem">
+    <with-param name="point-left" value="lstem-left-bottom"/>
+    <with-param name="cv" value="vert-thinstem"/>
+    <with-param name="check-left-border" value="1"/>
+   </call-macro>
+   <!--   </with-round-state> -->
   <with-projection-vector x-component="x-skew1" y-component="y-skew1">
    <with-round-state round="no">
-    <move distance="vert-stem" color="black">
-     <reference>
-      <point num="rstem-right-bottom"/>
-     </reference>
-     <point num="rstem-left-bottom"/>
-    </move>
     <align>
      <reference>
-      <point num="rstem-right-bottom"/>
-     </reference>
-     <point num="rstem-right-top"/>
-    </align>
-    <align>
-     <reference>
-      <point num="rstem-left-bottom"/>
-     </reference>
-     <point num="rstem-left-top"/>
-    </align>
-    <move distance="cyrl-space" color="black">
-     <reference>
-      <point num="rstem-right-bottom"/>
+      <point num="lstem-left-bottom"/>
      </reference>
      <point num="lstem-left-top"/>
-     <align>
+    </align>
+    <move distance="vert-thinstem" color="black">
+     <reference>
       <point num="lstem-left-bottom"/>
+     </reference>
+     <point num="lstem-right-top"/>
+     <align>
+      <point num="lstem-right-bottom"/>
      </align>
-     <move distance="vert-thinstem" color="black">
-      <point num="lstem-right-top"/>
+    </move>
+    <move distance="cyrl-space" color="black">
+     <reference>
+      <point num="lstem-left-bottom"/>
+     </reference>
+     <point num="rstem-right-bottom"/>
+     <align>
+      <point num="rstem-right-top"/>
+     </align>
+     <move distance="vert-stem" color="black">
+      <point num="rstem-left-bottom"/>
       <align>
-       <point num="lstem-right-bottom"/>
+       <point num="rstem-left-top"/>
       </align>
      </move>
      <move min-distance="no" color="white">
