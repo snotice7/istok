@@ -3,7 +3,7 @@ VERSION:=$(shell date +"%Y%m%d")
 FAMILY=Istok
 PKGNAME=istok
 SFDFILES=$(FAMILY)-Regular.sfd $(FAMILY)-Italic.sfd $(FAMILY)-Bold.sfd $(FAMILY)-BoldItalic.sfd
-DOCUMENTS=AUTHORS ChangeLog COPYING README
+DOCUMENTS=AUTHORS ChangeLog COPYING README TODO
 #OTFFILES=$(FAMILY)-Regular.otf $(FAMILY)-Italic.otf $(FAMILY)-Bold.otf $(FAMILY)-BoldItalic.otf
 TTFFILES=$(FAMILY)-Regular.ttf $(FAMILY)-Italic.ttf $(FAMILY)-Bold.ttf $(FAMILY)-BoldItalic.ttf
 #PFBFILES=$(FAMILY)-Regular.pfb $(FAMILY)-Italic.pfb $(FAMILY)-Bold.pfb $(FAMILY)-BoldItalic.pfb
@@ -20,7 +20,7 @@ EXTRAFFSCRIPTS=make_dup_vertshift.ff new_glyph.ff add_anchor_ext.ff \
 	make_kern_sc.ff same_kern_sc.ff
 #DIFFFILES=$(FAMILY)-Regular.xgf.diff # $(FAMILY)-Italic.xgf.diff $(FAMILY)-Bold.xgf.diff $(FAMILY)-BoldItalic.xgf.diff
 XGFFILES=skipautoinst.txt \
-	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf # $(FAMILY)-BoldItalic.ed.xgf
+	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf $(FAMILY)-BoldItalic.ed.xgf
 
 XGRIDFIT=xgridfit
 COMPRESS=xz -9
@@ -51,16 +51,12 @@ $(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS) $(EXTRAFFSCR
 %.pdf: %.ttf
 	fntsample -f $< -o $@
 
-# Temporarily. We don't want to change anything in autoinstructed following faces:
 $(FAMILY)-Bold.ttf: $(FAMILY)-Bold.gen.ttf $(FAMILY)-Bold.py
 	fontforge -lang=py -script  $(FAMILY)-Bold.py
 
 $(FAMILY)-Bold.py: $(FAMILY)-Bold.xgf $(FAMILY)-Bold_acc.xgf upr_*.xgf
 	$(XGRIDFIT) -m -p 25 -G no -i $(FAMILY)-Bold_.sfd -o $(FAMILY)-Bold.ttf \
 	-O $(FAMILY)-Bold.py $(FAMILY)-Bold.xgf
-
-$(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.gen.ttf
-	cp -p $(FAMILY)-BoldItalic.gen.ttf $(FAMILY)-BoldItalic.ttf
 
 %.ttf: %.py %.gen.ttf
 	fontforge -lang=py -script $*.py

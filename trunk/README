@@ -1,6 +1,6 @@
-Istok is new sans serif typeface. At present it has only one font with
-support for basic Latin and Cyrillic. Temporarily it is autoinstructed
-in fontforge.
+Istok is new sans serif typeface. At present it has four fonts with
+support for Latin and Cyrillic. Most glyphs are manually instructed
+using xgridfit, but another ones are autoinstructed in fontforge.
 
 The fonts are distributed under the terms of GNU General Public License
 Version 3 with the following exception:
@@ -32,12 +32,13 @@ the directory where *.sfd files are located. Then type
 
 make
 
-and truetype fonts will be produced. On FHS system you may do
+and truetype fonts will be produced. On systems with X.Org you may do
 
 make install
 
-as root to install fonts system-wide. Otherwise copy *.ttf files into
-~/.fonts/ directory. Then run fc-cache if you have fontconfig.
+as root to install fonts system-wide (/usr/share/fonts/TTF). Otherwise
+copy *.ttf files into ~/.fonts/ directory. Then run fc-cache if you have
+fontconfig.
 
 The history of the font
 =======================
