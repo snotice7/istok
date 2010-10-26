@@ -174,9 +174,9 @@
     <reference>
      <point num="outer-left"/>
     </reference>
-    <point num="vstem-right-top"/>
+    <point num="vstem-right-bottom"/>
     <align>
-     <point num="vstem-right-bottom"/>
+     <point num="vstem-right-top"/>
     </align>
     <move distance="vert-stem" color="black">
      <point num="vstem-left-bottom"/>

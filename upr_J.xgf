@@ -92,9 +92,9 @@
     <point num="left-top"/>
    </align>
    <move distance="vert-stem" color="black">
-    <point num="right-top"/>
+    <point num="right-bottom"/>
     <align>
-     <point num="right-bottom"/>
+     <point num="right-top"/>
     </align>
    </move>
    <move min-distance="no">

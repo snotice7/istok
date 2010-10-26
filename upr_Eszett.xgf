@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="uni1E9E" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2010 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="x-baseline" value="cap-x-baseline"/>
+  <param name="o-baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="lbearing" value="cap-h-lbearing"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="curve-stem" value="cap-o-curve-stem"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  <param name="curve-horiz-stem" value="cap-curve-hstem"/>
+  <param name="diag" value="cap-thindiag"/>
+  
+  <constant name="lstem-left-bottom" value="first-point"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + smooth-count"/>
+  <constant name="outer-top" value="lstem-left-top + 3"/>
+  <constant name="outer-right-top" value="outer-top + 5"/>
+  <constant name="dstem-right-top" value="outer-right-top + 2"/>
+  <constant name="dstem-right-bottom" value="dstem-right-top + 1"/>
+  <constant name="outer-intersect" value="dstem-right-bottom"/>
+  <constant name="outer-right-low" value="outer-intersect + 3 + 1"/>
+  <constant name="outer-bottom" value="outer-right-low + 3"/>
+  <constant name="lower-end-bottom" value="outer-bottom + 3 + 1"/>
+  <constant name="lower-end-top" value="lower-end-bottom + hstem-vcount"/>
+  <constant name="inner-bottom" value="lower-end-top + 3 + 1"/>
+  <constant name="inner-right-low" value="inner-bottom + 3"/>
+  <constant name="joint-left-bottom" value="inner-right-low + 3"/>
+  <constant name="dstem-left-bottom" value="joint-left-bottom + open-end-count"/>
+  <constant name="dstem-left-top" value="dstem-left-bottom + 1"/>
+  <constant name="inner-top" value="dstem-left-top + 3 + 1"/>
+  <constant name="lstem-right-top" value="inner-top + 3"/>
+  <constant name="lstem-right-bottom" value="lstem-right-top + smooth-count"/>
+  <constant name="last" value="lstem-right-bottom + last-count"/>
+  
+  <line name="diagonal-left-side">
+   <point num="dstem-left-bottom"/>
+   <point num="dstem-left-top"/>
+  </line>
+  <line name="diagonal-right-side">
+   <point num="dstem-right-bottom"/>
+   <point num="dstem-right-top"/>
+  </line>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="x-baseline">
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-right-bottom"/>
+   </align>
+  </move>
+  <move distance="o-baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move>
+   <point num="joint-left-bottom"/>
+   <move color="black">
+    <point num="dstem-right-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="dstem-right-bottom"/>
+    <point num="inner-top"/>
+   </reference>
+   <point num="dstem-right-top"/>
+  </interpolate>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="only-vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="lstem-right-top"/>
+    <align>
+     <point num="lstem-right-bottom"/>
+    </align>
+   </move>
+   <move color="black">
+    <point num="outer-right-low"/>
+    <interpolate>
+     <point num="dstem-right-bottom"/>
+    </interpolate>
+    <move distance="curve-stem" color="black" compile-if="(smooth = 0) and (slanted = 0)">
+     <point num="inner-right-low"/>
+    </move>
+    <move min-distance="no" compile-if="(smooth = 0) and (slanted = 0)">
+     <point num="outer-right-top"/>
+     <interpolate>
+      <point num="dstem-right-top"/>
+     </interpolate>
+    </move>
+    <move min-distance="no" color="white" compile-if="(smooth = 0) and (slanted = 0)">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  
+  <compile-if test="smooth or slanted">
+   <compile-if test="slanted">
+    <set-round-state round="to-grid"/>
+    <set-minimum-distance value="1.0p"/>
+    <set-projection-vector axis="x"/>
+    <else>
+     <if test="horizontal-smoothing">
+      <set-round-state round="to-grid"/>
+      <set-minimum-distance value="1.0p"/>
+     </if>
+    </else>
+   </compile-if>
+   <move>
+    <point num="outer-right-low"/>
+    <move distance="curve-stem" color="black">
+     <point num="inner-right-low"/>
+    </move>
+    <move min-distance="no">
+     <point num="outer-right-top"/>
+     <interpolate>
+      <point num="dstem-right-top"/>
+     </interpolate>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </compile-if>
+  
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-right-low"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right-low"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <with-minimum-distance value="diag-min-thick">
+   <diagonal-stem distance="diag" save-vectors="yes" round="no" color="black">
+    <line ref="diagonal-right-side"/>
+    <line ref="diagonal-left-side"/>
+   </diagonal-stem>
+  </with-minimum-distance>
+  <with-freedom-vector to-line="parallel">
+   <line ref="diagonal-right-side"/>
+   <with-projection-vector axis="y">
+    <interpolate>
+     <reference>
+      <point num="dstem-right-bottom"/>
+      <point num="dstem-right-top"/>
+     </reference>
+     <point num="dstem-left-bottom"/>
+     <point num="dstem-left-top"/>
+    </interpolate>
+   </with-projection-vector>
+  </with-freedom-vector>
+  
+  <interpolate compile-if="slanted">
+   <reference>
+    <point num="dstem-left-bottom"/>
+    <point num="inner-right-low"/>
+   </reference>
+   <point num="joint-left-bottom"/>
+  </interpolate>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

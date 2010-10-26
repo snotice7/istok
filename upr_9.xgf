@@ -58,17 +58,23 @@
      <point num="lower-end-bottom"/>
     </interpolate>
    </move>
-   <move distance="space" color="black" compile-if="slanted = 0">
+   <move distance="space" color="black"> <!--compile-if="slanted = 0"-->
     <point num="outer-right"/>
     <move distance="vert-stem" color="black">
      <point num="joint-bottom"/>
-     <interpolate round="up-to-grid">
+     <interpolate round="up-to-grid" compile-if="slanted = 0">
+      <point num="inner-oval-right"/>
+     </interpolate>
+     <interpolate>
       <point num="inner-oval-right"/>
      </interpolate>
     </move>
+    <move min-distance="no" compile-if="slanted">
+     <point num="right-bearing"/>
+    </move>
    </move>
   </move>
-  <move min-distance="no" color="white" compile-if="slanted">
+  <!--  <move min-distance="no" color="white" compile-if="slanted">
    <reference>
     <point num="right-bearing"/>
    </reference>
@@ -79,7 +85,7 @@
      <point num="inner-oval-right"/>
     </interpolate>
    </move>
-  </move>
+  </move>-->
   <!--  <mdap round="yes">
    <point num="lower-end-bottom"/>
   </mdap>-->
