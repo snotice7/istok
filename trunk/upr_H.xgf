@@ -118,9 +118,9 @@
     </align>
    </move>
    <move round="no" cut-in="no" distance="space" color="black">
-    <point num="rstem-right-top"/>
+    <point num="rstem-right-bottom"/>
     <align>
-     <point num="rstem-right-bottom"/>
+     <point num="rstem-right-top"/>
     </align>
     <move distance="vert-stem" color="black">
      <point num="rstem-left-bottom"/>

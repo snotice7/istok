@@ -165,9 +165,9 @@
       <point num="rarc-bottom"/>
      </interpolate>
      <move distance="vert-stem" color="black">
-      <point num="rstem-right-top"/>
+      <point num="rstem-right-bottom"/>
       <align>
-       <point num="rstem-right-bottom"/>
+       <point num="rstem-right-top"/>
       </align>
       <move min-distance="no" color="white">
        <point num="right-bearing"/>

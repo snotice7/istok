@@ -171,9 +171,9 @@
     </align>
    </move>
    <move distance="space" color="black">
-    <point num="rstem-right-top"/>
+    <point num="rstem-right-bottom"/>
     <align>
-     <point num="rstem-right-bottom"/>
+     <point num="rstem-right-top"/>
     </align>
     <interpolate>
      <point num="hstem-right-top"/>
