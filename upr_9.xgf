@@ -65,7 +65,7 @@
      <interpolate round="up-to-grid" compile-if="slanted = 0">
       <point num="inner-oval-right"/>
      </interpolate>
-     <interpolate>
+     <interpolate compile-if="slanted">
       <point num="inner-oval-right"/>
      </interpolate>
     </move>

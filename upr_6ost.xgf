@@ -27,7 +27,7 @@
    <with-param name="vert-stem" value="digit-thicker-curve-stem"/>
    <with-param name="inner-height" value="oldstyledigit-six-inner-height"/>
    <with-param name="c-flat-ends" value="small-c-flat-ends"/>
-   <with-param name="space" value="digit-six-hspace"/>
+   <with-param name="space" value="oldstyletabdigit-six-hspace"/>
   </call-glyph>
  </glyph>
 </xgridfit>

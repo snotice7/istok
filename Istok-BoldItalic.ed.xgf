@@ -191,6 +191,15 @@
  <control-value name="emspace" value="1024"/>
  <control-value name="shift-border" value="-120"/>
  
+ <control-value name="oldstyledigit-curve-baseline" value="-294"/>
+ <control-value name="oldstyledigit-baseline" value="-270"/>
+ <control-value name="oldstyledigit-over-height" value="1096"/>
+ <control-value name="oldstyledigit-height" value="1072"/>
+ <control-value name="oldstyledigit-asc-height" value="1366"/>
+ <control-value name="oldstyledigit-six-inner-height" value="903"/>
+ <control-value name="oldstyledigit-six-hspace" value="974"/>
+ <control-value name="oldstyletabdigit-six-hspace" value="994"/>
+ 
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
  <xi:include href="it_border.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
@@ -268,10 +277,12 @@
     <with-param name="cv-width" value="cap-cyri-space"/>
     <with-param name="margin" value="cap-h-lbearing"/>
    </call-macro>
+   <compile-if test="not(merge-mode)">
    <call-macro name="regularize-control-value-width">
     <with-param name="cv-width" value="small-cyri-space"/>
     <with-param name="margin" value="small-cyrn-lbearing"/>
    </call-macro>
+   </compile-if>
    <else>
     <set-equal target="cap-cyri-space" source="cap-h-space"/>
     <set-equal target="small-cyri-space" source="small-cyrn-space"/>
@@ -328,6 +339,14 @@
   <round value="digit-over-height"/>
   <round value="digit-six-inner-height" color="black"/>
   <!--   <round value="period-width" color="black"/> -->
+  <round value="oldstyledigit-curve-baseline"/>
+  <round value="oldstyledigit-baseline"/>
+  <round value="oldstyledigit-over-height"/>
+  <round value="oldstyledigit-height"/>
+  <round value="oldstyledigit-asc-height"/>
+  <round value="oldstyledigit-six-hspace" color="black"/>
+  <round value="oldstyletabdigit-six-hspace" color="black"/>
+  <round value="oldstyledigit-six-inner-height" color="black"/>
   <round value="shift-border"/>
   
   <if test="control-value(cap-h-lbearing) = 0">
@@ -423,6 +442,7 @@
      <delta-set cv="small-vert-thinstem" size="11" distance="-8"/>
      <delta-set cv="small-vert-thinstem" size="12" distance="-8"/>
      <delta-set cv="small-thindiag" size="3" distance="-2"/>
+     <delta-set cv="digit-mid-horiz-stem" size="4" distance="-8"/>
     </control-value-delta>
     
     <if test="pixels-per-em &lt;= 24">
@@ -844,6 +864,28 @@
   <xi:include href="upr_guilsinglleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_ellipsis.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>-->
+  <xi:include href="upr_1t.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_7t.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_0os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_1os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_2os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_3os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_4os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_5os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_6os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_7os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_8os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_9os.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_0ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_1ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_2ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_3ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_4ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_5ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_6ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_7ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_8ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_9ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   
   <xi:include href="Istok-BoldItalic_acc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
  </xgridfit>
