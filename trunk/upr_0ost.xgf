@@ -19,15 +19,12 @@
      
      -->
  
- <glyph ps-name="nine.oldstyle.tab" init-graphics="yes">
-  <call-glyph ps-name="nine">
-   <with-param name="baseline" value="oldstyledigit-curve-baseline"/>
+ <glyph ps-name="zero.oldstyle.tab" init-graphics="yes">
+  <call-glyph ps-name="zero">
+   <with-param name="baseline" value="small-o-baseline"/>
    <with-param name="height" value="oldstyledigit-over-height"/>
    <with-param name="horiz-stem" value="digit-thin-horiz-stem"/>
    <with-param name="vert-stem" value="digit-thicker-curve-stem"/>
-   <with-param name="inner-height" value="oldstyledigit-six-inner-height"/>
-   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
-   <with-param name="space" value="oldstyletabdigit-six-hspace"/>
   </call-glyph>
  </glyph>
 </xgridfit>
