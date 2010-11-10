@@ -28,7 +28,7 @@
    <with-param name="curve-vert-stem" value="superdigit-thicker-curve-stem"/>
    <with-param name="vert-stem" value="superdigit-vert-stem"/>
    <with-param name="inner-height" value="superdigit-six-inner-height"/>
-   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="c-flat-ends" value="superdigit-flat-ends"/>
   </call-glyph>
  </glyph>
 </xgridfit>

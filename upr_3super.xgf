@@ -27,7 +27,7 @@
    <with-param name="vert-stem" value="superdigit-thicker-curve-stem"/>
    <with-param name="high-vert-stem" value="superdigit-thinner-curve-stem"/>
    <with-param name="lbearing" value="small-cyrz-lbearing"/>
-   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="c-flat-ends" value="superdigit-flat-ends"/>
    <with-param name="end-width" value="small-end-width"/>
    <with-param name="intersect-height" value="0"/>
    <with-param name="horiz-stem" value="superdigit-thin-horiz-stem"/>
