@@ -25,6 +25,7 @@
  <constant name="diag-min-sim" value="0.9p"/>
  <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
  <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
+ <constant name="superdigit-flat-ends" value="21"/>
  <constant name="left-bearing" value="last + 1"/>
  <constant name="right-bearing" value="last + 2"/>
  <constant name="vertical" value="0"/>
@@ -421,13 +422,17 @@
      <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-4"/>
+     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="7" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="18" distance="-1"/>
      <delta-set cv="digit-thinner-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thinner-curve-stem" size="18" distance="-1"/>
-     <delta-set cv="digit-thin-horiz-stem" size="12" distance="-3"/>
+     <delta-set cv="digit-thin-horiz-stem" size="12" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="13" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="14" distance="-8"/>
      <delta-set cv="paren-curve-stem" size="7" distance="-8"/>
      <delta-set cv="paren-curve-stem" size="8" distance="-8"/>
     </control-value-delta>
@@ -680,7 +685,7 @@
     <if test="control-value(index(accent-diag)) &gt; temp">
      <set-equal target="accent-diag" source="temp"/>
     </if>
-    <set-equal target="temp" source="round-black(control-value(index(superdigit-vert-stem))) * 0.89p"/>
+    <set-equal target="temp" source="round-black(control-value(index(superdigit-vert-stem))) * 0.7p"/>
     <if test="control-value(index(superdigit-diag)) &gt; temp">
      <set-equal target="superdigit-diag" source="temp"/>
     </if>

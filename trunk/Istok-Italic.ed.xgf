@@ -25,6 +25,7 @@
  <constant name="diag-min-sim" value="0.9p"/>
  <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
  <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
+ <constant name="superdigit-flat-ends" value="21"/>
  <constant name="left-bearing" value="last + 1"/>
  <constant name="right-bearing" value="last + 2"/>
  <constant name="vertical" value="0"/>
@@ -429,13 +430,17 @@
      <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
-     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-4"/>
+     <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="7" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="18" distance="-1"/>
      <delta-set cv="digit-thinner-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thinner-curve-stem" size="18" distance="-1"/>
-     <delta-set cv="digit-thin-horiz-stem" size="12" distance="-3"/>
+     <delta-set cv="digit-thin-horiz-stem" size="12" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="13" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="14" distance="-8"/>
      <delta-set cv="paren-curve-stem" size="7" distance="-8"/>
      <delta-set cv="paren-curve-stem" size="8" distance="-8"/>
      <delta-set cv="small-vert-thinstem" size="9" distance="-8"/>

@@ -25,6 +25,7 @@
    <with-param name="height" value="superdigit-over-height"/>
    <with-param name="vert-stem" value="superdigit-vert-stem"/>
    <with-param name="horiz-stem" value="superdigit-mid-horiz-stem"/>
+   <with-param name="diag" value="superdigit-diag"/>
   </call-glyph>
  </glyph>
 </xgridfit>

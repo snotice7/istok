@@ -27,7 +27,7 @@
    <with-param name="horiz-stem" value="superdigit-mid-horiz-stem"/>
    <with-param name="vert-stem" value="superdigit-thicker-curve-stem"/>
    <with-param name="diag" value="superdigit-diag"/>
-   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="c-flat-ends" value="superdigit-flat-ends"/>
   </call-glyph>
  </glyph>
 </xgridfit>

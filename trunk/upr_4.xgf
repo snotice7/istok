@@ -25,6 +25,7 @@
   <param name="height" value="digit-over-height"/>
   <param name="vert-stem" value="digit-vert-stem"/>
   <param name="horiz-stem" value="digit-mid-horiz-stem"/>
+  <param name="diag" value="cap-thindiag"/>
   
   <constant name="hstem-left-bottom" value="first-point"/>
   <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
@@ -274,7 +275,7 @@
    <point num="vstem-left-top"/>
   </interpolate>
   <with-round-state round="no">
-   <diagonal-stem distance="cap-thindiag" save-vectors="yes" min-distance="diag-min-thick">
+   <diagonal-stem distance="diag" save-vectors="yes" min-distance="diag-min-thick">
     <line ref="left-side"/>
     <line ref="right-side"/>
    </diagonal-stem>
