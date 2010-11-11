@@ -359,12 +359,6 @@
   <round value="oldstyledigit-six-hspace" color="black"/>
   <round value="oldstyletabdigit-six-hspace" color="black"/>
   <round value="oldstyledigit-six-inner-height" color="black"/>
-  <round value="superdigit-curve-baseline"/>
-  <round value="superdigit-baseline"/>
-  <round value="superdigit-over-height"/>
-  <round value="superdigit-height"/>
-  <round value="superdigit-six-hspace" color="black"/>
-  <round value="superdigit-six-inner-height" color="black"/>
 
   <set-equal target="cap-o-height" source="control-value(index(cap-x-height)) - control-value(index(cap-o-baseline))"/>
   <set-equal target="small-o-height" source="control-value(index(small-x-height)) - control-value(index(small-o-baseline))"/>
@@ -372,6 +366,13 @@
   <set-equal target="small-asc-over-height" source="control-value(index(small-asc-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="sc-o-height" source="control-value(index(sc-x-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="digit-over-height" source="control-value(index(digit-height)) - control-value(index(cap-o-baseline))"/>
+  
+  <set-equal target="temp" source="round(control-value(superdigit-baseline) - control-value(superdigit-curve-baseline))"/>
+  <set-equal target="height" source="round(control-value(superdigit-height) - control-value(superdigit-baseline))"/>
+  <round value="superdigit-baseline"/>
+  <set-equal target="superdigit-curve-baseline" source="control-value(superdigit-baseline) - temp"/>
+  <set-equal target="superdigit-height" source="control-value(superdigit-baseline) + height"/>
+  <set-equal target="superdigit-over-height" source="control-value(superdigit-height) + temp"/>
   
   <control-value-delta> <!--both for b/w and antialiased rendering-->
    <delta-set cv="small-cyrl-space" size="8" distance="-8"/>
@@ -817,6 +818,7 @@
   <xi:include href="upr_CyrYat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyryat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrUstraightstroke.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrpal.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
