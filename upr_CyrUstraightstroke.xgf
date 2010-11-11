@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="Y" init-graphics="yes">
+ <glyph ps-name="uni04B0" init-graphics="yes">
   
   <!--
       
@@ -26,6 +26,7 @@
   <param name="thin-diag" value="cap-diag"/>
   <param name="thick-diag" value="cap--diag"/>
   <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
   
   <constant name="ldiag-left-top" value="first-point"/>
   <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
@@ -34,11 +35,19 @@
   <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count"/>
   <constant name="rdiag-left-bottom" value="rdiag-left-top - smooth-count"/>
   <constant name="rdiag-right-top" value="rdiag-left-top + vstem-hcount"/>
-  <constant name="rdiag-right-bottom" value="rdiag-right-top + smooth-count"/>
-  <constant name="vstem-right-bottom" value="rdiag-right-bottom + smooth-count"/>
+  <constant name="rdiag-right-bottom" value="rdiag-right-top + vstem-vcount + 1"/>
+  <constant name="intersect-right-top" value="rdiag-right-bottom"/>
+  <constant name="hstem-right-top" value="intersect-right-top + smooth-count"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="intersect-right-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="vstem-right-bottom" value="intersect-right-bottom + smooth-count"/>
   <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
-  <constant name="ldiag-left-bottom" value="vstem-left-bottom + smooth-count"/>
-  <constant name="last" value="ldiag-left-bottom"/>
+  <constant name="intersect-left-bottom" value="vstem-left-bottom + smooth-count"/>
+  <constant name="hstem-left-bottom" value="intersect-left-bottom + smooth-count"/>
+  <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
+  <constant name="intersect-left-top" value="hstem-left-top + smooth-count"/>
+  <constant name="ldiag-left-bottom" value="intersect-left-top"/>
+  <constant name="last" value="ldiag-left-bottom + 2"/>
   <line name="ldiag-left">
    <point num="ldiag-left-top"/>
    <point num="ldiag-left-bottom"/>
@@ -80,7 +89,17 @@
    <point num="ldiag-left-bottom"/>
    <align>
     <point num="rdiag-right-bottom"/>
+    <point num="hstem-left-top"/>
+    <point num="hstem-right-top"/>
    </align>
+   <move round="no" distance="horiz-stem" color="black">
+    <point num="intersect-left-bottom"/>
+    <align>
+     <point num="intersect-right-bottom"/>
+     <point num="hstem-left-bottom"/>
+     <point num="hstem-right-bottom"/>
+    </align>
+   </move>
   </move>
   <move distance="x-height">
    <point num="ldiag-left-top"/>
@@ -185,12 +204,14 @@
     <point num="ldiag-left-bottom"/>
    </reference>
    <point num="vstem-left-bottom"/>
+   <point num="intersect-left-bottom"/>
   </align>
   <align>
    <reference>
     <point num="rdiag-right-bottom"/>
    </reference>
    <point num="vstem-right-bottom"/>
+   <point num="intersect-right-bottom"/>
   </align>
   <compile-if test="slanted">
    <set-vectors axis="x"/>
@@ -207,6 +228,8 @@
     <point num="rdiag-right-top"/>-->
     <point num="ldiag-left-bottom"/>
     <point num="rdiag-right-bottom"/>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-right-bottom"/>
    </shift-absolute>
    <else>
     <shift-absolute pixel-distance="0.05p">
@@ -222,11 +245,13 @@
        <!--        <point num="ldiag-left-top"/> -->
        <point num="ldiag-left-bottom"/>
        <point num="vstem-left-bottom"/>
+       <point num="intersect-left-bottom"/>
       </shift-absolute>
       <shift-absolute pixel-distance="temp">
        <!--        <point num="rdiag-right-top"/> -->
        <point num="rdiag-right-bottom"/>
        <point num="vstem-right-bottom"/>
+       <point num="intersect-right-bottom"/>
       </shift-absolute>
      </if>
     </compile-if>
@@ -279,5 +304,16 @@
   </if>
   
   <interpolate-untouched-points/>
+ </glyph>
+ 
+ <glyph ps-name="uni04B1" init-graphics="yes">
+  <call-glyph ps-name="uni04B0">
+   <with-param name="baseline" value="small-desc"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="thin-diag" value="small-diag"/>
+   <with-param name="thick-diag" value="small--diag"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+  </call-glyph>
  </glyph>
 </xgridfit>
