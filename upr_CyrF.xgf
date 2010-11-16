@@ -28,23 +28,24 @@
   <param name="vert-curve-stem" value="cap-o-curve-stem"/>
   <param name="vert-stem" value="cap-vert-stem"/>
   <param name="lbearing" value="cap-o-lbearing"/>
+  <param name="hcount" value="1"/>
   
   <constant name="larc-outer-left" value="0"/>
-  <constant name="larc-outer-top" value="larc-outer-left + 3 + 1"/>
+  <constant name="larc-outer-top" value="larc-outer-left + 3 + hcount"/>
   <constant name="vstem-left-top" value="larc-outer-top + smooth-count"/>
   <constant name="vstem-right-top" value="vstem-left-top +  vstem-hcount"/>
   <constant name="rarc-outer-top" value="vstem-right-top + smooth-count"/>
-  <constant name="rarc-outer-right" value="rarc-outer-top + 3 + 1"/>
-  <constant name="rarc-outer-bottom" value="rarc-outer-right + 3 + 1"/>
+  <constant name="rarc-outer-right" value="rarc-outer-top + 3 + hcount"/>
+  <constant name="rarc-outer-bottom" value="rarc-outer-right + 3 + hcount"/>
   <constant name="vstem-right-bottom" value="rarc-outer-bottom + smooth-count"/>
   <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
   <constant name="larc-outer-bottom" value="vstem-left-bottom + smooth-count"/>
-  <constant name="larc-inner-left" value="larc-outer-bottom + 3 + 1"/>
-  <constant name="larc-inner-bottom" value="larc-inner-left + 3 + 1"/>
+  <constant name="larc-inner-left" value="larc-outer-bottom + 3 + hcount"/>
+  <constant name="larc-inner-bottom" value="larc-inner-left + 3 + hcount"/>
   <constant name="larc-inner-top" value="larc-inner-bottom + 1"/>
-  <constant name="rarc-inner-bottom" value="larc-inner-top + 3 + 1"/>
-  <constant name="rarc-inner-right" value="rarc-inner-bottom + 3 + 1"/>
-  <constant name="rarc-inner-top" value="rarc-inner-right + 3 + 1"/>
+  <constant name="rarc-inner-bottom" value="larc-inner-top + 3 + hcount"/>
+  <constant name="rarc-inner-right" value="rarc-inner-bottom + 3 + hcount"/>
+  <constant name="rarc-inner-top" value="rarc-inner-right + 3 + hcount"/>
   <constant name="last" value="rarc-inner-top"/>
   
   <compile-if test="slanted">

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--  Latin phi ɸ -->
+ <glyph ps-name="uni0278" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2010  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  <call-glyph ps-name="afii10038">
+   <with-param name="baseline" value="small-desc"/>
+   <with-param name="height" value="small-asc-height"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="vert-curve-stem" value="small-o-curve-stem"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="lbearing" value="small-o-lbearing"/>
+   <with-param name="hcount" value="0"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>
