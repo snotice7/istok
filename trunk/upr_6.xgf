@@ -47,6 +47,11 @@
   <constant name="last" value="inner-oval-end"/>
   
   <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
   
   <move color="white">
    <reference>
@@ -65,7 +70,7 @@
      <point num="intersect-top"/>
     </interpolate>
    </move>
-   <move distance="space" color="black" compile-if="slanted = 0">
+   <move distance="space" color="black"> <!--compile-if="slanted = 0"-->
     <point num="outer-right"/>
     <move distance="vert-stem" color="black">
      <point num="inner-oval-right"/>
@@ -74,9 +79,12 @@
       <point num="upper-end-bottom"/>
      </interpolate>
     </move>
+    <move min-distance="no" compile-if="slanted">
+     <point num="right-bearing"/>
+    </move>
    </move>
   </move>
-  <move min-distance="no" color="white" compile-if="slanted">
+  <!--  <move min-distance="no" color="white" compile-if="slanted">
    <reference>
     <point num="right-bearing"/>
    </reference>
@@ -88,7 +96,7 @@
      <point num="upper-end-bottom"/>
     </interpolate>
    </move>
-  </move>
+  </move>-->
   <!--  <mdap round="yes">
    <point num="upper-end-top"/>
   </mdap>-->

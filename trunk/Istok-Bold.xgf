@@ -25,6 +25,7 @@
  <constant name="diag-min-sim" value="0.9p"/>
  <constant name="small-c-flat-ends" value="12"/> <!-- below it lowercase c, cyr z, etc. have flat ends -->
  <constant name="cap-c-flat-ends" value="10"/> <!-- below it capital c, cyr z, etc. have flat ends -->
+ <constant name="superdigit-flat-ends" value="21"/>
  <constant name="left-bearing" value="last + 1"/>
  <constant name="right-bearing" value="last + 2"/>
  <constant name="vertical" value="0"/>
@@ -191,6 +192,19 @@
  <control-value name="oldstyledigit-six-hspace" value="993"/>
  <control-value name="oldstyletabdigit-six-hspace" value="1012"/>
  
+ <control-value name="superdigit-baseline" value="712"/>
+ <control-value name="superdigit-curve-baseline" value="694"/>
+ <control-value name="superdigit-over-height" value="1468"/>
+ <control-value name="superdigit-height" value="1451"/>
+ <control-value name="superdigit-vert-stem" value="160"/>
+ <control-value name="superdigit-mid-horiz-stem" value="140"/>
+ <control-value name="superdigit-thinner-curve-stem" value="162"/>
+ <control-value name="superdigit-thicker-curve-stem" value="166"/>
+ <control-value name="superdigit-thin-horiz-stem" value="127"/>
+ <control-value name="superdigit-six-inner-height" value="503"/>
+ <control-value name="superdigit-six-hspace" value="548"/>
+ <control-value name="superdigit-diag" value="128"/>
+ 
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:macro)"/>
@@ -317,6 +331,13 @@
   <set-equal target="small-curve-desc" source="control-value(index(small-desc)) + control-value(index(small-o-baseline))"/>
   <set-equal target="small-asc-over-height" source="control-value(index(small-asc-height)) - control-value(index(small-o-baseline))"/>
   <set-equal target="digit-over-height" source="control-value(index(digit-height)) - control-value(index(cap-o-baseline))"/>
+  
+  <set-equal target="temp" source="round(control-value(superdigit-baseline) - control-value(superdigit-curve-baseline))"/>
+  <set-equal target="height" source="round(control-value(superdigit-height) - control-value(superdigit-baseline))"/>
+  <round value="superdigit-baseline"/>
+  <set-equal target="superdigit-curve-baseline" source="control-value(superdigit-baseline) - temp"/>
+  <set-equal target="superdigit-height" source="control-value(superdigit-baseline) + height"/>
+  <set-equal target="superdigit-over-height" source="control-value(superdigit-height) + temp"/>
   
   <control-value-delta> <!--both for b/w and antialiased rendering-->
    <delta-set cv="cap-o-curve-stem" size="0" distance="-2"/>
@@ -746,6 +767,7 @@
   <xi:include href="upr_Cyrpal.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_thorn.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_esh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Eszett.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fi.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -805,6 +827,16 @@
   <xi:include href="upr_7ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_8ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_9ost.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_0super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_1super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_2super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_3super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_4super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_5super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_6super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_7super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_8super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_9super.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   
   <xi:include href="Istok-Bold_acc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
  </xgridfit>
