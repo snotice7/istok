@@ -154,7 +154,7 @@
  <control-value name="small-a-space" value="907"/>
  <control-value name="small-n-space" value="930"/>
  <control-value name="small-u-space" value="924"/>
- <control-value name="small-cyri-space" value="924"/>
+ <control-value name="small-cyri-space" value="940"/>
  <control-value name="small-cyrl-space" value="716"/>
  <control-value name="small-cyrv-low-space" value="856"/>
  <control-value name="small-cyrch-space" value="894"/>
@@ -194,16 +194,16 @@
  
  <control-value name="superdigit-baseline" value="712"/>
  <control-value name="superdigit-curve-baseline" value="694"/>
- <control-value name="superdigit-over-height" value="1468"/>
+ <control-value name="superdigit-over-height" value="1468" index="append"/>
  <control-value name="superdigit-height" value="1451"/>
- <control-value name="superdigit-vert-stem" value="160"/>
- <control-value name="superdigit-mid-horiz-stem" value="140"/>
- <control-value name="superdigit-thinner-curve-stem" value="162"/>
- <control-value name="superdigit-thicker-curve-stem" value="166"/>
- <control-value name="superdigit-thin-horiz-stem" value="127"/>
- <control-value name="superdigit-six-inner-height" value="503"/>
+ <control-value name="superdigit-vert-stem" value="160" index="append"/>
+ <control-value name="superdigit-mid-horiz-stem" value="140" index="append"/>
+ <control-value name="superdigit-thinner-curve-stem" value="162" index="append"/>
+ <control-value name="superdigit-thicker-curve-stem" value="166" index="append"/>
+ <control-value name="superdigit-thin-horiz-stem" value="127" index="append"/>
+ <control-value name="superdigit-six-inner-height" value="503" index="append"/>
  <control-value name="superdigit-six-hspace" value="548"/>
- <control-value name="superdigit-diag" value="128"/>
+ <control-value name="superdigit-diag" value="128" index="append"/>
  
  <alias name="period-height" target="period-width"/>
  <xi:include href="upr_functions.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:function)"/>
@@ -270,12 +270,10 @@
     <with-param name="cv-width" value="cap-cyri-space"/>
     <with-param name="margin" value="cap-h-lbearing"/>
    </call-macro>
-   <compile-if test="not(merge-mode)">
-    <call-macro name="regularize-control-value-width">
-     <with-param name="cv-width" value="small-cyri-space"/>
-     <with-param name="margin" value="small-cyrn-lbearing"/>
-    </call-macro>
-   </compile-if>
+   <call-macro name="regularize-control-value-width">
+    <with-param name="cv-width" value="small-cyri-space"/>
+    <with-param name="margin" value="small-cyrn-lbearing"/>
+   </call-macro>
    <else>
     <set-equal target="cap-cyri-space" source="cap-h-space"/>
     <set-equal target="small-cyri-space" source="small-cyrn-space"/>
@@ -345,6 +343,7 @@
    <delta-set cv="small-cyrn-intersect-height" size="7" distance="-8"/>
    <delta-set cv="small-cyrn-space" size="2" distance="8"/>
    <delta-set cv="small-cyrn-space" size="9" distance="-8"/>
+   <delta-set cv="small-u-space" size="9" distance="-8"/>
    <delta-set cv="small-cyri-space" size="2" distance="8"/>
    <delta-set cv="small-cyrch-space" size="2" distance="8"/>
    <delta-set cv="small-vert-thinstem" size="2" distance="-2"/>
@@ -764,9 +763,11 @@
   <xi:include href="upr_Cyryat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrustraight.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrUstraightstroke.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrKhadesc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Cyrpal.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_cyrBreve.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_numero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_tm.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_thorn.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_esh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Eszett.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -775,7 +776,6 @@
   <xi:include href="upr_longs.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_perthousandzero.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_divisionslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
-  
   <xi:include href="upr_section.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_degree.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_paragraph.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -802,6 +802,7 @@
   <xi:include href="upr_plus.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_pm.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_multiply.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_prime.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglleft.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_guilsinglright.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_ellipsis.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
