@@ -464,6 +464,10 @@
      <delta-set cv="small-vert-thinstem" size="12" distance="-8"/>
      <delta-set cv="small-thindiag" size="3" distance="-2"/>
      <delta-set cv="digit-mid-horiz-stem" size="4" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="5" distance="-8"/>
+     <delta-set cv="digit-mid-horiz-stem" size="6" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="5" distance="-8"/>
+     <delta-set cv="digit-thin-horiz-stem" size="6" distance="-8"/>
     </control-value-delta>
     
     <if test="pixels-per-em &lt;= 24">
