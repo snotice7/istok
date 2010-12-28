@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1291201578
+ModificationTime: 1293448741
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 42864 16 14
+WinInfo: 800 16 14
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -310 -310 1136 1150]
@@ -79,7 +79,7 @@ Grid
 -2048 1272 m 0
  4096 1272 l 0
 EndSplineSet
-BeginChars: 65542 408
+BeginChars: 65542 410
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -17415,7 +17415,7 @@ EndChar
 StartChar: uniA789
 Encoding: 42889 42889 406
 Width: 532
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 74 46 N 1 0 0 1 -68 636 2
@@ -17425,11 +17425,59 @@ EndChar
 StartChar: uniA78A
 Encoding: 42890 42890 407
 Width: 700
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 89 45 N 1 0 0 1 0 -210 3
 Refer: 89 45 N 1 0 0 1 0 210 2
+EndChar
+
+StartChar: Sigma
+Encoding: 931 931 408
+Width: 1247
+Flags: MW
+HStem: 0 248<451 1176.78> 1186 248<504 1146.78>
+DStem2: 121 286 451 250 0.589147 0.808026<165.33 592.81> 504 1184 138 1201 0.59349 -0.804841<0 327.123>
+LayerCount: 2
+Fore
+SplineSet
+145 0 m 2,0,1
+ 70 0 70 0 70 65 c 2,2,-1
+ 70 147 l 2,3,4
+ 70 216 70 216 121 286 c 2,5,-1
+ 416 693 l 26,6,7
+ 464 759 464 759 416 824 c 10,8,-1
+ 138 1201 l 2,9,10
+ 103 1248 103 1248 103 1302 c 2,11,-1
+ 103 1369 l 2,12,13
+ 103 1434 103 1434 178 1434 c 2,14,-1
+ 1074 1434 l 2,15,16
+ 1149 1434 1149 1434 1149 1369 c 2,17,-1
+ 1149 1251 l 2,18,19
+ 1149 1186 1149 1186 1074 1186 c 2,20,-1
+ 624 1186 l 2,21,22
+ 564 1186 564 1186 504 1191 c 25,23,-1
+ 504 1184 l 17,24,-1
+ 773 820 l 18,25,26
+ 820 756 820 756 774 693 c 26,27,-1
+ 451 250 l 9,28,-1
+ 451 243 l 17,29,30
+ 511 248 511 248 571 248 c 2,31,-1
+ 1104 248 l 2,32,33
+ 1179 248 1179 248 1179 183 c 2,34,-1
+ 1179 65 l 2,35,36
+ 1179 0 1179 0 1104 0 c 2,37,-1
+ 145 0 l 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: uni01A9
+Encoding: 425 425 409
+Width: 1247
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 408 931 S 1 0 0 1 0 0 3
 EndChar
 EndChars
 EndSplineFont
