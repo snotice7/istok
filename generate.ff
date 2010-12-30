@@ -23,13 +23,10 @@ SetPref("InterpolateStrongPoints",1)
 SetPref("CounterControl",1)
 Open(fontname+".sfd")
 if (fontname == "Istok-Italic")
-# kern_table = "LGC kerning subtable"
-# kern_look = "LGC kerning"
-# AddLookup(kern_look, "gpos_pair", 0, [["kern",[["latn",["dflt"]],["grek",["dflt"]],["cyrl",["dflt"]]]]])
-# AddLookupSubtable(kern_look, kern_table)
  alt_sub.ff()
 endif
 cursive = $italicangle != 0
+smallcap = fontname == "Istok-Regular"
 Reencode("unicode")
 serbsubs.ff()
 if (cursive)
@@ -46,16 +43,21 @@ case_sub.ff()
 sub_onum.ff()
 tab_sub.ff()
 #if (fontname != "Istok-Italic")
- same_kern.ff(cursive)
- make_kern.ff(cursive)
+same_kern.ff(cursive)
+make_kern.ff(cursive)
 #endif
-if (fontname == "Istok-Regular")
+if (smallcap)
+ combining_sc.ff(30)
  sc_sub.ff()
- same_kern_sc.ff()
- make_kern_sc.ff()
  anchors_sc.ff()
 endif
 add_accented.ff()
+if (smallcap)
+# add_accented_sc.ff()
+# same_cyrext_sc.ff()
+ same_kern_sc.ff()
+ make_kern_sc.ff()
+endif
 liga_sub.ff()
 add_subfigs.ff(-920)
 #Generate(fontname+".otf","ttf",0x200A00,-1)
