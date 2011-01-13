@@ -1,5 +1,5 @@
 #!/usr/bin/env fontforge
-/* Copyright (C) 2008-2010 Andrey V. Panov
+/* Copyright (C) 2008-2011 Andrey V. Panov
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
  */
 
 fontname=$1
+_kern_subtable = "LGC kerning subtable"
 SetPref("InstructDiagonalStems",1)
 SetPref("InstructSerifs",0)
 SetPref("InstructBallTerminals",0)
@@ -43,7 +44,11 @@ case_sub.ff()
 sub_onum.ff()
 tab_sub.ff()
 #if (fontname != "Istok-Italic")
-same_kern.ff(cursive)
+if (cursive)
+ same_kern.ff("globkern","cursive","copyen")
+else
+ same_kern.ff("globkern","copyen")
+endif
 make_kern.ff(cursive)
 #endif
 if (smallcap)
@@ -55,7 +60,7 @@ add_accented.ff()
 if (smallcap)
 # add_accented_sc.ff()
 # same_cyrext_sc.ff()
- same_kern_sc.ff()
+ same_kern_sc.ff("globkern")
  make_kern_sc.ff()
 endif
 liga_sub.ff()
