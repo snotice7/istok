@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1294491481
+ModificationTime: 1295150101
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 944 16 14
+WinInfo: 8368 16 14
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -310 -310 1136 1150]
@@ -72,7 +72,7 @@ Grid
 -2048 1272 m 0
  4096 1272 l 0
 EndSplineSet
-BeginChars: 65542 574
+BeginChars: 65542 590
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -18287,7 +18287,7 @@ EndChar
 StartChar: onequarter
 Encoding: 188 188 433
 Width: 1736
-Flags: W
+Flags: HW
 LayerCount: 2
 Back
 SplineSet
@@ -18339,14 +18339,14 @@ SplineSet
 EndSplineSet
 Fore
 Refer: 429 185 N 1 0 0 1 120 0 2
-Refer: 432 8308 N 1 0 0 1 1047 -712 2
+Refer: 432 8308 N 1 0 0 1 1042 -712 2
 Refer: 179 8725 N 1 0 0 1 467 0 2
 EndChar
 
 StartChar: onehalf
 Encoding: 189 189 434
 Width: 1736
-Flags: W
+Flags: HW
 LayerCount: 2
 Back
 SplineSet
@@ -18405,7 +18405,7 @@ EndChar
 StartChar: threequarters
 Encoding: 190 190 435
 Width: 1736
-Flags: W
+Flags: HW
 LayerCount: 2
 Back
 SplineSet
@@ -18456,8 +18456,8 @@ SplineSet
  245 1262 245 1262 245 1122 c 256,48,49
 EndSplineSet
 Fore
-Refer: 432 8308 N 1 0 0 1 1047 -712 2
-Refer: 431 179 N 1 0 0 1 107 0 2
+Refer: 432 8308 N 1 0 0 1 1015 -712 2
+Refer: 431 179 N 1 0 0 1 91 0 2
 Refer: 179 8725 N 1 0 0 1 467 0 2
 EndChar
 
@@ -25900,6 +25900,198 @@ SplineSet
  273 555 l 17,37,-1
  115 448 l 2,0,1
 EndSplineSet
+EndChar
+
+StartChar: uni2150
+Encoding: 8528 8528 574
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 540 8311 N 1 0 0 1 1055 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: uni2151
+Encoding: 8529 8529 575
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 542 8313 N 1 0 0 1 1040 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: onethird
+Encoding: 8531 8531 576
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 431 179 N 1 0 0 1 1056 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: twothirds
+Encoding: 8532 8532 577
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 431 179 N 1 0 0 1 1040 -712 2
+Refer: 430 178 N 1 0 0 1 89 0 2
+EndChar
+
+StartChar: uni2155
+Encoding: 8533 8533 578
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 538 8309 N 1 0 0 1 1051 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: uni2156
+Encoding: 8534 8534 579
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 538 8309 N 1 0 0 1 1040 -712 2
+Refer: 430 178 N 1 0 0 1 94 0 2
+EndChar
+
+StartChar: uni2157
+Encoding: 8535 8535 580
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 538 8309 N 1 0 0 1 1040 -712 2
+Refer: 431 179 N 1 0 0 1 109 0 2
+EndChar
+
+StartChar: uni2158
+Encoding: 8536 8536 581
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 538 8309 N 1 0 0 1 1040 -712 2
+Refer: 432 8308 N 1 0 0 1 100 0 2
+EndChar
+
+StartChar: uni2159
+Encoding: 8537 8537 582
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 539 8310 N 1 0 0 1 1044 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: uni215A
+Encoding: 8538 8538 583
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 539 8310 N 1 0 0 1 1035 -712 2
+Refer: 538 8309 N 1 0 0 1 100 0 2
+EndChar
+
+StartChar: oneeighth
+Encoding: 8539 8539 584
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 541 8312 N 1 0 0 1 1040 -712 2
+Refer: 429 185 N 1 0 0 1 120 0 2
+EndChar
+
+StartChar: threeeighths
+Encoding: 8540 8540 585
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 541 8312 N 1 0 0 1 1040 -712 2
+Refer: 431 179 N 1 0 0 1 100 0 2
+EndChar
+
+StartChar: fiveeighths
+Encoding: 8541 8541 586
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 541 8312 N 1 0 0 1 1040 -712 2
+Refer: 538 8309 N 1 0 0 1 100 0 2
+EndChar
+
+StartChar: seveneighths
+Encoding: 8542 8542 587
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 N 1 0 0 1 467 0 2
+Refer: 541 8312 N 1 0 0 1 1040 -712 2
+Refer: 540 8311 N 1 0 0 1 127 0 2
+EndChar
+
+StartChar: uni2152
+Encoding: 8530 8530 588
+Width: 2144
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 537 8304 N 1 0 0 1 1524 -712 2
+Refer: 429 185 N 1 0 0 1 1042 -712 2
+Refer: 204 8260 N 1 0 0 1 436 0 2
+Refer: 429 185 N 1 0 0 1 100 0 2
+EndChar
+
+StartChar: uni215F
+Encoding: 8543 8543 589
+Width: 1736
+VWidth: 0
+Flags: HW
+LayerCount: 2
+Fore
+Refer: 204 8260 S 1 0 0 1 467 0 2
+Refer: 429 185 S 1 0 0 1 120 0 2
 EndChar
 EndChars
 EndSplineFont
