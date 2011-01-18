@@ -1,3 +1,11 @@
+2011-01-18 Andrey V. Panov
+	Added proportional and tabular oldstyle, superior figures to all the 
+	fonts.
+	Added more glyphs, mostly Latin and Cyrillic extended ones.
+	Added more vulgar fractions.
+	Added kerning in BoldItalic.
+	Version 0.4 is released.
+
 2010-10-26 Andrey V. Panov
 	All the fonts have manual instructions.
 	Added proportional and tabular oldstyle figures to Regular.
