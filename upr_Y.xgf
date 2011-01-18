@@ -196,6 +196,11 @@
    <set-vectors axis="x"/>
    <compile-if test="smooth = 0">
     <set-round-state round="to-grid"/>
+    <else>
+     <if test="horizontal-smoothing = 0">
+      <set-round-state round="to-grid"/>
+     </if>
+    </else>
    </compile-if>
    <set-equal target="temp" source="coord(vstem-left-bottom)"/>
    <mdap round="to-grid">

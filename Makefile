@@ -121,6 +121,10 @@ dist-ttf: all
 	$(TTFFILES) $(DOCUMENTS)
 	$(COMPRESS) $(PKGNAME)-ttf-$(VERSION).tar
 
+dist-zip: all
+	zip -9 $(PKGNAME)-ttf-$(VERSION).zip \
+	$(TTFFILES) $(DOCUMENTS)
+
 dist-tex:
 	( cd ./texmf ;\
 	tar -cvf ../$(PKGNAME)-tex-$(VERSION).tar \

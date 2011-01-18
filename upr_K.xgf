@@ -166,11 +166,6 @@
     </move>
    </move>
   </move>
-  <compile-if test="slanted = 0">
-   <shift-absolute pixel-distance="diag-shift">
-    <point num="ru-diag-l-top"/>
-   </shift-absolute>
-  </compile-if>
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
@@ -189,6 +184,21 @@
     </shift-absolute>
    </if>
   </compile-if>
+  <compile-if test="slanted">
+   <set-round-state round="to-grid"/>
+   <set-projection-vector axis="x"/>
+   <mdap round="yes">
+    <point num="rl-diag-l-bottom"/>
+   </mdap>
+   <mdap round="yes">
+    <point num="ru-diag-l-top"/>
+   </mdap>
+  </compile-if>
+  <!--   <compile-if test="slanted = 0"> -->
+   <shift-absolute pixel-distance="diag-shift">
+    <point num="ru-diag-l-top"/>
+   </shift-absolute>
+   <!--   </compile-if> -->
   <!--  <call-macro name="make-diagonal">
    <with-param name="first-diag-first-point" value="ru-diag-l-top"/>
    <with-param name="first-diag-second-point" value="ru-diag-l-bottom"/>
@@ -265,6 +275,15 @@
     </if>
    </if>
   </compile-if>
+  <compile-if test="slanted and smooth">
+   <if test="not(horizontal-smoothing)">
+    <if test="pixels-per-em &gt;= 11">
+     <mdap round="down-to-grid">
+      <point num="ru-diag-r-top"/>
+     </mdap>
+    </if>
+   </if>
+  </compile-if>
   <with-projection-vector axis="y">
    <with-freedom-vector to-line="parallel">
     <line ref="ru-diag-l"/>
@@ -276,6 +295,9 @@
     </align>
    </with-freedom-vector>
   </with-projection-vector>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  </compile-if>
   <!--  <with-projection-vector axis="x"> -->
    <with-freedom-vector to-line="parallel">
     <line ref="ru-diag-l"/>
