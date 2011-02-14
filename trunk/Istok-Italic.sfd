@@ -14,19 +14,19 @@ Descent: 500
 LayerCount: 2
 Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A"  1
 Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A"  0
-NeedsXUIDChange: 1
 XUID: [1021 513 629268104 9940963]
 FSType: 8
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1295164092
+ModificationTime: 1297654354
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
 LineGap: 410
 VLineGap: 0
+Panose: 2 15 6 3 3 5 3 9 2 4
 OS2TypoAscent: 1548
 OS2TypoAOffset: 0
 OS2TypoDescent: -500
@@ -43,8 +43,9 @@ HheadDOffset: 0
 OS2FamilyClass: 2048
 OS2Vendor: 'PfEd'
 Lookup: 258 0 0 "LGC kerning"  {"LGC kerning subtable"  } ['kern' ('latn' <'dflt' > 'grek' <'dflt' > 'cyrl' <'dflt' > ) ]
+MarkAttachClasses: 1
 DEI: 91125
-LangName: 1033 "" "" "" "" "" "" "" "" "" "Andrey V. Panov" "" "" "" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
+LangName: 1033 "" "" "" "" "" "" "" "" "Andrey V. Panov" "Andrey V. Panov" "" "http://code.google.com/p/istok" "http://code.google.com/u/andrej.panov/" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
 LangName: 1049 "" "+BBgEQQRCBD4EOgAA" "" "" "" "" "" "" "" "+BBAA. +BBIA. +BB8EMAQ9BD4EMgAA" 
 Encoding: UnicodeBmp
 UnicodeInterp: none
@@ -52,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 128 16 13
+WinInfo: 64 16 13
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -20757,7 +20758,6 @@ StartChar: eogonek
 Encoding: 281 281 431
 Width: 1078
 VWidth: 0
-Flags: H
 HStem: -417 130<477.474 630.213> -17 131<335.259 579.948> 937 130<465.001 764.149>
 VStem: 68 186<200.835 509.416> 302 160<-313 -154.382> 822 176<692.365 881.435>
 DStem2: 265 538 260 399 0.980734 0.195349<0 519.272>
