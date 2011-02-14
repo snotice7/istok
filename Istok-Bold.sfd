@@ -1,5 +1,5 @@
 SplineFontDB: 3.0
-FontName: Istok-Bold
+FontName: Istok-BoldF
 FullName: Istok Bold
 FamilyName: Istok
 Weight: Bold
@@ -14,19 +14,19 @@ Descent: 500
 LayerCount: 2
 Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A"  1
 Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A"  0
-NeedsXUIDChange: 1
 XUID: [1021 513 629268104 9940963]
 FSType: 8
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1295161555
+ModificationTime: 1297654321
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
 LineGap: 410
 VLineGap: 0
+Panose: 2 15 7 3 3 5 3 2 2 4
 OS2TypoAscent: 1548
 OS2TypoAOffset: 0
 OS2TypoDescent: -500
@@ -45,7 +45,7 @@ OS2Vendor: 'PfEd'
 Lookup: 258 0 0 "LGC kerning"  {"LGC kerning subtable" [307,30,0] } ['kern' ('latn' <'dflt' > 'grek' <'dflt' > 'cyrl' <'dflt' > ) ]
 MarkAttachClasses: 1
 DEI: 91125
-LangName: 1033 "" "" "" "" "" "" "" "" "" "Andrey V. Panov" "" "" "" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
+LangName: 1033 "" "" "" "" "" "" "" "" "Andrey V. Panov" "Andrey V. Panov" "" "http://code.google.com/p/istok" "http://code.google.com/u/andrej.panov/" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
 LangName: 1049 "" "+BBgEQQRCBD4EOgAA" "" "" "" "" "" "" "" "+BBAA. +BBIA. +BB8EMAQ9BD4EMgAA" 
 Encoding: UnicodeBmp
 UnicodeInterp: none
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 8384 16 14
+WinInfo: 48 16 13
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -310 -310 1136 1150]
@@ -12875,7 +12875,7 @@ EndChar
 StartChar: onequarter
 Encoding: 188 188 315
 Width: 1776
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 179 8725 N 1 0 0 1 431 0 2
@@ -12886,7 +12886,7 @@ EndChar
 StartChar: onehalf
 Encoding: 189 189 316
 Width: 1776
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 179 8725 N 1 0 0 1 431 0 2
@@ -12897,7 +12897,7 @@ EndChar
 StartChar: threequarters
 Encoding: 190 190 317
 Width: 1776
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 179 8725 N 1 0 0 1 431 0 2
@@ -17856,7 +17856,7 @@ StartChar: uni2150
 Encoding: 8528 8528 415
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17868,7 +17868,7 @@ StartChar: uni2151
 Encoding: 8529 8529 416
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17880,7 +17880,7 @@ StartChar: onethird
 Encoding: 8531 8531 417
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17892,7 +17892,7 @@ StartChar: twothirds
 Encoding: 8532 8532 418
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17904,7 +17904,7 @@ StartChar: uni2155
 Encoding: 8533 8533 419
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17916,7 +17916,7 @@ StartChar: uni2156
 Encoding: 8534 8534 420
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17928,7 +17928,7 @@ StartChar: uni2157
 Encoding: 8535 8535 421
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17940,7 +17940,7 @@ StartChar: uni2158
 Encoding: 8536 8536 422
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17952,7 +17952,7 @@ StartChar: uni2159
 Encoding: 8537 8537 423
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17964,7 +17964,7 @@ StartChar: uni215A
 Encoding: 8538 8538 424
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -17976,7 +17976,7 @@ StartChar: oneeighth
 Encoding: 8539 8539 425
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 S 1 0 0 1 431 0 2
@@ -17988,7 +17988,7 @@ StartChar: threeeighths
 Encoding: 8540 8540 426
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -18000,7 +18000,7 @@ StartChar: fiveeighths
 Encoding: 8541 8541 427
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -18012,7 +18012,7 @@ StartChar: seveneighths
 Encoding: 8542 8542 428
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 N 1 0 0 1 431 0 2
@@ -18024,7 +18024,7 @@ StartChar: uni2152
 Encoding: 8530 8530 429
 Width: 2288
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 381 8304 S 1 0 0 1 1587 -712 2
@@ -18037,7 +18037,7 @@ StartChar: uni215F
 Encoding: 8543 8543 430
 Width: 1776
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 204 8260 S 1 0 0 1 431 0 2
