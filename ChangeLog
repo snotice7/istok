@@ -1,3 +1,8 @@
+2011-06-07 Andrey V. Panov
+	Added several Latin and Cyrillic extended glyphs, "yen" sign.
+	Added OFL version of the fonts.
+	Version 0.4.1 is released.
+
 2011-01-18 Andrey V. Panov
 	Added proportional and tabular oldstyle, superior figures to all the 
 	fonts.

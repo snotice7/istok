@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="yen" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="thin-diag" value="cap-thindiag"/>
+  <param name="thick-diag" value="cap--thindiag"/>
+  <param name="vert-stem" value="digit-vert-stem"/>
+  <param name="horiz-stem" value="digit-thin-horiz-stem"/>
+  
+  <constant name="ldiag-left-top" value="first-point"/>
+  <constant name="ldiag-right-top" value="ldiag-left-top + vstem-hcount"/>
+  <constant name="ldiag-right-bottom" value="ldiag-right-top + smooth-count"/>
+  <constant name="diag-intersect" value="ldiag-right-top + diag--halfnotch-count"/>
+  <constant name="rdiag-left-top" value="diag-intersect + diag-halfnotch-count"/>
+  <constant name="rdiag-left-bottom" value="rdiag-left-top - smooth-count"/>
+  <constant name="rdiag-right-top" value="rdiag-left-top + vstem-hcount"/>
+  <constant name="rdiag-right-bottom" value="rdiag-right-top + smooth-count"/>
+  <constant name="upper-intersect-right-top" value="rdiag-right-bottom"/>
+  <constant name="upper-hstem-right-top" value="upper-intersect-right-top + smooth-count"/>
+  <constant name="upper-hstem-right-bottom" value="upper-hstem-right-top + hstem-vcount"/>
+  <constant name="upper-intersect-right-bottom" value="upper-hstem-right-bottom + smooth-count"/>
+  <constant name="lower-intersect-right-top" value="upper-intersect-right-bottom + 1"/>
+  <constant name="lower-hstem-right-top" value="lower-intersect-right-top + smooth-count"/>
+  <constant name="lower-hstem-right-bottom" value="lower-hstem-right-top + hstem-vcount"/>
+  <constant name="lower-intersect-right-bottom" value="lower-hstem-right-bottom + smooth-count"/>
+  <constant name="vstem-right-bottom" value="lower-intersect-right-bottom + smooth-count"/>
+  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="lower-intersect-left-bottom" value="vstem-left-bottom + smooth-count"/>
+  <constant name="lower-hstem-left-bottom" value="lower-intersect-left-bottom + smooth-count"/>
+  <constant name="lower-hstem-left-top" value="lower-hstem-left-bottom + hstem-vcount"/>
+  <constant name="lower-intersect-left-top" value="lower-hstem-left-top + smooth-count"/>
+  <constant name="upper-intersect-left-bottom" value="lower-intersect-left-top + 1"/>
+  <constant name="upper-hstem-left-bottom" value="upper-intersect-left-bottom + smooth-count"/>
+  <constant name="upper-hstem-left-top" value="upper-hstem-left-bottom + hstem-vcount"/>
+  <constant name="upper-intersect-left-top" value="upper-hstem-left-top + smooth-count"/>
+  <constant name="ldiag-left-bottom" value="upper-intersect-left-top"/>
+  <constant name="last" value="ldiag-left-bottom"/>
+  <line name="ldiag-left">
+   <point num="ldiag-left-top"/>
+   <point num="ldiag-left-bottom"/>
+  </line>
+  <line name="ldiag-right">
+   <point num="ldiag-right-top"/>
+   <point num="ldiag-right-bottom"/>
+  </line>
+  <line name="rdiag-left">
+   <point num="rdiag-left-bottom"/>
+   <point num="rdiag-left-top"/>
+  </line>
+  <line name="rdiag-right">
+   <point num="rdiag-right-bottom"/>
+   <point num="rdiag-right-top"/>
+  </line>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--    <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <!--<compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>-->
+  
+  <move distance="baseline">
+   <point num="vstem-left-bottom"/>
+   <align>
+    <point num="vstem-right-bottom"/>
+   </align>
+  </move>
+  <move>
+   <point num="ldiag-left-bottom"/>
+   <align>
+    <point num="rdiag-right-bottom"/>
+    <point num="upper-hstem-left-top"/>
+    <point num="upper-hstem-right-top"/>
+   </align>
+   <move round="no" distance="horiz-stem" color="black">
+    <point num="upper-intersect-left-bottom"/>
+    <align>
+     <point num="upper-intersect-right-bottom"/>
+     <point num="upper-hstem-left-bottom"/>
+     <point num="upper-hstem-right-bottom"/>
+    </align>
+   </move>
+   <move>
+    <point num="lower-intersect-left-top"/>
+    <align>
+     <point num="lower-intersect-right-top"/>
+     <point num="lower-hstem-left-top"/>
+     <point num="lower-hstem-right-top"/>
+    </align>
+    <move round="no" distance="horiz-stem" color="black">
+     <point num="lower-intersect-left-bottom"/>
+     <align>
+      <point num="lower-intersect-right-bottom"/>
+      <point num="lower-hstem-left-bottom"/>
+      <point num="lower-hstem-right-bottom"/>
+     </align>
+    </move>
+   </move>
+  </move>
+  <move distance="x-height">
+   <point num="ldiag-left-top"/>
+   <align>
+    <point num="ldiag-right-top"/>
+    <point num="rdiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </align>
+  </move>
+  
+  <!-- <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>-->
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="horizontal-smoothing">
+      <set-minimum-distance value="1.0p"/>
+     </if>
+     <!--     <if test="vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>-->
+    </compile-if>
+    <!--  </else>
+  </compile-if>-->
+  
+  <move min-distance="no" color="white"> <!---->
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="ldiag-left-top"/>
+   <move color="black">
+    <point num="rdiag-right-top"/>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+  </compile-if>
+  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/>   <!--- rbearing-->
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width">
+    <point num="rdiag-right-top"/>
+   </shift-absolute>
+   <compile-if test="slanted">
+    <with-projection-vector axis="x">
+     <mdap round="to-grid">
+      <point num="rdiag-right-top"/>
+     </mdap>
+     <!--    <shift-absolute pixel-distance="-0.05p">
+      <point num="rdiag-right-top"/>
+     </shift-absolute>-->
+    </with-projection-vector>
+   </compile-if>
+  </if>
+  <interpolate>    <!--round="yes"-->
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="upper-intersect-left-bottom"/>
+  </interpolate>
+  <compile-if test="slanted = 0">
+   <mdap round="yes">
+    <point num="upper-intersect-left-bottom"/>
+   </mdap>
+  </compile-if>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="upper-intersect-left-bottom"/>
+   </reference>
+   <point num="upper-intersect-right-bottom"/>
+  </move>
+  <compile-if test="slanted = 0">
+   <set-equal target="width" source="(ldiag-left-top -- upper-intersect-left-bottom) - (upper-intersect-right-bottom -- rdiag-right-top)"/>
+   <if test="width &gt; 0">
+    <!--    <if test="(pixels-per-em &lt; cap-thick-eq-thin)"> -->
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="upper-intersect-left-bottom"/>
+      <point num="upper-intersect-right-bottom"/>
+      <point num="rdiag-right-top"/>
+     </shift-absolute>
+     <!--    </if> -->
+   </if>
+   <if test="width &lt; 0">
+    <!--    <if test="pixels-per-em &lt; cap-thick-eq-thin"> -->
+     <shift-absolute pixel-distance="-1.0p">
+      <point num="rdiag-right-top"/>
+     </shift-absolute>
+     <!--    <else>
+      <shift-absolute pixel-distance="1.0p">
+       <point num="ldiag-left-bottom"/>
+       <point num="rdiag-right-bottom"/>
+      </shift-absolute>
+     </else>
+    </if>-->
+   </if>
+  </compile-if>
+  <align>
+   <reference>
+    <point num="upper-intersect-left-bottom"/>
+   </reference>
+   <point num="vstem-left-bottom"/>
+   <point num="lower-intersect-left-bottom"/>
+  </align>
+  <align>
+   <reference>
+    <point num="upper-intersect-right-bottom"/>
+   </reference>
+   <point num="vstem-right-bottom"/>
+   <point num="lower-intersect-right-bottom"/>
+  </align>
+  <compile-if test="slanted">
+   <set-vectors axis="x"/>
+   <compile-if test="smooth = 0">
+    <set-round-state round="to-grid"/>
+    <else>
+     <if test="horizontal-smoothing = 0">
+      <set-round-state round="to-grid"/>
+     </if>
+    </else>
+   </compile-if>
+   <set-equal target="temp" source="coord(vstem-left-bottom)"/>
+   <mdap round="to-grid">
+    <point num="vstem-left-bottom"/>
+   </mdap>
+   <shift-absolute pixel-distance="coord(vstem-left-bottom) - temp">
+    <point num="vstem-right-bottom"/>
+    <!--   <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>-->
+    <point num="upper-intersect-left-bottom"/>
+    <point num="upper-intersect-right-bottom"/>
+    <point num="lower-intersect-left-bottom"/>
+    <point num="lower-intersect-right-bottom"/>
+   </shift-absolute>
+   <else>
+    <shift-absolute pixel-distance="0.05p">
+     <point num="ldiag-left-top"/>
+    </shift-absolute>
+    <compile-if test="smooth">
+     <if test="horizontal-smoothing">
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <!--        <point num="ldiag-left-top"/> -->
+       <point num="upper-intersect-left-bottom"/>
+       <point num="vstem-left-bottom"/>
+       <point num="lower-intersect-left-bottom"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <!--        <point num="rdiag-right-top"/> -->
+       <point num="upper-intersect-right-bottom"/>
+       <point num="vstem-right-bottom"/>
+       <point num="lower-intersect-right-bottom"/>
+      </shift-absolute>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="right-bearing"/>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <align>
+    <reference>
+     <point num="vstem-right-bottom"/>
+    </reference>
+    <point num="lower-intersect-right-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="vstem-left-bottom"/>
+    </reference>
+    <point num="lower-intersect-left-top"/>
+   </align>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="upper-intersect-left-bottom"/>
+   </reference>
+   <point num="ldiag-left-bottom"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="rdiag-right-top"/>
+    <point num="upper-intersect-right-bottom"/>
+   </reference>
+   <point num="rdiag-right-bottom"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-top"/>
+    <point num="rdiag-right-top"/>
+   </reference>
+   <point num="upper-hstem-left-top"/>
+   <point num="upper-hstem-right-top"/>
+   <point num="upper-hstem-left-bottom"/>
+   <point num="upper-hstem-right-bottom"/>
+   <point num="lower-hstem-left-top"/>
+   <point num="lower-hstem-right-top"/>
+   <point num="lower-hstem-left-bottom"/>
+   <point num="lower-hstem-right-bottom"/>
+   <point num="diag-intersect"/>
+  </interpolate>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+  </compile-if>
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="ldiag-left-top"/>
+   <with-param name="first-diag-second-point" value="ldiag-left-bottom"/>
+   <with-param name="second-diag-first-point" value="ldiag-right-top"/>
+   <with-param name="second-diag-second-point" value="ldiag-right-bottom"/>
+   <with-param name="diag-width" value="thick-diag"/>
+   <with-param name="interpolation-point" value="ldiag-left-bottom"/>
+  </call-macro>
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="rdiag-right-top"/>
+   <with-param name="first-diag-second-point" value="rdiag-right-bottom"/>
+   <with-param name="second-diag-first-point" value="rdiag-left-top"/>
+   <with-param name="second-diag-second-point" value="rdiag-left-bottom"/>
+   <with-param name="diag-width" value="thin-diag"/>
+   <with-param name="interpolation-point" value="rdiag-right-bottom"/>
+  </call-macro>
+  <set-equal target="width" source="(ldiag-right-bottom -- rdiag-left-bottom) - 1.0p"/>
+  <if test="width &lt; 0.0p">
+   <shift-absolute pixel-distance="width / 2.0p">
+    <point num="ldiag-right-bottom"/>
+   </shift-absolute>
+   <shift-absolute pixel-distance="width / -2.0p">
+    <point num="rdiag-left-bottom"/>
+   </shift-absolute>
+  </if>
+  
+  <set-vectors axis="y"/>
+  <interpolate>
+   <reference>
+    <point num="ldiag-left-bottom"/>
+    <point num="ldiag-right-bottom"/>
+   </reference>
+   <point num="diag-intersect"/>
+  </interpolate>
+  <if test="(ldiag-left-bottom -- diag-intersect) &gt;= 1.0p">
+   <mdap round="down-to-grid">
+    <point num="diag-intersect"/>
+   </mdap>
+  </if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

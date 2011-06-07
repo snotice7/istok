@@ -2,8 +2,8 @@ Istok is new sans serif typeface. At present it has four fonts with
 support for Latin and Cyrillic. Most glyphs are manually instructed
 using xgridfit, but another ones are autoinstructed in fontforge.
 
-The fonts are distributed under the terms of GNU General Public License
-Version 3 with the following exception:
+The fonts are distributed under the terms of Open Font License or GNU
+General Public License Version 3 with the following exception:
 
 As a special exception, if you create a document which uses this font,
 and embed this font or unaltered portions of this font into the
@@ -15,6 +15,7 @@ extend this exception to your version of the font, but you are not
 obligated to do so. If you do not wish to do so, delete this exception
 statement from your version.
 
+The font sources have only GNU General Public License Version 3.
 The sources and truetype fonts are available at
 http://code.google.com/p/istok/
 Tarballs are compressed with xz (http://tukaani.org/xz/).

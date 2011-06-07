@@ -152,7 +152,7 @@ install:
 %.pe-dist: %.xml
 	$(XGRIDFIT) --processor=libxslt -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 
-OFLDOCS=ChangeLog TODO OFL.txt OFL-FAQ.txt
+OFLDOCS=ChangeLog TODO OFL.txt OFL-FAQ.txt FontLog.txt
 # Only copyright holder can do this
 ofl-ttf: #all
 	mkdir -p OFL
