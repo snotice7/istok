@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1307359757
+ModificationTime: 1307446602
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -5037,7 +5037,7 @@ EndChar
 StartChar: afii10025
 Encoding: 1047 1047 113
 Width: 1354
-Flags: HW
+Flags: W
 HStem: -34 236<442.665 851.346> 636 236<427.216 836.458> 1232 236<430.713 843.609>
 VStem: 903 296<937.666 1176.58> 938 312<278.571 561.268>
 LayerCount: 2
@@ -10542,7 +10542,7 @@ StartChar: uni04DE
 Encoding: 1246 1246 258
 Width: 1354
 VWidth: 0
-Flags: HW
+Flags: W
 LayerCount: 2
 Fore
 Refer: 113 1047 N 1 0 0 1 0 0 3
@@ -18683,7 +18683,7 @@ EndChar
 StartChar: yen
 Encoding: 165 165 442
 Width: 1200
-Flags: W
+Flags: HW
 HStem: 0 21G<490 710> 183 208<149.187 460 740 1050.81> 560 208<149.187 362 838 1050.81> 1414 20G<10.5 243.5 956.5 1189.5>
 VStem: 460 280<1.18652 183 391 560>
 LayerCount: 2
@@ -18694,10 +18694,10 @@ SplineSet
  215 1434 l 2,3,4
  272 1434 272 1434 307 1365 c 2,5,-1
  494 994 l 2,6,7
- 532 920 532 920 562 870 c 0,8,9
+ 532 920 532 920 561.5 871 c 132,-1,9
  591 822 591 822 598 748 c 1,10,-1
  602 748 l 1,11,12
- 609 822 609 822 638 870 c 0,13,14
+ 609 822 609 822 638.5 870.5 c 132,-1,14
  668 919 668 919 706 994 c 2,15,-1
  893 1365 l 2,16,17
  928 1434 928 1434 985 1434 c 2,18,-1

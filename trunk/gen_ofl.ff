@@ -1,0 +1,7 @@
+#!/usr/bin/env fontforge
+/* Copyright (C) 2011 Andrey V. Panov */
+Open($1)
+SetTTFName(0x409,13,"Copyright (c) 2008-2011, Andrey V. Panov (panov@canopus.iacp.dvo.ru), with Reserved Font Name Istok.\n\n"\
++"This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied together with this font package in OFL.txt, and is also available with a FAQ at: http://scripts.sil.org/OFL")
+SetTTFName(0x409,14,"http://scripts.sil.org/ofl")
+Generate($2,"ttf",0xA00,-1)
