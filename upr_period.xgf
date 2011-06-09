@@ -77,10 +77,10 @@
     <point num="left-bearing"/>
    </reference>
    <point num="left-bottom"/>
-   <align>
+   <align compile-if="slanted = 0">
     <point num="left-top"/>
    </align>
-   <move distance="vert-stem" color="black">
+   <move distance="vert-stem" color="black" compile-if="slanted = 0">
     <point num="right-bottom"/>
     <align>
      <point num="right-top"/>
@@ -91,6 +91,29 @@
    </move>
   </move>
   <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <move round="to-grid">
+    <point num="left-bottom"/>
+   </move>
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <align>
+    <reference>
+     <point num="left-bottom"/>
+    </reference>
+    <point num="left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <reference>
+     <point num="left-bottom"/>
+    </reference>
+    <point num="right-top"/>
+    <align>
+     <point num="right-bottom"/>
+    </align>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
    <set-projection-vector axis="x"/>
    <move round="to-grid">
     <point num="right-bearing"/>

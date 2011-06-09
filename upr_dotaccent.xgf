@@ -29,6 +29,54 @@
   <constant name="right-bottom" value="right-top + vstem-vcount"/>
   <constant name="last" value="right-bottom + last-count"/>
   
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  
+  <move>
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+   <move distance="vert-stem" color="black"> <!--compile-if="slanted = 0"-->
+    <point num="left-top"/>
+    <align>
+     <point num="right-top"/>
+    </align>
+   </move>
+   <!--   <move pixel-distance="width" color="black" compile-if="slanted">
+    <point num="left-top"/>
+    <align>
+     <point num="right-top"/>
+    </align>
+   </move>-->
+  </move>
+  <compile-if test="smooth">
+   <compile-if test="slanted">
+    <set-freedom-vector axis="y"/>
+   </compile-if>
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="left-bottom"/>
+     <with-param name="point-second" value="left-top"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left-bottom"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
   <set-vectors axis="x"/>
   
   <move color="white">
@@ -43,17 +91,19 @@
     </move>
    </move>
   </move>
-  <compile-if test="slanted">
+  <!--  <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <move round="to-grid">
     <point num="right-bearing"/>
    </move>
-  </compile-if>
+  </compile-if>-->
   <compile-if test="smooth">
    <if test="horizontal-smoothing">
-    <call-macro name="shift-edge-slanted">
+    <call-macro name="shift-edge-points"> <!--  -slanted -->
      <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
+     <with-param name="point-first" value="left-bottom"/>
+     <with-param name="point-second" value="right-bottom"/>
+     <!--      <with-param name="cv" value="vert-stem"/> -->
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
      <point num="left-bottom"/>
@@ -66,10 +116,10 @@
    </if>
   </compile-if>
   <compile-if test="slanted">
-   <set-equal target="width" source="left-bottom -- right-bottom"/>
+   <!--    <set-equal target="width" source="left-bottom - - right-bottom"/> -->
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
-   <set-freedom-vector axis="x"/>
-   <set-round-state round="no"/>
+   <!--    <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>-->
   </compile-if>
   <align>
    <reference>
@@ -83,50 +133,6 @@
    </reference>
    <point num="right-top"/>
   </align>
-  
-  <compile-if test="slanted">
-   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
-   <set-projection-vector axis="y"/>
-   <set-round-state round="to-grid"/>
-   <else>
-    <set-vectors axis="y"/>
-   </else>
-  </compile-if>
-  
-  <move>
-   <point num="left-bottom"/>
-   <align>
-    <point num="right-bottom"/>
-   </align>
-   <move distance="vert-stem" color="black" compile-if="slanted = 0">
-    <point num="left-top"/>
-    <align>
-     <point num="right-top"/>
-    </align>
-   </move>
-   <move pixel-distance="width" color="black" compile-if="slanted">
-    <point num="left-top"/>
-    <align>
-     <point num="right-top"/>
-    </align>
-   </move>
-  </move>
-  <compile-if test="smooth">
-   <if test="vertical-smoothing">
-    <!--<call-macro name="shift-edge">
-     <with-param name="shift" value="temp"/>
-     <with-param name="cv" value="vert-stem"/>
-    </call-macro>-->
-    <shift-absolute pixel-distance="negative(temp)">
-     <point num="left-bottom"/>
-     <point num="right-bottom"/>
-    </shift-absolute>
-    <shift-absolute pixel-distance="temp">
-     <point num="left-top"/>
-     <point num="right-top"/>
-    </shift-absolute>
-   </if>
-  </compile-if>
   
   <interpolate-untouched-points/>
  </glyph>

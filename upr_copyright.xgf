@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="copyright" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="circle-outer-left" value="0"/>
+  <constant name="circle-outer-top" value="circle-outer-left + 5"/>
+  <constant name="circle-outer-right" value="circle-outer-top + 5"/>
+  <constant name="circle-outer-bottom" value="circle-outer-right + 5"/>
+  <constant name="circle-inner-left" value="20"/>
+  <constant name="circle-inner-bottom" value="circle-inner-left + 5"/>
+  <constant name="circle-inner-right" value="circle-inner-bottom + 5"/>
+  <constant name="circle-inner-top" value="circle-inner-right + 5"/>
+  
+  <constant name="outer-left" value="40"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="upper-end-top" value="outer-top + 3"/>
+  <constant name="upper-end-bottom" value="upper-end-top + open-end-count"/>
+  <constant name="inner-top" value="upper-end-bottom + 3"/>
+  <constant name="inner-left" value="inner-top + 3"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="lower-end-top" value="inner-bottom + 3"/>
+  <constant name="lower-end-bottom" value="lower-end-top + open-end-count"/>
+  <constant name="outer-bottom" value="lower-end-bottom + 3"/>
+  <constant name="last" value="outer-bottom + 2"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="circle-outer-left"/>
+   <move color="black">
+    <point num="circle-inner-left"/>
+    <move color="white">
+     <point num="outer-left"/>
+     <move color="black">
+      <point num="inner-left"/>
+     </move>
+    </move>
+   </move>
+   <move color="black">
+    <point num="circle-outer-right"/>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <measure-distance grid-fitted="yes" result-to="width">
+   <point num="circle-outer-left"/>
+   <point num="circle-inner-left"/>
+  </measure-distance>
+  <move pixel-distance="negative(width)" color="black">
+   <reference>
+    <point num="circle-outer-right"/>
+   </reference>
+   <point num="circle-inner-right"/>
+   <move color="white">
+    <point num="lower-end-bottom"/>
+    <move min-distance="no" round="no" color="black">
+     <point num="lower-end-top"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-left"/>
+    <point num="circle-outer-right"/>
+   </reference>
+   <point num="circle-outer-top"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-bottom"/>
+   <point num="circle-inner-bottom"/>
+   <point num="circle-inner-top"/>
+  </align>
+  
+  <interpolate round="yes">
+   <reference>
+    <point num="outer-left"/>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="upper-end-top"/>
+  </interpolate>
+  <move min-distance="no" round="no" color="black">
+   <reference>
+    <point num="upper-end-top"/>
+   </reference>
+   <point num="upper-end-bottom"/>
+  </move>
+  
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="circle-outer-left"/>
+     <with-param name="point-second" value="circle-inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="circle-outer-left"/>
+     <point num="circle-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="circle-outer-right"/>
+     <point num="circle-inner-left"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="outer-left"/>
+     <with-param name="point-second" value="inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <move distance="baseline">
+   <point num="circle-outer-bottom"/>
+   <move pixel-distance="width" color="black">
+    <point num="circle-inner-bottom"/>
+    <move color="white">
+     <point num="outer-bottom"/>
+     <move color="black">
+      <point num="inner-bottom"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <move distance="height" color="black">
+   <point num="circle-outer-top"/>
+   <move pixel-distance="negative(width)" color="black">
+    <point num="circle-inner-top"/>
+    <move color="white">
+     <point num="outer-top"/>
+     <move color="black">
+      <point num="inner-top"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-bottom"/>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-left"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-left"/>
+   </reference>
+   <point num="circle-outer-right"/>
+   <point num="circle-inner-right"/>
+   <point num="circle-inner-left"/>
+  </align>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="circle-outer-bottom"/>
+     <with-param name="point-second" value="circle-inner-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="circle-outer-bottom"/>
+     <point num="circle-inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="circle-outer-top"/>
+     <point num="circle-inner-bottom"/>
+    </shift-absolute>
+    <call-macro name="double-shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="outer-bottom"/>
+     <with-param name="point-second" value="inner-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
