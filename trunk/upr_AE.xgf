@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="AE" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="height" value="cap-x-height"/>
+  <param name="ahstem-height" value="cap-a-hstem-height"/>
+  <param name="thin-diag" value="cap-diag"/>
+  <param name="intersect-height" value="cap-h-intersect-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  
+  <constant name="left-left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-left-bottom + vstem-vcount"/>
+  <constant name="uhstem-right-top" value="left-top + hstem-hcount"/>
+  <constant name="uhstem-right-bottom" value="uhstem-right-top + hstem-vcount"/>
+  <constant name="uhstem-left-bottom" value="uhstem-right-bottom + smooth-count"/>
+  <constant name="mhstem-left-top" value="uhstem-left-bottom + 1"/>
+  <constant name="mhstem-right-top" value="mhstem-left-top + smooth-count"/>
+  <constant name="mhstem-right-bottom" value="mhstem-right-top + hstem-vcount"/>
+  <constant name="mhstem-left-bottom" value="mhstem-right-bottom + smooth-count"/>
+  <constant name="lhstem-left-top" value="mhstem-left-bottom + 1"/>
+  <constant name="lhstem-right-top" value="lhstem-left-top + smooth-count"/>
+  <constant name="lhstem-right-bottom" value="lhstem-right-top + hstem-vcount"/>
+  <constant name="lhstem-left-bottom" value="lhstem-right-bottom + hstem-hcount"/>
+  <constant name="ahstem-right-bottom" value="lhstem-left-bottom + smooth-count"/>
+  <constant name="ahstem-left-bottom" value="ahstem-right-bottom + 1"/>
+  <constant name="left-right-bottom" value="ahstem-left-bottom + smooth-count"/>
+  <constant name="inner-left" value="left-right-bottom + smooth-count"/>
+  <constant name="inner-right" value="inner-left + 1"/>
+  <constant name="inner-right-top" value="inner-right + 1"/>
+  <constant name="inner-left-top" value="inner-right-top + 1"/>
+  <constant name="ldiag-right-top" value="inner-right-top + 4"/>
+  <constant name="last" value="ldiag-right-top"/>
+  <line name="left-lstem">
+   <point num="left-left-bottom"/>
+   <point num="left-top"/>
+  </line>
+  <line name="right-lstem">
+   <point num="left-right-bottom"/>
+   <point num="ldiag-right-top"/>
+  </line>
+  <line name="ahstem-bottom">
+   <point num="ahstem-left-bottom"/>
+   <point num="ahstem-right-bottom"/>
+  </line>
+  <line name="ahstem-top">
+   <point num="inner-left"/>
+   <point num="inner-right"/>
+  </line>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-left-bottom"/>
+   <align>
+    <point num="left-right-bottom"/>
+    <point num="lhstem-left-bottom"/>
+    <point num="lhstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="lhstem-right-top"/>
+    <align>
+     <point num="lhstem-left-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="ahstem-height">
+   <point num="ahstem-left-bottom"/>
+   <align>
+    <point num="ahstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-left"/>
+    <align>
+     <point num="inner-right"/>
+    </align>
+   </move>
+  </move>
+  <move distance="intersect-height">
+   <point num="mhstem-left-bottom"/>
+   <align>
+    <point num="mhstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="mhstem-left-top"/>
+    <align>
+     <point num="mhstem-right-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="left-top"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="uhstem-right-bottom"/>
+    <align>
+     <point num="uhstem-left-bottom"/>
+    </align>
+   </move>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-left-bottom"/>
+   <move color="black">
+    <point num="lhstem-left-bottom"/>
+    <interpolate>     <!-- round="yes"-->
+     <point num="left-top"/>
+    </interpolate>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+  </compile-if>
+  <move distance="vert-stem" color="black">
+   <reference>
+    <point num="lhstem-left-bottom"/>
+   </reference>
+   <point num="uhstem-left-bottom"/>
+   <align>
+    <point num="mhstem-left-top"/>
+    <point num="mhstem-left-bottom"/>
+    <point num="lhstem-left-top"/>
+   </align>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lhstem-right-bottom"/>
+   <align>
+    <point num="lhstem-right-top"/>
+   </align>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lhstem-left-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lhstem-right-bottom"/>
+     <point num="lhstem-right-top"/>
+     <point num="uhstem-left-bottom"/>
+     <point num="mhstem-left-top"/>
+     <point num="mhstem-left-bottom"/>
+     <point num="lhstem-left-top"/>
+    </shift-absolute>
+    <compile-if test="slanted = 0">
+     <set-round-state round="no"/>
+    </compile-if>
+   </if>
+  </compile-if>
+  <align>
+   <reference>
+    <point num="lhstem-left-bottom"/>
+   </reference>
+   <point num="ahstem-right-bottom"/>
+   <point num="inner-right"/>
+   <point num="inner-right-top"/>
+  </align>
+  <move min-distance="no">
+   <reference>
+    <point num="lhstem-right-bottom"/>
+   </reference>
+   <point num="mhstem-right-bottom"/>
+   <align>
+    <point num="mhstem-right-top"/>
+   </align>
+  </move>
+  <move min-distance="no">
+   <reference>
+    <point num="lhstem-right-bottom"/>
+   </reference>
+   <point num="uhstem-right-bottom"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+  </move>
+  
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="left-left-bottom"/>
+   <with-param name="first-diag-second-point" value="left-top"/>
+   <with-param name="second-diag-first-point" value="left-right-bottom"/>
+   <with-param name="second-diag-second-point" value="ldiag-right-top"/>
+   <with-param name="diag-width" value="thin-diag"/>
+   <with-param name="interpolation-point" value="uhstem-left-bottom"/>
+  </call-macro>
+  
+  <interpolate>
+   <reference>
+    <point num="inner-right-top"/>
+    <point num="ldiag-right-top"/>
+   </reference>
+   <point num="inner-left-top"/>
+  </interpolate>
+  
+  <set-vectors axis="y"/>
+  <align>
+   <reference>
+    <point num="inner-right-top"/>
+   </reference>
+   <point num="inner-left-top"/>
+  </align>
+  <!--  <interpolate>
+   <reference>
+    <point num="left-top"/>
+    <point num="ldiag-right-top"/>
+   </reference>
+   <point num="inner-left-top"/>
+  </interpolate>
+  <if test="(inner-top - - left-top) &gt;= 1.0p">
+   <mdap round="up-to-grid">
+    <point num="inner-top"/>
+   </mdap>
+  </if>-->
+  
+  <move-point-to-intersection>
+   <point num="ahstem-left-bottom"/>
+   <line ref="right-lstem"/>
+   <line ref="ahstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="inner-left"/>
+   <line ref="right-lstem"/>
+   <line ref="ahstem-top"/>
+  </move-point-to-intersection>
+  
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

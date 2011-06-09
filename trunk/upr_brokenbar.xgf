@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="brokenbar" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2008, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="vert-stem" value="minus-thickness"/>
+  
+  <constant name="lower-left-bottom" value="first-point"/>
+  <constant name="lower-left-top" value="lower-left-bottom + vstem-vcount"/>
+  <constant name="lower-right-top" value="lower-left-top + vstem-hcount"/>
+  <constant name="lower-right-bottom" value="lower-right-top + vstem-vcount"/>
+  <constant name="upper-left-bottom" value="lower-right-bottom + last-count + first-point + 1"/>
+  <constant name="upper-left-top" value="upper-left-bottom + vstem-vcount"/>
+  <constant name="upper-right-top" value="upper-left-top + vstem-hcount"/>
+  <constant name="upper-right-bottom" value="upper-right-top + vstem-vcount"/>
+  <constant name="last" value="upper-right-bottom + last-count"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lower-left-bottom"/>
+   <align>
+    <point num="lower-left-top"/>
+    <point num="upper-left-bottom"/>
+    <point num="upper-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="lower-right-top"/>
+    <align>
+     <point num="lower-right-bottom"/>
+     <point num="upper-right-top"/>
+     <point num="upper-right-bottom"/>
+    </align>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lower-left-bottom"/>
+     <point num="lower-left-top"/>
+     <point num="upper-left-bottom"/>
+     <point num="upper-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lower-right-top"/>
+     <point num="lower-right-bottom"/>
+     <point num="upper-right-top"/>
+     <point num="upper-right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="lower-left-bottom"/>
+   <align>
+    <point num="lower-right-bottom"/>
+   </align>
+  </move>
+  <move>
+   <point num="lower-left-top"/>
+   <align>
+    <point num="lower-right-top"/>
+   </align>
+   <move color="white">
+    <point num="upper-left-bottom"/>
+    <align>
+     <point num="upper-right-bottom"/>
+    </align>
+    <move pixel-distance="lower-left-bottom -- lower-left-top" color="black">
+     <point num="upper-left-top"/>
+     <align>
+      <point num="upper-right-top"/>
+     </align>
+    </move>
+   </move>
+  </move>
+  <!--<compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <shift-absolute pixel-distance="vgrayshift-">
+     <point num="left-bottom"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="vgrayshift">
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>-->
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

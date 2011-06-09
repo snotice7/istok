@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="exclam" init-graphics="yes">
+ <glyph ps-name="exclamdown" init-graphics="yes">
   
   <!--
       
@@ -21,18 +21,18 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
   <param name="dot-height" value="period-height"/>
   <param name="vert-stem" value="period-width"/>
   <param name="height" value="cap-o-height"/>
+  <param name="x-height" value="small-x-height"/>
   
-  <constant name="left" value="0"/>
+  <constant name="left" value="2"/>
   <constant name="top-left" value="left + smooth-count"/>
-  <constant name="top-right" value="top-left + 1"/>
+  <constant name="top-right" value="top-left + vstem-hcount"/>
   <constant name="right" value="top-right + smooth-count"/>
-  <constant name="bottom-right" value="right + smooth-count"/>
-  <constant name="bottom-left" value="bottom-right + vstem-hcount"/>
-  <constant name="period-left-bottom" value="bottom-left + smooth-count + first-point"/>
+  <constant name="bottom-right" value="right + 1"/>
+  <constant name="bottom-left" value="1"/>
+  <constant name="period-left-bottom" value="13"/>
   <constant name="period-left-top" value="period-left-bottom + vstem-vcount"/>
   <constant name="period-right-top" value="period-left-top + vstem-hcount"/>
   <constant name="period-right-bottom" value="period-right-top + vstem-vcount"/>
@@ -52,29 +52,29 @@
    </if>
   </compile-if>
   
-  <move distance="baseline">
-   <point num="period-left-bottom"/>
-   <align>
-    <point num="period-right-bottom"/>
-   </align>
-  </move>
-  <move distance="dot-height">
+  <move distance="x-height">
    <point num="period-left-top"/>
    <align>
     <point num="period-right-top"/>
    </align>
-   <move color="white">
+   <move distance="dot-height">
+    <point num="period-left-bottom"/>
+    <align>
+     <point num="period-right-bottom"/>
+    </align>
+   </move>
+   <move distance="height">
     <point num="bottom-left"/>
     <align>
      <point num="bottom-right"/>
     </align>
    </move>
-  </move>
-  <move distance="height">
-   <point num="top-left"/>
-   <align>
-    <point num="top-right"/>
-   </align>
+   <move color="white">
+    <point num="top-left"/>
+    <align>
+     <point num="top-right"/>
+    </align>
+   </move>
   </move>
   
   <compile-if test="slanted">
@@ -95,16 +95,16 @@
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="period-left-bottom"/>
+   <point num="period-left-top"/>
    <align compile-if="slanted = 0">
     <point num="left"/>
-    <point num="period-left-top"/>
+    <point num="period-left-bottom"/>
    </align>
    <move distance="vert-stem" color="black" compile-if="slanted = 0">
-    <point num="period-right-bottom"/>
+    <point num="period-right-top"/>
     <align>
      <point num="right"/>
-     <point num="period-right-top"/>
+     <point num="period-right-bottom"/>
     </align>
     <move min-distance="no">
      <point num="right-bearing"/>
@@ -114,19 +114,19 @@
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <move round="to-grid">
-    <point num="period-left-bottom"/>
+    <point num="period-left-top"/>
    </move>
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <align>
     <reference>
-     <point num="period-left-bottom"/>
+     <point num="period-left-top"/>
     </reference>
     <point num="left"/>
-    <point num="period-left-top"/>
+    <point num="period-left-bottom"/>
    </align>
    <move distance="vert-stem" color="black">
     <reference>
-     <point num="period-left-bottom"/>
+     <point num="period-left-top"/>
     </reference>
     <point num="period-right-top"/>
     <align>
