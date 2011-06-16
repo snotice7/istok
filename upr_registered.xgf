@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="registered" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="thick-diag" value="accent-diag"/>
+  
+  <constant name="circle-outer-left" value="0"/>
+  <constant name="circle-outer-top" value="circle-outer-left + 5"/>
+  <constant name="circle-outer-right" value="circle-outer-top + 5"/>
+  <constant name="circle-outer-bottom" value="circle-outer-right + 5"/>
+  <constant name="circle-inner-left" value="20"/>
+  <constant name="circle-inner-bottom" value="circle-inner-left + 5"/>
+  <constant name="circle-inner-right" value="circle-inner-bottom + 5"/>
+  <constant name="circle-inner-top" value="circle-inner-right + 5"/>
+  
+  <constant name="lstem-left-bottom" value="first-point + 40"/>
+  <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
+  <constant name="upper-hstem-right-top" value="lstem-left-top + smooth-count"/>
+  <constant name="up-outer-right" value="upper-hstem-right-top + 3"/>
+  <constant name="intersect-top" value="up-outer-right + 3"/>
+  <constant name="intersect-low" value="intersect-top + 1"/>
+  <constant name="diag-r-top" value="intersect-low + 3"/>
+  <constant name="diag-r-bottom" value="diag-r-top + smooth-count"/>
+  <constant name="diag-l-bottom" value="diag-r-bottom + vstem-hcount"/>
+  <constant name="diag-l-top" value="diag-l-bottom + smooth-count"/>
+  <constant name="lower-hstem-right-bottom" value="diag-l-top + 3"/>
+  <constant name="lower-hstem-left-bottom" value="lower-hstem-right-bottom + 1"/>
+  <constant name="lstem-right-bottom" value="lower-hstem-left-bottom + smooth-count"/>
+  <constant name="up-inner-left-bottom" value="lstem-right-bottom + smooth-count"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-right" value="up-inner-right-bottom + 3"/>
+  <constant name="up-inner-right-top" value="up-inner-right + 3"/>
+  <constant name="up-inner-left-top" value="up-inner-right-top + 1"/>
+  <constant name="last" value="up-inner-left-top"/>
+  <line name="diag-l">
+   <point num="diag-l-top"/>
+   <point num="diag-l-bottom"/>
+  </line>
+  <line name="diag-r">
+   <point num="diag-r-top"/>
+   <point num="diag-r-bottom"/>
+  </line>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="circle-outer-left"/>
+   <move color="black">
+    <point num="circle-inner-left"/>
+    <move color="white">
+     <point num="lstem-left-bottom"/>
+     <align>
+      <point num="lstem-left-top"/>
+     </align>
+     <move color="black">
+      <point num="up-inner-left-top"/>
+      <align>
+       <point num="up-inner-left-bottom"/>
+       <point num="lower-hstem-left-bottom"/>
+       <point num="lstem-right-bottom"/>
+      </align>
+     </move>
+    </move>
+    <move color="black">
+     <point num="circle-outer-right"/>
+     <move min-distance="no" color="white">
+      <point num="right-bearing"/>
+     </move>
+    </move>
+   </move>
+  </move>
+  <measure-distance grid-fitted="yes" result-to="width">
+   <point num="circle-outer-left"/>
+   <point num="circle-inner-left"/>
+  </measure-distance>
+  <move pixel-distance="negative(width)" color="black">
+   <reference>
+    <point num="circle-outer-right"/>
+   </reference>
+   <point num="circle-inner-right"/>
+   <move color="white">
+    <point num="up-outer-right"/>
+    <interpolate>     <!-- round="yes"-->
+     <point num="diag-l-top"/>
+    </interpolate>
+    <move color="black">
+     <point num="up-inner-right"/>
+     <interpolate>
+      <point num="diag-l-bottom"/>
+     </interpolate>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-left"/>
+    <point num="circle-outer-right"/>
+   </reference>
+   <point num="circle-outer-top"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-bottom"/>
+   <point num="circle-inner-bottom"/>
+   <point num="circle-inner-top"/>
+  </align>
+
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="circle-outer-left"/>
+     <with-param name="point-second" value="circle-inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="circle-outer-left"/>
+     <point num="circle-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="circle-outer-right"/>
+     <point num="circle-inner-left"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="up-inner-right"/>
+     <with-param name="point-second" value="up-outer-right"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="up-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="up-outer-right"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="lstem-left-bottom"/>
+     <with-param name="point-second" value="lstem-right-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lstem-left-bottom"/>
+     <point num="lstem-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="lstem-right-bottom"/>
+     <point num="up-inner-left-top"/>
+     <point num="up-inner-left-bottom"/>
+     <point num="lower-hstem-left-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <move distance="baseline">
+   <point num="circle-outer-bottom"/>
+   <move pixel-distance="width" color="black">
+    <point num="circle-inner-bottom"/>
+    <move color="white">
+     <point num="lstem-left-bottom"/>
+     <align>
+      <point num="lstem-right-bottom"/>
+      <point num="diag-r-bottom"/>
+      <point num="diag-l-bottom"/>
+     </align>
+    </move>
+   </move>
+  </move>
+  <move distance="height" color="black">
+   <point num="circle-outer-top"/>
+   <move pixel-distance="negative(width)" color="black">
+    <point num="circle-inner-top"/>
+    <move color="white">
+     <point num="lstem-left-top"/>
+     <align>
+      <point num="upper-hstem-right-top"/>
+     </align>
+     <move color="black">
+      <point num="up-inner-left-top"/>
+      <align>
+       <point num="up-inner-right-top"/>
+      </align>
+     </move>
+     <move>
+      <point num="up-inner-left-bottom"/>
+      <align>
+       <point num="up-inner-right-bottom"/>
+      </align>
+      <move color="black">
+       <point num="lower-hstem-left-bottom"/>
+       <align>
+        <point num="lower-hstem-right-bottom"/>
+       </align>
+       <interpolate>
+        <point num="intersect-low"/>
+       </interpolate>
+      </move>
+     </move>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-bottom"/>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-left"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-left"/>
+   </reference>
+   <point num="circle-outer-right"/>
+   <point num="circle-inner-right"/>
+   <point num="circle-inner-left"/>
+  </align>
+  <interpolate>
+   <reference>
+    <point num="lower-hstem-left-bottom"/>
+    <point num="lstem-right-bottom"/>
+   </reference>
+   <point num="diag-l-top"/>
+  </interpolate>
+  
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="circle-outer-bottom"/>
+     <with-param name="point-second" value="circle-inner-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="circle-outer-bottom"/>
+     <point num="circle-inner-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="circle-outer-top"/>
+     <point num="circle-inner-bottom"/>
+    </shift-absolute>
+    <call-macro name="double-shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="up-inner-left-top"/>
+     <with-param name="point-second" value="lstem-left-top"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="up-inner-left-top"/>
+     <point num="up-inner-right-top"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="lower-hstem-left-bottom"/>
+     <with-param name="point-second" value="up-inner-left-bottom"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="lower-hstem-left-bottom"/>
+     <point num="lower-hstem-right-bottom"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="up-inner-left-bottom"/>
+     <point num="up-inner-right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="x"/>
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="diag-l-bottom"/>
+   <with-param name="first-diag-second-point" value="diag-l-top"/>
+   <with-param name="second-diag-first-point" value="diag-r-bottom"/>
+   <with-param name="second-diag-second-point" value="diag-r-top"/>
+   <with-param name="diag-width" value="thick-diag"/>
+   <with-param name="interpolation-point" value="lower-hstem-right-bottom"/>
+  </call-macro>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
