@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="currency" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="plus-width" value="minus-width"/>
+  <param name="diag" value="sign-thindiag"/>
+  <param name="curve-stem" value="dash-thickness"/>
+  
+  <constant name="circle-outer-left" value="5"/>
+  <constant name="circle-outer-top" value="16"/>
+  <constant name="circle-outer-right" value="27"/>
+  <constant name="circle-outer-bottom" value="38"/>
+  <constant name="circle-inner-left" value="44"/>
+  <constant name="circle-inner-bottom" value="circle-inner-left + 3"/>
+  <constant name="circle-inner-right" value="circle-inner-bottom + 3"/>
+  <constant name="circle-inner-top" value="circle-inner-right + 3"/>
+  
+  <constant name="left-left-bottom" value="first-point"/>
+  <constant name="intersect-left-left-bottom" value="left-left-bottom + smooth-count"/>
+  <constant name="intersect-left-left-top" value="7"/>
+  <constant name="left-left-top" value="intersect-left-left-top + smooth-count"/>
+  <constant name="left-right-top" value="left-left-top + hstem-vcount"/>
+  <constant name="intersect-left-right-top" value="left-right-top + smooth-count"/>
+  <constant name="intersect-right-left-top" value="18"/>
+  <constant name="right-left-top" value="intersect-right-left-top + smooth-count"/>
+  <constant name="right-right-top" value="right-left-top + hstem-vcount"/>
+  <constant name="intersect-right-right-top" value="right-right-top + smooth-count"/>
+  <constant name="intersect-right-right-bottom" value="29"/>
+  <constant name="right-right-bottom" value="intersect-right-right-bottom + smooth-count"/>
+  <constant name="right-left-bottom" value="right-right-bottom + hstem-vcount"/>
+  <constant name="intersect-right-left-bottom" value="right-left-bottom + smooth-count"/>
+  <constant name="intersect-left-right-bottom" value="40"/>
+  <constant name="left-right-bottom" value="intersect-left-right-bottom + smooth-count"/>
+  <constant name="last" value="circle-inner-top + 2"/>
+  
+  <line name="left-thinstem">
+   <point num="left-left-bottom"/>
+   <point num="right-left-top"/>
+  </line>
+  <line name="right-thinstem">
+   <point num="left-right-bottom"/>
+   <point num="right-right-top"/>
+  </line>
+  <line name="left-thickstem">
+   <point num="left-left-top"/>
+   <point num="right-left-bottom"/>
+  </line>
+  <line name="right-thickstem">
+   <point num="left-right-top"/>
+   <point num="right-right-bottom"/>
+  </line>
+  <constant name="shift-intersect" value="0.16p"/>
+  <constant name="shift--intersect" value="-0.16p"/>
+  
+  <set-vectors axis="y"/>
+  <move>
+   <point num="circle-outer-bottom"/>
+   <move distance="curve-stem" color="black">
+    <point num="circle-inner-bottom"/>
+   </move>
+   <move color="black">
+    <point num="circle-outer-top"/>
+    <move distance="curve-stem" color="black">
+     <point num="circle-inner-top"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-bottom"/>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-left"/>
+   <point num="left-left-bottom"/>
+   <point num="left-right-top"/>
+   <point num="right-left-top"/>
+   <point num="right-right-bottom"/>
+   <point num="left-right-bottom"/>
+   <point num="right-right-top"/>
+   <point num="left-left-top"/>
+   <point num="right-left-bottom"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-left"/>
+   </reference>
+   <point num="circle-outer-right"/>
+   <point num="circle-inner-right"/>
+   <point num="circle-inner-left"/>
+  </align>
+  <!--  <measure-distance grid-fitted="yes" result-to="width">
+   <point num="circle-outer-bottom"/>
+   <point num="circle-outer-top"/>
+  </measure-distance>-->
+  <!--  <with-round-state round="to-half-grid">
+   <move>
+    <point num="left-left-bottom"/>
+    <align>
+     <point num="right-right-bottom"/>
+    </align>
+   </move>
+  </with-round-state>
+  <move min-distance="no" round="no" pixel-distance="left-left-bottom - - circle-outer-bottom">
+   <reference>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="left-right-top"/>
+   <align>
+    <point num="right-left-top"/>
+   </align>
+  </move>-->
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="circle-outer-left"/>
+   <move distance="curve-stem" color="black">
+    <point num="circle-inner-left"/>
+   </move>
+   <move color="black"> <!--pixel-distance="width"-->
+    <point num="circle-outer-right"/>
+    <move distance="curve-stem" color="black">
+     <point num="circle-inner-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="circle-outer-left"/>
+    <point num="circle-outer-right"/>
+   </reference>
+   <point num="circle-outer-top"/>
+   <point num="left-left-bottom"/>
+   <point num="right-left-bottom"/>
+   <point num="right-left-top"/>
+   <point num="left-right-top"/>
+   <point num="right-right-bottom"/>
+   <point num="left-right-bottom"/>
+   <point num="right-right-top"/>
+   <point num="left-left-top"/>
+   <point num="right-left-bottom"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="circle-outer-top"/>
+   </reference>
+   <point num="circle-outer-bottom"/>
+   <point num="circle-inner-bottom"/>
+   <point num="circle-inner-top"/>
+  </align>
+  <!--  <with-round-state round="to-half-grid">
+   <move>
+    <point num="left-left-bottom"/>
+   </move>
+   <move>
+    <point num="left-right-top"/>
+   </move>
+  </with-round-state>
+  <move min-distance="no" round="no" pixel-distance="left-left-bottom - - circle-outer-right">
+   <reference>
+    <point num="circle-outer-left"/>
+   </reference>
+   <point num="right-right-bottom"/>
+  </move>
+  <move min-distance="no" round="no" pixel-distance="left-right-top - - circle-outer-right">
+   <point num="right-left-top"/>
+   <reference>
+    <point num="circle-outer-left"/>
+   </reference>
+  </move>-->
+  
+  <!--  <set-round-state round="no"/>
+  <with-minimum-distance value="diag-min-thick">
+   <diagonal-stem distance="diag" save-vectors="yes" color="black">
+    <line ref="left-thinstem"/>
+    <line ref="right-thinstem"/>
+    <align>
+     <point num="intersect-left-left-bottom"/>
+     <point num="intersect-right-left-top"/>
+    </align>
+    <align>
+     <point num="intersect-left-right-bottom"/>
+     <point num="intersect-right-right-top"/>
+    </align>
+   </diagonal-stem>
+  </with-minimum-distance>
+  <with-freedom-vector to-line="parallel">
+   <line ref="left-thinstem"/>
+   <with-projection-vector axis="y">
+    <interpolate>
+     <reference>
+      <point num="circle-outer-top"/>
+      <point num="circle-inner-top"/>
+     </reference>
+     <point num="intersect-right-left-top"/>
+     <point num="intersect-right-right-top"/>
+    </interpolate>
+    <interpolate>
+     <reference>
+      <point num="circle-inner-bottom"/>
+      <point num="circle-outer-bottom"/>
+     </reference>
+     <point num="intersect-left-left-bottom"/>
+     <point num="intersect-left-right-bottom"/>
+    </interpolate>
+   </with-projection-vector>
+   <with-projection-vector to-line="parallel">
+    <line ref="left-thinstem"/>
+    <align>
+     <reference>
+      <point num="left-left-bottom"/>
+     </reference>
+     <point num="left-right-bottom"/>
+    </align>
+    <align>
+     <reference>
+      <point num="right-left-top"/>
+     </reference>
+     <point num="right-right-top"/>
+    </align>
+    <align-midway>
+     <point num="intersect-right-left-top"/>
+     <point num="intersect-right-right-top"/>
+    </align-midway>
+    <align-midway>
+     <point num="intersect-left-left-bottom"/>
+     <point num="intersect-left-right-bottom"/>
+    </align-midway>
+   </with-projection-vector>
+  </with-freedom-vector>
+  <align>
+   <reference>
+    <point num="left-right-bottom"/>
+   </reference>
+   <point num="left-right-top"/>
+  </align>
+  <align>
+   <reference>
+    <point num="right-right-top"/>
+   </reference>
+   <point num="right-right-bottom"/>
+  </align>
+  <with-minimum-distance value="diag-min-thick">
+   <diagonal-stem distance="diag" save-vectors="yes" color="black">
+    <line ref="right-thickstem"/>
+    <line ref="left-thickstem"/>
+    <align>
+     <point num="intersect-left-right-top"/>
+     <point num="intersect-right-right-bottom"/>
+    </align>
+    <align>
+     <point num="intersect-left-left-top"/>
+     <point num="intersect-right-left-bottom"/>
+    </align>
+   </diagonal-stem>
+  </with-minimum-distance>
+  <with-freedom-vector to-line="parallel">
+   <line ref="right-thickstem"/>
+   <with-projection-vector axis="y">
+    <interpolate>
+     <reference>
+      <point num="circle-outer-top"/>
+      <point num="circle-inner-top"/>
+     </reference>
+     <point num="intersect-left-right-top"/>
+     <point num="intersect-left-left-top"/>
+    </interpolate>
+    <interpolate>
+     <reference>
+      <point num="circle-inner-bottom"/>
+      <point num="circle-outer-bottom"/>
+     </reference>
+     <point num="intersect-right-right-bottom"/>
+     <point num="intersect-right-left-bottom"/>
+    </interpolate>
+   </with-projection-vector>
+   <with-projection-vector to-line="parallel">
+    <line ref="right-thickstem"/>
+    <align>
+     <reference>
+      <point num="left-right-top"/>
+     </reference>
+     <point num="left-left-top"/>
+    </align>
+    <align>
+     <reference>
+      <point num="right-right-bottom"/>
+     </reference>
+     <point num="right-left-bottom"/>
+    </align>
+    <align-midway>
+     <point num="intersect-left-right-top"/>
+     <point num="intersect-left-left-top"/>
+    </align-midway>
+    <align-midway>
+     <point num="intersect-right-right-bottom"/>
+     <point num="intersect-right-left-bottom"/>
+    </align-midway>
+   </with-projection-vector>
+  </with-freedom-vector>-->
+  
+  <interpolate-untouched-points/>
+  <shift-absolute pixel-distance="shift--intersect">
+   <point num="intersect-right-right-top"/>
+   <point num="intersect-right-right-bottom"/>
+  </shift-absolute>
+  <shift-absolute pixel-distance="shift-intersect">
+   <point num="intersect-left-left-top"/>
+   <point num="intersect-left-left-bottom"/>
+  </shift-absolute>
+  <set-vectors axis="y"/>
+  <shift-absolute pixel-distance="shift--intersect">
+   <point num="intersect-left-right-top"/>
+   <point num="intersect-right-left-top"/>
+  </shift-absolute>
+  <shift-absolute pixel-distance="shift-intersect">
+   <point num="intersect-right-left-bottom"/>
+   <point num="intersect-left-right-bottom"/>
+  </shift-absolute>
+ </glyph>
+</xgridfit>
