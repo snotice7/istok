@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="cent" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="height" value="small-o-height"/>
+  <param name="horiz-stem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="mid-vert-stem" value="minus-thickness"/>
+  <param name="lbearing" value="small-o-lbearing"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="upper-joint-left-top" value="outer-left + 3"/>
+  <constant name="vstem-left-top" value="upper-joint-left-top + smooth-count"/>
+  <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
+  <constant name="upper-joint-right-top" value="vstem-right-top + smooth-count"/>
+  <constant name="upper-end-top" value="upper-joint-right-top + corner-count + 3"/>
+  <constant name="upper-end-bottom" value="upper-end-top + hstem-vcount"/>
+  <constant name="upper-joint-right-bottom" value="upper-end-bottom + corner-count + 3"/>
+  <constant name="lower-joint-right-top" value="22"/>
+  <constant name="lower-end-top" value="lower-joint-right-top + corner-count + 3"/>
+  <constant name="lower-end-bottom" value="lower-end-top + hstem-vcount"/>
+  <constant name="lower-joint-right-bottom" value="lower-end-bottom + corner-count + 3"/>
+  <constant name="vstem-right-bottom" value="lower-joint-right-bottom + smooth-count"/>
+  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="lower-joint-left-bottom" value="vstem-left-bottom + smooth-count"/>
+  <constant name="inner-left" value="43"/>
+  <constant name="lower-joint-left-top" value="inner-left + 3"/>
+  <constant name="upper-joint-left-bottom" value="lower-joint-left-top + 1"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="outer-bottom" value="lower-end-bottom + 3"/>
+  <constant name="last" value="upper-joint-left-bottom + 2"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--    <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="lower-joint-left-bottom"/>
+   <align>
+    <point num="lower-joint-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="lower-joint-left-top"/>
+    <align>
+     <point num="lower-joint-right-top"/>
+    </align>
+   </move>
+   <move color="black">
+    <point num="vstem-left-bottom"/>
+    <align>
+     <point num="vstem-right-bottom"/>
+    </align>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="upper-joint-left-top"/>
+   <align>
+    <point num="upper-joint-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="upper-joint-left-bottom"/>
+    <align>
+     <point num="upper-joint-right-bottom"/>
+    </align>
+   </move>
+   <move color="black">
+    <point num="vstem-left-top"/>
+    <align>
+     <point num="vstem-right-top"/>
+    </align>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="lower-joint-left-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="lower-joint-left-top"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="upper-joint-left-bottom"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="upper-joint-left-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="lower-joint-left-top"/>
+      <point num="upper-joint-left-bottom"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lower-end-bottom"/>
+   <move min-distance="no" round="no">
+    <point num="lower-end-top"/>
+   </move>
+  </move>
+  <interpolate round="yes">
+   <reference>
+    <point num="outer-left"/>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="upper-end-top"/>
+  </interpolate>
+  <move min-distance="no" round="no">
+   <reference>
+    <point num="upper-end-top"/>
+   </reference>
+   <point num="upper-end-bottom"/>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="outer-left"/>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="vstem-left-bottom"/>
+  </interpolate>
+  <compile-if test="slanted = 0">
+   <mdap round="yes">
+    <point num="vstem-left-bottom"/>
+   </mdap>
+   <else>
+    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+    <set-round-state round="no"/>
+   </else>
+  </compile-if>
+  <move distance="mid-vert-stem" color="black">
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="vstem-right-bottom"/>
+  </move>
+  <if test="pixels-per-em &lt; 25">
+   <set-equal target="width" source="(vstem-right-bottom -- lower-end-top) - (inner-left -- vstem-left-bottom)"/>
+   <compile-if test="slanted = 0">
+    <if test="width &gt; 1.5p">
+     <shift-absolute pixel-distance="1.0p">
+      <point num="vstem-left-bottom"/>
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+     <else>
+      <if test="width &lt; -1.5p">
+       <shift-absolute pixel-distance="-1.0p">
+        <point num="vstem-left-bottom"/>
+        <point num="vstem-right-bottom"/>
+       </shift-absolute>
+      </if>
+     </else>
+    </if>
+    <else>
+     <shift-absolute pixel-distance="width / 2.0">
+      <point num="vstem-left-bottom"/>
+      <point num="vstem-right-bottom"/>
+     </shift-absolute>
+    </else>
+   </compile-if>
+  </if>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <compile-if test="slanted = 0">
+     <if test="(inner-left -- vstem-left-bottom) &gt; 0">
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="outer-left"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="inner-left"/>
+      </shift-absolute>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="mid-vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="vstem-left-bottom"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="vstem-right-bottom"/>
+      </shift-absolute>
+     </if>
+     <else>
+      <call-macro name="shift-edge">
+       <with-param name="shift" value="temp"/>
+       <with-param name="cv" value="vert-stem"/>
+      </call-macro>
+      <shift-absolute pixel-distance="negative(temp)">
+       <point num="outer-left"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="temp">
+       <point num="inner-left"/>
+      </shift-absolute>
+     </else>
+    </compile-if>
+   </if>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+  </compile-if>
+  <align>
+   <reference>
+    <point num="vstem-left-bottom"/>
+   </reference>
+   <point num="lower-joint-left-bottom"/>
+   <point num="lower-joint-left-top"/>
+   <point num="upper-joint-left-bottom"/>
+   <point num="upper-joint-left-top"/>
+   <point num="vstem-left-top"/>
+  </align>
+  <align>
+   <reference>
+    <point num="vstem-right-bottom"/>
+   </reference>
+   <point num="lower-joint-right-bottom"/>
+   <point num="lower-joint-right-top"/>
+   <point num="upper-joint-right-bottom"/>
+   <point num="upper-joint-right-top"/>
+   <point num="vstem-right-top"/>
+  </align>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

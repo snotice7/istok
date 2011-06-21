@@ -116,7 +116,7 @@
     <interpolate>
      <reference>
       <point num="hstem-right-top"/>
-      <point num="inner-top"/>
+      <point num="outer-top"/>
      </reference>
      <point num="upper-end-bottom"/>
      <point num="upper-end-top"/>
