@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="uni04E0" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2011  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-x-height"/>
+  <param name="thick-diag" value="cap-thindiag"/>
+  <param name="curve-horiz-stem" value="cap-curve-hstem"/>
+  <param name="vert-stem" value="cap-o-curve-stem"/>
+  <param name="lbearing" value="cap-cyrz-lbearing"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  <param name="end-width" value="cap-end-width"/>
+  <param name="intersect-height" value="cap-h-intersect-height"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  
+  <constant name="lower-end-bottom" value="0"/>
+  <constant name="lower-end-top" value="lower-end-bottom + open-end-count"/>
+  <constant name="inner-bottom" value="lower-end-top + 3"/>
+  <constant name="inner-right-low" value="inner-bottom + 3"/>
+  <constant name="hstem-left-bottom" value="inner-right-low + smooth-count + 3"/>
+  <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
+  <constant name="diag-left-side-bottom" value="hstem-left-top + 1"/>
+  <constant name="diag-left-side-top" value="diag-left-side-bottom + 1"/>
+  <constant name="upper-hstem-left-bottom" value="diag-left-side-top + smooth-count + notch-count"/>
+  <constant name="upper-hstem-left-top" value="upper-hstem-left-bottom + hstem-vcount"/>
+  <constant name="upper-hstem-right-top" value="upper-hstem-left-top + hstem-hcount"/>
+  <constant name="diag-right-side-top" value="upper-hstem-right-top + hstem-vcount"/>
+  <constant name="diag-right-side-bottom" value="diag-right-side-top + smooth-count"/>
+  <constant name="outer-intersect" value="diag-right-side-bottom"/>
+  <constant name="outer-right-low" value="outer-intersect + 3 + 1"/>
+  <constant name="outer-bottom" value="outer-right-low + 3"/>
+  <constant name="last" value="outer-bottom + 2"/>
+  <line name="diag-left-side">
+   <point num="diag-left-side-bottom"/>
+   <point num="diag-left-side-top"/>
+  </line>
+  <line name="diag-right-side">
+   <point num="diag-right-side-bottom"/>
+   <point num="diag-right-side-top"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+   <!--   <if test="only-horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>-->
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="upper-hstem-left-top"/>
+   <align>
+    <point num="upper-hstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="upper-hstem-left-bottom"/>
+    <align>
+     <point num="diag-left-side-top"/>
+    </align>
+   </move>
+  </move>
+  <!--<interpolate round="yes">
+   <reference>
+    <point num="inner-bottom"/>
+    <point num="inner-top"/>
+   </reference>
+   <point num="hstem-left-bottom"/>
+  </interpolate>-->
+  <move distance="intersect-height" compile-if="(not(merge-mode) and intersect-height &gt; 0
+        or (merge-mode and nan(intersect-height)))">
+   <point num="hstem-left-bottom"/>
+   <!--   <align>
+    <point num="hstem-right-bottom"/>
+   </align>-->
+   <move distance="horiz-stem" color="black">
+    <!--<reference>
+     <point num="hstem-left-bottom"/>
+    </reference>-->
+    <point num="outer-intersect"/>
+   </move>
+  </move>
+  <compile-if test="((not(merge-mode) and intersect-height = 0) or (merge-mode and not(nan(intersect-height))))">
+   <interpolate round="to-grid">
+    <reference>
+     <point num="inner-bottom"/>
+     <point num="upper-hstem-left-bottom"/>
+    </reference>
+    <point num="hstem-left-bottom"/>
+   </interpolate>
+   <move distance="horiz-stem" color="black">
+    <reference>
+     <point num="hstem-left-bottom"/>
+    </reference>
+    <point num="outer-intersect"/>
+   </move>
+  </compile-if>
+  <if test="(hstem-left-top -- upper-hstem-left-bottom) &gt; (inner-bottom -- hstem-left-bottom)">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="hstem-left-bottom"/>
+    <point num="outer-intersect"/>
+   </shift-absolute>
+  </if>
+  <interpolate>
+   <reference>
+    <point num="outer-intersect"/>
+    <point num="upper-hstem-left-bottom"/>
+   </reference>
+   <point num="diag-left-side-bottom"/>
+  </interpolate>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="upper-hstem-left-bottom"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lower-end-bottom"/>
+   <move distance="end-width" min-distance="no" round="no" color="black">
+    <point num="lower-end-top"/>
+   </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right-low"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-right-low"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="lower-end-bottom"/>
+    <point num="outer-right-low"/>
+   </reference>
+   <point num="upper-hstem-left-top"/>
+   <point num="upper-hstem-right-top"/>
+   <point num="hstem-left-bottom"/>
+   <point num="hstem-left-top"/>
+   <point num="diag-left-side-bottom"/>
+   <point num="diag-left-side-top"/>
+  </interpolate>
+  <mdap round="yes">
+   <point num="upper-hstem-left-top"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="upper-hstem-right-top"/>
+  </mdap>
+  <mdap round="yes">
+   <point num="diag-left-side-top"/>
+  </mdap>
+  <move color="black">
+   <reference>
+    <point num="hstem-left-bottom"/>
+   </reference>
+   <point num="outer-intersect"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-right-low"/>
+     <!--<point num="hstem-left-bottom"/>
+     <point num="hstem-left-top"/>-->
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right-low"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <align>
+    <reference>
+     <point num="hstem-left-top"/>
+    </reference>
+    <point num="hstem-left-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="upper-hstem-left-top"/>
+    </reference>
+    <point num="upper-hstem-left-bottom"/>
+   </align>
+  </compile-if>
+  
+  <with-projection-vector to-line="orthogonal">
+   <line ref="diag-left-side"/>
+   <move distance="thick-diag" round="no" cut-in="no" min-distance="diag-min-thick" color="black">
+    <reference>
+     <point num="diag-left-side-bottom"/>
+    </reference>
+    <point num="diag-right-side-bottom"/>
+   </move>
+  </with-projection-vector>
+  <with-projection-vector axis="y">
+   <with-freedom-vector to-line="parallel">
+    <line ref="diag-left-side"/>
+    <interpolate>
+     <reference>
+      <point num="outer-intersect"/>
+      <point num="upper-hstem-left-bottom"/>
+     </reference>
+     <point num="diag-right-side-bottom"/>
+    </interpolate>
+   </with-freedom-vector>
+  </with-projection-vector>
+  <mdap round="yes">
+   <point num="diag-right-side-bottom"/>
+  </mdap>
+  <with-vectors to-line="orthogonal">
+   <line ref="diag-left-side"/>
+   <align>
+    <reference>
+     <point num="diag-right-side-bottom"/>
+    </reference>
+    <point num="diag-right-side-top"/>
+   </align>
+  </with-vectors>
+  <!--   <with-projection-vector axis="x"> -->
+   <with-freedom-vector to-line="parallel">
+    <line ref="diag-right-side"/>
+    <align>
+     <reference>
+      <point num="upper-hstem-right-top"/>
+     </reference>
+     <point num="diag-right-side-top"/>
+    </align>
+   </with-freedom-vector>
+   <!--   </with-projection-vector> -->
+  <with-projection-vector axis="y">
+   <if test="coord(upper-hstem-right-top) &lt; coord(diag-right-side-top)">
+    <move-point-to-intersection>
+     <point num="diag-right-side-top"/>
+     <line>
+      <point num="upper-hstem-left-top"/>
+      <point num="upper-hstem-right-top"/>
+     </line>
+     <line ref="diag-right-side"/>
+    </move-point-to-intersection>
+   </if>
+  </with-projection-vector>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+ <glyph ps-name="uni0292" init-graphics="yes">
+  <call-glyph ps-name="uni04E0">
+   <with-param name="baseline" value="small-curve-desc"/>
+   <with-param name="height" value="small-o-height"/>
+   <with-param name="thick-diag" value="small-thindiag"/>
+   <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
+   <with-param name="vert-stem" value="small-o-curve-stem"/>
+   <with-param name="lbearing" value="small-cyrz-lbearing"/>
+   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="end-width" value="small-end-width"/>
+   <with-param name="intersect-height" value="0"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>
