@@ -5,7 +5,7 @@ FamilyName: Istok
 Weight: Bold
 Copyright: (C) 2009, 2010, 2011 Andrey V. Panov
 UComments: "2008-10-29: Created." 
-Version: 0.4.1
+Version: 0.4.2
 ItalicAngle: -13
 UnderlinePosition: -204
 UnderlineWidth: 102
@@ -14,18 +14,17 @@ Descent: 500
 LayerCount: 2
 Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A"  1
 Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A"  0
-NeedsXUIDChange: 1
 XUID: [1021 513 629268104 9940963]
 FSType: 8
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1307359834
+ModificationTime: 1308827853
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
-LineGap: 410
+LineGap: 0
 VLineGap: 0
 Panose: 2 0 7 3 3 4 3 9 2 4
 OS2TypoAscent: 1548
@@ -33,13 +32,13 @@ OS2TypoAOffset: 0
 OS2TypoDescent: -500
 OS2TypoDOffset: 0
 OS2TypoLinegap: 410
-OS2WinAscent: 1880
+OS2WinAscent: 1950
 OS2WinAOffset: 0
-OS2WinDescent: 440
+OS2WinDescent: 508
 OS2WinDOffset: 0
-HheadAscent: 1880
+HheadAscent: 1950
 HheadAOffset: 0
-HheadDescent: -440
+HheadDescent: -508
 HheadDOffset: 0
 OS2FamilyClass: 2048
 OS2Vendor: 'PfEd'

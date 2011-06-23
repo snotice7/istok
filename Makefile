@@ -170,3 +170,5 @@ dist-ofl-zip:
 	(cd OFL ;\
 	zip -9 ../$(PKGNAME)-ofl-ttf-$(VERSION).zip \
 	$(TTFFILES) $(OFLDOCS) )
+
+full-dist: dist dist-tex dist-zip dist-ofl-ttf dist-ofl-zip
