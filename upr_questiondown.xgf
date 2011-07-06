@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="question" init-graphics="yes">
+ <glyph ps-name="questiondown" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2008, 2010, 2011  Andrey V. Panov
+      Copyright (C) 2011 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -21,26 +21,26 @@
       
       -->
   
-  <param name="baseline" value="cap-x-baseline"/>
-  <param name="height" value="cap-o-height"/>
+  <param name="dot-height" value="period-height"/>
   <param name="curve-horiz-stem" value="digit-thin-horiz-stem"/>
   <param name="vert-stem" value="digit-thicker-curve-stem"/>
   <param name="curve-vert-stem" value="digit-thicker-curve-stem"/>
-  <param name="dot-height" value="period-height"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="x-height" value="small-x-height"/>
   <param name="period-vert-stem" value="period-width"/>
   <param name="c-flat-ends" value="cap-c-flat-ends"/>
   
-  <constant name="upper-end-top" value="first-point"/>
-  <constant name="outer-top" value="upper-end-top + 4"/>
-  <constant name="outer-right-top" value="outer-top + 3"/>
-  <constant name="vstem-right-top" value="outer-right-top + 3"/>
-  <constant name="vstem-right-bottom" value="vstem-right-top + smooth-count"/>
-  <constant name="vstem-left-bottom" value="vstem-right-bottom + vstem-hcount"/>
+  <constant name="outer-left" value="0"/>
+  <constant name="vstem-left-bottom" value="3"/>
   <constant name="vstem-left-top" value="vstem-left-bottom + smooth-count"/>
-  <constant name="inner-right-top" value="vstem-left-top + 3"/>
-  <constant name="inner-top" value="inner-right-top + 3"/>
-  <constant name="upper-end-bottom" value="inner-top + 4"/>
-  <constant name="period-left-bottom" value="upper-end-bottom + smooth-count + first-point"/>
+  <constant name="vstem-right-top" value="vstem-left-top + vstem-hcount"/>
+  <constant name="vstem-right-bottom" value="vstem-right-top + smooth-count"/>
+  <constant name="inner-left" value="13"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="lower-end-top" value="inner-bottom + 3 + 1"/>
+  <constant name="lower-end-bottom" value="lower-end-top + hstem-vcount"/>
+  <constant name="outer-bottom" value="lower-end-bottom + 3 + 1"/>
+  <constant name="period-left-bottom" value="31"/>
   <constant name="period-left-top" value="period-left-bottom + vstem-vcount"/>
   <constant name="period-right-top" value="period-left-top + vstem-hcount"/>
   <constant name="period-right-bottom" value="period-right-top + vstem-vcount"/>
@@ -60,52 +60,51 @@
    </if>
   </compile-if>
   
-  <move distance="baseline">
-   <point num="period-left-bottom"/>
-   <align>
-    <point num="period-right-bottom"/>
-   </align>
-  </move>
-  <move distance="dot-height">
+  <move distance="x-height">
    <point num="period-left-top"/>
    <align>
     <point num="period-right-top"/>
    </align>
-   <move color="white">
-    <point num="vstem-left-bottom"/>
+   <move distance="dot-height">
+    <point num="period-left-bottom"/>
     <align>
-     <point num="vstem-right-bottom"/>
+     <point num="period-right-bottom"/>
     </align>
    </move>
-  </move>
-  
-  <move distance="height">
-   <point num="outer-top"/>
-   <move distance="curve-horiz-stem" color="black">
-    <point num="inner-top"/>
+   <move distance="height">
+    <point num="outer-bottom"/>
+    <move distance="curve-horiz-stem" color="black">
+     <point num="inner-bottom"/>
+    </move>
+   </move>
+   <move color="white">
+    <point num="vstem-left-top"/>
+    <align>
+     <point num="vstem-right-top"/>
+    </align>
    </move>
   </move>
   <if test="pixels-per-em &lt; c-flat-ends">
    <align>
     <reference>
-     <point num="inner-top"/>
+     <point num="outer-bottom"/>
     </reference>
-    <point num="upper-end-bottom"/>
+    <point num="lower-end-bottom"/>
    </align>
    <align>
     <reference>
-     <point num="outer-top"/>
+     <point num="inner-bottom"/>
     </reference>
-    <point num="upper-end-top"/>
+    <point num="lower-end-top"/>
    </align>
    <else>
     <interpolate>
      <reference>
-      <point num="vstem-left-bottom"/>
-      <point num="inner-top"/>
+      <point num="inner-bottom"/>
+      <point num="vstem-left-top"/>
      </reference>
-     <point num="upper-end-bottom"/>
-     <point num="upper-end-top"/>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
     </interpolate>
    </else>
   </if>
@@ -117,20 +116,29 @@
    </if>
   </compile-if>
   
-  <move color="white">
+  <move min-distance="no" color="white" compile-if="slanted">
    <reference>
     <point num="left-bearing"/>
    </reference>
-   <point num="upper-end-top"/>
+   <point num="outer-left"/>
+   <move distance="curve-vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+  </move>
+  <move color="white" compile-if="slanted = 0">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="curve-vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
   </move>
   <move min-distance="no" color="white">
    <reference>
     <point num="right-bearing"/>
    </reference>
-   <point num="outer-right-top"/>
-   <move distance="curve-vert-stem" color="black">
-    <point num="inner-right-top"/>
-   </move>
+   <point num="lower-end-bottom"/>
   </move>
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -138,22 +146,22 @@
   </compile-if>
   <interpolate>
    <reference>
-    <point num="upper-end-top"/>
-    <point num="outer-right-top"/>
+    <point num="lower-end-bottom"/>
+    <point num="outer-left"/>
    </reference>
-   <point num="period-left-bottom"/>
-   <point num="vstem-left-bottom"/>
-   <point num="upper-end-bottom"/>
+   <point num="period-left-top"/>
+   <point num="vstem-left-top"/>
+   <point num="lower-end-top"/>
   </interpolate>
   <compile-if test="slanted">
    <set-projection-vector axis="x"/>
    <set-round-state round="to-grid"/>
   </compile-if>
   <mdap round="yes">
-   <point num="period-left-bottom"/>
+   <point num="period-left-top"/>
   </mdap>
   <mdap round="yes">
-   <point num="vstem-left-bottom"/>
+   <point num="vstem-left-top"/>
   </mdap>
   <compile-if test="slanted">
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -161,19 +169,19 @@
   </compile-if>
   <align>
    <reference>
-    <point num="period-left-bottom"/>
+    <point num="period-left-top"/>
    </reference>
-   <point num="period-left-top"/>
+   <point num="period-left-bottom"/>
   </align>
   <align>
    <reference>
-    <point num="vstem-left-bottom"/>
+    <point num="vstem-left-top"/>
    </reference>
-   <point num="vstem-left-top"/>
+   <point num="vstem-left-bottom"/>
   </align>
   <move distance="period-vert-stem" color="black">
    <reference>
-    <point num="period-left-bottom"/>
+    <point num="period-left-top"/>
    </reference>
    <point num="period-right-bottom"/>
    <align>
@@ -182,7 +190,7 @@
   </move>
   <move distance="vert-stem" color="black">
    <reference>
-    <point num="vstem-left-bottom"/>
+    <point num="vstem-left-top"/>
    </reference>
    <point num="vstem-right-bottom"/>
    <align>
@@ -194,10 +202,10 @@
   </compile-if>
   <set-equal target="temp" source="round(((period-left-bottom -- vstem-left-bottom) - (vstem-right-bottom -- period-right-bottom)) * 0.5p)"/>
   <if test="temp != 0">
-   <compile-if test="slanted">
+    <compile-if test="slanted">
     <multiply value1="temp" value2="cos-it-ang"/>
    </compile-if>
-   <shift-absolute pixel-distance="temp">
+  <shift-absolute pixel-distance="temp">
     <point num="period-left-bottom"/>
     <point num="period-right-bottom"/>
     <point num="period-left-top"/>
@@ -240,10 +248,10 @@
      <with-param name="cv" value="curve-vert-stem"/>
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
-     <point num="inner-right-top"/>
+     <point num="outer-left"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
-     <point num="outer-right-top"/>
+     <point num="inner-left"/>
     </shift-absolute>
    </if>
   </compile-if>
