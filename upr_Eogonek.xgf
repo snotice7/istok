@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ 
+ <glyph ps-name="Eogonek" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="intersect-height" value="cap-h-intersect-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="lbearing" value="cap-h-lbearing"/>
+  <param name="ogonek-baseline" value="small-desc"/>
+  <param name="ogonek-horiz-stem" value="small-horiz-stem"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-bottom + vstem-vcount"/>
+  <constant name="uhstem-right-top" value="left-top + hstem-hcount"/>
+  <constant name="uhstem-right-bottom" value="uhstem-right-top + hstem-vcount"/>
+  <constant name="uhstem-left-bottom" value="uhstem-right-bottom + smooth-count"/>
+  <constant name="mhstem-left-top" value="uhstem-left-bottom + 1"/>
+  <constant name="mhstem-right-top" value="mhstem-left-top + smooth-count"/>
+  <constant name="mhstem-right-bottom" value="mhstem-right-top + hstem-vcount"/>
+  <constant name="mhstem-left-bottom" value="mhstem-right-bottom + smooth-count"/>
+  <constant name="lhstem-left-top" value="mhstem-left-bottom + 1"/>
+  <constant name="lhstem-right-top" value="lhstem-left-top + smooth-count"/>
+  <constant name="lhstem-right-bottom" value="lhstem-right-top + hstem-vcount"/>
+  <constant name="ogonek-right-top" value="28"/>
+  <constant name="ogonek-inner-left" value="ogonek-right-top + 3"/>
+  <constant name="ogonek-inner-bottom" value="ogonek-inner-left + 3"/>
+  <constant name="ogonek-lower-end-top" value="ogonek-inner-bottom + 3"/>
+  <constant name="ogonek-lower-end-bottom" value="ogonek-lower-end-top + hstem-vcount"/>
+  <constant name="ogonek-outer-bottom" value="ogonek-lower-end-bottom + 3"/>
+  <constant name="ogonek-outer-left" value="ogonek-outer-bottom + 3"/>
+  <constant name="ogonek-left-top" value="ogonek-outer-left + 4"/>
+  <constant name="last" value="ogonek-left-top + notch-count"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-bottom"/>
+   <align>
+    <point num="lhstem-right-bottom"/>
+    <point num="ogonek-right-top"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="lhstem-right-top"/>
+    <align>
+     <point num="lhstem-left-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="intersect-height">
+   <point num="mhstem-left-bottom"/>
+   <align>
+    <point num="mhstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="mhstem-left-top"/>
+    <align>
+     <point num="mhstem-right-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="x-height">
+   <point num="left-top"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="uhstem-right-bottom"/>
+    <align>
+     <point num="uhstem-left-bottom"/>
+    </align>
+   </move>
+  </move>
+  <move distance="ogonek-baseline">
+   <point num="ogonek-outer-bottom"/>
+   <move distance="ogonek-horiz-stem" color="black">
+    <point num="ogonek-inner-bottom"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="ogonek-outer-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="ogonek-inner-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="ogonek-right-top"/>
+      <point num="ogonek-outer-bottom"/>
+     </reference>
+     <point num="ogonek-lower-end-bottom"/>
+     <point num="ogonek-lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <else>
+    <set-vectors axis="x"/>
+    <compile-if test="smooth">
+     <if test="only-vertical-smoothing">
+      <set-round-state round="to-grid"/>
+     </if>
+    </compile-if>
+   </else>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-bottom"/>
+   <align>
+    <point num="left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <point num="uhstem-left-bottom"/>
+    <align>
+     <point num="mhstem-left-top"/>
+     <point num="mhstem-left-bottom"/>
+     <point num="lhstem-left-top"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lhstem-right-bottom"/>
+   <align>
+    <point num="lhstem-right-top"/>
+   </align>
+   <move min-distance="no">
+    <point num="ogonek-right-top"/>
+    <move round="no" color="black">
+     <point num="ogonek-left-top"/>
+    </move>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="index(vert-stem)"/>
+    </call-macro>
+    <shift-absolute pixel-distance="temp">
+     <point num="lhstem-right-bottom"/>
+     <point num="lhstem-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <move min-distance="no">
+   <reference>
+    <point num="lhstem-right-bottom"/>
+   </reference>
+   <point num="mhstem-right-bottom"/>
+   <align>
+    <point num="mhstem-right-top"/>
+   </align>
+  </move>
+  <move min-distance="no">
+   <reference>
+    <point num="lhstem-right-bottom"/>
+   </reference>
+   <point num="uhstem-right-bottom"/>
+   <align>
+    <point num="uhstem-right-top"/>
+   </align>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="lhstem-right-bottom"/>
+    <point num="left-bottom"/>
+   </reference>
+   <point num="ogonek-inner-left"/>
+   <point num="ogonek-lower-end-bottom"/>
+   <point num="ogonek-lower-end-top"/>
+  </interpolate>
+  <compile-if test="slanted">
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <mdap round="yes">
+   <point num="ogonek-inner-left"/>
+  </mdap>
+  <move color="black">
+   <reference>
+    <point num="ogonek-inner-left"/>
+   </reference>
+   <point num="ogonek-outer-left"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="ogonek-outer-left"/>
+     <with-param name="point-second" value="ogonek-inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="ogonek-outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="ogonek-inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ <!--E-->
+ 
+</xgridfit>
