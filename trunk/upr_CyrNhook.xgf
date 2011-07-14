@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--H, Cyr N-->
- <glyph ps-name="H" init-graphics="yes">
+ <!--Ӈ-->
+ <glyph ps-name="uni04C7" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      Copyright (C) 2011 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -23,10 +23,12 @@
       -->
   
   <param name="baseline" value="cap-x-baseline"/>
+  <param name="hook-baseline" value="small-desc"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="intersect-height" value="cap-h-intersect-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="curve-hstem" value="cap-curve-hstem"/>
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="space" value="cap-h-space"/>
   
@@ -37,9 +39,13 @@
   <constant name="intersect-right-top" value="intersect-left-top + 1"/>
   <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
-  <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
-  <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
+  <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
+  <constant name="outer-bottom" value="rstem-right-bottom + 3"/>
+  <constant name="lower-end-bottom" value="outer-bottom + 3"/>
+  <constant name="lower-end-top" value="lower-end-bottom + hstem-vcount"/>
+  <constant name="inner-bottom" value="lower-end-top + 3"/>
+  <constant name="rstem-left-bottom" value="inner-bottom + 3"/>
+  <constant name="intersect-right-bottom" value="rstem-left-bottom + 1"/>
   <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
   <constant name="lstem-right-bottom" value="intersect-left-bottom + smooth-count"/>
   <constant name="last" value="lstem-right-bottom + last-count"/>
@@ -62,8 +68,6 @@
    <point num="lstem-left-bottom"/>
    <align>
     <point num="lstem-right-bottom"/>
-    <point num="rstem-left-bottom"/>
-    <point num="rstem-right-bottom"/>
    </align>
   </move>
   <move distance="intersect-height">
@@ -85,6 +89,12 @@
     <point num="rstem-left-top"/>
     <point num="rstem-right-top"/>
    </align>
+  </move>
+  <move distance="hook-baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-hstem" color="black">
+    <point num="inner-bottom"/>
+   </move>
   </move>
   
   <compile-if test="slanted">
@@ -146,5 +156,17 @@
   
   <interpolate-untouched-points/>
  </glyph>
- <!--Cyr N-->
+ 
+ <glyph ps-name="uni04C8" init-graphics="yes">
+  <call-glyph ps-name="uni04C7">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="curve-hstem" value="small-curve-hstem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="space" value="small-cyrn-space"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr G-->
- <glyph ps-name="afii10020" init-graphics="yes">
+ <!--Ґ-->
+ <glyph ps-name="afii10050" init-graphics="yes">
   <!--
       
-      Copyright (C) 2007, 2008, 2009, 2010  Andrey V. Panov
+      Copyright (C) 2007, 2008, 2011  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -24,13 +24,16 @@
   <param name="baseline" value="cap-x-baseline"/>
   <param name="x-height" value="cap-x-height"/>
   <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="vert-thinstem" value="cap-vert-thinstem"/>
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="lbearing" value="cap-h-lbearing"/>
-
+  
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom +  vstem-vcount"/>
-  <constant name="hstem-right-top" value="lstem-left-top + hstem-hcount"/>
-  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="hstem-right-top" value="lstem-left-top + smooth-count"/>
+  <constant name="forelock-left-top" value="hstem-right-top + smooth-count"/>
+  <constant name="forelock-right-top" value="forelock-left-top + vstem-hcount"/>
+  <constant name="hstem-right-bottom" value="forelock-right-top + vstem-vcount"/>
   <constant name="hstem-left-bottom" value="hstem-right-bottom + smooth-count"/>
   <constant name="lstem-right-bottom" value="hstem-left-bottom + smooth-count"/>
   <constant name="last" value="lstem-right-bottom + last-count"/>
@@ -66,6 +69,12 @@
      <point num="hstem-right-bottom"/>
     </align>
    </move>
+   <move>
+    <point num="forelock-left-top"/>
+    <align>
+     <point num="forelock-right-top"/>
+    </align>
+   </move>
   </move>
   
   <compile-if test="slanted">
@@ -97,16 +106,55 @@
     </align>
    </move>
   </move>
+  <compile-if test="smooth and (slanted = 0)">
+   <if test="horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
   <move min-distance="no" color="white">
    <reference>
     <point num="right-bearing"/>
    </reference>
-   <point num="hstem-right-top"/>
+   <point num="hstem-right-bottom"/>
    <align>
-    <point num="hstem-right-bottom"/>
+    <point num="forelock-right-top"/>
    </align>
+   <move distance="vert-thinstem" color="black">
+    <point num="hstem-right-top"/>
+    <align>
+     <point num="forelock-left-top"/>
+    </align>
+   </move>
   </move>
+  <compile-if test="smooth and (slanted = 0)">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-thinstem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="hstem-right-top"/>
+     <point num="forelock-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="hstem-right-bottom"/>
+     <point num="forelock-right-top"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
   <interpolate-untouched-points/>
  </glyph>
- <!--Cyr G-->
+ 
+ <glyph ps-name="afii10098" init-graphics="yes">
+  <call-glyph ps-name="afii10050">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="vert-thinstem" value="small-vert-thinstem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

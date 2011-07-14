@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--H, Cyr N-->
- <glyph ps-name="H" init-graphics="yes">
+ <!--Cyr Ng (Ҥ)-->
+ <glyph ps-name="uni04A4" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      Copyright (C) 2008, 2011 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -36,8 +36,10 @@
   <constant name="intersect-left-top" value="lstem-right-top + smooth-count"/>
   <constant name="intersect-right-top" value="intersect-left-top + 1"/>
   <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
-  <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
+  <constant name="right-top" value="rstem-left-top + hstem-hcount"/>
+  <constant name="right-hstem-bottom" value="right-top + hstem-vcount"/>
+  <constant name="intersect" value="right-hstem-bottom + smooth-count"/>
+  <constant name="rstem-right-bottom" value="intersect + smooth-count"/>
   <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
   <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
   <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
@@ -83,8 +85,14 @@
    <align>
     <point num="lstem-right-top"/>
     <point num="rstem-left-top"/>
-    <point num="rstem-right-top"/>
+    <point num="right-top"/>
    </align>
+   <move distance="horiz-stem" color="black">
+    <point num="right-hstem-bottom"/>
+    <align>
+     <point num="intersect"/>
+    </align>
+   </move>
   </move>
   
   <compile-if test="slanted">
@@ -120,7 +128,7 @@
    <move round="no" cut-in="no" distance="space" color="black">
     <point num="rstem-right-bottom"/>
     <align>
-     <point num="rstem-right-top"/>
+     <point num="intersect"/>
     </align>
     <move distance="vert-stem" color="black">
      <point num="rstem-left-bottom"/>
@@ -130,21 +138,30 @@
       <point num="rstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no" color="white">
-     <point num="right-bearing"/>
-    </move>
    </move>
   </move>
-  <compile-if test="smooth or slanted">
-   <compile-if test="slanted">
-    <set-projection-vector axis="x"/>
-   </compile-if>
-   <move round="to-grid">
+  <move min-distance="no" color="white">
+   <reference>
     <point num="right-bearing"/>
-   </move>
-  </compile-if>
+   </reference>
+   <point num="right-top"/>
+   <align>
+    <point num="right-hstem-bottom"/>
+   </align>
+  </move>
   
   <interpolate-untouched-points/>
  </glyph>
- <!--Cyr N-->
+ 
+ <glyph ps-name="uni04A5" init-graphics="yes">
+  <call-glyph ps-name="uni04A4">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="space" value="small-cyrn-space"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

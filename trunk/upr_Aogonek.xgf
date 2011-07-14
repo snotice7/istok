@@ -1,0 +1,414 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--Ą-->
+ <glyph ps-name="Aogonek" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="height" value="cap-x-height"/>
+  <param name="hstem-height" value="cap-a-hstem-height"/>
+  <param name="thin-diag" value="cap-diag"/>
+  <param name="thick-diag" value="cap--diag"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="ogonek-baseline" value="small-desc"/>
+  <param name="ogonek-horiz-stem" value="small-horiz-stem"/>
+  <param name="ogonek-flat-ends" value="small-c-flat-ends"/>
+  
+  <constant name="left-left-bottom" value="first-point"/>
+  <constant name="left-top" value="left-left-bottom + vstem-vcount"/>
+  <constant name="right-top" value="left-top + vstem-hcount"/>
+  <constant name="right-right-bottom" value="right-top + vstem-vcount"/>
+  <constant name="ogonek-right-top" value="11"/>
+  <constant name="ogonek-inner-left" value="ogonek-right-top + 3"/>
+  <constant name="ogonek-inner-bottom" value="ogonek-inner-left + 3"/>
+  <constant name="ogonek-lower-end-top" value="ogonek-inner-bottom + 3"/>
+  <constant name="ogonek-lower-end-bottom" value="ogonek-lower-end-top + hstem-vcount"/>
+  <constant name="ogonek-outer-bottom" value="ogonek-lower-end-bottom + 3"/>
+  <constant name="ogonek-outer-left" value="ogonek-outer-bottom + 3"/>
+  <constant name="ogonek-left-top" value="ogonek-outer-left + 4"/>
+  <constant name="right-left-bottom" value="34"/>
+  <constant name="hstem-right-bottom" value="right-left-bottom + smooth-count"/>
+  <constant name="hstem-left-bottom" value="hstem-right-bottom + 1"/>
+  <constant name="left-right-bottom" value="hstem-left-bottom + smooth-count"/>
+  <constant name="inner-left" value="left-right-bottom + smooth-count"/>
+  <constant name="inner-right" value="inner-left + 1"/>
+  <constant name="rdiag-left-top" value="inner-right + 1"/>
+  <constant name="inner-top" value="inner-right + 4"/>
+  <constant name="ldiag-right-top" value="inner-top + 4"/>
+  <constant name="last" value="ldiag-right-top"/>
+  
+  <line name="left-lstem">
+   <point num="left-left-bottom"/>
+   <point num="left-top"/>
+  </line>
+  <line name="right-lstem">
+   <point num="left-right-bottom"/>
+   <point num="ldiag-right-top"/>
+   <!--   <point num="inner-top"/> -->
+  </line>
+  <line name="right-rstem">
+   <point num="right-top"/>
+   <point num="right-right-bottom"/>
+  </line>
+  <line name="left-rstem">
+   <!--   <point num="inner-top"/> -->
+   <point num="rdiag-left-top"/>
+   <point num="right-left-bottom"/>
+  </line>
+  <line name="hstem-bottom">
+   <point num="hstem-left-bottom"/>
+   <point num="hstem-right-bottom"/>
+  </line>
+  <line name="hstem-top">
+   <point num="inner-left"/>
+   <point num="inner-right"/>
+  </line>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-left-bottom"/>
+   <align>
+    <point num="right-left-bottom"/>
+    <point num="left-right-bottom"/>
+   </align>
+  </move>
+  <move>
+   <point num="right-right-bottom"/>
+  </move>
+  <move distance="hstem-height">
+   <point num="hstem-left-bottom"/>
+   <align>
+    <point num="hstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-left"/>
+    <align>
+     <point num="inner-right"/>
+    </align>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="left-top"/>
+   <align>
+    <point num="right-top"/>
+   </align>
+  </move>
+  <move distance="ogonek-baseline">
+   <point num="ogonek-outer-bottom"/>
+   <move distance="ogonek-horiz-stem" color="black">
+    <point num="ogonek-inner-bottom"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; ogonek-flat-ends">
+   <align>
+    <reference>
+     <point num="ogonek-outer-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="ogonek-inner-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="ogonek-right-top"/>
+      <point num="ogonek-outer-bottom"/>
+     </reference>
+     <point num="ogonek-lower-end-bottom"/>
+     <point num="ogonek-lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="left-left-bottom"/>
+   <move color="black">
+    <point num="right-right-bottom"/>
+    <interpolate>
+     <!-- round="yes"-->
+     <point num="left-top"/>
+     <point num="right-top"/>
+    </interpolate>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <!--  <compile-if test="smooth">
+   <mdap round="to-grid">
+    <point num="right-bearing"/>
+   </mdap>
+  </compile-if>
+  --> <!-- <move color="black">
+   <reference>
+    <point num="left-top"/>
+   </reference>
+   <point num="right-top"/>
+  </move>-->
+  <!-- <if test="round(left-left-bottom - - left-top) &lt; round(right-top - - right-right-bottom)">
+   <shift-absolute pixel-distance="1.0p">
+    <point num="left-top"/>
+    <point num="right-top"/>
+   </shift-absolute>
+  </if>
+  
+  <compile-if test="slanted = 0">-->
+   <!--<if test="pixels-per-em &lt; cap-thick-eq-thin">-->
+    <!-- At small sizes A must be symmetric -->
+    <!--<with-round-state round="to-double-grid">
+     <set-equal target="width" source="round-black((coord(left-left-bottom) + coord(right-right-bottom)) / 2.0) -
+                ((coord(left-top) + coord(right-top)) / 2.0)"/>
+    </with-round-state>
+    <if test="width != 0.0p">
+     <shift-absolute pixel-distance="width">
+      <point num="left-top"/>
+      <point num="right-top"/>
+     </shift-absolute>
+    </if>
+    <compile-if test="smooth">
+     <if test="any-smoothing">
+      <shift-absolute pixel-distance="hgrayshift-">
+       <point num="left-top"/>
+       <point num="left-left-bottom"/>
+      </shift-absolute>
+      <shift-absolute pixel-distance="hgrayshift">
+       <point num="right-top"/>
+       <point num="right-right-bottom"/>
+      </shift-absolute>
+      <else>
+       <shift-absolute pixel-distance="0.02p">-->
+        <!-- regularize the right diagonal -->
+        <!--      <point num="right-top"/>
+       </shift-absolute>
+      </else>
+     </if>
+    </compile-if>-->
+    <!--</if>-->
+   <!--  </compile-if> -->
+  <interpolate>
+   <reference>
+    <point num="left-right-bottom"/>
+    <point num="right-right-bottom"/>
+   </reference>
+   <point num="ogonek-inner-left"/>
+   <point num="ogonek-lower-end-bottom"/>
+   <point num="ogonek-lower-end-top"/>
+  </interpolate>
+  <mdap round="yes">
+   <point num="ogonek-inner-left"/>
+  </mdap>
+  <move color="black">
+   <reference>
+    <point num="ogonek-inner-left"/>
+   </reference>
+   <point num="ogonek-outer-left"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="ogonek-outer-left"/>
+     <with-param name="point-second" value="ogonek-inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="ogonek-outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="ogonek-inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <diagonal-stem distance="thick-diag"  min-distance="diag-min-thick" save-vectors="yes" color="black">
+   <line ref="right-rstem"/>
+   <line ref="left-rstem"/>
+  </diagonal-stem>
+  <!--  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="right-right-bottom"/>
+   <with-param name="first-diag-second-point" value="right-top"/>
+   <with-param name="second-diag-first-point" value="right-left-bottom"/>
+   <with-param name="second-diag-second-point" value="rdiag-left-top"/>
+   <with-param name="diag-width" value="thick-diag"/>
+   <with-param name="interpolation-point" value="right-top"/>
+  </call-macro>-->
+  <call-macro name="make-diagonal">
+   <with-param name="first-diag-first-point" value="left-left-bottom"/>
+   <with-param name="first-diag-second-point" value="left-top"/>
+   <with-param name="second-diag-first-point" value="left-right-bottom"/>
+   <with-param name="second-diag-second-point" value="ldiag-right-top"/>
+   <with-param name="diag-width" value="thin-diag"/>
+   <with-param name="interpolation-point" value="left-top"/>
+  </call-macro>
+  
+  <set-vectors axis="y"/>
+  <with-freedom-vector to-line="parallel">
+   <line ref="right-rstem"/>
+   <align>
+    <reference>
+     <point num="left-left-bottom"/>
+    </reference>
+    <point num="right-left-bottom"/>
+   </align>
+   <interpolate>
+    <reference>
+     <point num="left-left-bottom"/>
+     <point num="right-top"/>
+    </reference>
+    <point num="rdiag-left-top"/>
+   </interpolate>
+  </with-freedom-vector>
+  <interpolate>
+   <reference>
+    <point num="left-top"/>
+    <point num="ldiag-right-top"/>
+   </reference>
+   <point num="inner-top"/>
+  </interpolate>
+  <if test="(inner-top -- left-top) &gt;= 1.0p">
+   <mdap round="up-to-grid">
+    <point num="inner-top"/>
+   </mdap>
+  </if>
+  <!-- <with-projection-vector to-line="orthogonal">
+   <line ref="left-lstem"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="right-rstem"/>
+    <interpolate>
+     <reference>
+      <point num="left-left-bottom"/>
+      <point num="left-right-bottom"/>
+     </reference>
+     <point num="inner-top"/>
+    </interpolate>
+   </with-freedom-vector>
+  </with-projection-vector>
+  
+  <with-projection-vector to-line="orthogonal">
+   <line ref="right-rstem"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="left-lstem"/>
+    <interpolate>
+     <reference>
+      <point num="right-left-bottom"/>
+      <point num="right-right-bottom"/>
+     </reference>
+     <point num="inner-top"/>
+    </interpolate>
+   </with-freedom-vector>
+  </with-projection-vector>-->
+  <move-point-to-intersection>
+   <point num="hstem-left-bottom"/>
+   <line ref="right-lstem"/>
+   <line ref="hstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="hstem-right-bottom"/>
+   <line ref="left-rstem"/>
+   <line ref="hstem-bottom"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="inner-left"/>
+   <line ref="right-lstem"/>
+   <line ref="hstem-top"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="inner-right"/>
+   <line ref="left-rstem"/>
+   <line ref="hstem-top"/>
+  </move-point-to-intersection>
+  <!-- <with-round-state round="no">
+   <with-minimum-distance value="diag-min-thick">
+    <diagonal-stem distance="cap- -65deg-thickdiag" save-vectors="yes">
+     <line ref="right-rstem"/>
+     <line ref="left-rstem"/>
+     <align>
+      <point num="inner-right"/>
+      <point num="hstem-right-bottom"/>
+     </align>
+    </diagonal-stem>
+    <diagonal-stem distance="cap-65deg-thindiag" save-vectors="yes">
+     <line ref="left-lstem"/>
+     <line ref="right-lstem"/>
+     <align>
+      <point num="hstem-left-bottom"/>
+      <point num="inner-left"/>
+     </align>
+    </diagonal-stem>
+   </with-minimum-distance>
+  </with-round-state>
+  <with-projection-vector to-line="orthogonal">
+   <line ref="right-rstem"/>
+   <with-freedom-vector to-line="parallel">
+    <line ref="left-lstem"/>
+    <align>
+     <reference>
+      <point num="right-left-bottom"/>
+     </reference>
+     <point num="inner-top"/>
+    </align>
+   </with-freedom-vector>
+  </with-projection-vector>-->
+  
+  <if test="pixels-per-em &gt; 9">
+   <set-vectors axis="x"/>
+   <set-equal target="width" source="(ldiag-right-top -- rdiag-left-top) - 0.8p"/>
+   <if test="width &lt; 0.0p">
+    <shift-absolute pixel-distance="width / 2.0p">
+     <point num="ldiag-right-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="width / -2.0p">
+     <point num="rdiag-left-top"/>
+    </shift-absolute>
+   </if>
+  </if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

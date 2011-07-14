@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--H, Cyr N-->
- <glyph ps-name="H" init-graphics="yes">
+ <!--Cyr N desc(Ң)-->
+ <glyph ps-name="uni04A2" init-graphics="yes">
   
   <!--
       
@@ -29,6 +29,9 @@
   <param name="horiz-stem" value="cap-horiz-stem"/>
   <param name="lbearing" value="cap-h-lbearing"/>
   <param name="space" value="cap-h-space"/>
+  <param name="tse-desc" value="cap-tse-desc"/>
+  <param name="tse-desc-horiz-shift" value="cap-tse-desc-horiz-shift"/>
+  <param name="vert-thinstem" value="cap-vert-thinstem"/>
   
   <constant name="lstem-left-bottom" value="first-point"/>
   <constant name="lstem-left-top" value="lstem-left-bottom + vstem-vcount"/>
@@ -37,8 +40,12 @@
   <constant name="intersect-right-top" value="intersect-left-top + 1"/>
   <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
-  <constant name="rstem-left-bottom" value="rstem-right-bottom + vstem-hcount"/>
+  <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
+  <constant name="rdesc-right-top" value="rstem-right-bottom + smooth-count"/>
+  <constant name="rdesc-right-bottom" value="rdesc-right-top + vstem-vcount"/>
+  <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
+  <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
+  <constant name="rstem-left-bottom" value="rdesc-left-top + smooth-count"/>
   <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count"/>
   <constant name="intersect-left-bottom" value="intersect-right-bottom + 1"/>
   <constant name="lstem-right-bottom" value="intersect-left-bottom + smooth-count"/>
@@ -63,15 +70,21 @@
    <align>
     <point num="lstem-right-bottom"/>
     <point num="rstem-left-bottom"/>
-    <point num="rstem-right-bottom"/>
+    <point num="rdesc-left-top"/>
    </align>
+   <move distance="horiz-stem" color="black">
+    <point num="rdesc-right-top"/>
+    <align>
+     <point num="rstem-right-bottom"/>
+    </align>
+   </move>
   </move>
   <move distance="intersect-height">
    <point num="intersect-left-bottom"/>
    <align>
     <point num="intersect-right-bottom"/>
    </align>
-   <move distance="horiz-stem" color="black">
+   <move distance="horiz-stem">
     <point num="intersect-left-top"/>
     <align>
      <point num="intersect-right-top"/>
@@ -84,6 +97,12 @@
     <point num="lstem-right-top"/>
     <point num="rstem-left-top"/>
     <point num="rstem-right-top"/>
+   </align>
+  </move>
+  <move distance="tse-desc">
+   <point num="rdesc-left-bottom"/>
+   <align>
+    <point num="rdesc-right-bottom"/>
    </align>
   </move>
   
@@ -130,8 +149,20 @@
       <point num="rstem-left-top"/>
      </align>
     </move>
-    <move min-distance="no" color="white">
-     <point num="right-bearing"/>
+    <move distance="tse-desc-horiz-shift">
+     <point num="rdesc-right-bottom"/>
+     <align>
+      <point num="rdesc-right-top"/>
+     </align>
+     <move distance="vert-thinstem" color="black">
+      <point num="rdesc-left-top"/>
+      <align>
+       <point num="rdesc-left-bottom"/>
+      </align>
+     </move>
+     <move min-distance="no" color="white">
+      <point num="right-bearing"/>
+     </move>
     </move>
    </move>
   </move>
@@ -146,5 +177,19 @@
   
   <interpolate-untouched-points/>
  </glyph>
- <!--Cyr N-->
+ 
+ <glyph ps-name="uni04A3" init-graphics="yes">
+  <call-glyph ps-name="uni04A2">
+   <with-param name="baseline" value="small-x-baseline"/>
+   <with-param name="x-height" value="small-x-height"/>
+   <with-param name="intersect-height" value="small-cyrn-intersect-height"/>
+   <with-param name="vert-stem" value="small-vert-stem"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+   <with-param name="lbearing" value="small-cyrn-lbearing"/>
+   <with-param name="space" value="small-cyrn-space"/>
+   <with-param name="tse-desc" value="small-tse-desc"/>
+   <with-param name="tse-desc-horiz-shift" value="small-tse-desc-horiz-shift"/>
+   <with-param name="vert-thinstem" value="small-vert-thinstem"/>
+  </call-glyph>
+ </glyph>
 </xgridfit>

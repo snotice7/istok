@@ -5,7 +5,7 @@
 
   <!--
      
-     Copyright (C) 2007, 2008, 2009 Andrey V. Panov
+      Copyright (C) 2007, 2008, 2009, 2011 Andrey V. Panov
      
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@
   <constant name="inner-top" value="inner-right + 4"/>
   <constant name="ldiag-right-top" value="inner-top + 4"/>
   <constant name="last" value="ldiag-right-top"/>
+  
   <line name="left-lstem">
    <point num="left-left-bottom"/>
    <point num="left-top"/>
@@ -108,6 +109,9 @@
   <compile-if test="smooth">
    <if test="vertical-smoothing">
     <set-round-state round="to-grid"/>
+   </if>
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
    </if>
   </compile-if>
 
@@ -180,6 +184,12 @@
   <!--</if>-->
   <!--  </compile-if> -->
 
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
   <call-macro name="make-diagonal">
    <with-param name="first-diag-first-point" value="right-right-bottom"/>
    <with-param name="first-diag-second-point" value="right-top"/>
