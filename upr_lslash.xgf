@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="lslash" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-x-baseline"/>
+  <param name="height" value="small-asc-height"/>
+  <param name="vert-stem" value="small-vert-stem"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
+  <param name="diag" value="small-thindiag"/>
+  
+  <constant name="diag-left-bottom" value="first-point"/>
+  <constant name="diag-left-top" value="diag-left-bottom + hstem-vcount"/>
+  <constant name="intersect-left-top" value="diag-left-top + smooth-count"/>
+  <constant name="vstem-left-top" value="intersect-left-top + smooth-count"/>
+  <constant name="left-top" value="vstem-left-top + vstem-vcount"/>
+  <constant name="right-top" value="left-top + vstem-hcount"/>
+  <constant name="intersect-right-top" value="right-top + smooth-count + notch-count"/>
+  <constant name="diag-right-top" value="intersect-right-top + smooth-count"/>
+  <constant name="diag-right-bottom" value="diag-right-top + hstem-vcount"/>
+  <constant name="intersect-right-bottom" value="diag-right-bottom + smooth-count"/>
+  <constant name="right-bottom" value="intersect-right-bottom + smooth-count"/>
+  <constant name="left-bottom" value="right-bottom + vstem-hcount"/>
+  <constant name="intersect-left-bottom" value="left-bottom + smooth-count + notch-count"/>
+  <constant name="last" value="intersect-left-bottom"/>
+  
+  <line name="diag-left-side">
+   <point num="diag-left-top"/>
+   <point num="diag-right-top"/>
+  </line>
+  <line name="diag-right-side">
+   <point num="diag-left-bottom"/>
+   <point num="diag-right-bottom"/>
+  </line>
+  <line name="vstem-left">
+   <point num="left-bottom"/>
+   <point num="vstem-left-top"/>
+  </line>
+  <line name="vstem-right">
+   <point num="right-bottom"/>
+   <point num="right-top"/>
+  </line>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="left-bottom"/>
+   <align>
+    <point num="right-bottom"/>
+   </align>
+  </move>
+  <move distance="height">
+   <point num="left-top"/>
+   <align>
+    <point num="right-top"/>
+   </align>
+  </move>
+  <move>
+   <point num="diag-left-top"/>
+   <move>
+    <point num="diag-right-top"/>
+   </move>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+   <if test="horizontal-smoothing">
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="diag-left-top"/>
+   <move>
+    <point num="left-bottom"/>
+    <align compile-if="slanted = 0">
+     <point num="vstem-left-top"/>
+    </align>
+    <move distance="vert-stem" color="black">
+     <point num="right-bottom"/>
+     <align compile-if="slanted = 0">
+      <point num="right-top"/>
+     </align>
+     <interpolate compile-if="slanted = 0">
+      <point num="left-top"/>
+     </interpolate>
+     <move>
+      <point num="diag-right-top"/>
+      <move min-distance="no" color="white">
+       <point num="right-bearing"/>
+      </move>
+     </move>
+    </move>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-freedom-vector axis="x"/>
+   <set-round-state round="no"/>
+   <align>
+    <reference>
+     <point num="left-bottom"/>
+    </reference>
+    <point num="vstem-left-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="right-bottom"/>
+    </reference>
+    <point num="right-top"/>
+   </align>
+   <interpolate>
+    <reference>
+     <point num="left-bottom"/>
+     <point num="right-bottom"/>
+    </reference>
+    <point num="left-top"/>
+   </interpolate>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="left-bottom"/>
+     <point num="vstem-left-top"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="right-top"/>
+     <point num="right-bottom"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <diagonal-stem distance="diag" round="no" save-vectors="yes" min-distance="diag-min-thick" color="black">
+   <line ref="diag-left-side"/>
+   <line ref="diag-right-side"/>
+  </diagonal-stem>
+  <with-freedom-vector to-line="parallel">
+   <line ref="diag-left-side"/>
+   <align>
+    <reference>
+     <point num="diag-right-top"/>
+    </reference>
+    <point num="diag-right-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="diag-left-top"/>
+    </reference>
+    <point num="diag-left-bottom"/>
+   </align>
+  </with-freedom-vector>
+  <move-point-to-intersection>
+   <point num="intersect-left-top"/>
+   <line ref="vstem-left"/>
+   <line ref="diag-left-side"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-left-bottom"/>
+   <line ref="vstem-left"/>
+   <line ref="diag-right-side"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-right-top"/>
+   <line ref="vstem-right"/>
+   <line ref="diag-left-side"/>
+  </move-point-to-intersection>
+  <move-point-to-intersection>
+   <point num="intersect-right-bottom"/>
+   <line ref="vstem-right"/>
+   <line ref="diag-right-side"/>
+  </move-point-to-intersection>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>
