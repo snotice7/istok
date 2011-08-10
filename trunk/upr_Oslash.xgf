@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--Ø-->
+ <glyph ps-name="Oslash" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2011  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="horiz-stem" value="cap-curve-hstem"/>
+  <param name="vert-stem" value="cap-o-curve-stem"/>
+  <param name="diag" value="cap-thindiag"/> <!--small-thindiag-->
+  <param name="space" value="cap-o-space"/>
+  <param name="lbearing" value="cap-o-lbearing"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="ru-intersect-left-top" value="5"/>
+  <constant name="diag-left-top" value="ru-intersect-left-top + smooth-count"/>
+  <constant name="diag-right-top" value="diag-left-top + vstem-hcount"/>
+  <constant name="ru-intersect-right-top" value="diag-right-top + smooth-count"/>
+  <constant name="outer-right" value="14"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="rl-intersect-right-bottom" value="19"/>
+  <constant name="diag-right-bottom" value="rl-intersect-right-bottom + smooth-count"/>
+  <constant name="diag-left-bottom" value="diag-right-bottom + vstem-hcount"/>
+  <constant name="rl-intersect-left-bottom" value="diag-left-bottom + smooth-count"/>
+  <constant name="inner-left" value="28"/>
+  <constant name="rl-intersect-left-top" value="30"/>
+  <constant name="ru-intersect-left-bottom" value="31"/>
+  <constant name="inner-top" value="33"/>
+  <constant name="rl-intersect-right-top" value="36"/>
+  <constant name="inner-bottom" value="38"/>
+  <constant name="inner-right" value="inner-bottom + 3"/>
+  <constant name="ru-intersect-right-bottom" value="43"/>
+  <constant name="last" value="ru-intersect-right-bottom"/>
+  
+  <line name="diag-left-side">
+   <point num="rl-intersect-left-bottom"/>
+   <point num="ru-intersect-left-top"/>
+  </line>
+  <line name="diag-right-side">
+   <point num="rl-intersect-right-bottom"/>
+   <point num="ru-intersect-right-top"/>
+  </line>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+   </move>
+   <move distance="space" color="black">
+    <point num="outer-right"/>
+    <interpolate>
+     <point num="outer-top"/>
+     <point num="outer-bottom"/>
+     <point num="inner-bottom"/>
+     <point num="inner-top"/>
+     <point num="rl-intersect-right-bottom"/>
+     <point num="ru-intersect-right-top"/>
+    </interpolate>
+    <move distance="vert-stem" color="black">
+     <point num="inner-right"/>
+    </move>
+    <move min-distance="no" color="white" compile-if="smooth = 0">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+    <set-minimum-distance value="1.0p"/>
+   </if>
+   <move min-distance="no" color="white">
+    <reference>
+     <point num="outer-right"/>
+    </reference>
+    <point num="right-bearing"/>
+   </move>
+   <mdap round="yes">
+    <point num="right-bearing"/>
+   </mdap>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="outer-bottom"/>
+    <point num="inner-top"/>
+   </reference>
+   <point num="rl-intersect-right-bottom"/>
+   <point num="ru-intersect-right-top"/>
+  </interpolate>
+  
+  <diagonal-stem distance="diag" round="no" save-vectors="yes" min-distance="diag-min-thick" color="black">
+   <line ref="diag-right-side"/>
+   <line ref="diag-left-side"/>
+   <align>
+    <point num="diag-right-bottom"/>
+    <point num="diag-right-top"/>
+    <point num="ru-intersect-right-bottom"/>
+    <point num="rl-intersect-right-top"/>
+   </align>
+   <align>
+    <point num="diag-left-bottom"/>
+    <point num="diag-left-top"/>
+    <point num="rl-intersect-left-top"/>
+    <point num="ru-intersect-left-bottom"/>
+   </align>
+  </diagonal-stem>
+  <set-projection-vector axis="x"/>
+  <set-freedom-vector to-line="parallel">
+   <line ref="diag-right-side"/>
+  </set-freedom-vector>
+  <interpolate>
+   <reference>
+    <point num="outer-left"/>
+    <point num="outer-right"/>
+   </reference>
+   <point num="diag-right-bottom"/>
+   <point num="diag-right-top"/>
+   <point num="ru-intersect-right-bottom"/>
+   <point num="rl-intersect-right-top"/>
+  </interpolate>
+  <set-projection-vector to-line="parallel">
+   <line ref="diag-right-side"/>
+  </set-projection-vector>
+  <if test="(rl-intersect-right-top -- rl-intersect-right-bottom) &gt; control-value(vert-stem)">
+   <move round="no" min-distance="no" distance="vert-stem" color="black">
+    <reference>
+     <point num="rl-intersect-right-bottom"/>
+    </reference>
+    <point num="rl-intersect-right-top"/>
+   </move>
+  </if>
+  <if test="(ru-intersect-right-top -- ru-intersect-right-bottom) &gt; control-value(vert-stem)">
+   <move round="no" min-distance="no" distance="vert-stem" color="black">
+    <reference>
+     <point num="ru-intersect-right-top"/>
+    </reference>
+    <point num="ru-intersect-right-bottom"/>
+   </move>
+  </if>
+  <interpolate>
+   <reference>
+    <point num="diag-right-bottom"/>
+    <point num="diag-right-top"/>
+   </reference>
+   <point num="diag-left-bottom"/>
+   <point num="diag-left-top"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="ru-intersect-right-bottom"/>
+    <point num="rl-intersect-right-top"/>
+   </reference>
+   <point num="rl-intersect-left-top"/>
+   <point num="ru-intersect-left-bottom"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="rl-intersect-right-bottom"/>
+    <point num="ru-intersect-right-top"/>
+   </reference>
+   <point num="rl-intersect-left-bottom"/>
+   <point num="ru-intersect-left-top"/>
+  </interpolate>
+  <!--  <interpolate>
+   <reference>
+    <point num="outer-left"/>
+    <point num="outer-right"/>
+   </reference>
+   <point num="diag-left-bottom"/>
+   <point num="diag-left-top"/>
+   <point num="rl-intersect-left-top"/>
+   <point num="rl-intersect-left-bottom"/>
+   <point num="ru-intersect-left-top"/>
+   <point num="ru-intersect-left-bottom"/>
+  </interpolate>-->
+  
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+ <glyph ps-name="oslash" init-graphics="yes">
+  <call-glyph ps-name="Oslash">
+   <with-param name="baseline" value="small-o-baseline"/>
+   <with-param name="height" value="small-o-height"/>
+   <with-param name="horiz-stem" value="small-curve-hstem"/>
+   <with-param name="vert-stem" value="small-o-curve-stem"/>
+   <with-param name="diag" value="small-thindiag"/> <!--sign-thindiag-->
+   <with-param name="space" value="small-o-space"/>
+   <with-param name="lbearing" value="small-o-lbearing"/>
+  </call-glyph>
+ </glyph>
+ 
+</xgridfit>
