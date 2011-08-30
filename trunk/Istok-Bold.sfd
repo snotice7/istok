@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1312805368
+ModificationTime: 1313021414
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -54,7 +54,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 8208 16 13
+WinInfo: 512 16 13
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -310 -310 1136 1150]
@@ -80,7 +80,7 @@ Grid
 -2048 1272 m 0
  4096 1272 l 0
 EndSplineSet
-BeginChars: 65542 458
+BeginChars: 65542 460
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -19519,6 +19519,64 @@ SplineSet
  787 720 l 18,6,7
  835 695 835 695 787 668 c 9,8,-1
  311 415 l 18,0,1
+EndSplineSet
+EndChar
+
+StartChar: uni0245
+Encoding: 581 581 458
+Width: 1370
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+90 0 m 6,0,1
+ 18 0 18 0 43 66 c 2,2,-1
+ 521 1353 l 2,3,4
+ 551 1434 551 1434 615 1434 c 2,5,-1
+ 755 1434 l 2,6,7
+ 819 1434 819 1434 849 1353 c 2,8,-1
+ 1327 66 l 2,9,10
+ 1352 0 1352 0 1280 0 c 2,11,-1
+ 1121 0 l 2,12,13
+ 1054 0 1054 0 1029 69 c 2,14,-1
+ 723 904 l 2,15,16
+ 700 968 700 968 696 989.5 c 128,-1,17
+ 692 1011 692 1011 687 1061 c 1,18,-1
+ 683 1061 l 1,19,20
+ 678 1011 678 1011 674 989.5 c 128,-1,21
+ 670 968 670 968 647 904 c 2,22,-1
+ 341 69 l 2,23,24
+ 316 0 316 0 249 0 c 2,25,-1
+ 90 0 l 6,0,1
+EndSplineSet
+EndChar
+
+StartChar: uni028C
+Encoding: 652 652 459
+Width: 1008
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+75 0 m 2,0,1
+ 17 0 17 0 42 78 c 2,2,-1
+ 332 983 l 2,3,4
+ 353 1050 353 1050 405 1050 c 2,5,-1
+ 603 1050 l 2,6,7
+ 655 1050 655 1050 676 983 c 2,8,-1
+ 966 78 l 2,9,10
+ 991 0 991 0 933 0 c 2,11,-1
+ 754 0 l 2,12,13
+ 707 0 707 0 694 51 c 2,14,-1
+ 539 637 l 2,15,16
+ 526 686 526 686 517.5 734 c 128,-1,17
+ 509 782 509 782 507 812 c 1,18,-1
+ 501 812 l 1,19,20
+ 499 782 499 782 490.5 734 c 128,-1,21
+ 482 686 482 686 469 637 c 2,22,-1
+ 314 51 l 2,23,24
+ 301 0 301 0 254 0 c 2,25,-1
+ 75 0 l 2,0,1
 EndSplineSet
 EndChar
 EndChars

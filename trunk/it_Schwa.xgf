@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--uni0259 (ə)-->
+ <glyph ps-name="uni04D8" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008,2011  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-o-baseline"/>
+  <param name="height" value="cap-o-height"/>
+  <param name="curve-horiz-stem" value="cap-curve-hstem"/>
+  <param name="vert-stem" value="cap-o-curve-stem"/>
+  <param name="lbearing" value="cap-o-lbearing"/>
+  <param name="c-flat-ends" value="cap-c-flat-ends"/>
+  <param name="intersect-height" value="cap-h-intersect-height"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="space" value="cap-o-space"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="hstem-left-top" value="3"/>
+  <constant name="hstem-right-top" value="hstem-left-top + smooth-count"/>
+  <constant name="inner-right" value="hstem-right-top + 2"/>
+  <constant name="inner-top" value="inner-right + 3"/>
+  <constant name="upper-end-bottom" value="inner-top + 3 + 1"/>
+  <constant name="upper-end-top" value="upper-end-bottom + hstem-vcount"/>
+  <constant name="outer-top" value="upper-end-top + 3 + 1"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="outer-bottom" value="outer-right + 3"/>
+  <constant name="inner-left" value="30"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="hstem-right-bottom" value="inner-bottom + 3"/>
+  <constant name="hstem-left-bottom" value="hstem-right-bottom + 1"/>
+  <constant name="last" value="hstem-left-bottom + 1"/>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <!--     <set-round-state round="no"/> -->
+    <set-minimum-distance value="1.0p"/>
+   </if>
+  </compile-if>
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+    <interpolate>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </move>
+   <move color="black">
+    <point num="outer-right"/>
+    <move distance="vert-stem" color="black">
+     <point num="inner-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>
+  </move>
+  <!-- <interpolate>
+   <reference>
+    <point num="hstem-left-bottom"/>
+    <point num="hstem-right-bottom"/>
+   </reference>
+   <point num="outer-top"/>
+  </interpolate>
+  <align>
+   <reference>
+    <point num="outer-top"/>
+   </reference>
+   <point num="outer-bottom"/>
+   <point num="inner-bottom"/>
+   <point num="inner-top"/>
+  </align>-->
+  <if test="((outer-left -- outer-right) - control-value(space)) &gt; 0.5p">
+   <shift-absolute pixel-distance="-1.0p">
+    <point num="outer-right"/>
+    <point num="inner-right"/>
+    <point num="right-bearing"/>
+   </shift-absolute>
+  </if>
+  <move min-distance="no" round="no" color="black">
+   <reference>
+    <point num="upper-end-top"/>
+   </reference>
+   <point num="upper-end-bottom"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+     <point num="inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right"/>
+     <point num="inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  <interpolate>
+   <reference>
+    <point num="inner-left"/>
+    <point num="inner-right"/>
+   </reference>
+   <point num="hstem-left-bottom"/>
+   <point num="hstem-right-bottom"/>
+   <point num="hstem-right-top"/>
+  </interpolate>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+   <!--   <if test="only-horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>-->
+  </compile-if>
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="intersect-height">
+   <point num="hstem-left-bottom"/>
+   <align>
+    <point num="hstem-right-bottom"/>
+   </align>
+   <move distance="horiz-stem">
+    <point num="hstem-left-top"/>
+    <align>
+     <point num="hstem-right-top"/>
+    </align>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="horiz-stem" color="black">
+    <point num="inner-top"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="inner-top"/>
+    </reference>
+    <point num="upper-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="outer-top"/>
+    </reference>
+    <point num="upper-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="hstem-left-top"/>
+      <point num="inner-top"/>
+     </reference>
+     <point num="upper-end-bottom"/>
+     <point num="upper-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <interpolate-untouched-points/>
+ </glyph>
+ 
+</xgridfit>

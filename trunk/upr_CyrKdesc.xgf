@@ -107,6 +107,14 @@
     </interpolate>
    </move>
   </move>
+  <move distance="x-height">
+   <point num="vstem-left-top"/>
+   <align>
+    <point num="vstem-right-top"/>
+    <point num="ru-diag-l-top"/>
+    <point num="ru-diag-r-top"/>
+   </align>
+  </move>
   <interpolate>
    <reference>
     <point num="vstem-left-bottom"/>
@@ -121,14 +129,6 @@
    </reference>
    <point num="ru-diag-l-bottom"/>
   </interpolate>
-  <move distance="x-height">
-   <point num="vstem-left-top"/>
-   <align>
-    <point num="vstem-right-top"/>
-    <point num="ru-diag-l-top"/>
-    <point num="ru-diag-r-top"/>
-   </align>
-  </move>
   <move distance="tse-desc">
    <point num="rdesc-left-bottom"/>
    <align>
@@ -200,7 +200,7 @@
    <with-param name="diag-width" value="thin-diag"/>
    <with-param name="interpolation-point" value="intersect-right"/>
   </call-macro>
-  <diagonal-stem distance="thick-diag"  min-distance="diag-min-thick" save-vectors="yes" color="black">
+  <diagonal-stem round="no" distance="thick-diag"  min-distance="diag-min-thick" save-vectors="yes" color="black">
    <line ref="rl-diag-l"/>
    <line ref="rl-diag-r"/>
   </diagonal-stem>
