@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="equal" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <constant name="lower-contour-left-bottom" value="first-point"/>
+  <constant name="lower-contour-left-top" value="lower-contour-left-bottom + hstem-vcount"/>
+  <constant name="lower-contour-right-top" value="lower-contour-left-top + hstem-hcount"/>
+  <constant name="lower-contour-right-bottom" value="lower-contour-right-top + hstem-vcount"/>
+  <constant name="upper-contour-left-bottom" value="lower-contour-right-bottom + hstem-hcount"/>
+  <constant name="upper-contour-left-top" value="upper-contour-left-bottom + hstem-vcount"/>
+  <constant name="upper-contour-right-top" value="upper-contour-left-top + hstem-hcount"/>
+  <constant name="upper-contour-right-bottom" value="upper-contour-right-top + hstem-vcount"/>
+  <constant name="last" value="upper-contour-right-bottom + last-count"/>
+  
+  <set-vectors axis="y"/>
+  
+  <set-equal target="temp" source="lower-contour-left-top -- upper-contour-left-bottom"/>
+  <if test="temp &lt; 0.6p">
+   <shift-absolute pixel-distance="round(temp) - 1.0p">
+    <point num="lower-contour-left-top"/>
+   </shift-absolute>
+   <shift>
+    <reference>
+     <point num="lower-contour-left-top"/>
+    </reference>
+    <contour num="0"/>
+   </shift>
+  </if>
+  
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>

@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1312805486
+ModificationTime: 1313021729
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -54,7 +54,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 8208 16 13
+WinInfo: 496 16 13
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -80,7 +80,7 @@ Grid
 -1759.83 1768 m 0
  4384.17 1768 l 0
 EndSplineSet
-BeginChars: 65553 478
+BeginChars: 65553 480
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -23111,6 +23111,64 @@ SplineSet
  792 713 l 26,6,7
  828 694 828 694 792 675 c 26,8,-1
  386 459 l 26,0,1
+EndSplineSet
+EndChar
+
+StartChar: uni0245
+Encoding: 581 581 478
+Width: 1338
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+-47 0 m 2,0,1
+ -99 0 -99 0 -59 66 c 2,2,-1
+ 730 1373 l 2,3,4
+ 767 1434 767 1434 810 1434 c 2,5,-1
+ 950 1434 l 2,6,7
+ 993 1434 993 1434 1002 1373 c 2,8,-1
+ 1187 66 l 2,9,10
+ 1196 0 1196 0 1145 0 c 2,11,-1
+ 1055 0 l 2,12,13
+ 1000 0 1000 0 994 49 c 2,14,-1
+ 876 944 l 2,15,16
+ 868 1003 868 1003 861 1101 c 128,-1,17
+ 854 1199 854 1199 854 1261 c 1,18,-1
+ 850 1261 l 1,19,20
+ 824 1198 824 1198 768.5 1097 c 128,-1,21
+ 713 996 713 996 682 944 c 2,22,-1
+ 150 49 l 2,23,24
+ 121 0 121 0 67 0 c 2,25,-1
+ -47 0 l 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: uni028C
+Encoding: 652 652 479
+Width: 986
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+-48 0 m 2,0,1
+ -92 0 -92 0 -64 49 c 2,2,-1
+ 481 989 l 2,3,4
+ 516 1050 516 1050 549 1050 c 2,5,-1
+ 681 1050 l 2,6,7
+ 714 1050 714 1050 721 989 c 2,8,-1
+ 832 49 l 2,9,10
+ 838 0 838 0 794 0 c 2,11,-1
+ 695 0 l 2,12,13
+ 663 0 663 0 659 39 c 2,14,-1
+ 599 699 l 2,15,16
+ 595 739 595 739 592 790 c 128,-1,17
+ 589 841 589 841 589 886 c 1,18,-1
+ 585 886 l 1,19,20
+ 567 841 567 841 550.5 810.5 c 128,-1,21
+ 534 780 534 780 489 699 c 2,22,-1
+ 125 39 l 2,23,24
+ 103 0 103 0 71 0 c 2,25,-1
+ -48 0 l 2,0,1
 EndSplineSet
 EndChar
 EndChars

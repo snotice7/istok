@@ -91,6 +91,14 @@
     </interpolate>
    </move>
   </move>
+  <move distance="x-height">
+   <point num="vstem-left-top"/>
+   <align>
+    <point num="vstem-right-top"/>
+    <point num="ru-diag-l-top"/>
+    <point num="ru-diag-r-top"/>
+   </align>
+  </move>
   <interpolate>
    <reference>
     <point num="vstem-left-top"/>
@@ -103,14 +111,6 @@
    <move distance="curve-horiz-stem" color="black">
     <point num="curl-top"/>
    </move>
-  </move>
-  <move distance="x-height">
-   <point num="vstem-left-top"/>
-   <align>
-    <point num="vstem-right-top"/>
-    <point num="ru-diag-l-top"/>
-    <point num="ru-diag-r-top"/>
-   </align>
   </move>
   
   <compile-if test="slanted">

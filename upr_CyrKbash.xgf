@@ -98,20 +98,6 @@
     </interpolate>
    </move>
   </move>
-  <interpolate>
-   <reference>
-    <point num="vstem-left-bottom"/>
-    <point num="rhstem-left-bottom"/>
-   </reference>
-   <point num="rl-diag-l-top"/>
-  </interpolate>
-  <interpolate>
-   <reference>
-    <point num="vstem-left-top"/>
-    <point num="rhstem-left-top"/>
-   </reference>
-   <point num="ru-diag-l-bottom"/>
-  </interpolate>
   <move distance="x-height">
    <point num="hstem-left-top"/>
    <align>
@@ -126,6 +112,20 @@
     </align>
    </move>
   </move>
+  <interpolate>
+   <reference>
+    <point num="vstem-left-bottom"/>
+    <point num="rhstem-left-bottom"/>
+   </reference>
+   <point num="rl-diag-l-top"/>
+  </interpolate>
+  <interpolate>
+   <reference>
+    <point num="vstem-left-top"/>
+    <point num="rhstem-left-top"/>
+   </reference>
+   <point num="ru-diag-l-bottom"/>
+  </interpolate>
   
   <set-vectors axis="x"/>
   <compile-if test="slanted">

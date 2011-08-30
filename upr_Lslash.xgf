@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <glyph ps-name="lslash" init-graphics="yes">
+ <glyph ps-name="Lslash" init-graphics="yes">
   
   <!--
       
-      Copyright (C) 2007, 2008, 2009, 2010, 2011 Andrey V. Panov
+      Copyright (C) 2008, 2010, 2011  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -21,23 +21,25 @@
       
       -->
   
-  <param name="baseline" value="small-x-baseline"/>
-  <param name="height" value="small-asc-height"/>
-  <param name="vert-stem" value="small-vert-stem"/>
-  <param name="diag" value="small-thindiag"/>
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="cap-x-height"/>
+  <param name="vert-stem" value="cap-vert-stem"/>
+  <param name="horiz-stem" value="cap-horiz-stem"/>
+  <param name="diag" value="cap-thindiag"/>
   
   <constant name="diag-left-bottom" value="first-point"/>
   <constant name="diag-left-top" value="diag-left-bottom + hstem-vcount"/>
   <constant name="intersect-left-top" value="diag-left-top + smooth-count"/>
-  <constant name="vstem-left-top" value="intersect-left-top + smooth-count"/>
-  <constant name="left-top" value="vstem-left-top + vstem-vcount"/>
+  <constant name="left-top" value="intersect-left-top + smooth-count"/>
   <constant name="right-top" value="left-top + vstem-hcount"/>
   <constant name="intersect-right-top" value="right-top + smooth-count + notch-count"/>
   <constant name="diag-right-top" value="intersect-right-top + smooth-count"/>
   <constant name="diag-right-bottom" value="diag-right-top + hstem-vcount"/>
   <constant name="intersect-right-bottom" value="diag-right-bottom + smooth-count"/>
-  <constant name="right-bottom" value="intersect-right-bottom + smooth-count"/>
-  <constant name="left-bottom" value="right-bottom + vstem-hcount"/>
+  <constant name="lhstem-left-top" value="intersect-right-bottom + 1"/>
+  <constant name="lhstem-right-top" value="lhstem-left-top + smooth-count"/>
+  <constant name="lhstem-right-bottom" value="lhstem-right-top + hstem-vcount"/>
+  <constant name="left-bottom" value="lhstem-right-bottom + hstem-hcount"/>
   <constant name="intersect-left-bottom" value="left-bottom + smooth-count + notch-count"/>
   <constant name="last" value="intersect-left-bottom"/>
   
@@ -51,10 +53,10 @@
   </line>
   <line name="vstem-left">
    <point num="left-bottom"/>
-   <point num="vstem-left-top"/>
+   <point num="left-top"/>
   </line>
   <line name="vstem-right">
-   <point num="right-bottom"/>
+   <point num="lhstem-left-top"/>
    <point num="right-top"/>
   </line>
   
@@ -75,10 +77,16 @@
   <move distance="baseline">
    <point num="left-bottom"/>
    <align>
-    <point num="right-bottom"/>
+    <point num="lhstem-right-bottom"/>
    </align>
+   <move distance="horiz-stem">
+    <point num="lhstem-right-top"/>
+    <align>
+     <point num="lhstem-left-top"/>
+    </align>
+   </move>
   </move>
-  <move distance="height">
+  <move distance="x-height">
    <point num="left-top"/>
    <align>
     <point num="right-top"/>
@@ -109,24 +117,24 @@
    <move>
     <point num="left-bottom"/>
     <align compile-if="slanted = 0">
-     <point num="vstem-left-top"/>
+     <point num="left-top"/>
     </align>
-    <move distance="vert-stem" color="black">
-     <point num="right-bottom"/>
-     <align compile-if="slanted = 0">
-      <point num="right-top"/>
+    <move distance="vert-stem" color="black" compile-if="slanted = 0">
+     <point num="right-top"/>
+     <align>
+      <point num="lhstem-left-top"/>
      </align>
-     <interpolate compile-if="slanted = 0">
-      <point num="left-top"/>
-     </interpolate>
-     <move>
-      <point num="diag-right-top"/>
-      <move min-distance="no" color="white">
-       <point num="right-bearing"/>
-      </move>
-     </move>
     </move>
    </move>
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lhstem-right-bottom"/>
+   <align compile-if="slanted = 0">
+    <point num="lhstem-right-top"/>
+   </align>
   </move>
   <compile-if test="slanted">
    <compile-if test="smooth">
@@ -138,9 +146,6 @@
      <shift-absolute pixel-distance="negative(temp)">
       <point num="left-bottom"/>
      </shift-absolute>
-     <shift-absolute pixel-distance="temp">
-      <point num="right-bottom"/>
-     </shift-absolute>
     </if>
    </compile-if>
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
@@ -150,22 +155,31 @@
     <reference>
      <point num="left-bottom"/>
     </reference>
-    <point num="vstem-left-top"/>
+    <point num="left-top"/>
    </align>
    <align>
     <reference>
-     <point num="right-bottom"/>
+     <point num="lhstem-right-bottom"/>
     </reference>
-    <point num="right-top"/>
+    <point num="lhstem-right-top"/>
    </align>
-   <interpolate>
+   <move distance="vert-stem" color="black">
     <reference>
      <point num="left-bottom"/>
-     <point num="right-bottom"/>
     </reference>
-    <point num="left-top"/>
-   </interpolate>
+    <point num="right-top"/>
+    <align>
+     <point num="lhstem-left-top"/>
+    </align>
+   </move>
   </compile-if>
+  <interpolate>
+   <reference>
+    <point num="lhstem-left-top"/>
+    <point num="lhstem-right-bottom"/>
+   </reference>
+   <point num="diag-right-top"/>
+  </interpolate>
   <compile-if test="smooth and (slanted = 0)">
    <if test="horizontal-smoothing">
     <call-macro name="shift-edge">
@@ -174,14 +188,17 @@
     </call-macro>
     <shift-absolute pixel-distance="negative(temp)">
      <point num="left-bottom"/>
-     <point num="vstem-left-top"/>
+     <point num="left-top"/>
     </shift-absolute>
     <shift-absolute pixel-distance="temp">
      <point num="right-top"/>
-     <point num="right-bottom"/>
+     <point num="lhstem-left-top"/>
+     <point num="lhstem-right-bottom"/>
+     <point num="lhstem-right-top"/>
     </shift-absolute>
    </if>
   </compile-if>
+  
   <diagonal-stem distance="diag" round="no" save-vectors="yes" min-distance="diag-min-thick" color="black">
    <line ref="diag-left-side"/>
    <line ref="diag-right-side"/>

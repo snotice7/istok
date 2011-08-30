@@ -847,6 +847,7 @@
   <xi:include href="it_Cyrdzhe.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrYat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="it_Cyryat.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrBigyus.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrGup.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrGbar.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrGhook.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -873,10 +874,13 @@
   <xi:include href="upr_Oslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Aogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Eogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_Lslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_lslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_eng.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="it_Schwa.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Ezh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_esh.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_Vturned.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Eszett.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fi.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_fl.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -913,6 +917,7 @@
   <xi:include href="upr_tilde.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_macron.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_circumflex.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_caron.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_dotaccent.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_dieresis.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_minus.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
