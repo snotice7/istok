@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
- <!--Cyr Ch desc(Ҷ)-->
- <glyph ps-name="uni04B6" init-graphics="yes">
+ <!--Cyr Ch leftdesc(Ӌ)-->
+ <glyph ps-name="uni04CB" init-graphics="yes">
   
   <!--
       
@@ -41,13 +41,13 @@
   <constant name="intersect-right-top" value="intersect-mid-top + 3"/>
   <constant name="rstem-left-top" value="intersect-right-top + smooth-count"/>
   <constant name="rstem-right-top" value="rstem-left-top + vstem-hcount"/>
-  <constant name="rstem-right-bottom" value="rstem-right-top + smooth-count"/>
+  <constant name="rstem-right-bottom" value="rstem-right-top + vstem-vcount"/>
   <constant name="rdesc-right-top" value="rstem-right-bottom + smooth-count"/>
-  <constant name="rdesc-right-bottom" value="rdesc-right-top + vstem-vcount"/>
+  <constant name="rdesc-right-bottom" value="rdesc-right-top + smooth-count"/>
   <constant name="rdesc-left-bottom" value="rdesc-right-bottom + vstem-hcount"/>
-  <constant name="rdesc-left-top" value="rdesc-left-bottom + smooth-count"/>
+  <constant name="rdesc-left-top" value="rdesc-left-bottom + vstem-vcount"/>
   <constant name="rstem-left-bottom" value="rdesc-left-top + smooth-count"/>
-  <constant name="intersect-right-bottom" value="rstem-left-bottom + smooth-count + notch-count"/>
+  <constant name="intersect-right-bottom" value="rstem-left-bottom + 1 + notch-count"/>
   <constant name="intersect-mid-bottom" value="intersect-right-bottom + 3"/>
   <constant name="last" value="intersect-mid-bottom + 2"/>
   
@@ -66,14 +66,14 @@
   </compile-if>
   
   <move distance="baseline">
-   <point num="rstem-left-bottom"/>
+   <point num="rstem-right-bottom"/>
    <align>
-    <point num="rdesc-left-top"/>
+    <point num="rdesc-right-top"/>
    </align>
    <move distance="horiz-stem" color="black">
-    <point num="rdesc-right-top"/>
+    <point num="rdesc-left-top"/>
     <align>
-     <point num="rstem-right-bottom"/>
+     <point num="rstem-left-bottom"/>
     </align>
    </move>
   </move>
@@ -230,6 +230,9 @@
       <point num="rstem-left-top"/>
      </align>
     </move>
+    <move min-distance="no">
+     <point num="right-bearing"/>
+    </move>
    </move>
    <!--   <set-equal target="temp" source="coord(rstem-right-bottom)"/>
    <mdap round="to-grid">
@@ -280,20 +283,17 @@
   </compile-if>
   <move distance="tse-desc-horiz-shift">
    <reference>
-    <point num="rstem-right-bottom"/>
+    <point num="rstem-left-bottom"/>
    </reference>
-   <point num="rdesc-right-bottom"/>
+   <point num="rdesc-left-bottom"/>
    <align>
-    <point num="rdesc-right-top"/>
+    <point num="rdesc-left-top"/>
    </align>
    <move distance="vert-thinstem" color="black">
-    <point num="rdesc-left-top"/>
+    <point num="rdesc-right-top"/>
     <align>
-     <point num="rdesc-left-bottom"/>
+     <point num="rdesc-right-bottom"/>
     </align>
-   </move>
-   <move min-distance="no" color="white">
-    <point num="right-bearing"/>
    </move>
   </move>
   <compile-if test="smooth or slanted">
@@ -308,8 +308,8 @@
   <interpolate-untouched-points/>
  </glyph>
  
- <glyph ps-name="uni04B7" init-graphics="yes">
-  <call-glyph ps-name="uni04B6">
+ <glyph ps-name="uni04CC" init-graphics="yes">
+  <call-glyph ps-name="uni04CB">
    <with-param name="baseline" value="small-x-baseline"/>
    <with-param name="x-height" value="small-x-height"/>
    <with-param name="vert-stem" value="small-vert-stem"/>
