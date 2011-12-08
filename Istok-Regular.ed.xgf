@@ -421,12 +421,15 @@
     <control-value-delta>
      <delta-set cv="cap-p-curve-stem" size="7" distance="-8"/>
      <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="cap-p-curve-stem" size="8" distance="-8"/>
+     <delta-set cv="cap-p-curve-stem" size="9" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="10" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="11" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="12" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="13" distance="-8"/>
      <delta-set cv="digit-mid-horiz-stem" size="14" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="7" distance="-8"/>
+     <delta-set cv="digit-thicker-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="8" distance="-8"/>
      <delta-set cv="digit-thicker-curve-stem" size="18" distance="-1"/>
      <delta-set cv="digit-thinner-curve-stem" size="8" distance="-8"/>
@@ -858,7 +861,9 @@
   <xi:include href="upr_Oslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Thorn.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Aogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_aogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Eogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_eogonek.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Lslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_lslash.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_eng.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
