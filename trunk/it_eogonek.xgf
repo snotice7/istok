@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--ę-->
+ <glyph ps-name="eogonek" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2008, 2009, 2010, 2011 Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="small-o-baseline"/>
+  <param name="height" value="small-o-height"/>
+  <param name="curve-horiz-stem" value="small-curve-hstem"/>
+  <param name="vert-stem" value="small-o-curve-stem"/>
+  <param name="right-vert-stem" value="small-vert-stem"/>
+  <param name="lbearing" value="small-o-lbearing"/>
+  <param name="c-flat-ends" value="small-c-flat-ends"/>
+  <param name="end-width" value="small-end-width"/>
+  <param name="intersect-height" value="small-cyrn-intersect-height"/>
+  <param name="horiz-stem" value="small-horiz-stem"/>
+  <param name="space" value="small-o-space"/>
+  <param name="ogonek-baseline" value="small-desc"/>
+  <param name="ogonek-horiz-stem" value="small-horiz-stem"/>
+  
+  <constant name="outer-left" value="0"/>
+  <constant name="outer-top" value="outer-left + 3"/>
+  <constant name="outer-right" value="outer-top + 3"/>
+  <constant name="dstem-bottom-right" value="outer-right + 3"/>
+  <constant name="dstem-bottom-left" value="dstem-bottom-right + 1"/>
+  <constant name="inner-left" value="dstem-bottom-left + 2"/>
+  <constant name="inner-bottom" value="inner-left + 3"/>
+  <constant name="lower-end-top" value="inner-bottom + 3"/>
+  <constant name="lower-end-bottom" value="lower-end-top + open-end-count"/>
+  <constant name="ogonek-right-top" value="26"/>
+  <constant name="ogonek-inner-left" value="ogonek-right-top + 3"/>
+  <constant name="ogonek-inner-bottom" value="ogonek-inner-left + 3"/>
+  <constant name="ogonek-lower-end-top" value="ogonek-inner-bottom + 3"/>
+  <constant name="ogonek-lower-end-bottom" value="ogonek-lower-end-top + hstem-vcount"/>
+  <constant name="ogonek-outer-bottom" value="ogonek-lower-end-bottom + 3"/>
+  <constant name="ogonek-outer-left" value="ogonek-outer-bottom + 3"/>
+  <constant name="ogonek-left-top" value="ogonek-outer-left + 4"/>
+  <constant name="outer-bottom" value="51"/>
+  <constant name="inner-contour-left" value="outer-bottom + 3"/>
+  <constant name="inner-contour-right" value="inner-contour-left + 4"/>
+  <constant name="inner-contour-top" value="inner-contour-right + 3"/>
+  <constant name="last" value="inner-contour-top + 2"/>
+  
+  <set-vectors axis="x"/>
+  <!--  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>-->
+  <move distance="lbearing" color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="outer-left"/>
+   <move distance="vert-stem" color="black">
+    <point num="inner-left"/>
+    <interpolate>
+    <point num="inner-contour-left"/>
+     <point num="dstem-bottom-left"/>
+    </interpolate>
+   </move>
+   <!--   <move color="black">
+    <point num="outer-right"/>
+    <interpolate>
+     <point num="lower-end-bottom"/>
+    </interpolate>
+    <move distance="right-vert-stem" color="black">
+     <point num="inner-contour-right"/>
+    </move>
+    <move min-distance="no" color="white">
+     <point num="right-bearing"/>
+    </move>
+   </move>-->
+  </move>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="outer-right"/>
+   <move distance="right-vert-stem" color="black">
+    <point num="inner-contour-right"/>
+    <interpolate>
+     <point num="lower-end-bottom"/>
+    </interpolate>
+   </move>
+  </move>
+  <!--  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="lower-end-bottom"/>
+   <move distance="end-width" min-distance="no" round="no" color="black">
+    <point num="lower-end-top"/>
+   </move>
+  </move>-->
+  <move distance="end-width" min-distance="no" round="no" color="black">
+   <reference>
+    <point num="lower-end-bottom"/>
+   </reference>
+   <point num="lower-end-top"/>
+  </move>
+  <interpolate>
+   <reference>
+    <point num="outer-right"/>
+    <point num="outer-left"/>
+   </reference>
+   <point num="ogonek-inner-left"/>
+   <point num="ogonek-lower-end-bottom"/>
+   <point num="ogonek-lower-end-top"/>
+  </interpolate>
+  <mdap round="yes">
+   <point num="ogonek-inner-left"/>
+  </mdap>
+  <move color="black">
+   <reference>
+    <point num="ogonek-inner-left"/>
+   </reference>
+   <point num="ogonek-outer-left"/>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="vert-stem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="inner-contour-left"/>
+     <point num="dstem-bottom-left"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="inner-contour-right"/>
+     <with-param name="point-second" value="outer-right"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="inner-contour-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="outer-right"/>
+    </shift-absolute>
+    <call-macro name="shift-edge-points">
+     <with-param name="shift" value="temp"/>
+     <with-param name="point-first" value="ogonek-outer-left"/>
+     <with-param name="point-second" value="ogonek-inner-left"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="ogonek-outer-left"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="ogonek-inner-left"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <set-vectors axis="y"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+   <!--   <if test="only-horizontal-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>-->
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="outer-bottom"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-bottom"/>
+   </move>
+  </move>
+  <move distance="height">
+   <point num="outer-top"/>
+   <move distance="curve-horiz-stem" color="black">
+    <point num="inner-contour-top"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <interpolate round="yes">
+   <reference>
+    <point num="inner-bottom"/>
+    <point num="inner-contour-top"/>
+   </reference>
+   <point num="dstem-bottom-left"/>
+  </interpolate>
+  <move round="no" color="black">
+   <reference>
+    <point num="dstem-bottom-left"/>
+   </reference>
+   <point num="inner-contour-left"/>
+  </move>
+  <move distance="ogonek-baseline">
+   <point num="ogonek-outer-bottom"/>
+   <move distance="ogonek-horiz-stem" color="black">
+    <point num="ogonek-inner-bottom"/>
+   </move>
+  </move>
+  <if test="pixels-per-em &lt; c-flat-ends">
+   <align>
+    <reference>
+     <point num="outer-bottom"/>
+    </reference>
+    <point num="lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="inner-bottom"/>
+    </reference>
+    <point num="lower-end-top"/>
+   </align>
+   <align>
+    <reference>
+     <point num="ogonek-outer-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-bottom"/>
+   </align>
+   <align>
+    <reference>
+     <point num="ogonek-inner-bottom"/>
+    </reference>
+    <point num="ogonek-lower-end-top"/>
+   </align>
+   <else>
+    <interpolate>
+     <reference>
+      <point num="inner-bottom"/>
+      <point num="inner-contour-top"/>
+     </reference>
+     <point num="lower-end-bottom"/>
+     <point num="lower-end-top"/>
+    </interpolate>
+    <interpolate>
+     <reference>
+      <point num="outer-bottom"/>
+      <point num="ogonek-outer-bottom"/>
+     </reference>
+     <point num="ogonek-lower-end-bottom"/>
+     <point num="ogonek-lower-end-top"/>
+    </interpolate>
+   </else>
+  </if>
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
