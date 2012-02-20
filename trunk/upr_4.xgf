@@ -4,7 +4,7 @@
   
   <!--
       
-      Copyright (C) 2008, 2009, 2010  Andrey V. Panov
+      Copyright (C) 2008, 2009, 2010, 2012  Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -289,15 +289,27 @@
      </reference>
      <point num="inner-left-bottom"/>
     </align>
-    <align>
+    <!--    <align>
      <reference>
       <point num="inner-right-top"/>
+     </reference>
+     <point num="inner-left-top"/>
+    </align>-->
+   </with-projection-vector>
+   <with-projection-vector to-line="orthogonal">
+    <line>
+     <point num="vstem-left-bottom"/>
+     <point num="hstem-intersect-left-bottom"/>
+    </line>
+    <align>
+     <reference>
+      <point num="inner-right-bottom"/>
      </reference>
      <point num="inner-left-top"/>
     </align>
    </with-projection-vector>
    <!--   <with-projection-vector axis="x"> -->
-    <if test="coord(inner-left-top) &gt; coord(inner-right-top)">
+    <!--<if test="coord(inner-left-top) &gt; coord(inner-right-top)">
      <align>
       <reference>
        <point num="inner-right-top"/>
@@ -311,7 +323,7 @@
        <point num="inner-right-top"/>
        <point num="inner-right-bottom"/>
       </line>
-     </move-point-to-intersection>
+     </move-point-to-intersection>-->
      <!--     <shift-absolute pixel-distance="0.2p">
       <point num="inner-left-top"/>
      </shift-absolute>
@@ -320,7 +332,7 @@
        <point num="inner-right-top"/>
       </shift-absolute>
      </with-vectors>-->
-    </if>
+     <!--     </if> -->
     <!--   </with-projection-vector> -->
   </with-freedom-vector>
   <interpolate-untouched-points/>
