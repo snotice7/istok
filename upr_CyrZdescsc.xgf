@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <!--Cyr Z desc (Ҙ)-->
+ <glyph ps-name="uni0498.sc" init-graphics="yes">
+  
+  <!--
+      
+      Copyright (C) 2012  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <call-glyph ps-name="uni0498">
+   <with-param name="baseline" value="small-o-baseline"/>
+   <with-param name="height" value="sc-o-height"/>
+   <with-param name="curve-horiz-stem" value="small-curve-hstem"/>
+   <with-param name="vert-stem" value="small-o-curve-stem"/>
+   <with-param name="high-vert-stem" value="small-curve-vstem"/>
+   <with-param name="lbearing" value="small-cyrz-lbearing"/>
+   <with-param name="c-flat-ends" value="small-c-flat-ends"/>
+   <with-param name="end-width" value="small-end-width"/>
+   <with-param name="intersect-height" value="sc-h-intersect-height"/>
+   <with-param name="horiz-stem" value="small-horiz-stem"/>
+  </call-glyph>
+ </glyph>
+</xgridfit>
