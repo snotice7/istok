@@ -5,7 +5,7 @@
   
   <!--
       
-      Copyright (C) 2008, 2010 Andrey V. Panov
+      Copyright (C) 2008, 2010, 2012 Andrey V. Panov
       
       This program is free software: you can redistribute it and/or modify
       it under the terms of the GNU General Public License as published by
@@ -175,14 +175,14 @@
      <align>
       <point num="rstem-left-top"/>
      </align>
-    </move>
-    <move distance="soft-space" color="black">
-     <point num="low-outer-right"/>
-     <move distance="curve-stem" color="black" compile-if="slanted = 0">
-      <point num="low-inner-right"/>
-     </move>
-     <move min-distance="no" color="white" compile-if="slanted = 0">
-      <point num="right-bearing"/>
+     <move distance="soft-space" color="black">
+      <point num="low-outer-right"/>
+      <move distance="curve-stem" color="black" compile-if="slanted = 0">
+       <point num="low-inner-right"/>
+      </move>
+      <move min-distance="no" color="white" compile-if="slanted = 0">
+       <point num="right-bearing"/>
+      </move>
      </move>
     </move>
    </move>
@@ -230,6 +230,8 @@
      <shift-absolute pixel-distance="temp">
       <point num="rstem-right-top"/>
       <point num="up-inner-left-bottom"/>
+      <point num="low-inner-left-top"/>
+      <point num="low-inner-left-bottom"/>
      </shift-absolute>
      <call-macro name="shift-edge">
       <with-param name="shift" value="temp"/>
