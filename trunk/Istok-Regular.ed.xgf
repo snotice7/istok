@@ -906,6 +906,7 @@
   <xi:include href="upr_Ethsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Oslashsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_Thornsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_Eszettsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrBsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrGsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrDsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
@@ -944,7 +945,11 @@
   <xi:include href="upr_CyrNdescsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrNgsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrUstraightstrokesc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrKhadescsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrChdescsc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_CyrNhooksc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_CyrLhooksc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
+  <xi:include href="upr_Schwasc.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_section.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_degree.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
   <xi:include href="upr_paragraph.xgf" xpointer="xmlns(x=http://xgridfit.sourceforge.net/Xgridfit2)xpointer(//x:glyph)"/>
