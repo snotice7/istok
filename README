@@ -1,5 +1,5 @@
 Istok is a new sans serif typeface. At present it has the four fonts with
-support for Latin and Cyrillic. The most glyphs are manually instructed
+support for Latin and Cyrillic. Most glyphs are manually instructed
 using xgridfit but other ones are autoinstructed in fontforge.
 
 The fonts are distributed under the terms of Open Font License or GNU
@@ -48,3 +48,4 @@ The modified version of the CM Bright font was used for design of several
 letters as raw material, other charaters are designed from scratch.
 
 				Andrey V. Panov <panov@canopus.iacp.dvo.ru>
+
