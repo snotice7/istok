@@ -152,13 +152,14 @@ install:
 %.pe-dist: %.xml
 	$(XGRIDFIT) --processor=libxslt -p 25 -G no -l ff -i $*.gen.ttf -o $*.ttf -S pe/$* $*.xml
 
-OFLDOCS=ChangeLog TODO OFL.txt OFL-FAQ.txt FontLog.txt
+OFLDOCS=TODO OFL.txt OFL-FAQ.txt FontLog.txt
 # Only copyright holder can do this
 ofl-ttf: #all
 	mkdir -p OFL
 	-ln ChangeLog OFL/
 	-ln TODO OFL/
 	for f in $(TTFFILES) ; do fontforge -script gen_ofl.ff $$f OFL/$$f ; done
+	cat README ChangeLog >OFL/FontLog.txt
 
 dist-ofl-ttf:
 	(cd OFL ;\

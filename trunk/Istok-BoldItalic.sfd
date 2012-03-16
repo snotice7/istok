@@ -5,7 +5,7 @@ FamilyName: Istok
 Weight: Bold
 Copyright: (C) 2009, 2010, 2011, 2012 Andrey V. Panov
 UComments: "2008-10-29: Created." 
-Version: 0.4.2
+Version: 1.0
 ItalicAngle: -13
 UnderlinePosition: -204
 UnderlineWidth: 102
@@ -20,7 +20,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1331725620
+ModificationTime: 1331805550
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 432 16 13
+WinInfo: 352 16 13
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -350 -350 1136 1150]
@@ -76,7 +76,7 @@ Grid
 -1754.34 1272 m 0
  4389.66 1272 l 0
 EndSplineSet
-BeginChars: 65542 471
+BeginChars: 65542 472
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -23052,6 +23052,55 @@ SplineSet
  422 -33 422 -33 364 -33 c 256,21,22
  197 -33 197 -33 123 54.5 c 128,-1,23
  49 142 49 142 88 311 c 2,0,-1
+EndSplineSet
+EndChar
+
+StartChar: uni0196
+Encoding: 406 406 471
+Width: 938
+Flags: W
+HStem: -34 236<445.366 726.414> 1414 20G<406 628>
+DStem2: 32.5608 -34 324.722 -34 0.224951 0.97437<373.173 1513.07>
+LayerCount: 2
+Back
+SplineSet
+155 499 m 2,0,1
+ 354 1359 l 2,2,3
+ 371 1434 371 1434 441 1434 c 2,4,-1
+ 593 1434 l 2,5,6
+ 663 1434 663 1434 646 1359 c 2,7,-1
+ 442 476 l 2,8,9
+ 412 344 412 344 434.5 273 c 128,-1,10
+ 457 202 457 202 548 202 c 256,11,12
+ 579 202 579 202 622 211 c 128,-1,13
+ 665 220 665 220 695 234 c 256,14,15
+ 770 269 770 269 776 208 c 2,16,-1
+ 788 95 l 2,17,18
+ 794 41 794 41 738 16 c 256,19,20
+ 680 -10 680 -10 609 -22 c 128,-1,21
+ 538 -34 538 -34 474 -34 c 256,22,23
+ 246 -34 246 -34 171 104 c 128,-1,24
+ 96 242 96 242 155 499 c 2,0,1
+EndSplineSet
+Fore
+SplineSet
+160 518 m 2,0,1
+ 354 1359 l 2,2,3
+ 371 1434 371 1434 441 1434 c 2,4,-1
+ 593 1434 l 2,5,6
+ 663 1434 663 1434 646 1359 c 2,7,-1
+ 436 448 l 2,8,9
+ 407 324 407 324 433.5 263 c 128,-1,10
+ 460 202 460 202 538 202 c 256,11,12
+ 578 202 578 202 613 211 c 128,-1,13
+ 648 220 648 220 685 234 c 256,14,15
+ 752 259 752 259 766 208 c 2,16,-1
+ 797 97 l 2,17,18
+ 811 48 811 48 763 26 c 256,19,20
+ 694 -6 694 -6 626 -20 c 128,-1,21
+ 558 -34 558 -34 484 -34 c 256,22,23
+ 272 -34 272 -34 187 117 c 128,-1,24
+ 102 268 102 268 160 518 c 2,0,1
 EndSplineSet
 EndChar
 EndChars

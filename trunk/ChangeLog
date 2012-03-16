@@ -1,3 +1,10 @@
+2012-03-16 Andrey V. Panov
+	Added more smallcaps.
+	Added more extended Latin glyphs.
+	Manually instructed more characters (mostly extended Latin and Cyrillic).
+	Fixed several issues in manual instructions.
+	Version 1.0 is released.
+
 2011-06-23 Andrey V. Panov
 	Manually instructed several glyphs.
 	Changed Win and HHead OS/2 metrics.
