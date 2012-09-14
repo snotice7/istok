@@ -108,7 +108,7 @@
     </move>
    </move>
   </move>
-  <set-equal target="width" source="(upper-curl-outer-right -- right-bearing) - rbearing"/>
+  <set-equal target="width" source="(upper-curl-outer-right -- right-bearing)"/> <!--  - rbearing -->
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="upper-curl-outer-right"/>

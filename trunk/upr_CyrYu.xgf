@@ -129,7 +129,7 @@
     </move>
    </move>
   </move>
-  <set-equal target="width" source="(outer-right -- right-bearing)"/>  <!--- rbearing-->
+  <set-equal target="width" source="(outer-right -- right-bearing)"/>  <!-- - rbearing-->
   <if test="(joiner-left-bottom -- joiner-right-bottom) + width &lt;= 0">
    <add value1="width" value2="1.0p"/>
   </if>

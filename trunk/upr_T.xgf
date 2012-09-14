@@ -159,7 +159,7 @@
    </with-projection-vector>
    <round value="width"/>
    <else>
-    <set-equal target="width" source="(right-top -- right-bearing)"/>  <!--- rbearing-->
+    <set-equal target="width" source="(right-top -- right-bearing)"/>  <!-- - rbearing-->
    </else>
   </compile-if>
   <if test="width &lt; 0.0p or width &gt;= 2.0p">

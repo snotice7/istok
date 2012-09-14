@@ -140,7 +140,7 @@
    <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
    <set-round-state round="no"/>
   </compile-if>
-  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/>   <!--- rbearing-->
+  <set-equal target="width" source="(rdiag-right-top -- right-bearing)"/>   <!-- - rbearing-->
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="rdiag-right-top"/>

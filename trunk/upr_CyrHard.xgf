@@ -186,7 +186,7 @@
     </if>-->
    </else>
   </compile-if>
-  <set-equal target="width" source="(low-outer-right -- right-bearing)"/>  <!--- rbearing-->
+  <set-equal target="width" source="(low-outer-right -- right-bearing)"/>  <!-- - rbearing-->
   <if test="width &lt; 0.0p">
    <shift-absolute pixel-distance="width">
     <point num="lstem-left-bottom"/>

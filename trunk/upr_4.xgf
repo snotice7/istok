@@ -134,7 +134,7 @@
    <align>
     <point num="hstem-left-top"/>
    </align>
-   <move color="black">
+   <move>
     <point num="vstem-left-bottom"/>
     <align>
      <point num="hstem-intersect-left-bottom"/>
@@ -148,7 +148,7 @@
       <point num="hstem-intersect-right-bottom"/>
       <point num="hstem-intersect-right-top"/>
      </align>
-     <move color="black">
+     <move>
       <point num="hstem-right-top"/>
       <align>
        <point num="hstem-right-bottom"/>
@@ -208,7 +208,7 @@
     </align>
    </move>
    <else>
-    <set-equal target="width" source="(hstem-right-bottom -- right-bearing) - rbearing"/>
+    <set-equal target="width" source="(hstem-right-bottom -- right-bearing)"/> <!-- - rbearing-->
     <if test="width &lt; 0.0p">
      <shift-absolute pixel-distance="width">
       <point num="hstem-right-bottom"/>
