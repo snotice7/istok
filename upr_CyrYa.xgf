@@ -162,7 +162,7 @@
    </move>
   </move>
   <compile-if test="slanted = 0">
-   <set-equal target="width" source="(vstem-right-bottom -- right-bearing) - rbearing"/>
+   <set-equal target="width" source="(vstem-right-bottom -- right-bearing)"/> <!-- - rbearing -->
    <if test="width &lt; 0.0p">
     <!--   <compile-if test="slanted">
      <shift-absolute pixel-distance="width">
