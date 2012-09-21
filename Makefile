@@ -93,22 +93,31 @@ $(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd inst_acc.py
 tex-support: all
 	mkdir -p texmf
 	-rm -rf ./texmf/*
-	mkdir -p texmf/fonts/truetype/public/$(PKGNAME)
-	cp -a $(TTFFILES) texmf/fonts/truetype/public/$(PKGNAME)/
+	#mkdir -p texmf/fonts/truetype/public/$(PKGNAME)
+	#cp -a $(TTFFILES) texmf/fonts/truetype/public/$(PKGNAME)/
 	TEXMFVAR=`pwd`/texmf autoinst --encoding=$(TEXENC) \
-	--extra="--typeface=$(PKGNAME) --no-updmap  --vendor=public  --type42" \
-	--sanserif \
+	--extra="--automatic --typeface=$(PKGNAME) --no-updmap  --vendor=public  --type42" \
+	--sanserif -target=./texmf \
 	$(TTFFILES)
-	mkdir -p texmf/fonts/enc/dvips/$(PKGNAME)
-	mv texmf/fonts/enc/dvips/public/* texmf/fonts/enc/dvips/$(PKGNAME)/
-	-rm -r texmf/fonts/enc/dvips/public
-	mkdir -p texmf/tex/latex/$(PKGNAME)
+	mkdir -p texmf/fonts/enc/dvips/$(PKGNAME) texmf/fonts/vf/public/ texmf/fonts/tfm/public \
+	texmf/fonts/truetype/public texmf/fonts/type42/public
+	mv texmf/fonts/enc/dvips/lcdftools/* texmf/fonts/enc/dvips/$(PKGNAME)/
+	mv -T texmf/fonts/vf/lcdftools/Istok texmf/fonts/vf/public/$(PKGNAME)
+	mv -T texmf/fonts/tfm/lcdftools/Istok texmf/fonts/tfm/public/$(PKGNAME)
+	mv -T texmf/fonts/truetype/lcdftools/Istok texmf/fonts/truetype/public/$(PKGNAME)
+	mv -T texmf/fonts/type42/lcdftools/Istok texmf/fonts/type42/public/$(PKGNAME)
+	-rm -r texmf/fonts/enc/dvips/lcdftools texmf/fonts/vpl texmf/fonts/pl \
+	texmf/fonts/tfm/lcdftools texmf/fonts/vf/lcdftools texmf/fonts/type42/lcdftools \
+	texmf/fonts/truetype/lcdftools texmf/fonts/type1
+	mv -T texmf/tex/latex/Istok texmf/tex/latex/$(PKGNAME)
+	#mkdir -p texmf/tex/latex/$(PKGNAME)
 	mkdir -p texmf/fonts/map/dvips/$(PKGNAME)
-	mv *$(FAMILY)-TLF.fd texmf/tex/latex/$(PKGNAME)/
-	mv $(FAMILY).sty texmf/tex/latex/$(PKGNAME)/$(PKGNAME).sty
-	mv $(FAMILY).map texmf/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
+	#mv *$(FAMILY)-TLF.fd texmf/tex/latex/$(PKGNAME)/
+	mv texmf/tex/latex/$(PKGNAME)/$(FAMILY).sty texmf/tex/latex/$(PKGNAME)/$(PKGNAME).sty
+	mv texmf/fonts/map/dvips/lcdftools/$(FAMILY).map texmf/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
 	mkdir -p texmf/dvips/$(PKGNAME)
 	echo "p +$(PKGNAME).map" > texmf/dvips/$(PKGNAME)/config.$(PKGNAME)
+	-rm -r texmf/fonts/map/dvips/lcdftools
 	mkdir -p texmf/doc/fonts/$(PKGNAME)
 	cp -p $(DOCUMENTS) texmf/doc/fonts/$(PKGNAME)/
 

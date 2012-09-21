@@ -50,6 +50,7 @@ else
  same_kern.ff("globkern","copyen")
 endif
 make_kern.ff(cursive)
+make_kern_latin1.ff()
 #endif
 if (smallcap)
  combining_sc.ff(30)
