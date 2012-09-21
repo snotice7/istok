@@ -1,3 +1,8 @@
+2012-09-20 Andrey V. Panov
+	Smoothed contours of "a".
+	Fixed an issue with rendering "four", Cyrillic ya.
+	Version 1.0.1 is released.
+
 2012-03-16 Andrey V. Panov
 	Added more smallcaps.
 	Added more extended Latin glyphs.
