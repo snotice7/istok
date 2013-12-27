@@ -20,7 +20,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1332244171
+ModificationTime: 1388142639
 PfmFamily: 33
 TTFWeight: 700
 TTFWidth: 5
@@ -53,7 +53,7 @@ NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 80 16 13
+WinInfo: 8320 16 13
 BeginPrivate: 8
 BlueValues 47 [-34 0 1050 1070 1422 1423 1434 1468 1476 1496]
 OtherBlues 41 [-420 -400 -370 -370 -310 -310 1136 1150]
@@ -79,7 +79,7 @@ Grid
 -2048 1272 m 0
  4096 1272 l 0
 EndSplineSet
-BeginChars: 65542 463
+BeginChars: 65542 466
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -7759,7 +7759,7 @@ DStem2: 1335 1507 1488 1401 0.573613 0.819126<-1839.56 60.5504>
 LayerCount: 2
 Fore
 Refer: 178 61698 N 1 0 0 1 59 794 2
-Refer: 179 8725 S 1 0 0 1 445 0 2
+Refer: 179 8725 N 1 0 0 1 445 0 2
 Refer: 178 61698 N 1 0 0 1 1037 0 2
 EndChar
 
@@ -19700,6 +19700,91 @@ SplineSet
  666 -34 666 -34 602 -34 c 256,22,23
  374 -34 374 -34 267 104 c 128,-1,24
  160 242 160 242 160 499 c 2,0,1
+EndSplineSet
+EndChar
+
+StartChar: perthousand
+Encoding: 8240 8240 463
+Width: 2616
+Flags: W
+LayerCount: 2
+Fore
+Refer: 178 61698 N 1 0 0 1 1851 0 2
+Refer: 177 37 N 1 0 0 1 0 0 2
+EndChar
+
+StartChar: uni2031
+Encoding: 8241 8241 464
+Width: 3430
+Flags: W
+LayerCount: 2
+Fore
+Refer: 178 61698 N 1 0 0 1 2665 0 2
+Refer: 178 61698 N 1 0 0 1 1851 0 2
+Refer: 177 37 N 1 0 0 1 0 0 2
+EndChar
+
+StartChar: afii61289
+Encoding: 8467 8467 465
+Width: 971
+Flags: MW
+HStem: -23 201<465.716 705.448> 501 212<431 435> 1297 190<477.426 631.444>
+VStem: 175 260<210.516 359 513.95 532.334 714.25 1255.14> 650 227<949.057 1277.23>
+LayerCount: 2
+UndoRedoHistory
+Layer: 0
+Undoes
+EndUndoes
+Redoes
+EndRedoes
+EndUndoRedoHistory
+UndoRedoHistory
+Layer: 1
+Undoes
+EndUndoes
+Redoes
+EndRedoes
+EndUndoRedoHistory
+Fore
+SplineSet
+55 314 m 2,0,-1
+ 55 413 l 2,1,2
+ 55 461 55 461 100 492 c 256,3,4
+ 144 522 144 522 175 555 c 1,5,-1
+ 175 939 l 2,6,7
+ 175 1245 175 1245 282 1366 c 128,-1,8
+ 389 1487 389 1487 550 1487 c 256,9,10
+ 716 1487 716 1487 796.5 1397.5 c 128,-1,11
+ 877 1308 877 1308 877 1194 c 256,12,13
+ 877 1032 877 1032 798.5 867.5 c 128,-1,14
+ 720 703 720 703 435 501 c 1,15,-1
+ 435 367 l 2,16,17
+ 435 240 435 240 478.5 209 c 128,-1,18
+ 522 178 522 178 568 178 c 256,19,20
+ 642 178 642 178 690.5 211.5 c 128,-1,21
+ 739 245 739 245 768 286 c 256,22,23
+ 799 329 799 329 838 302 c 266,24,-1
+ 902 258 l 282,25,26
+ 940 232 940 232 910 184 c 256,27,28
+ 854 94 854 94 764 35.5 c 128,-1,29
+ 674 -23 674 -23 529 -23 c 256,30,31
+ 369 -23 369 -23 272 66.5 c 128,-1,32
+ 175 156 175 156 175 317 c 2,33,-1
+ 175 319 l 2,34,35
+ 175 339 175 339 177 359 c 9,36,-1
+ 175 359 l 17,37,38
+ 141 319 141 319 110 298 c 256,39,40
+ 55 261 55 261 55 314 c 2,0,-1
+431 713 m 25,41,-1
+ 435 713 l 17,42,43
+ 576 847 576 847 613 948.5 c 128,-1,44
+ 650 1050 650 1050 650 1198 c 256,45,46
+ 650 1242 650 1242 627 1269.5 c 128,-1,47
+ 604 1297 604 1297 560 1297 c 256,48,49
+ 484 1297 484 1297 459.5 1211 c 128,-1,50
+ 435 1125 435 1125 435 927 c 2,51,-1
+ 435 793 l 2,52,53
+ 435 753 435 753 431 713 c 25,41,-1
 EndSplineSet
 EndChar
 EndChars
