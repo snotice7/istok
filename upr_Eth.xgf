@@ -78,7 +78,7 @@
    <align>
     <point num="upper-hstem-right-top"/>
    </align>
-   <move distance="cap-horiz-stem" color="black">
+   <move distance="horiz-stem" color="black">
     <point num="inner-left-top"/>
     <align>
      <point num="inner-right-top"/>
