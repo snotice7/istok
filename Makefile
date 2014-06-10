@@ -1,4 +1,5 @@
 FONTFORGE:=/usr/bin/env fontforge
+XGRIDFIT:=/usr/bin/env xgridfit
 VERSION:=$(shell date +"%Y%m%d")
 FAMILY=Istok
 PKGNAME=istok
@@ -6,8 +7,9 @@ SFDFILES=$(FAMILY)-Regular.sfd $(FAMILY)-Italic.sfd $(FAMILY)-Bold.sfd $(FAMILY)
 DOCUMENTS=AUTHORS ChangeLog COPYING README TODO
 #OTFFILES=$(FAMILY)-Regular.otf $(FAMILY)-Italic.otf $(FAMILY)-Bold.otf $(FAMILY)-BoldItalic.otf
 TTFFILES=$(FAMILY)-Regular.ttf $(FAMILY)-Italic.ttf $(FAMILY)-Bold.ttf $(FAMILY)-BoldItalic.ttf
-#PFBFILES=$(FAMILY)-Regular.pfb $(FAMILY)-Italic.pfb $(FAMILY)-Bold.pfb $(FAMILY)-BoldItalic.pfb
+PFBFILES=$(FAMILY)-Regular.pfb $(FAMILY)-Italic.pfb $(FAMILY)-Bold.pfb $(FAMILY)-BoldItalic.pfb
 #AFMFILES=$(FAMILY)-Regular.afm $(FAMILY)-Italic.afm $(FAMILY)-Bold.afm $(FAMILY)-BoldItalic.afm
+XGRIDFITFLAGS=-p 25 -G no
 FFSCRIPTS=generate.ff 
 EXTRAFFSCRIPTS=make_dup_vertshift.ff new_glyph.ff add_anchor_ext.ff \
 	add_anchor_y.ff add_anchor_med.ff anchors.ff combining.ff make_comb.ff \
@@ -22,13 +24,13 @@ EXTRAFFSCRIPTS=make_dup_vertshift.ff new_glyph.ff add_anchor_ext.ff \
 XGFFILES=skipautoinst.txt \
 	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf $(FAMILY)-BoldItalic.ed.xgf
 
-XGRIDFIT=xgridfit
 COMPRESS=xz -9
-TEXENC=ot1,t1,t2a
+TEXENC=t1,t2a,t2b,t2c,ts1,ot1
 #PYTHON=python -W all
 PYTHON=fontforge -lang=py -script 
 
-INSTALL=install
+TEXPREFIX=./texmf
+INSTALL=install -m 644 -p
 DESTDIR=
 prefix=/usr
 fontdir=$(prefix)/share/fonts/TTF
@@ -39,14 +41,26 @@ all: $(TTFFILES)
 $(FAMILY)-Regular.gen.ttf: $(FAMILY)-Regular.sfd  $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Regular
 
+$(FAMILY)-Regular.ttf: $(FAMILY)-Regular.py $(FAMILY)-Regular.gen.ttf
+	$(FONTFORGE) -lang=py -script $(FAMILY)-Regular.py
+
 $(FAMILY)-Italic.gen.ttf: $(FAMILY)-Italic.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Italic 
+
+$(FAMILY)-Italic.ttf: $(FAMILY)-Italic.py $(FAMILY)-Italic.gen.ttf
+	$(FONTFORGE) -lang=py -script $(FAMILY)-Italic.py
 
 $(FAMILY)-Bold.gen.ttf: $(FAMILY)-Bold.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-Bold 
 
 $(FAMILY)-BoldItalic.gen.ttf: $(FAMILY)-BoldItalic.sfd $(FFSCRIPTS) $(EXTRAFFSCRIPTS)
 	fontforge -lang=ff -script generate.ff $(FAMILY)-BoldItalic 
+
+$(FAMILY)-BoldItalic.ttf: $(FAMILY)-BoldItalic.py $(FAMILY)-BoldItalic.gen.ttf
+	$(FONTFORGE) -lang=py -script $(FAMILY)-BoldItalic.py
+
+%.gen.ttf: %.sfd
+	fontforge -lang=ff -script generate.ff $*
 
 %.pdf: %.ttf
 	fntsample -f $< -o $@
@@ -85,41 +99,35 @@ $(FAMILY)-Regular_acc.xgf: $(FAMILY)-Regular_.sfd inst_acc.py
 $(FAMILY)-Bold_acc.xgf: $(FAMILY)-Bold_.sfd inst_acc.py
 	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-Bold_.sfd  -o $(FAMILY)-Bold_acc.xgf
 
-%_acc.xgf: %_.sfd inst_acc.py
+$(FAMILY)-BoldItalic_acc.xgf: $(FAMILY)-BoldItalic.gen.ttf inst_acc.py
+	$(PYTHON) inst_acc.py -c -s skipautoinst.txt -i $(FAMILY)-BoldItalic_.sfd  -o $(FAMILY)-BoldItalic_acc.xgf
+
+%_acc.xgf: %.gen.ttf inst_acc.py
 	$(PYTHON) inst_acc.py -s skipautoinst.txt -i $*_.sfd  -o $*_acc.xgf
 
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
 tex-support: all
-	mkdir -p texmf
+	mkdir -p $(TEXPREFIX)
 	-rm -rf ./texmf/*
-	#mkdir -p texmf/fonts/truetype/public/$(PKGNAME)
-	#cp -a $(TTFFILES) texmf/fonts/truetype/public/$(PKGNAME)/
-	TEXMFVAR=`pwd`/texmf autoinst --encoding=$(TEXENC) \
-	--extra="--automatic --typeface=$(PKGNAME) --no-updmap  --vendor=public  --type42" \
-	--sanserif -target=./texmf \
+	TEXMFVAR=$(TEXPREFIX) autoinst --encoding=$(TEXENC) -typeface=$(PKGNAME) \
+	-vendor=public --extra="--no-updmap" \
+	--sanserif -target=$(TEXPREFIX) \
 	$(TTFFILES)
-	mkdir -p texmf/fonts/enc/dvips/$(PKGNAME) texmf/fonts/vf/public/ texmf/fonts/tfm/public \
-	texmf/fonts/truetype/public texmf/fonts/type42/public
-	mv texmf/fonts/enc/dvips/lcdftools/* texmf/fonts/enc/dvips/$(PKGNAME)/
-	mv -T texmf/fonts/vf/lcdftools/Istok texmf/fonts/vf/public/$(PKGNAME)
-	mv -T texmf/fonts/tfm/lcdftools/Istok texmf/fonts/tfm/public/$(PKGNAME)
-	mv -T texmf/fonts/truetype/lcdftools/Istok texmf/fonts/truetype/public/$(PKGNAME)
-	mv -T texmf/fonts/type42/lcdftools/Istok texmf/fonts/type42/public/$(PKGNAME)
-	-rm -r texmf/fonts/enc/dvips/lcdftools texmf/fonts/vpl texmf/fonts/pl \
-	texmf/fonts/tfm/lcdftools texmf/fonts/vf/lcdftools texmf/fonts/type42/lcdftools \
-	texmf/fonts/truetype/lcdftools texmf/fonts/type1
-	mv -T texmf/tex/latex/Istok texmf/tex/latex/$(PKGNAME)
-	#mkdir -p texmf/tex/latex/$(PKGNAME)
-	mkdir -p texmf/fonts/map/dvips/$(PKGNAME)
-	#mv *$(FAMILY)-TLF.fd texmf/tex/latex/$(PKGNAME)/
-	mv texmf/tex/latex/$(PKGNAME)/$(FAMILY).sty texmf/tex/latex/$(PKGNAME)/$(PKGNAME).sty
-	mv texmf/fonts/map/dvips/lcdftools/$(FAMILY).map texmf/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
-	mkdir -p texmf/dvips/$(PKGNAME)
-	echo "p +$(PKGNAME).map" > texmf/dvips/$(PKGNAME)/config.$(PKGNAME)
-	-rm -r texmf/fonts/map/dvips/lcdftools
-	mkdir -p texmf/doc/fonts/$(PKGNAME)
-	cp -p $(DOCUMENTS) texmf/doc/fonts/$(PKGNAME)/
+	mkdir -p $(TEXPREFIX)/fonts/type42/public/$(PKGNAME) $(TEXPREFIX)/fonts/type1/public/$(PKGNAME)
+	for i in $(TTFFILES) ; do \
+	 BASE=`basename $${i} .ttf`; \
+	 ttftotype42 $${i} $(TEXPREFIX)/fonts/type42/public/$(PKGNAME)/$${BASE}.t42; \
+	done
+	$(INSTALL) $(PFBFILES) $(TEXPREFIX)/fonts/type1/public/$(PKGNAME)
+	mkdir -p $(TEXPREFIX)/fonts/enc/dvips/$(PKGNAME)
+	mv $(TEXPREFIX)/tex/latex/$(PKGNAME)/$(FAMILY).sty $(TEXPREFIX)/tex/latex/$(PKGNAME)/$(PKGNAME).sty
+	mv $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(FAMILY).map $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
+	mkdir -p $(TEXPREFIX)/dvips/$(PKGNAME)
+	echo "p +$(PKGNAME).map" > $(TEXPREFIX)/dvips/$(PKGNAME)/config.$(PKGNAME)
+	mkdir -p $(TEXPREFIX)/doc/fonts/$(PKGNAME)
+	$(INSTALL) $(DOCUMENTS) $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map $(TEXPREFIX)/doc/fonts/$(PKGNAME)/
+	sed -i -e "s/\.ttf/\.pfb/g" $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
 
 dist-src:
 	tar -cvf $(PKGNAME)-src-$(VERSION).tar $(SFDFILES) Makefile $(FFSCRIPTS) $(DOCUMENTS)  $(XGFFILES) $(DIFFFILES)
@@ -134,7 +142,8 @@ dist-zip: all
 	zip -9 $(PKGNAME)-ttf-$(VERSION).zip \
 	$(TTFFILES) $(DOCUMENTS)
 
-dist-tex:
+dist: TEXPREFIX=./texmf
+dist-tex: tex-support
 	( cd ./texmf ;\
 	tar -cvf ../$(PKGNAME)-tex-$(VERSION).tar \
 	doc dvips fonts tex )
