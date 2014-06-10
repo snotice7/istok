@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<xgridfit xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+ <glyph ps-name="uni20BD" init-graphics="yes">
+  <!--
+      
+      Copyright (C) 2014  Andrey V. Panov
+      
+      This program is free software: you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation, either version 3 of the License, or
+      (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+      
+      You should have received a copy of the GNU General Public License
+      along with this program.  If not, see "http://www.gnu.org/licenses/".
+      
+      -->
+  
+  <param name="baseline" value="cap-x-baseline"/>
+  <param name="x-height" value="digit-height"/>
+  <param name="vert-stem" value="digit-vert-stem"/>
+  <param name="curve-vstem" value="digit-thinner-curve-stem"/>
+  <param name="horiz-stem" value="digit-mid-horiz-stem"/>
+  
+  <constant name="hstem-left-bottom" value="first-point"/>
+  <constant name="hstem-left-top" value="hstem-left-bottom + hstem-vcount"/>
+  <constant name="intersect-left-top" value="hstem-left-top + smooth-count"/>
+  <constant name="intersect2-left-bottom" value="intersect-left-top + 1"/>
+  <constant name="hstem2-left-bottom" value="intersect2-left-bottom + smooth-count"/>
+  <constant name="hstem2-left-top" value="hstem2-left-bottom + hstem-vcount"/>
+  <constant name="intersect2-left-top" value="hstem2-left-top + smooth-count"/>
+  <constant name="lstem-left-top" value="intersect2-left-top + smooth-count"/>
+  <constant name="upper-hstem-right-top" value="lstem-left-top + smooth-count"/>
+  <constant name="up-outer-right" value="upper-hstem-right-top + 3"/>
+  <constant name="lower-hstem-right-bottom" value="up-outer-right + 3"/>
+  <constant name="lower-hstem-left-bottom" value="lower-hstem-right-bottom + 1"/>
+  <constant name="intersect-right-top" value="lower-hstem-left-bottom + 1"/>
+  <constant name="hstem-right-top" value="intersect-right-top + smooth-count"/>
+  <constant name="hstem-right-bottom" value="hstem-right-top + hstem-vcount"/>
+  <constant name="intersect-right-bottom" value="hstem-right-bottom + smooth-count"/>
+  <constant name="lstem-right-bottom" value="intersect-right-bottom + smooth-count"/>
+  <constant name="lstem-left-bottom" value="lstem-right-bottom + vstem-vcount"/>
+  <constant name="intersect-left-bottom" value="lstem-left-bottom + smooth-count"/>
+  <constant name="up-inner-left-bottom" value="41"/>
+  <constant name="up-inner-right-bottom" value="up-inner-left-bottom + 1"/>
+  <constant name="up-inner-right" value="up-inner-right-bottom + 3"/>
+  <constant name="up-inner-right-top" value="up-inner-right + 3"/>
+  <constant name="up-inner-left-top" value="up-inner-right-top + 1"/>
+  <constant name="last" value="up-inner-left-top"/>
+  
+  <compile-if test="slanted">
+   <set-freedom-vector x-component="x-skew2" y-component="y-skew2"/>
+   <set-projection-vector axis="y"/>
+   <!--   <set-round-state round="to-grid"/> -->
+   <else>
+    <set-vectors axis="y"/>
+   </else>
+  </compile-if>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="no"/>
+   </if>
+  </compile-if>
+  
+  <move distance="baseline">
+   <point num="lstem-left-bottom"/>
+   <align>
+    <point num="lstem-right-bottom"/>
+   </align>
+  </move>
+  <move distance="x-height">
+   <point num="lstem-left-top"/>
+   <align>
+    <point num="upper-hstem-right-top"/>
+   </align>
+   <move distance="horiz-stem" color="black">
+    <point num="up-inner-left-top"/>
+    <align>
+     <point num="up-inner-right-top"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  <move>
+   <reference>
+    <point num="lstem-left-top"/>
+   </reference>
+   <point num="lower-hstem-left-bottom"/>
+   <align>
+    <point num="lower-hstem-right-bottom"/>
+    <point num="hstem2-left-bottom"/>
+   </align>
+   <move round="no" distance="horiz-stem" color="black">
+    <point num="up-inner-left-bottom"/>
+    <align>
+     <point num="up-inner-right-bottom"/>
+     <point num="hstem2-left-top"/>
+    </align>
+   </move>
+   <move color="white">
+    <point num="intersect-left-top"/>
+    <align>
+     <point num="intersect-right-top"/>
+     <point num="hstem-left-top"/>
+     <point num="hstem-right-top"/>
+    </align>
+    <move round="no" distance="horiz-stem" color="black">
+     <point num="intersect-left-bottom"/>
+     <align>
+      <point num="intersect-right-bottom"/>
+      <point num="hstem-left-bottom"/>
+      <point num="hstem-right-bottom"/>
+     </align>
+    </move>
+   </move>
+  </move>
+  
+  <set-vectors axis="x"/>
+  <compile-if test="smooth">
+   <if test="vertical-smoothing">
+    <set-round-state round="to-grid"/>
+   </if>
+  </compile-if>
+  
+  <move color="white">
+   <reference>
+    <point num="left-bearing"/>
+   </reference>
+   <point num="lstem-left-bottom"/>
+   <align compile-if="slanted = 0">
+    <point num="lstem-left-top"/>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-left-top"/>
+    <point num="intersect2-left-bottom"/>
+    <point num="intersect2-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black" compile-if="slanted = 0">
+    <point num="up-inner-left-top"/>
+    <align>
+     <point num="up-inner-left-bottom"/>
+     <point num="lower-hstem-left-bottom"/>
+     <point num="lstem-right-bottom"/>
+     <point num="intersect-right-bottom"/>
+     <point num="intersect-right-top"/>
+    </align>
+   </move>
+  </move>
+  <compile-if test="slanted">
+   <compile-if test="smooth">
+    <if test="horizontal-smoothing">
+     <call-macro name="shift-edge-slanted">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="lstem-left-bottom"/>
+     </shift-absolute>
+    </if>
+   </compile-if>
+   <set-projection-vector x-component="x-skew1" y-component="y-skew1"/>
+   <set-round-state round="no"/>
+   <align>
+    <reference>
+     <point num="lstem-left-bottom"/>
+    </reference>
+    <point num="lstem-left-top"/>
+    <point num="intersect-left-bottom"/>
+    <point num="intersect-left-top"/>
+    <point num="intersect2-left-bottom"/>
+    <point num="intersect2-left-top"/>
+   </align>
+   <move distance="vert-stem" color="black">
+    <reference>
+     <point num="lstem-left-bottom"/>
+    </reference>
+    <point num="up-inner-left-top"/>
+    <align>
+     <point num="up-inner-left-bottom"/>
+     <point num="lower-hstem-left-bottom"/>
+     <point num="lstem-right-bottom"/>
+     <point num="intersect-right-top"/>
+     <point num="intersect-right-bottom"/>
+    </align>
+   </move>
+   <set-projection-vector axis="x"/>
+   <set-round-state round="to-grid"/>
+  </compile-if>
+  <move min-distance="no" color="white">
+   <reference>
+    <point num="right-bearing"/>
+   </reference>
+   <point num="up-outer-right"/>
+   <move distance="curve-vstem" color="black">
+    <point num="up-inner-right"/>
+   </move>
+  </move>
+  <compile-if test="smooth">
+   <if test="horizontal-smoothing">
+    <compile-if test="slanted = 0">
+     <call-macro name="shift-edge">
+      <with-param name="shift" value="temp"/>
+      <with-param name="cv" value="vert-stem"/>
+     </call-macro>
+     <shift-absolute pixel-distance="negative(temp)">
+      <point num="lstem-left-bottom"/>
+      <point num="lstem-left-top"/>
+      <point num="intersect-left-bottom"/>
+      <point num="intersect-left-top"/>
+      <point num="intersect2-left-bottom"/>
+      <point num="intersect2-left-top"/>
+     </shift-absolute>
+     <shift-absolute pixel-distance="temp">
+      <point num="up-inner-left-top"/>
+      <point num="up-inner-left-bottom"/>
+      <point num="lower-hstem-left-bottom"/>
+      <point num="lstem-right-bottom"/>
+      <point num="intersect-right-bottom"/>
+      <point num="intersect-right-top"/>
+     </shift-absolute>
+    </compile-if>
+    <call-macro name="shift-edge">
+     <with-param name="shift" value="temp"/>
+     <with-param name="cv" value="curve-vstem"/>
+    </call-macro>
+    <shift-absolute pixel-distance="negative(temp)">
+     <point num="up-inner-right"/>
+    </shift-absolute>
+    <shift-absolute pixel-distance="temp">
+     <point num="up-outer-right"/>
+    </shift-absolute>
+   </if>
+  </compile-if>
+  
+  <interpolate-untouched-points/>
+ </glyph>
+</xgridfit>
