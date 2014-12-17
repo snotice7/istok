@@ -24,13 +24,18 @@ EXTRAFFSCRIPTS=make_dup_vertshift.ff new_glyph.ff add_anchor_ext.ff \
 XGFFILES=skipautoinst.txt \
 	upr_*.xgf $(FAMILY)-Regular.ed.xgf it_*.xgf $(FAMILY)-Italic.ed.xgf $(FAMILY)-Bold.xgf $(FAMILY)-BoldItalic.ed.xgf
 
+INSTALL=install -m 644 -p
+MKDIR=install -m 755 -d
+TAR=tar --owner=root --group=root -cvf
+TARPREFIX=tar --owner=root --group=root \
+ --transform 's,^,$(PKGNAME)-$(VERSION)/,' --show-transformed-names -cvf
 COMPRESS=xz -9
+TTX=ttx
 TEXENC=t1,t2a,t2b,t2c,ts1,ot1
 #PYTHON=python -W all
 PYTHON=fontforge -lang=py -script 
 
 TEXPREFIX=./texmf
-INSTALL=install -m 644 -p
 DESTDIR=
 prefix=/usr
 fontdir=$(prefix)/share/fonts/TTF
@@ -77,7 +82,7 @@ $(FAMILY)-Bold.py: $(FAMILY)-Bold.xgf $(FAMILY)-Bold_acc.xgf upr_*.xgf
 
 %.gen.ttx: %.gen.ttf 
 	-rm $*.gen.ttx
-	ttx $*.gen.ttf
+	$(TTX) $*.gen.ttf
 
 %.gen.xgf: %.gen.ttx
 	-rm $*.xgf
@@ -108,33 +113,33 @@ $(FAMILY)-BoldItalic_acc.xgf: $(FAMILY)-BoldItalic.gen.ttf inst_acc.py
 .SECONDARY : *.py *.xml *.xgf *.ttx
 
 tex-support: all
-	mkdir -p $(TEXPREFIX)
+	$(MKDIR) $(TEXPREFIX)
 	-rm -rf ./texmf/*
 	TEXMFVAR=$(TEXPREFIX) autoinst --encoding=$(TEXENC) -typeface=$(PKGNAME) \
 	-vendor=public --extra="--no-updmap" \
 	--sanserif -target=$(TEXPREFIX) \
 	$(TTFFILES)
-	mkdir -p $(TEXPREFIX)/fonts/type42/public/$(PKGNAME) $(TEXPREFIX)/fonts/type1/public/$(PKGNAME)
+	$(MKDIR) $(TEXPREFIX)/fonts/type42/public/$(PKGNAME) $(TEXPREFIX)/fonts/type1/public/$(PKGNAME)
 	for i in $(TTFFILES) ; do \
 	 BASE=`basename $${i} .ttf`; \
 	 ttftotype42 $${i} $(TEXPREFIX)/fonts/type42/public/$(PKGNAME)/$${BASE}.t42; \
 	done
 	$(INSTALL) $(PFBFILES) $(TEXPREFIX)/fonts/type1/public/$(PKGNAME)
-	mkdir -p $(TEXPREFIX)/fonts/enc/dvips/$(PKGNAME)
+	$(MKDIR) $(TEXPREFIX)/fonts/enc/dvips/$(PKGNAME)
 	mv $(TEXPREFIX)/tex/latex/$(PKGNAME)/$(FAMILY).sty $(TEXPREFIX)/tex/latex/$(PKGNAME)/$(PKGNAME).sty
 	mv $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(FAMILY).map $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
-	mkdir -p $(TEXPREFIX)/dvips/$(PKGNAME)
+	$(MKDIR) $(TEXPREFIX)/dvips/$(PKGNAME)
 	echo "p +$(PKGNAME).map" > $(TEXPREFIX)/dvips/$(PKGNAME)/config.$(PKGNAME)
-	mkdir -p $(TEXPREFIX)/doc/fonts/$(PKGNAME)
+	$(MKDIR) $(TEXPREFIX)/doc/fonts/$(PKGNAME)
 	$(INSTALL) $(DOCUMENTS) $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map $(TEXPREFIX)/doc/fonts/$(PKGNAME)/
 	sed -i -e "s/\.ttf/\.pfb/g" $(TEXPREFIX)/fonts/map/dvips/$(PKGNAME)/$(PKGNAME).map
 
 dist-src:
-	tar -cvf $(PKGNAME)-src-$(VERSION).tar $(SFDFILES) Makefile $(FFSCRIPTS) $(DOCUMENTS)  $(XGFFILES) $(DIFFFILES)
+	$(TARPREFIX) $(PKGNAME)-src-$(VERSION).tar $(SFDFILES) Makefile $(FFSCRIPTS) $(DOCUMENTS)  $(XGFFILES) $(DIFFFILES)
 	$(COMPRESS) $(PKGNAME)-src-$(VERSION).tar
 
 dist-ttf: all
-	tar -cvf $(PKGNAME)-ttf-$(VERSION).tar \
+	$(TARPREFIX) $(PKGNAME)-ttf-$(VERSION).tar \
 	$(TTFFILES) $(DOCUMENTS)
 	$(COMPRESS) $(PKGNAME)-ttf-$(VERSION).tar
 
@@ -145,7 +150,7 @@ dist-zip: all
 dist: TEXPREFIX=./texmf
 dist-tex: tex-support
 	( cd ./texmf ;\
-	tar -cvf ../$(PKGNAME)-tex-$(VERSION).tar \
+	$(TAR) ../$(PKGNAME)-tex-$(VERSION).tar \
 	doc dvips fonts tex )
 	$(COMPRESS) $(PKGNAME)-tex-$(VERSION).tar
 
@@ -162,9 +167,9 @@ distclean :
 	-rm $(OTFFILES) $(TTFFILES) $(PFBFILES) $(AFMFILES) $(FAMILY)-*_.sfd $(FAMILY)-*_acc.xgf
 
 install:
-	mkdir -p $(DESTDIR)$(fontdir)
+	$(MKDIR) $(DESTDIR)$(fontdir)
 	$(INSTALL) -p --mode=644 $(TTFFILES) $(DESTDIR)$(fontdir)/
-	mkdir -p $(DESTDIR)$(docdir)
+	$(MKDIR) $(DESTDIR)$(docdir)
 	$(INSTALL) -p --mode=644 $(DOCUMENTS) $(DESTDIR)$(docdir)/
 
 %.pe-dist: %.xml
@@ -173,7 +178,7 @@ install:
 OFLDOCS=TODO OFL.txt OFL-FAQ.txt FontLog.txt
 # Only copyright holder can do this
 ofl-ttf: #all
-	mkdir -p OFL
+	$(MKDIR) OFL
 	-ln ChangeLog OFL/
 	-ln TODO OFL/
 	for f in $(TTFFILES) ; do fontforge -script gen_ofl.ff $$f OFL/$$f ; done
@@ -181,7 +186,7 @@ ofl-ttf: #all
 
 dist-ofl-ttf:
 	(cd OFL ;\
-	tar -cvf ../$(PKGNAME)-ofl-ttf-$(VERSION).tar \
+	$(TARPREFIX) ../$(PKGNAME)-ofl-ttf-$(VERSION).tar \
 	$(TTFFILES) $(OFLDOCS) )
 	$(COMPRESS) $(PKGNAME)-ofl-ttf-$(VERSION).tar
 
