@@ -1,3 +1,8 @@
+2014-12-23 Andrey V. Panov
+	added U+20B8, "estimated", "radical", "infinity", "lozenge", U+2071, 
+	U+207F, U+2103.
+	Version 1.0.3 is released.
+
 2014-06-10 Andrey V. Panov
 	Added several mathematical symbols.
 	Added ruble sign.
