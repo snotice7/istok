@@ -177,14 +177,14 @@ install:
 
 OFLDOCS=TODO OFL.txt OFL-FAQ.txt FontLog.txt
 # Only copyright holder can do this
-ofl-ttf: #all
+ofl-ttf: all
 	$(MKDIR) OFL
 	-ln ChangeLog OFL/
 	-ln TODO OFL/
 	for f in $(TTFFILES) ; do fontforge -script gen_ofl.ff $$f OFL/$$f ; done
 	cat README ChangeLog >OFL/FontLog.txt
 
-dist-ofl-ttf:
+dist-ofl-ttf: ofl-ttf
 	(cd OFL ;\
 	$(TARPREFIX) ../$(PKGNAME)-ofl-ttf-$(VERSION).tar \
 	$(TTFFILES) $(OFLDOCS) )
