@@ -4,23 +4,24 @@ FullName: Istok Italic
 FamilyName: Istok
 Weight: Italic
 Copyright: (C) 2008-2014 Andrey V. Panov (panov@canopus.iacp.dvo.ru), with Reserved Font Name Istok.
-UComments: "2008-10-29: Created." 
+UComments: "2008-10-29: Created."
 Version: 1.0.4
 ItalicAngle: -13
 UnderlinePosition: -204
 UnderlineWidth: 102
 Ascent: 1548
 Descent: 500
+InvalidEm: 0
 LayerCount: 2
-Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A"  1
-Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A"  0
+Layer: 0 1 "+BBcEMAQ0BD0EOAQ5 +BD8EOwQwBD0A" 1
+Layer: 1 1 "+BB8ENQRABDUENAQ9BDgEOQAA +BD8EOwQwBD0A" 0
 XUID: [1021 513 629268104 9940963]
 FSType: 0
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1225286394
-ModificationTime: 1466073934
+ModificationTime: 1497875573
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -42,18 +43,18 @@ HheadDescent: -508
 HheadDOffset: 0
 OS2FamilyClass: 2048
 OS2Vendor: 'PfEd'
-Lookup: 258 0 0 "LGC kerning"  {"LGC kerning subtable"  } ['kern' ('latn' <'dflt' > 'grek' <'dflt' > 'cyrl' <'dflt' > ) ]
+Lookup: 258 0 0 "LGC kerning" { "LGC kerning subtable"  } ['kern' ('latn' <'dflt' > 'grek' <'dflt' > 'cyrl' <'dflt' > ) ]
 MarkAttachClasses: 1
 DEI: 91125
-LangName: 1033 "" "" "" "" "" "" "" "" "Andrey V. Panov" "Andrey V. Panov" "" "http://code.google.com/p/istok" "http://code.google.com/u/andrej.panov/" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException" 
-LangName: 1049 "" "+BBgEQQRCBD4EOgAA" "" "" "" "" "" "" "" "+BBAA. +BBIA. +BB8EMAQ9BD4EMgAA" 
+LangName: 1033 "" "" "" "" "" "" "" "" "Andrey V. Panov" "Andrey V. Panov" "" "http://code.google.com/p/istok" "http://code.google.com/u/andrej.panov/" "GNU General Public License with font exception" "http://www.gnu.org/licenses/gpl.html http://www.gnu.org/licenses/gpl-faq.html#FontException"
+LangName: 1049 "" "+BBgEQQRCBD4EOgAA" "" "" "" "" "" "" "" "+BBAA. +BBIA. +BB8EMAQ9BD4EMgAA"
 Encoding: UnicodeBmp
 UnicodeInterp: none
 NameList: Adobe Glyph List
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 1
-WinInfo: 96 16 11
+WinInfo: 80 16 11
 BeginPrivate: 8
 BlueValues 47 [-30 0 1050 1067 1422 1423 1434 1464 1476 1493]
 OtherBlues 41 [-417 -400 -370 -370 -350 -350 1136 1150]
@@ -66,7 +67,7 @@ ForceBold 5 false
 EndPrivate
 Grid
 -2048 1150 m 5
- 4096 1150 l 5
+ 4096 1150 l 1029
 1166.42 -440 m 2
  1143.08 -440 1134.88 -425 1141.81 -395 c 2
  1567.99 1451 l 2
@@ -77,9 +78,9 @@ Grid
  1310.88 -425 1295.75 -440 1272.42 -440 c 2
  1166.42 -440 l 2
 -1759.83 1768 m 0
- 4384.17 1768 l 0
+ 4384.17 1768 l 1024
 EndSplineSet
-BeginChars: 65553 514
+BeginChars: 65553 515
 
 StartChar: dotlessi
 Encoding: 305 305 0
@@ -197,7 +198,7 @@ SplineSet
  198 0 198 0 153 0 c 2,27,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: o
@@ -249,7 +250,7 @@ SplineSet
  491 937 491 937 372.5 795.5 c 128,-1,23
  254 654 254 654 254 387 c 0,12,13
 EndSplineSet
-Kerns2: 199 -122 "LGC kerning subtable"  173 -177 "LGC kerning subtable" 
+Kerns2: 199 -122 "LGC kerning subtable" 173 -177 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10081
@@ -261,7 +262,7 @@ DStem2: 21.9775 0 197.864 0 0.224951 0.97437<29.6943 895.04 988.578 1086.98> 691
 LayerCount: 2
 Fore
 Refer: 18 110 N 1 0 0 1 0 0 3
-Kerns2: 173 -227 "LGC kerning subtable"  200 -44 "LGC kerning subtable" 
+Kerns2: 173 -227 "LGC kerning subtable" 200 -44 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10074
@@ -273,7 +274,7 @@ DStem2: 15.5775 -17 192.496 -17 0.224951 0.97437<256.291 1104.99> 679.686 -17 85
 LayerCount: 2
 Fore
 Refer: 101 117 N 1 0 0 1 0 0 3
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10088
@@ -342,7 +343,7 @@ SplineSet
  193 -17 193 -17 128 85.5 c 128,-1,43
  63 188 63 188 104 366 c 2,0,-1
 EndSplineSet
-Kerns2: 173 -82 "LGC kerning subtable" 
+Kerns2: 173 -82 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10080
@@ -354,7 +355,7 @@ VStem: 68 186<207.174 658.593> 894 186<391.407 842.826>
 LayerCount: 2
 Fore
 Refer: 2 111 N 1 0 0 1 0 0 3
-Kerns2: 173 -177 "LGC kerning subtable"  200 -95 "LGC kerning subtable" 
+Kerns2: 173 -177 "LGC kerning subtable" 200 -95 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10077
@@ -428,7 +429,7 @@ LayerCount: 2
 Back
 SplineSet
 116 -355 m 2,2,-1
- 430 1005 l 2,3,4
+ 430 1005 l 1026,3,4
 -25.3477 -400 m 2,0,1
  -70.3477 -400 -70.3477 -400 -59.958 -355 c 2,2,-1
  254.022 1005 l 2,3,4
@@ -495,7 +496,7 @@ SplineSet
  361 702 361 702 330 570 c 2,41,-1
  265 290 l 17,29,30
 EndSplineSet
-Kerns2: 131 -26 "LGC kerning subtable"  199 -90 "LGC kerning subtable"  173 -184 "LGC kerning subtable"  74 -27 "LGC kerning subtable"  82 -26 "LGC kerning subtable"  132 -27 "LGC kerning subtable" 
+Kerns2: 131 -26 "LGC kerning subtable" 199 -90 "LGC kerning subtable" 173 -184 "LGC kerning subtable" 74 -27 "LGC kerning subtable" 82 -26 "LGC kerning subtable" 132 -27 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10082
@@ -508,7 +509,7 @@ DStem2: -70.3891 -400 105.493 -400 0.224951 0.97437<29.7767 569.84 664.599 1243.
 LayerCount: 2
 Fore
 Refer: 8 112 N 1 0 0 1 0 0 3
-Kerns2: 132 -27 "LGC kerning subtable"  82 -26 "LGC kerning subtable"  74 -27 "LGC kerning subtable"  173 -184 "LGC kerning subtable"  131 -26 "LGC kerning subtable"  200 -69 "LGC kerning subtable" 
+Kerns2: 132 -27 "LGC kerning subtable" 82 -26 "LGC kerning subtable" 74 -27 "LGC kerning subtable" 173 -184 "LGC kerning subtable" 131 -26 "LGC kerning subtable" 200 -69 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10083
@@ -520,7 +521,7 @@ VStem: 85 186<268.095 781.905>
 LayerCount: 2
 Fore
 Refer: 15 99 N 1 0 0 1 0 0 3
-Kerns2: 173 -142 "LGC kerning subtable" 
+Kerns2: 173 -142 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10087
@@ -532,7 +533,7 @@ DStem2: -56 59 127 26 0.662725 0.748863<22.9179 96.5661 837.813 1362.99> 511 676
 LayerCount: 2
 Fore
 Refer: 14 120 N 1 0 0 1 0 0 3
-Kerns2: 89 -63 "LGC kerning subtable" 
+Kerns2: 89 -63 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10086
@@ -659,7 +660,7 @@ SplineSet
  956 733 956 733 925 598 c 10,75,-1
  855 295 l 17,63,64
 EndSplineSet
-Kerns2: 132 -23 "LGC kerning subtable"  82 -21 "LGC kerning subtable"  74 -23 "LGC kerning subtable"  173 -178 "LGC kerning subtable"  131 -21 "LGC kerning subtable"  200 -63 "LGC kerning subtable" 
+Kerns2: 132 -23 "LGC kerning subtable" 82 -21 "LGC kerning subtable" 74 -23 "LGC kerning subtable" 173 -178 "LGC kerning subtable" 131 -21 "LGC kerning subtable" 200 -63 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10094
@@ -723,7 +724,7 @@ SplineSet
  430 550 430 550 365.5 496 c 132,-1,33
  301 442 301 442 284 370 c 4,22,23
 EndSplineSet
-Kerns2: 173 -154 "LGC kerning subtable"  200 -420 "LGC kerning subtable" 
+Kerns2: 173 -154 "LGC kerning subtable" 200 -420 "LGC kerning subtable"
 EndChar
 
 StartChar: x
@@ -736,13 +737,13 @@ LayerCount: 2
 Back
 SplineSet
 109 0 m 25,0,-1
- 1040.41 1050 l 25,1,-1
+ 1040.41 1050 l 1049,1,-1
 -105 0 m 25,2,-1
- 826.412 1050 l 25,3,-1
+ 826.412 1050 l 1049,3,-1
 360.411 1050 m 25,4,-1
- 833 0 l 25,5,-1
+ 833 0 l 1049,5,-1
 180.411 1050 m 25,6,-1
- 653 0 l 25,7,-1
+ 653 0 l 1049,7,-1
 EndSplineSet
 Fore
 SplineSet
@@ -768,7 +769,7 @@ SplineSet
  105 0 105 0 68 0 c 2,27,-1
  -44 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -63 "LGC kerning subtable" 
+Kerns2: 89 -63 "LGC kerning subtable"
 EndChar
 
 StartChar: c
@@ -825,7 +826,7 @@ SplineSet
  254 -17 254 -17 161 116.5 c 128,-1,33
  68 250 68 250 68 402 c 256,0,1
 EndSplineSet
-Kerns2: 173 -142 "LGC kerning subtable" 
+Kerns2: 173 -142 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10068
@@ -882,7 +883,7 @@ SplineSet
  82 58 82 58 51 107 c 128,-1,59
  20 156 20 156 20 226 c 256,0,1
 EndSplineSet
-Kerns2: 173 -122 "LGC kerning subtable"  200 -47 "LGC kerning subtable" 
+Kerns2: 173 -122 "LGC kerning subtable" 200 -47 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10084
@@ -957,7 +958,7 @@ SplineSet
  198 0 198 0 153 0 c 2,32,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 199 -65 "LGC kerning subtable"  173 -227 "LGC kerning subtable" 
+Kerns2: 199 -65 "LGC kerning subtable" 173 -227 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10090
@@ -1171,7 +1172,7 @@ SplineSet
  501 937 501 937 377.5 791 c 128,-1,43
  254 645 254 645 254 387 c 0,32,33
 EndSplineSet
-Kerns2: 131 -24 "LGC kerning subtable"  74 -23 "LGC kerning subtable"  82 -21 "LGC kerning subtable"  132 -25 "LGC kerning subtable" 
+Kerns2: 131 -24 "LGC kerning subtable" 74 -23 "LGC kerning subtable" 82 -21 "LGC kerning subtable" 132 -25 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10093
@@ -1265,7 +1266,7 @@ SplineSet
  498 937 498 937 375 757.5 c 128,-1,40
  252 578 252 578 252 332 c 0,28,29
 861 1005 m 2,13,-1
- 639 45 l 2,14,15
+ 639 45 l 1026,14,15
 EndSplineSet
 Fore
 SplineSet
@@ -1300,7 +1301,7 @@ SplineSet
  498 937 498 937 375 757.5 c 128,-1,39
  252 578 252 578 252 332 c 0,27,28
 EndSplineSet
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10065
@@ -1364,7 +1365,7 @@ SplineSet
  902 208 902 208 787 95.5 c 128,-1,18
  672 -17 672 -17 412 -17 c 256,19,20
  236 -17 236 -17 155.5 107.5 c 128,-1,21
- 75 232 75 232 124 444 c 2,0,-1
+ 75 232 75 232 124 444 c 1026,0,-1
 284 370 m 0,22,23
  255 244 255 244 302.5 178.5 c 128,-1,24
  350 113 350 113 449 113 c 256,25,26
@@ -1440,7 +1441,7 @@ SplineSet
  520 937 520 937 421 853.5 c 128,-1,41
  322 770 322 770 276 569 c 1,33,34
 EndSplineSet
-Kerns2: 173 -169 "LGC kerning subtable"  200 -69 "LGC kerning subtable" 
+Kerns2: 173 -169 "LGC kerning subtable" 200 -69 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10092
@@ -1541,7 +1542,7 @@ SplineSet
  274 0 274 0 267 61 c 2,25,-1
  156 1001 l 2,0,1
 EndSplineSet
-Kerns2: 74 -204 "LGC kerning subtable"  82 -203 "LGC kerning subtable" 
+Kerns2: 74 -204 "LGC kerning subtable" 82 -203 "LGC kerning subtable"
 EndChar
 
 StartChar: y
@@ -1586,7 +1587,7 @@ SplineSet
  189 -17 189 -17 127 85.5 c 128,-1,45
  65 188 65 188 106 366 c 2,0,-1
 EndSplineSet
-Kerns2: 173 -81 "LGC kerning subtable" 
+Kerns2: 173 -81 "LGC kerning subtable"
 EndChar
 
 StartChar: e
@@ -1659,7 +1660,7 @@ SplineSet
  498 937 498 937 403.5 845 c 128,-1,38
  309 753 309 753 265 538 c 1,29,-1
 EndSplineSet
-Kerns2: 199 -95 "LGC kerning subtable"  173 -180 "LGC kerning subtable" 
+Kerns2: 199 -95 "LGC kerning subtable" 173 -180 "LGC kerning subtable"
 EndChar
 
 StartChar: i
@@ -1707,7 +1708,7 @@ LayerCount: 2
 Back
 SplineSet
 913 1005 m 6,40,41
- 599 -355 l 6,39,-1
+ 599 -355 l 1030,39,-1
 EndSplineSet
 Fore
 SplineSet
@@ -1743,7 +1744,7 @@ SplineSet
  472 937 472 937 364 767.5 c 128,-1,41
  256 598 256 598 256 372 c 0,29,30
 EndSplineSet
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10070
@@ -1756,7 +1757,7 @@ DStem2: 265 538 260 399 0.980734 0.195349<0 519.964>
 LayerCount: 2
 Fore
 Refer: 30 101 N 1 0 0 1 0 0 3
-Kerns2: 173 -180 "LGC kerning subtable"  200 -61 "LGC kerning subtable" 
+Kerns2: 173 -180 "LGC kerning subtable" 200 -61 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10103
@@ -1777,7 +1778,7 @@ DStem2: -74.7698 -417 102.149 -417 0.224951 0.97437<666.693 1515.51> 595.419 -41
 LayerCount: 2
 Fore
 Refer: 29 121 N 1 0 0 1 0 0 3
-Kerns2: 173 -81 "LGC kerning subtable" 
+Kerns2: 173 -81 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10075
@@ -1885,7 +1886,7 @@ SplineSet
  198 0 198 0 153 0 c 2,41,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -66 "LGC kerning subtable" 
+Kerns2: 89 -66 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10072
@@ -2007,7 +2008,7 @@ SplineSet
  122 0 122 0 86 0 c 2,71,-1
  -29 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -57 "LGC kerning subtable" 
+Kerns2: 89 -57 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10097
@@ -2284,7 +2285,7 @@ SplineSet
  491 937 491 937 372.5 795.5 c 128,-1,48
  254 654 254 654 254 387 c 256,37,38
 EndSplineSet
-Kerns2: 173 -40 "LGC kerning subtable"  200 -54 "LGC kerning subtable" 
+Kerns2: 173 -40 "LGC kerning subtable" 200 -54 "LGC kerning subtable"
 EndChar
 
 StartChar: space
@@ -2493,7 +2494,7 @@ SplineSet
  219 -17 219 -17 132 39.5 c 128,-1,53
  45 96 45 96 27 119 c 256,0,1
 EndSplineSet
-Kerns2: 173 -167 "LGC kerning subtable"  200 -38 "LGC kerning subtable" 
+Kerns2: 173 -167 "LGC kerning subtable" 200 -38 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10078
@@ -2596,13 +2597,13 @@ SplineSet
  197.483 0 197.483 0 153 0 c 2,30,-1
  67 0 l 2,0,1
 849.694 16 m 10,4,-1
- 617.673 579 l 25,5,-1
+ 617.673 579 l 1049,5,-1
 1055.58 1234 m 10,0,-1
- 322.438 549 l 25,1,-1
+ 322.438 549 l 1049,1,-1
 1001.79 981 m 10,2,-1
- 268.646 296 l 25,3,-1
+ 268.646 296 l 1049,3,-1
 671.694 16 m 14,4,-1
- 439.673 579 l 29,5,-1
+ 439.673 579 l 1053,5,-1
 EndSplineSet
 Fore
 SplineSet
@@ -2630,7 +2631,7 @@ SplineSet
  197 0 197 0 153 0 c 2,30,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -99 "LGC kerning subtable" 
+Kerns2: 89 -99 "LGC kerning subtable"
 EndChar
 
 StartChar: f
@@ -2709,7 +2710,7 @@ SplineSet
  289 918 l 1,39,-1
  182 918 l 2,0,1
 EndSplineSet
-Kerns2: 74 -135 "LGC kerning subtable"  89 -33 "LGC kerning subtable"  82 -135 "LGC kerning subtable" 
+Kerns2: 74 -135 "LGC kerning subtable" 89 -33 "LGC kerning subtable" 82 -135 "LGC kerning subtable"
 EndChar
 
 StartChar: t
@@ -2754,7 +2755,7 @@ SplineSet
  301 918 l 1,42,-1
  183 918 l 2,0,1
 EndSplineSet
-Kerns2: 173 -51 "LGC kerning subtable"  89 -126 "LGC kerning subtable" 
+Kerns2: 173 -51 "LGC kerning subtable" 89 -126 "LGC kerning subtable"
 EndChar
 
 StartChar: l
@@ -3053,7 +3054,7 @@ SplineSet
  647 1308 647 1308 481 1124.5 c 128,-1,23
  315 941 315 941 315 556 c 0,12,13
 EndSplineSet
-Kerns2: 146 -43 "LGC kerning subtable" 
+Kerns2: 146 -43 "LGC kerning subtable"
 EndChar
 
 StartChar: s
@@ -3107,7 +3108,7 @@ SplineSet
  237 -17 237 -17 151.5 22.5 c 152,-1,59
  66 62 66 62 28 102 c 256,0,1
 EndSplineSet
-Kerns2: 173 -150 "LGC kerning subtable" 
+Kerns2: 173 -150 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10040
@@ -3318,9 +3319,9 @@ SplineSet
  800 1153 l 1,32,-1
  243 518 l 1,27,-1
 288 556 m 2,5,-1
- 1033 1404 l 2,6,7
+ 1033 1404 l 1026,6,7
 108 556 m 2,5,-1
- 853 1404 l 2,6,7
+ 853 1404 l 1026,6,7
 EndSplineSet
 Fore
 SplineSet
@@ -3515,7 +3516,7 @@ SplineSet
  395 664 l 1,25,-1
  280 164 l 1,17,-1
 EndSplineSet
-Kerns2: 96 -242 "LGC kerning subtable"  173 -126 "LGC kerning subtable"  200 -470 "LGC kerning subtable" 
+Kerns2: 96 -242 "LGC kerning subtable" 173 -126 "LGC kerning subtable" 200 -470 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10020
@@ -3540,7 +3541,7 @@ SplineSet
  242 0 242 0 192 0 c 2,15,-1
  100 0 l 2,0,1
 EndSplineSet
-Kerns2: 3 -290 "LGC kerning subtable"  9 -290 "LGC kerning subtable"  13 -300 "LGC kerning subtable"  131 -360 "LGC kerning subtable"  74 -360 "LGC kerning subtable"  89 -209 "LGC kerning subtable"  162 -259 "LGC kerning subtable"  82 -360 "LGC kerning subtable"  132 -360 "LGC kerning subtable"  41 -345 "LGC kerning subtable"  27 -357 "LGC kerning subtable"  23 -271 "LGC kerning subtable"  11 -275 "LGC kerning subtable"  12 -240 "LGC kerning subtable"  36 -290 "LGC kerning subtable"  6 -240 "LGC kerning subtable"  1 -290 "LGC kerning subtable"  7 -410 "LGC kerning subtable"  4 -290 "LGC kerning subtable"  46 -272 "LGC kerning subtable"  40 -265 "LGC kerning subtable"  16 -256 "LGC kerning subtable"  26 -240 "LGC kerning subtable"  25 -240 "LGC kerning subtable"  99 -46 "LGC kerning subtable"  98 -112 "LGC kerning subtable"  114 -87 "LGC kerning subtable"  95 -143 "LGC kerning subtable" 
+Kerns2: 3 -290 "LGC kerning subtable" 9 -290 "LGC kerning subtable" 13 -300 "LGC kerning subtable" 131 -360 "LGC kerning subtable" 74 -360 "LGC kerning subtable" 89 -209 "LGC kerning subtable" 162 -259 "LGC kerning subtable" 82 -360 "LGC kerning subtable" 132 -360 "LGC kerning subtable" 41 -345 "LGC kerning subtable" 27 -357 "LGC kerning subtable" 23 -271 "LGC kerning subtable" 11 -275 "LGC kerning subtable" 12 -240 "LGC kerning subtable" 36 -290 "LGC kerning subtable" 6 -240 "LGC kerning subtable" 1 -290 "LGC kerning subtable" 7 -410 "LGC kerning subtable" 4 -290 "LGC kerning subtable" 46 -272 "LGC kerning subtable" 40 -265 "LGC kerning subtable" 16 -256 "LGC kerning subtable" 26 -240 "LGC kerning subtable" 25 -240 "LGC kerning subtable" 99 -46 "LGC kerning subtable" 98 -112 "LGC kerning subtable" 114 -87 "LGC kerning subtable" 95 -143 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10018
@@ -3602,7 +3603,7 @@ SplineSet
  396 668 l 1,29,-1
  280 164 l 1,21,-1
 EndSplineSet
-Kerns2: 27 -179 "LGC kerning subtable" 
+Kerns2: 27 -179 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10194
@@ -3781,7 +3782,7 @@ SplineSet
  198 0 198 0 153 0 c 2,34,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 199 -65 "LGC kerning subtable"  173 -227 "LGC kerning subtable" 
+Kerns2: 199 -65 "LGC kerning subtable" 173 -227 "LGC kerning subtable"
 EndChar
 
 StartChar: b
@@ -3826,7 +3827,7 @@ SplineSet
  361 702 361 702 330 570 c 2,41,-1
  265 290 l 17,29,30
 EndSplineSet
-Kerns2: 131 -26 "LGC kerning subtable"  199 -90 "LGC kerning subtable"  173 -184 "LGC kerning subtable"  74 -27 "LGC kerning subtable"  82 -26 "LGC kerning subtable"  132 -27 "LGC kerning subtable" 
+Kerns2: 131 -26 "LGC kerning subtable" 199 -90 "LGC kerning subtable" 173 -184 "LGC kerning subtable" 74 -27 "LGC kerning subtable" 82 -26 "LGC kerning subtable" 132 -27 "LGC kerning subtable"
 EndChar
 
 StartChar: d
@@ -3883,13 +3884,13 @@ LayerCount: 2
 Back
 SplineSet
 1210.06 1434 m 25,0,0
- -106 0 l 25,0,0
+ -106 0 l 1049,0,0
 1461.06 1434 m 25,0,0
- 146 0 l 25,0,0
+ 146 0 l 1049,0,0
 470.065 1434 m 25,0,0
- 1164 0 l 25,0,0
+ 1164 0 l 1049,0,0
 259.065 1434 m 25,0,0
- 952 0 l 25,0,0
+ 952 0 l 1049,0,0
 EndSplineSet
 Fore
 SplineSet
@@ -3915,7 +3916,7 @@ SplineSet
  148 0 148 0 103 0 c 2,27,-1
  -42 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -61 "LGC kerning subtable" 
+Kerns2: 89 -61 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10039
@@ -3927,7 +3928,7 @@ DStem2: -45 66 182 39 0.676853 0.736119<40.8559 133.77 1112.52 1899.27> 721 873 
 LayerCount: 2
 Fore
 Refer: 78 88 N 1 0 0 1 0 0 3
-Kerns2: 89 -61 "LGC kerning subtable"  23 -50 "LGC kerning subtable"  99 -52 "LGC kerning subtable" 
+Kerns2: 89 -61 "LGC kerning subtable" 23 -50 "LGC kerning subtable" 99 -52 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10102
@@ -4037,7 +4038,7 @@ SplineSet
  242 0 242 0 192 0 c 2,41,-1
  100 0 l 2,0,1
 EndSplineSet
-Kerns2: 23 -47 "LGC kerning subtable"  99 -48 "LGC kerning subtable" 
+Kerns2: 23 -47 "LGC kerning subtable" 99 -48 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10024
@@ -4159,7 +4160,7 @@ SplineSet
  153 0 153 0 105 0 c 2,71,-1
  -42 0 l 2,0,1
 EndSplineSet
-Kerns2: 23 -43 "LGC kerning subtable"  99 -45 "LGC kerning subtable" 
+Kerns2: 23 -43 "LGC kerning subtable" 99 -45 "LGC kerning subtable"
 EndChar
 
 StartChar: P
@@ -4218,7 +4219,7 @@ SplineSet
  535 1270 l 1,25,-1
  413 740 l 1,17,-1
 EndSplineSet
-Kerns2: 74 -460 "LGC kerning subtable"  82 -460 "LGC kerning subtable"  142 -195 "LGC kerning subtable"  94 -44 "LGC kerning subtable" 
+Kerns2: 74 -460 "LGC kerning subtable" 82 -460 "LGC kerning subtable" 142 -195 "LGC kerning subtable" 94 -44 "LGC kerning subtable"
 EndChar
 
 StartChar: B
@@ -4361,7 +4362,7 @@ VStem: 170 192<0.214844 576 740 1270> 1023 195<839.949 1170.05>
 LayerCount: 2
 Fore
 Refer: 85 80 N 1 0 0 1 0 0 3
-Kerns2: 74 -460 "LGC kerning subtable"  82 -460 "LGC kerning subtable"  7 -91 "LGC kerning subtable"  98 -165 "LGC kerning subtable"  114 -137 "LGC kerning subtable"  95 -44 "LGC kerning subtable" 
+Kerns2: 74 -460 "LGC kerning subtable" 82 -460 "LGC kerning subtable" 7 -91 "LGC kerning subtable" 98 -165 "LGC kerning subtable" 114 -137 "LGC kerning subtable" 95 -44 "LGC kerning subtable"
 EndChar
 
 StartChar: hyphen
@@ -4518,7 +4519,7 @@ SplineSet
  695 1262 l 1,19,-1
  262 1262 l 2,0,1
 EndSplineSet
-Kerns2: 131 -295 "LGC kerning subtable"  74 -296 "LGC kerning subtable"  89 -223 "LGC kerning subtable"  162 -230 "LGC kerning subtable"  82 -295 "LGC kerning subtable"  132 -295 "LGC kerning subtable"  102 -195 "LGC kerning subtable"  29 -265 "LGC kerning subtable"  14 -185 "LGC kerning subtable"  133 -183 "LGC kerning subtable"  28 -196 "LGC kerning subtable"  101 -263 "LGC kerning subtable"  61 -230 "LGC kerning subtable"  129 -265 "LGC kerning subtable"  33 -278 "LGC kerning subtable"  8 -265 "LGC kerning subtable"  2 -271 "LGC kerning subtable"  18 -265 "LGC kerning subtable"  103 -265 "LGC kerning subtable"  142 -138 "LGC kerning subtable"  100 -278 "LGC kerning subtable"  30 -266 "LGC kerning subtable"  77 -278 "LGC kerning subtable"  15 -271 "LGC kerning subtable"  24 -283 "LGC kerning subtable"  94 -137 "LGC kerning subtable" 
+Kerns2: 131 -295 "LGC kerning subtable" 74 -296 "LGC kerning subtable" 89 -223 "LGC kerning subtable" 162 -230 "LGC kerning subtable" 82 -295 "LGC kerning subtable" 132 -295 "LGC kerning subtable" 102 -195 "LGC kerning subtable" 29 -265 "LGC kerning subtable" 14 -185 "LGC kerning subtable" 133 -183 "LGC kerning subtable" 28 -196 "LGC kerning subtable" 101 -263 "LGC kerning subtable" 61 -230 "LGC kerning subtable" 129 -265 "LGC kerning subtable" 33 -278 "LGC kerning subtable" 8 -265 "LGC kerning subtable" 2 -271 "LGC kerning subtable" 18 -265 "LGC kerning subtable" 103 -265 "LGC kerning subtable" 142 -138 "LGC kerning subtable" 100 -278 "LGC kerning subtable" 30 -266 "LGC kerning subtable" 77 -278 "LGC kerning subtable" 15 -271 "LGC kerning subtable" 24 -283 "LGC kerning subtable" 94 -137 "LGC kerning subtable"
 EndChar
 
 StartChar: V
@@ -4572,7 +4573,7 @@ SplineSet
  436 -0 436 -0 427 61 c 2,25,-1
  242 1368 l 18,0,1
 EndSplineSet
-Kerns2: 74 -305 "LGC kerning subtable"  82 -303 "LGC kerning subtable"  142 -142 "LGC kerning subtable"  24 -46 "LGC kerning subtable"  94 -170 "LGC kerning subtable" 
+Kerns2: 74 -305 "LGC kerning subtable" 82 -303 "LGC kerning subtable" 142 -142 "LGC kerning subtable" 24 -46 "LGC kerning subtable" 94 -170 "LGC kerning subtable"
 EndChar
 
 StartChar: A
@@ -4585,13 +4586,13 @@ LayerCount: 2
 Back
 SplineSet
 785.982 1373 m 6,8,-1
- 1012.24 66 l 6,9,10
+ 1012.24 66 l 1030,9,10
 158.237 66 m 2,2,-1
- 927.982 1373 l 2,3,4
+ 927.982 1373 l 1026,3,4
 -58.7627 66 m 2,2,-1
- 710.982 1373 l 2,3,4
+ 710.982 1373 l 1026,3,4
 982.982 1373 m 2,8,-1
- 1209.24 66 l 2,9,10
+ 1209.24 66 l 1026,9,10
 EndSplineSet
 Fore
 SplineSet
@@ -4620,7 +4621,7 @@ SplineSet
  732 1042 732 1042 675 944 c 2,29,-1
  441 544 l 1,20,-1
 EndSplineSet
-Kerns2: 195 -195 "LGC kerning subtable"  199 -203 "LGC kerning subtable"  173 -88 "LGC kerning subtable"  146 -260 "LGC kerning subtable"  147 -105 "LGC kerning subtable"  28 -100 "LGC kerning subtable"  93 -230 "LGC kerning subtable"  92 -228 "LGC kerning subtable" 
+Kerns2: 195 -195 "LGC kerning subtable" 199 -203 "LGC kerning subtable" 173 -88 "LGC kerning subtable" 146 -260 "LGC kerning subtable" 147 -105 "LGC kerning subtable" 28 -100 "LGC kerning subtable" 93 -230 "LGC kerning subtable" 92 -228 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10017
@@ -4632,7 +4633,7 @@ DStem2: 46 66 373 380 0.35917 0.933272<-12.4484 410.496 586.18 1342.19> 821 1373
 LayerCount: 2
 Fore
 Refer: 94 65 N 1 0 0 1 0 0 3
-Kerns2: 195 -195 "LGC kerning subtable"  96 -228 "LGC kerning subtable"  64 -130 "LGC kerning subtable"  23 -58 "LGC kerning subtable"  173 -88 "LGC kerning subtable"  200 -188 "LGC kerning subtable" 
+Kerns2: 195 -195 "LGC kerning subtable" 96 -228 "LGC kerning subtable" 64 -130 "LGC kerning subtable" 23 -58 "LGC kerning subtable" 173 -88 "LGC kerning subtable" 200 -188 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10036
@@ -4644,7 +4645,7 @@ VStem: 524 192<0.214844 1262>
 LayerCount: 2
 Fore
 Refer: 92 84 N 1 0 0 1 0 0 3
-Kerns2: 131 -295 "LGC kerning subtable"  74 -296 "LGC kerning subtable"  89 -223 "LGC kerning subtable"  162 -230 "LGC kerning subtable"  82 -295 "LGC kerning subtable"  132 -295 "LGC kerning subtable"  41 -277 "LGC kerning subtable"  27 -245 "LGC kerning subtable"  23 -299 "LGC kerning subtable"  11 -185 "LGC kerning subtable"  12 -275 "LGC kerning subtable"  36 -265 "LGC kerning subtable"  6 -271 "LGC kerning subtable"  1 -265 "LGC kerning subtable"  7 -241 "LGC kerning subtable"  4 -263 "LGC kerning subtable"  46 -272 "LGC kerning subtable"  40 -230 "LGC kerning subtable"  16 -200 "LGC kerning subtable"  26 -276 "LGC kerning subtable"  25 -283 "LGC kerning subtable"  99 -45 "LGC kerning subtable"  98 -111 "LGC kerning subtable"  114 -86 "LGC kerning subtable"  95 -137 "LGC kerning subtable" 
+Kerns2: 131 -295 "LGC kerning subtable" 74 -296 "LGC kerning subtable" 89 -223 "LGC kerning subtable" 162 -230 "LGC kerning subtable" 82 -295 "LGC kerning subtable" 132 -295 "LGC kerning subtable" 41 -277 "LGC kerning subtable" 27 -245 "LGC kerning subtable" 23 -299 "LGC kerning subtable" 11 -185 "LGC kerning subtable" 12 -275 "LGC kerning subtable" 36 -265 "LGC kerning subtable" 6 -271 "LGC kerning subtable" 1 -265 "LGC kerning subtable" 7 -241 "LGC kerning subtable" 4 -263 "LGC kerning subtable" 46 -272 "LGC kerning subtable" 40 -230 "LGC kerning subtable" 16 -200 "LGC kerning subtable" 26 -276 "LGC kerning subtable" 25 -283 "LGC kerning subtable" 99 -45 "LGC kerning subtable" 98 -111 "LGC kerning subtable" 114 -86 "LGC kerning subtable" 95 -137 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10035
@@ -4783,7 +4784,7 @@ SplineSet
  1096 1110 l 1,47,-1
  921 350 l 1,39,-1
 EndSplineSet
-Kerns2: 74 -157 "LGC kerning subtable"  82 -155 "LGC kerning subtable"  7 -65 "LGC kerning subtable"  105 -137 "LGC kerning subtable"  120 -62 "LGC kerning subtable"  96 -135 "LGC kerning subtable"  98 -131 "LGC kerning subtable"  114 -85 "LGC kerning subtable" 
+Kerns2: 74 -157 "LGC kerning subtable" 82 -155 "LGC kerning subtable" 7 -65 "LGC kerning subtable" 105 -137 "LGC kerning subtable" 120 -62 "LGC kerning subtable" 96 -135 "LGC kerning subtable" 98 -131 "LGC kerning subtable" 114 -85 "LGC kerning subtable"
 EndChar
 
 StartChar: g
@@ -4878,7 +4879,7 @@ SplineSet
  472 937 472 937 364 767.5 c 128,-1,53
  256 598 256 598 256 372 c 0,41,42
 EndSplineSet
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: u
@@ -4942,7 +4943,7 @@ SplineSet
  193 -17 193 -17 128 85.5 c 128,-1,32
  63 188 63 188 104 366 c 2,0,-1
 EndSplineSet
-Kerns2: 173 -83 "LGC kerning subtable" 
+Kerns2: 173 -83 "LGC kerning subtable"
 EndChar
 
 StartChar: z
@@ -4955,9 +4956,9 @@ LayerCount: 2
 Back
 SplineSet
 213.324 166 m 6,5,-1
- 950.398 920 l 9,6,-1
+ 950.398 920 l 1033,6,-1
 8.32422 166 m 2,5,-1
- 745.398 920 l 9,6,-1
+ 745.398 920 l 1033,6,-1
 EndSplineSet
 Fore
 SplineSet
@@ -4985,7 +4986,7 @@ SplineSet
  775 0 775 0 730 0 c 2,31,-1
  -20 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -37 "LGC kerning subtable" 
+Kerns2: 89 -37 "LGC kerning subtable"
 EndChar
 
 StartChar: m
@@ -5077,7 +5078,7 @@ SplineSet
  198 0 198 0 153 0 c 2,52,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 199 -69 "LGC kerning subtable"  173 -227 "LGC kerning subtable" 
+Kerns2: 199 -69 "LGC kerning subtable" 173 -227 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10045
@@ -5155,7 +5156,7 @@ SplineSet
  787 664 l 1,29,-1
  672 164 l 1,21,-1
 EndSplineSet
-Kerns2: 96 -242 "LGC kerning subtable"  173 -126 "LGC kerning subtable"  200 -470 "LGC kerning subtable" 
+Kerns2: 96 -242 "LGC kerning subtable" 173 -126 "LGC kerning subtable" 200 -470 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10043
@@ -5354,7 +5355,7 @@ SplineSet
  1031 0 1031 0 976 0 c 2,31,-1
  0 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -239 "LGC kerning subtable" 
+Kerns2: 89 -239 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10026
@@ -5547,7 +5548,7 @@ SplineSet
  362 -30 362 -30 255 10 c 152,-1,59
  148 50 148 50 84 112 c 256,0,1
 EndSplineSet
-Kerns2: 28 -32 "LGC kerning subtable" 
+Kerns2: 28 -32 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10025
@@ -5942,7 +5943,7 @@ SplineSet
  561 312 l 9,36,-1
  262 1368 l 18,0,1
 EndSplineSet
-Kerns2: 74 -366 "LGC kerning subtable"  89 -49 "LGC kerning subtable"  82 -365 "LGC kerning subtable"  41 -50 "LGC kerning subtable"  12 -57 "LGC kerning subtable"  6 -45 "LGC kerning subtable"  7 -239 "LGC kerning subtable"  26 -38 "LGC kerning subtable"  25 -82 "LGC kerning subtable"  98 -121 "LGC kerning subtable"  114 -96 "LGC kerning subtable"  95 -178 "LGC kerning subtable" 
+Kerns2: 74 -366 "LGC kerning subtable" 89 -49 "LGC kerning subtable" 82 -365 "LGC kerning subtable" 41 -50 "LGC kerning subtable" 12 -57 "LGC kerning subtable" 6 -45 "LGC kerning subtable" 7 -239 "LGC kerning subtable" 26 -38 "LGC kerning subtable" 25 -82 "LGC kerning subtable" 98 -121 "LGC kerning subtable" 114 -96 "LGC kerning subtable" 95 -178 "LGC kerning subtable"
 EndChar
 
 StartChar: afii10027
@@ -6164,7 +6165,7 @@ SplineSet
  198 0 198 0 153 0 c 2,28,-1
  67 0 l 2,0,1
 EndSplineSet
-Kerns2: 74 -260 "LGC kerning subtable"  89 -138 "LGC kerning subtable"  82 -260 "LGC kerning subtable" 
+Kerns2: 74 -260 "LGC kerning subtable" 89 -138 "LGC kerning subtable" 82 -260 "LGC kerning subtable"
 EndChar
 
 StartChar: F
@@ -6195,7 +6196,7 @@ SplineSet
  242 0 242 0 192 0 c 2,23,-1
  100 0 l 2,0,1
 EndSplineSet
-Kerns2: 131 -52 "LGC kerning subtable"  74 -410 "LGC kerning subtable"  82 -410 "LGC kerning subtable"  132 -52 "LGC kerning subtable"  102 -139 "LGC kerning subtable"  14 -65 "LGC kerning subtable"  142 -179 "LGC kerning subtable" 
+Kerns2: 131 -52 "LGC kerning subtable" 74 -410 "LGC kerning subtable" 82 -410 "LGC kerning subtable" 132 -52 "LGC kerning subtable" 102 -139 "LGC kerning subtable" 14 -65 "LGC kerning subtable" 142 -179 "LGC kerning subtable"
 EndChar
 
 StartChar: semicolon
@@ -6292,7 +6293,7 @@ SplineSet
  189 -0 189 -0 187 61 c 2,53,-1
  156 1001 l 2,0,1
 EndSplineSet
-Kerns2: 74 -142 "LGC kerning subtable"  82 -141 "LGC kerning subtable" 
+Kerns2: 74 -142 "LGC kerning subtable" 82 -141 "LGC kerning subtable"
 EndChar
 
 StartChar: L
@@ -6317,7 +6318,7 @@ SplineSet
  960 0 960 0 905 0 c 2,15,-1
  100 0 l 2,0,1
 EndSplineSet
-Kerns2: 195 -350 "LGC kerning subtable"  199 -400 "LGC kerning subtable"  173 -88 "LGC kerning subtable"  89 -362 "LGC kerning subtable"  146 -257 "LGC kerning subtable"  147 -101 "LGC kerning subtable"  28 -89 "LGC kerning subtable"  93 -216 "LGC kerning subtable"  92 -226 "LGC kerning subtable" 
+Kerns2: 195 -350 "LGC kerning subtable" 199 -400 "LGC kerning subtable" 173 -88 "LGC kerning subtable" 89 -362 "LGC kerning subtable" 146 -257 "LGC kerning subtable" 147 -101 "LGC kerning subtable" 28 -89 "LGC kerning subtable" 93 -216 "LGC kerning subtable" 92 -226 "LGC kerning subtable"
 EndChar
 
 StartChar: D
@@ -6370,7 +6371,7 @@ SplineSet
  536 1272 l 1,21,-1
  280 164 l 1,13,-1
 EndSplineSet
-Kerns2: 146 -57 "LGC kerning subtable" 
+Kerns2: 146 -57 "LGC kerning subtable"
 EndChar
 
 StartChar: exclam
@@ -6553,27 +6554,27 @@ SplineSet
 EndSplineSet
 Fore
 SplineSet
-176 547 m 2,0,-1
- 368 1379 l 2,1,2
- 381 1434 381 1434 431 1434 c 2,3,-1
- 523 1434 l 2,4,5
- 573 1434 573 1434 560 1379 c 2,6,-1
- 375 577 l 2,7,8
- 311 297 311 297 370 211.5 c 128,-1,9
- 429 126 429 126 610 126 c 256,10,11
- 756 126 756 126 872.5 211.5 c 128,-1,12
- 989 297 989 297 1053 577 c 2,13,-1
- 1238 1379 l 2,14,15
- 1251 1434 1251 1434 1301 1434 c 2,16,-1
- 1393 1434 l 2,17,18
- 1443 1434 1443 1434 1430 1379 c 2,19,-1
- 1238 547 l 2,20,21
- 1165 230 1165 230 1004 100 c 128,-1,22
- 843 -30 843 -30 574 -30 c 256,23,24
- 375 -30 375 -30 239 100 c 128,-1,25
- 103 230 103 230 176 547 c 2,0,-1
+176 547 m 6,0,-1
+ 368 1379 l 6,1,2
+ 381 1434 381 1434 431 1434 c 6,3,-1
+ 523 1434 l 6,4,5
+ 573 1434 573 1434 560 1379 c 6,6,-1
+ 375 577 l 6,7,8
+ 311 297 311 297 370 211.5 c 132,-1,9
+ 429 126 429 126 610 126 c 260,10,11
+ 756 126 756 126 872.5 211.5 c 132,-1,12
+ 989 297 989 297 1053 577 c 6,13,-1
+ 1238 1379 l 6,14,15
+ 1251 1434 1251 1434 1301 1434 c 6,16,-1
+ 1393 1434 l 6,17,18
+ 1443 1434 1443 1434 1430 1379 c 6,19,-1
+ 1238 547 l 6,20,21
+ 1165 230 1165 230 1004 100 c 132,-1,22
+ 843 -30 843 -30 574 -30 c 260,23,24
+ 375 -30 375 -30 239 100 c 132,-1,25
+ 103 230 103 230 176 547 c 6,0,-1
 EndSplineSet
-Kerns2: 74 -51 "LGC kerning subtable"  82 -50 "LGC kerning subtable" 
+Kerns2: 74 -51 "LGC kerning subtable" 82 -50 "LGC kerning subtable"
 EndChar
 
 StartChar: N
@@ -6609,9 +6610,9 @@ SplineSet
  242 0 242 0 192 0 c 2,31,-1
  100 0 l 2,0,1
 527.113 1144 m 2,6,-1
- 910.933 95 l 9,7,-1
+ 910.933 95 l 1033,7,-1
 640.521 1384 m 2,6,-1
- 1024.34 335 l 9,7,-1
+ 1024.34 335 l 1033,7,-1
 EndSplineSet
 Fore
 SplineSet
@@ -6652,7 +6653,7 @@ LayerCount: 2
 Back
 SplineSet
 1134.56 245 m 13,14,15
- 1195.74 510 l 5,13,-1
+ 1195.74 510 l 1029,13,-1
 110 580 m 0,0,1
  110 975 110 975 320.5 1219.5 c 128,-1,2
  531 1464 531 1464 908 1464 c 256,3,4
@@ -6788,13 +6789,13 @@ SplineSet
  242 0 242 0 192 0 c 2,30,-1
  100 0 l 2,0,1
 968.003 26 m 10,29,-1
- 602.698 839 l 25,30,-1
+ 602.698 839 l 1049,30,-1
 1163.24 66 m 10,29,-1
- 797.934 879 l 25,30,-1
+ 797.934 879 l 1049,30,-1
 1231.6 1411 m 2,5,-1
- 150.203 517 l 1,6,-1
+ 150.203 517 l 1025,6,-1
 1436.83 1368 m 2,5,-1
- 355.432 474 l 1,6,-1
+ 355.432 474 l 1025,6,-1
 EndSplineSet
 Fore
 SplineSet
@@ -6822,7 +6823,7 @@ SplineSet
  242 0 242 0 192 0 c 2,30,-1
  100 0 l 2,0,1
 EndSplineSet
-Kerns2: 89 -46 "LGC kerning subtable"  133 -34 "LGC kerning subtable"  28 -41 "LGC kerning subtable" 
+Kerns2: 89 -46 "LGC kerning subtable" 133 -34 "LGC kerning subtable" 28 -41 "LGC kerning subtable"
 EndChar
 
 StartChar: Q
@@ -6883,7 +6884,7 @@ SplineSet
  647 1308 647 1308 481 1124.5 c 128,-1,11
  315 941 315 941 315 556 c 256,0,1
 EndSplineSet
-Kerns2: 146 -43 "LGC kerning subtable" 
+Kerns2: 146 -43 "LGC kerning subtable"
 EndChar
 
 StartChar: R
@@ -6983,7 +6984,7 @@ SplineSet
  535 1270 l 1,39,-1
  423 785 l 1,31,-1
 EndSplineSet
-Kerns2: 89 -64 "LGC kerning subtable" 
+Kerns2: 89 -64 "LGC kerning subtable"
 EndChar
 
 StartChar: Y
@@ -7017,7 +7018,7 @@ SplineSet
  571 590 l 1,27,-1
  250 1368 l 18,0,1
 EndSplineSet
-Kerns2: 131 -57 "LGC kerning subtable"  74 -397 "LGC kerning subtable"  89 -202 "LGC kerning subtable"  162 -49 "LGC kerning subtable"  82 -396 "LGC kerning subtable"  132 -57 "LGC kerning subtable"  61 -57 "LGC kerning subtable"  33 -159 "LGC kerning subtable"  2 -146 "LGC kerning subtable"  142 -142 "LGC kerning subtable"  100 -159 "LGC kerning subtable"  30 -117 "LGC kerning subtable"  77 -159 "LGC kerning subtable"  15 -146 "LGC kerning subtable"  24 -184 "LGC kerning subtable"  94 -174 "LGC kerning subtable" 
+Kerns2: 131 -57 "LGC kerning subtable" 74 -397 "LGC kerning subtable" 89 -202 "LGC kerning subtable" 162 -49 "LGC kerning subtable" 82 -396 "LGC kerning subtable" 132 -57 "LGC kerning subtable" 61 -57 "LGC kerning subtable" 33 -159 "LGC kerning subtable" 2 -146 "LGC kerning subtable" 142 -142 "LGC kerning subtable" 100 -159 "LGC kerning subtable" 30 -117 "LGC kerning subtable" 77 -159 "LGC kerning subtable" 15 -146 "LGC kerning subtable" 24 -184 "LGC kerning subtable" 94 -174 "LGC kerning subtable"
 EndChar
 
 StartChar: W
@@ -7069,7 +7070,7 @@ SplineSet
  298 -0 298 -0 295 77 c 2,53,-1
  240 1374 l 2,0,1
 EndSplineSet
-Kerns2: 74 -185 "LGC kerning subtable"  82 -183 "LGC kerning subtable"  142 -52 "LGC kerning subtable"  94 -59 "LGC kerning subtable" 
+Kerns2: 74 -185 "LGC kerning subtable" 82 -183 "LGC kerning subtable" 142 -52 "LGC kerning subtable" 94 -59 "LGC kerning subtable"
 EndChar
 
 StartChar: three
@@ -7559,9 +7560,9 @@ SplineSet
  1614.7 839 1614.7 839 1565.15 776 c 128,-1,67
  1515.61 713 1515.61 713 1487.9 593 c 256,56,57
 543.178 1043 m 2,8,-1
- 867.924 4 l 9,9,-1
+ 867.924 4 l 1033,9,-1
 629.521 1384 m 2,8,-1
- 954.267 345 l 9,9,-1
+ 954.267 345 l 1033,9,-1
 EndSplineSet
 Fore
 SplineSet
@@ -7768,7 +7769,7 @@ LayerCount: 2
 Fore
 Refer: 159 8249 N 1 0 0 1 0 0 2
 Refer: 159 8249 N 1 0 0 1 350 0 2
-Kerns2: 146 -120 "LGC kerning subtable"  92 -299 "LGC kerning subtable"  105 -337 "LGC kerning subtable"  96 -299 "LGC kerning subtable" 
+Kerns2: 146 -120 "LGC kerning subtable" 92 -299 "LGC kerning subtable" 105 -337 "LGC kerning subtable" 96 -299 "LGC kerning subtable"
 EndChar
 
 StartChar: guilsinglright
@@ -8275,7 +8276,7 @@ SplineSet
  469 0 469 0 424 0 c 2,41,-1
  312 0 l 2,30,31
 EndSplineSet
-Kerns2: 74 -228 "LGC kerning subtable" 
+Kerns2: 74 -228 "LGC kerning subtable"
 EndChar
 
 StartChar: .notdef
@@ -9005,9 +9006,9 @@ SplineSet
  735.9 1325 735.9 1325 684.473 1282 c 128,-1,61
  633.046 1239 633.046 1239 617.809 1173 c 256,50,51
 685.935 892 m 25,0,0
- 1249.92 -35 l 25,0,0
+ 1249.92 -35 l 1049,0,0
 479.935 892 m 25,0,0
- 1043.92 -35 l 25,0,0
+ 1043.92 -35 l 1049,0,0
 EndSplineSet
 Fore
 SplineSet
@@ -9571,7 +9572,7 @@ SplineSet
 EndSplineSet
 Fore
 Refer: 194 8218 N 1 0 0 1 290 1257 2
-Kerns2: 7 -78 "LGC kerning subtable"  25 -40 "LGC kerning subtable"  34 -40 "LGC kerning subtable"  6 -40 "LGC kerning subtable"  95 -175 "LGC kerning subtable"  33 -40 "LGC kerning subtable"  15 -40 "LGC kerning subtable"  30 -40 "LGC kerning subtable"  2 -40 "LGC kerning subtable"  94 -175 "LGC kerning subtable" 
+Kerns2: 7 -78 "LGC kerning subtable" 25 -40 "LGC kerning subtable" 34 -40 "LGC kerning subtable" 6 -40 "LGC kerning subtable" 95 -175 "LGC kerning subtable" 33 -40 "LGC kerning subtable" 15 -40 "LGC kerning subtable" 30 -40 "LGC kerning subtable" 2 -40 "LGC kerning subtable" 94 -175 "LGC kerning subtable"
 EndChar
 
 StartChar: quoteleft
@@ -9658,7 +9659,7 @@ LayerCount: 2
 Fore
 Refer: 194 8218 N 1 0 0 1 296 0 2
 Refer: 194 8218 N 1 0 0 1 -34 0 2
-Kerns2: 23 -250 "LGC kerning subtable"  64 -337 "LGC kerning subtable"  99 -157 "LGC kerning subtable"  96 -278 "LGC kerning subtable" 
+Kerns2: 23 -250 "LGC kerning subtable" 64 -337 "LGC kerning subtable" 99 -157 "LGC kerning subtable" 96 -278 "LGC kerning subtable"
 EndChar
 
 StartChar: quotedblright
@@ -9683,7 +9684,7 @@ LayerCount: 2
 Fore
 Refer: 196 8216 N 1 0 0 1 296 0 2
 Refer: 196 8216 N 1 0 0 1 -34 0 2
-Kerns2: 142 -215 "LGC kerning subtable"  24 -38 "LGC kerning subtable"  94 -106 "LGC kerning subtable" 
+Kerns2: 142 -215 "LGC kerning subtable" 24 -38 "LGC kerning subtable" 94 -106 "LGC kerning subtable"
 EndChar
 
 StartChar: uni201F
@@ -10413,9 +10414,9 @@ LayerCount: 2
 Back
 SplineSet
 1627 58 m 25,0,0
- 671 967 l 25,0,0
+ 671 967 l 1049,0,0
 592 891 m 25,0,0
- 1500.5 -51.5 l 25,0,0
+ 1500.5 -51.5 l 1049,0,0
 444.1 296.5 m 0,0,1
  444.1 291.4 444.1 291.4 445.375 282.475 c 128,-1,2
  446.65 273.55 446.65 273.55 446.65 265.9 c 0,3,4
@@ -18821,7 +18822,7 @@ SplineSet
  587 1067 587 1067 659 1067 c 256,18,19
  760 1067 760 1067 837.5 1037 c 128,-1,20
  915 1007 915 1007 945 913 c 9,21,-1
- 948 913 l 1,22,23
+ 948 913 l 1025,22,23
 213 286 m 256,55,56
  190 188 190 188 228.5 153 c 128,-1,57
  267 118 267 118 363 118 c 256,58,59
@@ -24612,6 +24613,36 @@ SplineSet
  63 188 63 188 104 366 c 2,0,-1
 EndSplineSet
 Refer: 123 168 S 1 0 0 1 247 0 2
+EndChar
+
+StartChar: Udieresis
+Encoding: 220 220 514
+Width: 1402
+Flags: WO
+LayerCount: 2
+Fore
+SplineSet
+176 547 m 2
+ 368 1379 l 2
+ 381 1434 381 1434 431 1434 c 2
+ 523 1434 l 2
+ 573 1434 573 1434 560 1379 c 2
+ 375 577 l 2
+ 311 297 311 297 370 211.5 c 0
+ 429 126 429 126 610 126 c 256
+ 756 126 756 126 872.5 211.5 c 0
+ 989 297 989 297 1053 577 c 2
+ 1238 1379 l 2
+ 1251 1434 1251 1434 1301 1434 c 2
+ 1393 1434 l 2
+ 1443 1434 1443 1434 1430 1379 c 2
+ 1238 547 l 2
+ 1165 230 1165 230 1004 100 c 0
+ 843 -30 843 -30 574 -30 c 256
+ 375 -30 375 -30 239 100 c 0
+ 103 230 103 230 176 547 c 2
+EndSplineSet
+Refer: 125 63179 N 1 0 0 1 287 0 2
 EndChar
 EndChars
 EndSplineFont
